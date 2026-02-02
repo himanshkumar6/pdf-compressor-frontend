@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Theme Pre-Init Script (Prevents FOUC) -->
+  <script>
+    (function () {
+      try {
+        var STORAGE_KEY = "theme-mode";
+        var root = document.documentElement;
+
+        // prevent initial transition flash
+        root.classList.add("theme-preload");
+
+        var stored = localStorage.getItem(STORAGE_KEY);
+        var mode = stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+
+        var prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var resolved = mode === "system" ? (prefersDark ? "dark" : "light") : mode;
+
+        root.classList.remove("light", "dark");
+        root.classList.add(resolved);
+        root.style.colorScheme = resolved;
+        root.dataset.themeMode = mode;
+
+        window.setTimeout(function () {
+          root.classList.remove("theme-preload");
+        }, 0);
+      } catch (e) {
+        // ignore (private mode / blocked storage)
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="./favicon.svg" />
+
+  <!-- ✅ Fonts Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FCZXPJB41V');
+  </script>
+  <meta name="google-site-verification" content="fF6tWHVuhi42MfkcTCr7zcahCCawwtG94qAniZrUSmk" />
+  <meta name="monetag" content="d18c4ad49ac179614113fad9ad09ed42">
+  <!-- Monetag Popular Ads REMOVED for SEO -->
+  <!-- <script src="https://quge5.com/88/tag.min.js" data-zone="205334" async data-cfasync="false"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compress PDF to 200KB Online | Free PDF Compressor Tool</title>
+  <link rel="canonical" href="https://compresspdfto200kb.online/" />
+
+  <meta name="description"
+    content="Compress PDF files to 200KB online using a free PDF compressor tool. Upload or drag and drop your PDF, reduce file size without quality loss, and download compressed files instantly. Ideal for job applications and government form uploads." />
+
+  <!-- AdCash Ad  -->
+  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Compress PDF to 200KB Online | Free PDF Compressor Tool" />
+  <meta property="og:description"
+    content="Compress PDF files to 200KB online using a free PDF compressor tool. Upload or drag and drop your PDF, reduce file size without quality loss, and download instantly." />
+  <meta property="og:url" content="https://compresspdfto200kb.online/" />
+
+  <meta property="og:image" content="https://compresspdfto200kb.online/og-image.png" />
+</head>
+
+<body>
+  <noscript>
+    <h1>Compress PDF to 200KB Online</h1>
+    <p>
+      Compress PDF files to 200KB online for free using a simple PDF compressor tool.
+      Upload or drag and drop your PDF, reduce file size without losing quality,
+      and download compressed files instantly.
+    </p>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
