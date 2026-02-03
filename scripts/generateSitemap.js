@@ -1,6 +1,7 @@
 /**
  * Sitemap generator: canonical URLs only, https only, trailing slash consistent.
  * Canonical format: home = baseUrl/, others = baseUrl + path (no trailing slash).
+ * Generates: sitemap.xml (index), sitemap-hi.xml, sitemap-ru.xml.
  * Run: node scripts/generateSitemap.js
  */
 
@@ -8,7 +9,8 @@ import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://compresspdfto200kb.online";
-const OUTPUT = path.resolve("public", "sitemap.xml");
+// ✅ Output to dist/ so it runs after build
+const DIST_DIR = path.resolve("dist");
 
 /** Canonical paths (must match PAGES_SEO / app routes). No trailing slash except home. */
 const CANONICAL_PATHS = [
@@ -79,13 +81,11 @@ function ensureHttps(url) {
   return url.startsWith("http://") ? url.replace("http://", "https://") : url;
 }
 
-function run() {
-  const today = new Date().toISOString().slice(0, 10);
-
-  const urls = CANONICAL_PATHS.map((p) => {
+function generateXmlForRoutes(paths, today) {
+  const urls = paths.map((p) => {
     const loc = ensureHttps(toCanonicalUrl(p));
-    const isHome = p === "/";
-    const isBlogPost = p.startsWith("/blog/") && p !== "/blog";
+    const isHome = p === "/" || p === "/ru";
+    const isBlogPost = p.includes("/blog/") && !p.endsWith("/blog");
     const isTool = [
       "/compress-pdf",
       "/compress-pdf-to-50kb",
@@ -119,27 +119,20 @@ function run() {
       priority = "1.0";
     } else if (isTool) {
       changefreq = "weekly";
-      // High priority for main target sizes
-      if (["/compress-pdf-to-200kb", "/compress-pdf-to-100kb", "/compress-pdf-to-150kb"].includes(p)) {
+      if (["/compress-pdf-to-200kb", "/compress-pdf-to-100kb", "/compress-pdf-to-150kb", "/ru/szhat-pdf-do-200kb"].includes(p)) {
         priority = "0.9";
       } else {
         priority = "0.8";
       }
-    } else if (p === "/blog") {
+    } else if (p.endsWith("/blog")) {
       changefreq = "weekly";
       priority = "0.6";
     } else if (isBlogPost) {
       changefreq = "yearly";
       priority = "0.5";
-    } else if (["/privacy-policy", "/terms-conditions", "/disclaimer"].includes(p)) {
+    } else if (["/privacy-policy", "/terms-conditions", "/disclaimer", "/ru/politika-konfidencialnosti", "/ru/usloviya", "/ru/otkaz-ot-otvetstvennosti"].includes(p)) {
       changefreq = "monthly";
       priority = "0.6";
-    } else if (["/about", "/contact"].includes(p)) {
-      changefreq = "yearly";
-      priority = "0.4";
-    } else if (["/sitemap", "/tools"].includes(p)) {
-      changefreq = "monthly";
-      priority = "0.5";
     }
 
     return `  <url>
@@ -150,14 +143,62 @@ function run() {
   </url>`;
   });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join("\n")}
 </urlset>
 `;
+}
 
-  fs.writeFileSync(OUTPUT, xml, "utf8");
-  console.log(`✅ Sitemap written to ${OUTPUT} (${CANONICAL_PATHS.length} canonical URLs)`);
+function run() {
+  const today = new Date().toISOString().slice(0, 10);
+
+  // ✅ Partition routes
+  const ruPaths = CANONICAL_PATHS.filter(p => p.startsWith("/ru"));
+  const hiPaths = CANONICAL_PATHS.filter(p => !p.startsWith("/ru"));
+
+  // ✅ Generate Sitemap Files
+  const hiXml = generateXmlForRoutes(hiPaths, today);
+  const ruXml = generateXmlForRoutes(ruPaths, today);
+
+  // ✅ Generate Sitemap Index
+  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${BASE_URL}/sitemap-hi.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${BASE_URL}/sitemap-ru.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+</sitemapindex>
+`;
+
+  // ✅ Ensure dist exists
+  if (!fs.existsSync(DIST_DIR)) {
+    console.log("Creating dist directory...");
+    fs.mkdirSync(DIST_DIR, { recursive: true });
+  }
+
+  // ✅ Write files
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-hi.xml"), hiXml, "utf8");
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-ru.xml"), ruXml, "utf8");
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), indexXml, "utf8");
+
+  // ✅ Cleanup: Remove old sitemap-en.xml if it exists anywhere
+  ["public/sitemap-en.xml", "dist/sitemap-en.xml", "public/sitemap.xml"].forEach(file => {
+    const fullPath = path.resolve(file);
+    if (fs.existsSync(fullPath)) {
+      fs.unlinkSync(fullPath);
+      console.log(`🗑️ Removed old file: ${file}`);
+    }
+  });
+
+  console.log(`✅ Sitemap Index written to ${path.join(DIST_DIR, "sitemap.xml")}`);
+  console.log(`✅ Hinglish Sitemap: ${hiPaths.length} URLs`);
+  console.log(`✅ Russian Sitemap: ${ruPaths.length} URLs`);
 }
 
 run();
+
