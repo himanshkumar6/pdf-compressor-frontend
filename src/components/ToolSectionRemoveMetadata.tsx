@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { PDFDocument } from "pdf-lib";
 import {
   Upload,
@@ -13,6 +14,7 @@ import {
 import PdfMetadataPanel from "./PdfMetadataPanel";
 import { extractPdfMetadata } from "../utils/pdfMetadata";
 import type { PdfMetadata } from "../utils/pdfMetadata";
+import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
 
 import toast from "react-hot-toast";
 
@@ -31,6 +33,10 @@ const ToolSectionRemoveMetadata: React.FC = () => {
   const [cleanFileName, setCleanFileName] = useState<string>("no-metadata.pdf");
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const location = useLocation();
+  const lang = getLanguage(location.pathname);
+  const t = TOOL_UI_LABELS[lang];
 
   const fileSizeLabel = useMemo(() => {
     if (!file) return "";
@@ -61,19 +67,19 @@ const ToolSectionRemoveMetadata: React.FC = () => {
 
     // only pdf
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
-      toast.error("Please upload only PDF file ❌");
+      toast.error(t.toastUploadError);
       return;
     }
 
     // size check
     if (f.size > MAX_SIZE) {
-      toast.error("File too large ❌ Max allowed size is 5 MB");
-      setError("File too large. Max allowed size is 5 MB.");
+      toast.error(t.toastTooLarge);
+      setError(t.toastTooLarge);
       setFile(null);
       return;
     }
 
-    toast.success("PDF uploaded ✅");
+    toast.success(t.toastDone);
 
     setError(null);
     setFile(f);
@@ -85,8 +91,8 @@ const ToolSectionRemoveMetadata: React.FC = () => {
       setBeforeMeta(meta);
     } catch {
       setBeforeMeta(null);
-      setError("Unable to read metadata from this PDF.");
-      toast.error("Unable to read metadata ❌");
+      setError("Unable to read metadata from this PDF."); // Not in dictionary, maybe generic error?
+      toast.error(t.toastUploadError); // Fallback
     }
   };
 
@@ -136,11 +142,11 @@ const ToolSectionRemoveMetadata: React.FC = () => {
       const metaAfter = await extractPdfMetadata(cleanedFile);
       setAfterMeta(metaAfter);
 
-      toast.success("Metadata removed ✅");
+      toast.success(t.metadataRemoved);
     } catch (e) {
       console.error(e);
-      setError("Metadata removal failed. Try another PDF.");
-      toast.error("Metadata removal failed ❌");
+      setError(t.toastCompressFailed); // Generic error fallback
+      toast.error(t.toastNetworkError);
     } finally {
       setIsProcessing(false);
     }
@@ -159,10 +165,10 @@ const ToolSectionRemoveMetadata: React.FC = () => {
 
             <div>
               <h2 className="text-[var(--textHeading)] font-black text-xl">
-                Privacy Cleaner (PDF)
+                {t.removeMetadataTitle}
               </h2>
               <p className="text-[var(--textMuted)] text-sm">
-                Detect + remove author, creator, timestamps & hidden metadata
+                {t.removeMetadataDesc}
               </p>
             </div>
           </div>
@@ -170,7 +176,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
           <button
             onClick={resetAll}
             className="p-3 rounded-2xl bg-[var(--color-bg-hover)] border border-[var(--border)] hover:border-[var(--border-hover)] transition cursor-pointer"
-            title="Reset"
+            title={t.reset}
           >
             <RefreshCcw className="w-5 h-5 text-[var(--textBody)]" />
           </button>
@@ -194,7 +200,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
                 className="cursor-pointer px-5 py-3 rounded-2xl font-black bg-[var(--pill-bg)] border border-[var(--pill-border)] text-[var(--pill-text)] hover:bg-[var(--card-hover)] transition"
               >
                 <Upload className="inline w-5 h-5 mr-2" />
-                Choose PDF
+                {t.chooseFile}
               </button>
 
               {file ? (
@@ -205,7 +211,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
                 </div>
               ) : (
                 <p className="text-gray-500 text-sm">
-                  Max 5MB • Works offline
+                  {lang === "ru" ? "Макс. 5 МБ • Офлайн" : "Max 5MB • Works offline"}
                 </p>
               )}
             </div>
@@ -218,12 +224,12 @@ const ToolSectionRemoveMetadata: React.FC = () => {
               {isProcessing ? (
                 <>
                   <Loader2 className="inline w-5 h-5 mr-2 animate-spin" />
-                  Cleaning…
+                  {t.removingMetadata}
                 </>
               ) : (
                 <>
                   <Shield className="inline w-5 h-5 mr-2" />
-                  Remove Metadata
+                  {t.removeMetadataTitle}
                 </>
               )}
             </button>
@@ -252,7 +258,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
             >
 
               <Download className="w-5 h-5" />
-              Download Clean PDF
+              {lang === "ru" ? "Скачать очищенный PDF" : "Download Clean PDF"}
             </a>
           )}
         </div>

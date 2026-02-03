@@ -21,6 +21,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 
 // ✅ Tool Pages
+// ✅ Tool Pages
 import CompressPdf from "./pages/CompressPDF";
 import CompressTo50kb from "./pages/CompressTo50kb";
 import CompressTo100kb from "./pages/CompressTo100kb";
@@ -31,6 +32,27 @@ import CompressTo1mb from "./pages/CompressTo1mb";
 import ReducePdfSizeTo500kb from "./pages/ReducePdfSizeTo500kb";
 import ScannedPdfCompressor from "./pages/ScannedPdfCompressor";
 import ScannedPdfTo200kb from "./pages/ScannedPdfTo200kb";
+
+// ✅ Russian Pages
+import HomeRu from "./pages/ru/Home";
+import AboutRu from "./pages/ru/ONas";
+import ContactRu from "./pages/ru/Kontakty";
+import PrivacyPolicyRu from "./pages/ru/PolitikaKonfidencialnosti";
+import TermsConditionsRu from "./pages/ru/UsloviyaIspolzovaniya";
+import DisclaimerRu from "./pages/ru/OtkazOtOtvetsvennosti";
+import ToolsRu from "./pages/ru/Instrumenty";
+
+import SzhatPdf from "./pages/ru/SzhatPdf";
+import SzhatPdfDo50kb from "./pages/ru/SzhatPdfDo50kb";
+import SzhatPdfDo100kb from "./pages/ru/SzhatPdfDo100kb";
+import SzhatPdfDo150kb from "./pages/ru/SzhatPdfDo150kb";
+import SzhatPdfDo200kb from "./pages/ru/SzhatPdfDo200kb";
+import SzhatPdfDo500kb from "./pages/ru/SzhatPdfDo500kb";
+import SzhatPdfDo1mb from "./pages/ru/SzhatPdfDo1mb";
+import UmenshitRazmerPdfDo500kb from "./pages/ru/UmenshitRazmerPdfDo500kb";
+import SzhatSkanirovannyjPdf from "./pages/ru/SzhatSkanirovannyjPdf";
+import SzhatSkanirovannyjPdfDo200kb from "./pages/ru/SzhatSkanirovannyjPdfDo200kb";
+import UdalitMetadannyePdf from "./pages/ru/UdalitMetadannyePdf";
 
 // ✅ TS: window.gtag type
 declare global {
@@ -101,6 +123,29 @@ const App: React.FC = () => {
             <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
             <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
             <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
+
+            {/* ✅ Russian Pages (RU) */}
+            <Route path="/ru" element={<HomeRu />} />
+            <Route path="/ru/o-nas" element={<AboutRu />} />
+            <Route path="/ru/kontakty" element={<ContactRu />} />
+            <Route path="/ru/politika-konfidencialnosti" element={<PrivacyPolicyRu />} />
+            <Route path="/ru/usloviya" element={<TermsConditionsRu />} />
+            <Route path="/ru/otkaz-ot-otvetstvennosti" element={<DisclaimerRu />} />
+            <Route path="/ru/instrumenty" element={<ToolsRu />} />
+            <Route path="/ru/blog" element={<div className="min-h-screen pt-32 text-center text-white text-3xl font-bold">Блог скоро будет...</div>} />
+
+            {/* ✅ Russian Tool Pages */}
+            <Route path="/ru/szhat-pdf" element={<SzhatPdf />} />
+            <Route path="/ru/szhat-pdf-do-50kb" element={<SzhatPdfDo50kb />} />
+            <Route path="/ru/szhat-pdf-do-100kb" element={<SzhatPdfDo100kb />} />
+            <Route path="/ru/szhat-pdf-do-150kb" element={<SzhatPdfDo150kb />} />
+            <Route path="/ru/szhat-pdf-do-200kb" element={<SzhatPdfDo200kb />} />
+            <Route path="/ru/szhat-pdf-do-500kb" element={<SzhatPdfDo500kb />} />
+            <Route path="/ru/szhat-pdf-do-1mb" element={<SzhatPdfDo1mb />} />
+            <Route path="/ru/umenshit-razmer-pdf-do-500kb" element={<UmenshitRazmerPdfDo500kb />} />
+            <Route path="/ru/szhat-skanirovannyj-pdf" element={<SzhatSkanirovannyjPdf />} />
+            <Route path="/ru/szhat-skanirovannyj-pdf-do-200kb" element={<SzhatSkanirovannyjPdfDo200kb />} />
+            <Route path="/ru/udalit-metadannye-pdf" element={<UdalitMetadannyePdf />} />
 
             {/* ✅ fallback */}
             <Route path="*" element={<NotFound />} />

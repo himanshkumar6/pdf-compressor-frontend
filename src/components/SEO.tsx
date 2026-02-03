@@ -16,6 +16,8 @@ export interface SEOProps {
   canonical?: string;
   /** Optional JSON-LD schema object */
   schema?: unknown;
+  /** Language code (e.g. "en", "ru") */
+  lang?: string;
 }
 
 function setMetaByName(name: string, content: string) {
@@ -59,11 +61,15 @@ function setJsonLd(schema: unknown) {
   document.head.appendChild(script);
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang }) => {
   useEffect(() => {
     const metaTitle = title || DEFAULT_SEO.title;
     const metaDescription = description || DEFAULT_SEO.description;
     const metaUrl = canonical || DEFAULT_SEO.canonical || SITE.baseUrl;
+    const metaLang = lang || "en";
+
+    // ✅ lang
+    document.documentElement.lang = metaLang;
 
     // ✅ title
     document.title = metaTitle;
@@ -88,7 +94,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema }) => {
 
     // ✅ Schema JSON-LD
     if (schema) setJsonLd(schema);
-  }, [title, description, canonical, schema]);
+  }, [title, description, canonical, schema, lang]);
 
   return null;
 };

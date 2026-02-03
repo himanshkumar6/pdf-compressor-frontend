@@ -70,6 +70,50 @@ export const FAQ_DATA: FAQItem[] = [
   },
 ];
 
+/* ✅ Russian FAQ data */
+export const RU_FAQ_DATA: FAQItem[] = [
+  {
+    question: "Как сжать PDF до 200 КБ без потери качества?",
+    answer: "Наш инструмент использует браузерные технологии оптимизации. Мы удаляем лишние метаданные, сжимаем изображения и оптимизируем структуру файла, чтобы максимально уменьшить размер, сохранив текст четким и читаемым.",
+  },
+  {
+    question: "Безопасно ли сжимать документы здесь?",
+    answer: "Абсолютно. В отличие от других сервисов, наш инструмент работает на 100% в вашем браузере. Ваши конфиденциальные документы не загружаются на сервер, а значит, никто, кроме вас, не имеет к ним доступа.",
+  },
+  {
+    question: "Почему мой файл все еще больше 200 КБ?",
+    answer: "Если в PDF очень много изображений высокого разрешения, сжатие до экстремально малого размера может повредить качеству. Попробуйте наш специальный инструмент 'Сжать до 200 КБ', который применяет более агрессивную оптимизацию.",
+  },
+  {
+    question: "Нужно ли платить за сжатие?",
+    answer: "Нет, сервис полностью бесплатен. Мы не требуем регистрации, подписки или ввода данных карты.",
+  },
+  {
+    question: "Работает ли сервис на мобильных телефонах?",
+    answer: "Да, наш сайт адаптирован для всех современных браузеров на Android и iOS. Вы можете сжать PDF прямо со своего смартфона без установки приложений.",
+  },
+  {
+    question: "Можно ли сжать отсканированный PDF?",
+    answer: "Да. Для сканов мы рекомендуем использовать инструмент 'Сжать сканированный PDF', который специально оптимизирован для работы с тяжелыми изображениями страниц.",
+  },
+  {
+    question: "Какие лимиты размера файла на входе?",
+    answer: "На текущий момент мы поддерживаем файлы до 5 МБ. Этого достаточно для большинства документов, резюме и заявлений.",
+  },
+  {
+    question: "Портит ли сжатие текст в PDF?",
+    answer: "Нет, текстовый слой остается нетронутым в векторном формате. Мы оптимизируем только изображения и внутренние объекты PDF, поэтому текст останется четким при любом масштабе.",
+  },
+  {
+    question: "Примут ли сжатый файл на Госуслугах?",
+    answer: "Да, наши файлы соответствуют техническим требованиям большинства государственных порталов России и СНГ по формату и структуре.",
+  },
+  {
+    question: "Как удалить автора и дату создания из PDF?",
+    answer: "Воспользуйтесь нашим инструментом 'Удалить метаданные'. Он полностью очищает документ от скрытой информации, сохраняя при этом основной контент.",
+  },
+];
+
 /* ✅ Old getJsonLd used by existing pages */
 export const getJsonLd = () => ({
   "@context": "https://schema.org",
@@ -502,6 +546,221 @@ export const PAGES_SEO: Record<string, PageSEO> = {
       description: "Guide to compress PDF on Mac and reduce PDF size.",
     },
   },
+
+  // ✅ RUSSIAN SEO START
+  "/ru/szhat-pdf": {
+    title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF",
+    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf`,
+    jsonLd: {
+      name: "Сжать PDF Онлайн",
+      url: `${SITE.baseUrl}/ru/szhat-pdf`,
+      description: "Бесплатный онлайн инструмент для сжатия PDF файлов.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-50kb": {
+    title: "Сжать PDF до 50 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 50 кб онлайн бесплатно. Идеально для строгих лимитов при загрузке документов и подписей.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-50kb`,
+    jsonLd: {
+      name: "Сжать PDF до 50 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-50kb`,
+      description: "Уменьшить размер PDF до 50 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-100kb": {
+    title: "Сжать PDF до 100 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 100 кб онлайн. Подходит для резюме, анкет и заявлений. Быстрая обработка в браузере.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-100kb`,
+    jsonLd: {
+      name: "Сжать PDF до 100 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-100kb`,
+      description: "Уменьшить размер PDF до 100 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-150kb": {
+    title: "Сжать PDF до 150 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 150 кб онлайн бесплатно. Оптимально для порталов госуслуг, вузов и паспортных столов.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-150kb`,
+    jsonLd: {
+      name: "Сжать PDF до 150 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-150kb`,
+      description: "Уменьшить размер PDF до 150 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-200kb": {
+    title: "Сжать PDF до 200 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 200 кб онлайн. Самый популярный формат для Госуслуг, ФНС и других государственных порталов.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-200kb`,
+    jsonLd: {
+      name: "Сжать PDF до 200 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-200kb`,
+      description: "Уменьшить размер PDF до 200 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-500kb": {
+    title: "Сжать PDF до 500 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 500 кб онлайн. Отлично подходит для отправки по почте, портфолио и презентаций.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-500kb`,
+    jsonLd: {
+      name: "Сжать PDF до 500 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-500kb`,
+      description: "Уменьшить размер PDF до 500 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-pdf-do-1mb": {
+    title: "Сжать PDF до 1 МБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 1 МБ онлайн. Для больших договоров, книг и отчетов. Сохраняет высокое качество.",
+    canonical: `${SITE.baseUrl}/ru/szhat-pdf-do-1mb`,
+    jsonLd: {
+      name: "Сжать PDF до 1 МБ",
+      url: `${SITE.baseUrl}/ru/szhat-pdf-do-1mb`,
+      description: "Уменьшить размер PDF до 1 МБ онлайн.",
+    },
+  },
+
+  "/ru/umenshit-razmer-pdf-do-500kb": {
+    title: "Уменьшить размер PDF файла до 500 КБ Онлайн (Бесплатно)",
+    description: "Бесплатно уменьшить размер PDF до 500 КБ. Быстрая оптимизация для отправки по email и загрузки на сайты.",
+    canonical: `${SITE.baseUrl}/ru/umenshit-razmer-pdf-do-500kb`,
+    jsonLd: {
+      name: "Уменьшить размер PDF до 500 КБ",
+      url: `${SITE.baseUrl}/ru/umenshit-razmer-pdf-do-500kb`,
+      description: "Уменьшить размер PDF файла до 500 КБ онлайн.",
+    },
+  },
+
+  "/ru/szhat-skanirovannyj-pdf": {
+    title: "Сжать Сканированный PDF Онлайн | Уменьшить размер скана",
+    description: "Сжать сканированный PDF онлайн. Умная оптимизация сканов документов, квитанций и рукописей без размытия текста.",
+    canonical: `${SITE.baseUrl}/ru/szhat-skanirovannyj-pdf`,
+    jsonLd: {
+      name: "Сжать Сканированный PDF",
+      url: `${SITE.baseUrl}/ru/szhat-skanirovannyj-pdf`,
+      description: "Сжать сканированный PDF документ онлайн.",
+    },
+  },
+
+  "/ru/szhat-skanirovannyj-pdf-do-200kb": {
+    title: "Сжать Скан PDF до 200 КБ Онлайн | Уменьшить размер скана",
+    description: "Сжать сканированный PDF до 200 КБ. Специальный алгоритм для паспортов, дипломов и справок. Проходит проверки на порталах.",
+    canonical: `${SITE.baseUrl}/ru/szhat-skanirovannyj-pdf-do-200kb`,
+    jsonLd: {
+      name: "Сжать Скан PDF до 200 КБ",
+      url: `${SITE.baseUrl}/ru/szhat-skanirovannyj-pdf-do-200kb`,
+      description: "Сжать скан PDF до 200 КБ онлайн.",
+    },
+  },
+
+  "/ru/udalit-metadannye-pdf": {
+    title: "Удалить метаданные из PDF Онлайн (Очистить свойства файла)",
+    description: "Удалить автора, дату создания и скрытые метаданные из PDF онлайн. Повысьте конфиденциальность перед отправкой документа.",
+    canonical: `${SITE.baseUrl}/ru/udalit-metadannye-pdf`,
+    jsonLd: {
+      name: "Удалить метаданные PDF",
+      url: `${SITE.baseUrl}/ru/udalit-metadannye-pdf`,
+      description: "Очистить метаданные и скрытые свойства PDF файла.",
+    },
+  },
+
+  "/ru/instrumenty": {
+    title: "PDF Инструменты – Сжать, Уменьшить, Очистить | Бесплатно",
+    description: "Все инструменты для работы с PDF: сжатие до 200кб, 100кб, удаление метаданных. Бесплатно, безопасно, в браузере.",
+    canonical: `${SITE.baseUrl}/ru/instrumenty`,
+    jsonLd: {
+      name: "Инструменты PDF",
+      url: `${SITE.baseUrl}/ru/instrumenty`,
+      description: "Сборник бесплатных инструментов для работы с PDF.",
+    },
+  },
+    
+  "/ru/o-nas": {
+    title: "О Нас - CompressPDFto200KB.online",
+    description: "Узнайте больше о нашем сервисе. Мы помогаем студентам и специалистам бесплатно сжимать PDF документы для государственных порталов.",
+    canonical: `${SITE.baseUrl}/ru/o-nas`,
+    jsonLd: {
+        name: "О Нас",
+        url: `${SITE.baseUrl}/ru/o-nas`,
+        description: "Информация о проекте CompressPDFto200KB.",
+    },
+  },
+
+  "/ru/kontakty": {
+    title: "Контакты - CompressPDFto200KB.online",
+    description: "Свяжитесь с нами, если у вас есть вопросы или предложения по улучшению сервиса сжатия PDF.",
+    canonical: `${SITE.baseUrl}/ru/kontakty`,
+    jsonLd: {
+        name: "Контакты",
+        url: `${SITE.baseUrl}/ru/kontakty`,
+        description: "Контактная информация CompressPDFto200KB.",
+    },
+  },
+
+  "/ru/politika-konfidencialnosti": {
+    title: "Политика Конфиденциальности - CompressPDFto200KB.online",
+    description: "Мы уважаем вашу приватность. Ваши файлы обрабатываются локально в браузере и никогда не загружаются на наши серверы.",
+    canonical: `${SITE.baseUrl}/ru/politika-konfidencialnosti`,
+    jsonLd: {
+        name: "Политика Конфиденциальности",
+        url: `${SITE.baseUrl}/ru/politika-konfidencialnosti`,
+        description: "Политика обработки данных пользователей.",
+    },
+  },
+
+  "/ru/usloviya": {
+    title: "Условия Использования - CompressPDFto200KB.online",
+    description: "Правила использования наших бесплатных инструментов для работы с PDF.",
+    canonical: `${SITE.baseUrl}/ru/usloviya`,
+    jsonLd: {
+        name: "Условия Использования",
+        url: `${SITE.baseUrl}/ru/usloviya`,
+        description: "Правила использования сервиса.",
+    },
+  },
+
+  "/ru/otkaz-ot-otvetstvennosti": {
+    title: "Отказ от Ответственности - CompressPDFto200KB.online",
+    description: "Отказ от ответственности: мы предоставляем инструменты 'как есть' без гарантий для конкретных порталов.",
+    canonical: `${SITE.baseUrl}/ru/otkaz-ot-otvetstvennosti`,
+    jsonLd: {
+        name: "Отказ от Ответственности",
+        url: `${SITE.baseUrl}/ru/otkaz-ot-otvetstvennosti`,
+        description: "Информация об ограничении ответственности.",
+    },
+  },
+  // Alias for typo in some files
+  "/ru/otkaz-ot-otvetsvennosti": {
+    title: "Отказ от Ответственности - CompressPDFto200KB.online",
+    description: "Отказ от ответственности: мы предоставляем инструменты 'как есть' без гарантий для конкретных порталов.",
+    canonical: `${SITE.baseUrl}/ru/otkaz-ot-otvetstvennosti`,
+  },
+  "/ru/usloviya-ispolzovaniya": {
+    title: "Условия Использования - CompressPDFto200KB.online",
+    description: "Правила использования наших бесплатных инструментов для работы с PDF.",
+    canonical: `${SITE.baseUrl}/ru/usloviya`,
+  }
+};
+
+/**
+ * Global safe fallback for page SEO.
+ * Prevents "Cannot read properties of undefined" crashes.
+ */
+export const getPageSeo = (path: string): PageSEO => {
+  // Normalize path (remove trailing slash)
+  const key = path === "/" ? "/" : path.replace(/\/$/, "");
+  
+  if (PAGES_SEO[key]) {
+    return PAGES_SEO[key];
+  }
+
+  // Fallback to home or default
+  return PAGES_SEO["/"] || DEFAULT_SEO;
 };
 
 export const buildWebAppJsonLd = (page: PageSEO) => ({

@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import {
   CheckCircle,
   AlertTriangle,
@@ -9,6 +10,7 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import type { CompressionResult } from "../types";
+import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
 
 type CompressionResultCardProps = {
   result: CompressionResult;
@@ -31,9 +33,18 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
   onTryDifferentLimit,
   onReset,
 }) => {
+  const location = useLocation();
+  const lang = getLanguage(location.pathname);
+  const t = TOOL_UI_LABELS[lang];
+
   const isSuccess = result.status === "success";
   const isNotPossible = result.status === "not_possible";
   const suggestedLimits = getSuggestedLimits(result.targetLimitKB);
+
+  const tryHigherLimitMsg =
+    lang === "ru"
+      ? "Попробуйте лимит выше:"
+      : "Try a higher limit for better results:";
 
   return (
     <div className="space-y-6">
@@ -50,7 +61,9 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
       {isNotPossible && (
         <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl text-center">
           <p className="text-yellow-400 font-semibold text-sm">
-            ⚠️ This PDF cannot reach ≤{result.targetLimitKB}KB without severe quality loss.
+            {lang === "ru"
+              ? `⚠️ Этот PDF не может быть сжат до ≤${result.targetLimitKB}KB без потери качества.`
+              : `⚠️ This PDF cannot reach ≤${result.targetLimitKB}KB without severe quality loss.`}
           </p>
           {result.message && (
             <p className="text-yellow-500/80 text-xs mt-1">{result.message}</p>
@@ -64,7 +77,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 text-gray-400">
             <FileText className="w-5 h-5" />
-            <span className="text-sm">Original size</span>
+            <span className="text-sm">{t.originalSize}</span>
           </div>
           <span className="text-white font-bold">
             {formatSizeKB(result.originalSizeKB)}
@@ -75,7 +88,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 text-gray-400">
             <Target className="w-5 h-5" />
-            <span className="text-sm">Selected limit</span>
+            <span className="text-sm">{t.selectedLimit}</span>
           </div>
           <span className="text-cyan-400 font-bold">
             ≤{formatSizeKB(result.targetLimitKB)}
@@ -86,12 +99,11 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <div className="flex items-center justify-between border-t border-gray-800 pt-4">
           <div className="flex items-center gap-3 text-white">
             <CheckCircle className="w-5 h-5 text-cyan-400" />
-            <span className="text-sm font-semibold">Final size</span>
+            <span className="text-sm font-semibold">{t.finalSize}</span>
           </div>
           <span
-            className={`text-xl font-black ${
-              isSuccess ? "text-cyan-400" : "text-yellow-400"
-            }`}
+            className={`text-xl font-black ${isSuccess ? "text-cyan-400" : "text-yellow-400"
+              }`}
           >
             {formatSizeKB(result.finalSizeKB)}
           </span>
@@ -101,7 +113,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-3 text-gray-400">
             <RefreshCcw className="w-4 h-4" />
-            <span>Attempts</span>
+            <span>{t.attempts}</span>
           </div>
           <span className="text-gray-300">{result.attempts}</span>
         </div>
@@ -110,7 +122,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-3 text-gray-400">
             <TrendingDown className="w-4 h-4" />
-            <span>Saved</span>
+            <span>{t.saved}</span>
           </div>
           <span className="text-green-400 font-semibold">
             {result.savedPercentage}%
@@ -125,14 +137,14 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         className="btnPrimary w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl"
       >
         <Download className="w-5 h-5" />
-        Download PDF ({formatSizeKB(result.finalSizeKB)})
+        {t.download} ({formatSizeKB(result.finalSizeKB)})
       </a>
 
       {/* Try Different Limits (for not_possible) */}
       {isNotPossible && suggestedLimits.length > 0 && onTryDifferentLimit && (
         <div className="space-y-3">
           <p className="text-center text-gray-500 text-sm">
-            Try a higher limit for better results:
+            {tryHigherLimitMsg}
           </p>
           <div className="flex gap-3 justify-center">
             {suggestedLimits.map((limit) => (
@@ -141,7 +153,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
                 onClick={() => onTryDifferentLimit(limit)}
                 className="px-5 py-3 rounded-2xl border border-cyan-500/30 text-cyan-400 font-semibold hover:bg-cyan-500/10 transition"
               >
-                Try ≤{formatSizeKB(limit)}
+                {lang === "ru" ? "До " : "Try ≤"}{formatSizeKB(limit)}
               </button>
             ))}
           </div>
@@ -155,7 +167,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
           className="w-full flex items-center justify-center gap-2 px-6 py-3 border border-gray-700 text-gray-400 font-semibold rounded-2xl hover:border-gray-600 hover:text-gray-300 transition"
         >
           <RefreshCcw className="w-4 h-4" />
-          Compress another PDF
+          {t.reset}
         </button>
       )}
     </div>

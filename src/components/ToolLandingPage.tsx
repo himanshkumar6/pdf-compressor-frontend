@@ -89,6 +89,30 @@ export default function ToolLandingPage({
     return <ToolSection defaultTargetSize={defaultTargetSize} targetSizeOptions={targetSizeOptions} ctaText={ctaText} />;
   };
 
+  /* Determine language */
+  const isRu = routeKey.startsWith("/ru");
+  const lang = isRu ? "ru" : "en";
+
+  const labels = isRu
+    ? {
+      back: "На главную",
+      worksInBrowser: "Работает в браузере",
+      free: "Бесплатно • Без регистрации",
+      whatAndHow: "Что и Как?",
+      steps: "Пошаговая инструкция",
+      related: "Другие инструменты",
+      relatedDesc: "Попробуйте эти бесплатные PDF инструменты.",
+    }
+    : {
+      back: "Back to Website",
+      worksInBrowser: "Works 100% in browser",
+      free: "No signup • Free",
+      whatAndHow: "Kya aur Kaise?",
+      steps: "Step-by-Step",
+      related: "Related Tools",
+      relatedDesc: "Try these PDF tools — all free and run in your browser.",
+    };
+
   return (
     <div className="w-full flex flex-col items-center px-4 sm:px-6">
       {/* ✅ SEO */}
@@ -97,6 +121,7 @@ export default function ToolLandingPage({
         description={page.description}
         canonical={page.canonical}
         schema={schemaGraph}
+        lang={lang}
       />
 
       {/* ✅ Breadcrumb Schema (Google) */}
@@ -111,11 +136,11 @@ export default function ToolLandingPage({
 
         <div className="flex justify-center mb-6">
           <Link
-            to="/"
+            to={isRu ? "/ru" : "/"}
             className="flex items-center gap-2 text-gray-400 hover:text-cyan-300 transition text-sm font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Website
+            {labels.back}
           </Link>
         </div>
 
@@ -131,11 +156,11 @@ export default function ToolLandingPage({
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <div className="px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-gray-300 text-sm font-semibold">
               <ShieldCheck className="inline w-4 h-4 mr-2 text-cyan-300" />
-              Works 100% in browser
+              {labels.worksInBrowser}
             </div>
             <div className="px-4 py-2 rounded-2xl bg-white/5 border border-white/10 text-gray-300 text-sm font-semibold">
               <Sparkles className="inline w-4 h-4 mr-2 text-cyan-300" />
-              No signup • Free
+              {labels.free}
             </div>
           </div>
         </div>
@@ -149,7 +174,7 @@ export default function ToolLandingPage({
         <section className="w-full max-w-4xl mx-auto mt-12 space-y-12">
           <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
             <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
-              Kya aur Kaise?
+              {labels.whatAndHow}
             </h2>
             <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
               {toolContent.content}
@@ -158,7 +183,7 @@ export default function ToolLandingPage({
 
           <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
             <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
-              Step-by-Step
+              {labels.steps}
             </h2>
             <ol className="space-y-6">
               {toolContent.steps.map((step, i) => (
@@ -185,10 +210,10 @@ export default function ToolLandingPage({
       <section className="w-full max-w-4xl mx-auto mt-12">
         <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
           <h2 className="text-white text-2xl md:text-3xl font-black mb-2">
-            Related Tools
+            {labels.related}
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Try these PDF tools — all free and run in your browser.
+            {labels.relatedDesc}
           </p>
           <div className="flex flex-wrap gap-3">
             {getRelatedTools(routeKey, 4).map((t) => (

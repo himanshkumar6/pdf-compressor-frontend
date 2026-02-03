@@ -2,12 +2,30 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { MAIN_NAV_PAGES } from "../data/pages";
 import ThemeMenuDropdown from "./ThemeMenuDropdown";
+import { getLanguage, NAV_LABELS, ROUTE_MAP } from "../utils/localization";
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false);
   const location = useLocation();
+  const lang = getLanguage(location.pathname);
+  const labels = NAV_LABELS[lang];
+  const routes = ROUTE_MAP[lang];
+
+  // CTA Link Config
+  const ctaLink = lang === "ru" ? "/ru/szhat-pdf-do-200kb" : "/compress-pdf-to-200kb";
+  const ctaLabel = lang === "ru" ? "Попробовать" : "Try Free";
+
+  // Build nav items dynamically from the dictionary keys to ensure order
+  // English order: Home, Tools, Blog, About, Contact
+  // We can stick to this order.
+  const navItems = [
+    { key: "home", label: labels.home, path: routes.home },
+    { key: "tools", label: labels.tools, path: routes.tools },
+    { key: "blog", label: labels.blog, path: routes.blog },
+    { key: "about", label: labels.about, path: routes.about },
+    { key: "contact", label: labels.contact, path: routes.contact },
+  ];
 
   // ✅ close on route change
   useEffect(() => {
@@ -19,19 +37,18 @@ export default function Navbar() {
       <div className="w-full max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
         {/* LOGO */}
         <Link
-          to="/"
+          to={routes.home}
           className="brand-logo text-[var(--text)] font-black text-xl shrink-0"
         >
-          <span>Compress</span>
-          <span className="brand-logo__pdf">PDF</span>
+          {labels.brand}
         </Link>
 
         {/* ✅ Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2 text-sm font-semibold">
-          {MAIN_NAV_PAGES.filter((p) => p.path !== "/tools").map((p) => {
+          {navItems.filter((p) => p.key !== "tools").map((p) => {
             const isActive =
               location.pathname === p.path ||
-              (p.path === "/blog" && location.pathname.startsWith("/blog"));
+              (p.key === "blog" && location.pathname.startsWith(routes.blog));
 
             return (
               <Link
@@ -52,10 +69,10 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <Link
-            to="/compress-pdf-to-200kb"
+            to={ctaLink}
             className="btnPrimary hidden sm:inline-flex px-4 py-2.5 rounded-xl text-sm shadow-sm"
           >
-            Try Free
+            {ctaLabel}
           </Link>
 
           {/* ✅ Mobile Hamburger */}
@@ -83,58 +100,26 @@ export default function Navbar() {
       >
         <div className="px-4 sm:px-6 py-4 space-y-1">
           {/* Navigation Links */}
-          <Link
-            to="/"
-            className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
-              location.pathname === "/" ? "nav-link--active" : ""
-            }`}
-          >
-            Home
-          </Link>
-
-          <Link
-            to="/tools"
-            className="nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors"
-          >
-            All Tools
-          </Link>
-
-          <Link
-            to="/blog"
-            className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
-              location.pathname.startsWith("/blog") ? "nav-link--active" : ""
-            }`}
-          >
-            Blog
-          </Link>
-
-          <Link
-            to="/about"
-            className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
-              location.pathname === "/about" ? "nav-link--active" : ""
-            }`}
-          >
-            About
-          </Link>
-
-          <Link
-            to="/contact"
-            className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
-              location.pathname === "/contact" ? "nav-link--active" : ""
-            }`}
-          >
-            Contact
-          </Link>
+          {navItems.map((item) => (
+            <Link
+              key={item.key}
+              to={item.path}
+              className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${location.pathname === item.path || (item.key === "blog" && location.pathname.startsWith(routes.blog)) ? "nav-link--active" : ""
+                }`}
+            >
+              {item.label}
+            </Link>
+          ))}
 
           {/* Divider */}
           <div className="my-3 border-t border-[var(--border)]" />
 
           {/* Mobile CTA */}
           <Link
-            to="/compress-pdf-to-200kb"
+            to={ctaLink}
             className="btnPrimary block text-center px-4 py-3 rounded-xl"
           >
-            Try Free
+            {ctaLabel}
           </Link>
         </div>
       </div>

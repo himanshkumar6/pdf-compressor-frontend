@@ -53,6 +53,27 @@ const ROUTES = [
   "/scanned-pdf-compressor",
   "/scanned-pdf-to-200kb",
   "/remove-metadata-from-pdf",
+
+  // ✅ Russian Routes
+  "/ru", // Home
+  "/ru/o-nas",
+  "/ru/kontakty",
+  "/ru/politika-konfidencialnosti",
+  "/ru/usloviya",
+  "/ru/otkaz-ot-otvetstvennosti",
+  "/ru/blog",
+  "/ru/instrumenty",
+  "/ru/szhat-pdf",
+  "/ru/szhat-pdf-do-50kb",
+  "/ru/szhat-pdf-do-100kb",
+  "/ru/szhat-pdf-do-150kb",
+  "/ru/szhat-pdf-do-200kb",
+  "/ru/szhat-pdf-do-500kb",
+  "/ru/szhat-pdf-do-1mb",
+  "/ru/umenshit-razmer-pdf-do-500kb",
+  "/ru/szhat-skanirovannyj-pdf",
+  "/ru/szhat-skanirovannyj-pdf-do-200kb",
+  "/ru/udalit-metadannye-pdf",
 ];
 
 // ✅ Basic SEO
@@ -101,6 +122,84 @@ const SEO = {
     title: "PDF Tools – Compress, Reduce Size, Remove Metadata | Free",
     description:
       "All PDF tools in one place: compress PDF, compress to 200KB or 100KB, scanned PDF compressor, remove metadata. Free, private, browser-based.",
+  },
+
+  // ✅ Russian SEO
+  "/ru": {
+    title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF",
+    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере.",
+  },
+  "/ru/o-nas": {
+    title: "О Нас - CompressPDFto200KB.online",
+    description: "Узнайте больше о нашем сервисе. Мы помогаем студентам и специалистам бесплатно сжимать PDF документы для государственных порталов.",
+  },
+  "/ru/kontakty": {
+    title: "Контакты - CompressPDFto200KB.online",
+    description: "Свяжитесь с нами, если у вас есть вопросы или предложения по улучшению сервиса сжатия PDF.",
+  },
+  "/ru/politika-konfidencialnosti": {
+    title: "Политика Конфиденциальности - CompressPDFto200KB.online",
+    description: "Мы уважаем вашу приватность. Ваши файлы обрабатываются локально в браузере и никогда не загружаются на наши серверы.",
+  },
+  "/ru/usloviya": {
+    title: "Условия Использования - CompressPDFto200KB.online",
+    description: "Правила использования наших бесплатных инструментов для работы с PDF.",
+  },
+  "/ru/otkaz-ot-otvetstvennosti": {
+    title: "Отказ от Ответственности - CompressPDFto200KB.online",
+    description: "Отказ от ответственности: мы предоставляем инструменты 'как есть' без гарантий для конкретных порталов.",
+  },
+  "/ru/blog": {
+    title: "Блог - CompressPDFto200KB.online",
+    description: "Блог о сжатии PDF и работе с документами.",
+  },
+  "/ru/instrumenty": {
+    title: "PDF Инструменты – Сжать, Уменьшить, Очистить | Бесплатно",
+    description: "Все инструменты для работы с PDF: сжатие до 200кб, 100кб, удаление метаданных. Бесплатно, безопасно, в браузере.",
+  },
+  "/ru/szhat-pdf": {
+    title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF",
+    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере.",
+  },
+  "/ru/szhat-pdf-do-50kb": {
+    title: "Сжать PDF до 50 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 50 кб онлайн бесплатно. Идеально для строгих лимитов при загрузке документов и подписей.",
+  },
+  "/ru/szhat-pdf-do-100kb": {
+    title: "Сжать PDF до 100 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 100 кб онлайн. Подходит для резюме, анкет и заявлений. Быстрая обработка в браузере.",
+  },
+  "/ru/szhat-pdf-do-150kb": {
+    title: "Сжать PDF до 150 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 150 кб онлайн бесплатно. Оптимально для порталов госуслуг, вузов и паспортных столов.",
+  },
+  "/ru/szhat-pdf-do-200kb": {
+    title: "Сжать PDF до 200 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 200 кб онлайн. Самый популярный формат для Госуслуг, ФНС и других государственных порталов.",
+  },
+  "/ru/szhat-pdf-do-500kb": {
+    title: "Сжать PDF до 500 КБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 500 кб онлайн. Отлично подходит для отправки по почте, портфолио и презентаций.",
+  },
+  "/ru/szhat-pdf-do-1mb": {
+    title: "Сжать PDF до 1 МБ Онлайн | Уменьшить размер PDF бесплатно",
+    description: "Сжать PDF до 1 МБ онлайн. Для больших договоров, книг и отчетов. Сохраняет высокое качество.",
+  },
+  "/ru/umenshit-razmer-pdf-do-500kb": {
+    title: "Уменьшить размер PDF файла до 500 КБ Онлайн (Бесплатно)",
+    description: "Бесплатно уменьшить размер PDF до 500 КБ. Быстрая оптимизация для отправки по email и загрузки на сайты.",
+  },
+  "/ru/szhat-skanirovannyj-pdf": {
+    title: "Сжать Сканированный PDF Онлайн | Уменьшить размер скана",
+    description: "Сжать сканированный PDF онлайн. Умная оптимизация сканов документов, квитанций и рукописей без размытия текста.",
+  },
+  "/ru/szhat-skanirovannyj-pdf-do-200kb": {
+    title: "Сжать Скан PDF до 200 КБ Онлайн | Уменьшить размер скана",
+    description: "Сжать сканированный PDF до 200 КБ. Специальный алгоритм для паспортов, дипломов и справок. Проходит проверки на порталах.",
+  },
+  "/ru/udalit-metadannye-pdf": {
+    title: "Удалить метаданные из PDF Онлайн (Очистить свойства файла)",
+    description: "Удалить автора, дату создания и скрытые метаданные из PDF онлайн. Повысьте конфиденциальность перед отправкой документа.",
   },
 };
 
@@ -274,14 +373,60 @@ function buildCrawlableLinksHtml() {
   return `<nav id="crawlable-internal-links" style="${OFFSCREEN_STYLE}" aria-label="Internal links">${links}</nav>`;
 }
 
+/** Get translated version for hreflang */
+function getAlternateUrl(route) {
+  const mapping = {
+    "/": "/ru",
+    "/about": "/ru/o-nas",
+    "/contact": "/ru/kontakty",
+    "/privacy-policy": "/ru/politika-konfidencialnosti",
+    "/terms-conditions": "/ru/usloviya",
+    "/disclaimer": "/ru/otkaz-ot-otvetstvennosti",
+    "/tools": "/ru/instrumenty",
+    "/blog": "/ru/blog",
+    "/compress-pdf": "/ru/szhat-pdf",
+    "/compress-pdf-to-50kb": "/ru/szhat-pdf-do-50kb",
+    "/compress-pdf-to-100kb": "/ru/szhat-pdf-do-100kb",
+    "/compress-pdf-to-150kb": "/ru/szhat-pdf-do-150kb",
+    "/compress-pdf-to-200kb": "/ru/szhat-pdf-do-200kb",
+    "/compress-pdf-to-500kb": "/ru/szhat-pdf-do-500kb",
+    "/compress-pdf-to-1mb": "/ru/szhat-pdf-do-1mb",
+    "/reduce-pdf-size-to-500kb": "/ru/umenshit-razmer-pdf-do-500kb",
+    "/scanned-pdf-compressor": "/ru/szhat-skanirovannyj-pdf",
+    "/scanned-pdf-to-200kb": "/ru/szhat-skanirovannyj-pdf-do-200kb",
+    "/remove-metadata-from-pdf": "/ru/udalit-metadannye-pdf",
+  };
+
+  // Reverse mapping for RU -> EN
+  const reverseMapping = {};
+  for (const en in mapping) {
+    reverseMapping[mapping[en]] = en;
+  }
+
+  const altPath = mapping[route] || reverseMapping[route];
+  if (altPath) {
+    return getCanonicalUrl(altPath);
+  }
+  return null;
+}
+
 // ✅ Create proper HTML that loads SPA + correct meta tags
 function createHtml(route, meta, assets) {
   const canonical = getCanonicalUrl(route);
   const title = escapeHtml(meta.title);
   const description = escapeHtml(meta.description);
 
+  const isRu = route.startsWith("/ru");
+  const lang = isRu ? "ru" : "en";
+  const alternate = getAlternateUrl(route);
+  const alternateLang = isRu ? "en" : "ru";
+
+  const alternateLink = alternate ? `<link rel="alternate" hreflang="${alternateLang}" href="${alternate}" />` : "";
+  const selfLink = `<link rel="alternate" hreflang="${lang}" href="${canonical}" />`;
+  const xDefault = isRu ? "" : `<link rel="alternate" hreflang="x-default" href="${canonical}" />`;
+
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -293,6 +438,9 @@ function createHtml(route, meta, assets) {
 <title>${title}</title>
 <meta name="description" content="${description}" />
 <link rel="canonical" href="${canonical}" />
+${selfLink}
+${alternateLink}
+${xDefault}
 
 <!-- ✅ Yandex Verification -->
 <meta name="yandex-verification" content="${YANDEX_VERIFICATION}" />

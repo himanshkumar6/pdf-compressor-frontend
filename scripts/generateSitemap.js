@@ -43,6 +43,27 @@ const CANONICAL_PATHS = [
   "/blog/scholarship-form-pdf-upload-guide-200kb-document",
   "/blog/email-me-pdf-attach-nahi-ho-rahi-size-reduce",
   "/blog/how-to-compress-a-pdf-on-mac",
+
+  // ✅ Russian Paths
+  "/ru",
+  "/ru/o-nas",
+  "/ru/kontakty",
+  "/ru/politika-konfidencialnosti",
+  "/ru/usloviya",
+  "/ru/otkaz-ot-otvetstvennosti",
+  "/ru/blog",
+  "/ru/instrumenty",
+  "/ru/szhat-pdf",
+  "/ru/szhat-pdf-do-50kb",
+  "/ru/szhat-pdf-do-100kb",
+  "/ru/szhat-pdf-do-150kb",
+  "/ru/szhat-pdf-do-200kb",
+  "/ru/szhat-pdf-do-500kb",
+  "/ru/szhat-pdf-do-1mb",
+  "/ru/umenshit-razmer-pdf-do-500kb",
+  "/ru/szhat-skanirovannyj-pdf",
+  "/ru/szhat-skanirovannyj-pdf-do-200kb",
+  "/ru/udalit-metadannye-pdf",
 ];
 
 /** Build canonical URL: https only, trailing slash only for home. */
@@ -77,6 +98,18 @@ function run() {
       "/scanned-pdf-compressor",
       "/scanned-pdf-to-200kb",
       "/remove-metadata-from-pdf",
+      // RU Tools
+      "/ru/szhat-pdf",
+      "/ru/szhat-pdf-do-50kb",
+      "/ru/szhat-pdf-do-100kb",
+      "/ru/szhat-pdf-do-150kb",
+      "/ru/szhat-pdf-do-200kb",
+      "/ru/szhat-pdf-do-500kb",
+      "/ru/szhat-pdf-do-1mb",
+      "/ru/umenshit-razmer-pdf-do-500kb",
+      "/ru/szhat-skanirovannyj-pdf",
+      "/ru/szhat-skanirovannyj-pdf-do-200kb",
+      "/ru/udalit-metadannye-pdf"
     ].includes(p);
 
     let changefreq = "monthly";

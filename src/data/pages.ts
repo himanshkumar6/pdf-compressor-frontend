@@ -99,7 +99,39 @@ export const FOOTER_LEGAL_PAGES: MainPageItem[] = [
 ];
 
 /** Set of tool paths (for App: hide nav/footer on tool pages) */
-export const TOOL_ROUTES_SET = new Set(TOOL_PAGES.map((t) => t.path));
+const RU_TOOL_PATHS = [
+  "/ru/szhat-pdf",
+  "/ru/szhat-pdf-do-50kb",
+  "/ru/szhat-pdf-do-100kb",
+  "/ru/szhat-pdf-do-150kb",
+  "/ru/szhat-pdf-do-200kb",
+  "/ru/szhat-pdf-do-500kb",
+  "/ru/szhat-pdf-do-1mb",
+  "/ru/umenshit-razmer-pdf-do-500kb",
+  "/ru/szhat-skanirovannyj-pdf",
+  "/ru/szhat-skanirovannyj-pdf-do-200kb",
+  "/ru/udalit-metadannye-pdf"
+];
+
+export const TOOL_ROUTES_SET = new Set([
+  ...TOOL_PAGES.map((t) => t.path),
+  ...RU_TOOL_PATHS
+]);
+
+/** Russian Tool Pages List */
+export const RU_TOOL_PAGES: ToolPageItem[] = [
+  { path: "/ru/szhat-pdf", label: "Сжать PDF", shortDesc: "Быстрое сжатие" },
+  { path: "/ru/szhat-pdf-do-50kb", label: "Сжать до 50 КБ", shortDesc: "Максимальное сжатие" },
+  { path: "/ru/szhat-pdf-do-100kb", label: "Сжать до 100 КБ", shortDesc: "Для анкет" },
+  { path: "/ru/szhat-pdf-do-150kb", label: "Сжать до 150 КБ", shortDesc: "Для порталов" },
+  { path: "/ru/szhat-pdf-do-200kb", label: "Сжать до 200 КБ", shortDesc: "Стандарт Госуслуг" },
+  { path: "/ru/szhat-pdf-do-500kb", label: "Сжать до 500 КБ", shortDesc: "Для почты" },
+  { path: "/ru/szhat-pdf-do-1mb", label: "Сжать до 1 МБ", shortDesc: "Большие файлы" },
+  { path: "/ru/umenshit-razmer-pdf-do-500kb", label: "Уменьшить размер", shortDesc: "Оптимизация" },
+  { path: "/ru/szhat-skanirovannyj-pdf", label: "Сжать Скан", shortDesc: "Четкий текст" },
+//   { path: "/ru/udalit-metadannye-pdf", label: "Удалить метаданные", shortDesc: "Приватность" }, // Excluding to filter out if needed, or keep. Keeping it.
+  { path: "/ru/udalit-metadannye-pdf", label: "Удалить метаданные", shortDesc: "Приватность" },
+];
 
 /**
  * Get related tool pages (excluding current). Used for "Related Tools" section.
@@ -110,7 +142,10 @@ export function getRelatedTools(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _minCount = 4
 ): ToolPageItem[] {
-  return TOOL_PAGES.filter((t) => t.path !== currentPath);
+  const isRu = currentPath.startsWith("/ru");
+  const sourceList = isRu ? RU_TOOL_PAGES : TOOL_PAGES;
+  
+  return sourceList.filter((t) => t.path !== currentPath);
 }
 
 /** Navbar Tools dropdown: same as TOOL_PAGES (label + shortDesc) */

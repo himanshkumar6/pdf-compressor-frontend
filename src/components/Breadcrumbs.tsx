@@ -1,13 +1,14 @@
 import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, ChevronRight } from "lucide-react";
+import { getLanguage, PAGE_TITLES } from "../utils/localization";
 
 type Crumb = {
   label: string;
   to?: string; // last one no link
 };
 
-const LABELS: Record<string, string> = {
+const EN_LABELS: Record<string, string> = {
   "/": "Home",
 
   "/compress-pdf": "Compress PDF",
@@ -27,21 +28,42 @@ const LABELS: Record<string, string> = {
 };
 
 function buildCrumbs(pathname: string): Crumb[] {
-  // exact match pages
-  if (LABELS[pathname]) {
+  const lang = getLanguage(pathname);
+  const isRu = lang === "ru";
+
+  const homeLabel = isRu ? "Главная" : "Home";
+  const homePath = isRu ? "/ru" : "/";
+
+  // Check localized titles first
+  const ruTitle = PAGE_TITLES[pathname];
+  if (isRu && ruTitle) {
     return [
-      { label: "Home", to: "/" },
-      { label: LABELS[pathname] }, // last (no link)
+      { label: homeLabel, to: homePath },
+      { label: ruTitle },
     ];
   }
 
-  // Blog post like /blog/some-slug
+  // Check English titles
+  const enTitle = EN_LABELS[pathname];
+  if (enTitle) {
+    return [
+      { label: "Home", to: "/" },
+      { label: enTitle },
+    ];
+  }
+
+  // Blog post like /blog/some-slug or /ru/blog/slug (future)
   if (pathname.startsWith("/blog/")) {
     return [
       { label: "Home", to: "/" },
       { label: "Blog", to: "/blog" },
       { label: "Article" },
     ];
+  }
+
+  // Russian fallback
+  if (isRu) {
+    return [{ label: homeLabel, to: homePath }, { label: "Страница" }];
   }
 
   // fallback
@@ -52,7 +74,7 @@ export default function Breadcrumbs() {
   const location = useLocation();
 
   const crumbs = useMemo(() => {
-    if (location.pathname === "/") return [];
+    if (location.pathname === "/" || location.pathname === "/ru") return [];
     return buildCrumbs(location.pathname);
   }, [location.pathname]);
 
