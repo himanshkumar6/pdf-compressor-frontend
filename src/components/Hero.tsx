@@ -111,6 +111,17 @@ const Hero: React.FC = () => {
           </button>
         </div>
 
+        {/* ✅ Phase 5: Internal Link to 100KB Tool */}
+        <div className="mb-14 -mt-8">
+          <Link
+            to="/compress-pdf-to-100kb"
+            className="text-sm text-gray-400 hover:text-cyan-300 transition-colors flex items-center justify-center gap-1.5"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Try our <span className="underline decoration-cyan-500/30 underline-offset-4">Compress PDF to 100KB tool</span></span>
+          </Link>
+        </div>
+
         {/* ✅ Trust Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {[

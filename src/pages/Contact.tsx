@@ -19,24 +19,29 @@ const Contact: React.FC = () => {
   const startTime = useRef<number>(Date.now());
   const seo = PAGES_SEO["/contact"];
 
-  // Reset start time on mount
+  // Reset start time on mount & Run Diagnostics
   useEffect(() => {
     startTime.current = Date.now();
+
+    // Diagnostic Logging for Production Debugging
+    const envStatus = {
+      ServiceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ? "✅ Loaded" : "❌ MISSING",
+      TemplateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ? "✅ Loaded" : "❌ MISSING",
+      PublicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ? "✅ Loaded" : "❌ MISSING",
+    };
+    console.log("EmailJS Environment Status:", envStatus);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
-    if (!form.current) return;
-
     // 1. SPAM PROTECTION: Honeypot Check
-    const formData = new FormData(form.current);
+    const formData = new FormData(e.target as HTMLFormElement);
     const honeypot = formData.get("website_url"); // Hidden field
-
     if (honeypot) {
       console.warn("Bot detected: Honeypot filled");
-      toast.error("Error detected. Please try again."); // Generic error for bots
+      toast.error("Error detected. Please try again.");
       return;
     }
 
@@ -57,8 +62,14 @@ const Contact: React.FC = () => {
 
     // Validate Environment Variables
     if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS Environment Variables Missing!");
-      setError("System configuration error. Please contact direct support.");
+      console.error("CRITICAL: EmailJS Configuration Missing. Check Vercel Environment Variables.");
+      console.table({
+        VITE_EMAILJS_SERVICE_ID: serviceId ? "OK" : "MISSING",
+        VITE_EMAILJS_TEMPLATE_ID: templateId ? "OK" : "MISSING",
+        VITE_EMAILJS_PUBLIC_KEY: publicKey ? "OK" : "MISSING"
+      });
+
+      setError("System configuration error: Email service not connected. Please contact support directly.");
       toast.error("Configuration error. Email failed.");
       setIsSubmitting(false);
       return;
@@ -103,12 +114,12 @@ const Contact: React.FC = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       toast.success("Message sent successfully!");
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("EmailJS Error:", err);
 
       let errorMessage = "Failed to send message. Please try again.";
-      if (err.text) {
-        errorMessage += ` (${err.text})`; // Add EmailJS specific error text if available
+      if (err instanceof Error && err.message) {
+        errorMessage += ` (${err.message})`; // Add specific error message if available
       }
 
       setError(errorMessage);
@@ -195,7 +206,7 @@ const Contact: React.FC = () => {
 
           {/* Trust Signal */}
           <div className="flex items-start p-4 border border-cyan-900/30 bg-cyan-950/10 rounded-2xl">
-            <ShieldCheck className="w-5 h-5 text-cyan-400 mt-0.5 mr-3 flex-shrink-0" />
+            <ShieldCheck className="w-5 h-5 text-cyan-400 mt-0.5 mr-3 shrink-0" />
             <p className="text-sm text-cyan-200/80 leading-relaxed">
               <strong>Privacy Assurance:</strong> This form connects directly to my inbox. No data is stored on our servers. 100% Secure.
             </p>
@@ -209,7 +220,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="lg:col-span-2"
         >
-          <div className="bg-gray-900/80 border border-gray-800 rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+          <div className="bg-gray-900/80 border border-gray-800 rounded-4xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
             {/* Background Gradient Blob */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
@@ -328,7 +339,7 @@ const Contact: React.FC = () => {
                       animate={{ opacity: 1, y: 0 }}
                       className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start text-red-200 text-sm"
                     >
-                      <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
+                      <AlertCircle className="w-5 h-5 mr-2 shrink-0 mt-0.5" />
                       {error}
                     </motion.div>
                   )}
@@ -336,7 +347,7 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
+                    className="w-full bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 

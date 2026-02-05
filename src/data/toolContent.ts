@@ -114,21 +114,22 @@ Kuch scholarship forms strict 100KB maangte hain. Is tool se tum PDF ko us limit
 
   "/compress-pdf-to-200kb": {
     content: `**Why is the 200KB PDF Limit so Common?**
-Most Indian government recruitment portals (SSC, UPSC, IBPS, Railways) and admission forms (JEE, NEET) rely on legacy server infrastructure. To prevent database crashes during peak traffic (like the last day of application submission), they enforce strict file size limits—usually **20KB to 200KB**.
+Most Indian government recruitment portals (SSC, UPSC, IBPS, Railways) and admission forms (JEE, NEET) rely on legacy server infrastructure. To prevent database crashes, they enforce strict file size limits—usually **20KB to 200KB**.
 
 **The Problem: "File Size Exceeded" Error**
-When you scan a document using a mobile app (CamScanner, Adobe Scan) or a cyber cafe scanner, the default output is often **2MB to 5MB**. This is 10x to 25x larger than the allowed limit. Uploading this results in immediate rejection: *"File size must be less than 200KB"*.
+When you scan a document using a mobile app (CamScanner, Adobe Scan) or a cyber cafe scanner, the output is often **2MB to 5MB**. This is 10x larger than the allowed limit. Uploading this results in rejection: *"File size must be less than 200KB"*.
 
-**The Solution: Privacy-First Compression**
-Unlike other tools that upload your private documents to a remote cloud server for processing (which is a privacy risk), **CompressPDF** uses advanced WebAssembly technology to compress your PDF **right inside your browser**.
+**The Solution: Privacy-First Compression (to200kb)**
+Whether you are searching to **compress pdf to 200kb**, reduce file size **under 200kb**, or even typed **compress pdf to200kb**, this tool is engineered for you. Unlike other tools that upload your private documents to a remote cloud server (a privacy risk), **CompressPDF** uses advanced WebAssembly technology to compress your PDF **right inside your browser**.
+
 - **Your file never leaves your device.**
-- **Zero data usage** for upload/download (since it's offline-ready).
-- **Legible Text:** We optimize the hidden metadata and image assets while keeping the text sharp enough for verification officers to read.
+- **Zero data usage** for upload/download (offline-ready).
+- **Legible Text:** We optimize hidden metadata and image assets while keeping text sharp ("without losing quality").
 
 **Best Practices for SSC/UPSC Uploads:**
-1. **Resolution:** If your original scan is too blurry, compression will make it worse. Scan at 200 DPI first.
-2. **B&W vs Color:** Most portals accept Grayscale (B&W). Converting to B&W saves huge space.
-3. **Verify:** Always open the compressed PDF before uploading to ensure your Name and Roll Number are readable.
+1. **Resolution:** Scan at 200 DPI first.
+2. **B&W vs Color:** Converting to Grayscale (B&W) saves huge space.
+3. **Verify:** Always open the compressed PDF to ensure Name and Roll Number are readable.
 
 Use this tool to fix your document size instantly and submit your application on time.`,
     steps: [
@@ -147,24 +148,24 @@ Use this tool to fix your document size instantly and submit your application on
     ],
     faqs: [
       {
+        q: "Can I compress PDF to 200KB without losing quality?",
+        a: "Yes. Our tool optimizes invisible metadata and thumbnails to reduce size while keeping the printable text 100% sharp and readable.",
+      },
+      {
+        q: "Is this tool free for 100KB or 200KB size?",
+        a: "Yes, it is completely free. You can compress PDF to 100KB, 200KB, or any size without any hidden charges or signups.",
+      },
+      {
         q: "Will this work for SSC CGL/CHSL forms?",
         a: "Yes. This tool is specifically tuned for the 200KB limit required by SSC, IBPS, and Railways recruitment forms.",
       },
       {
-        q: "Is it safe for Aadhar/PAN cards?",
+        q: "Check: Is my data safe (Aadhar/PAN)?",
         a: "Absolutely. We use 'Client-Side Processing'. Your Aadhar/PAN card data stays in your browser's memory and is never sent to our servers.",
       },
       {
-        q: "What if my file is still >200KB?",
-        a: "If your original file is huge (e.g., 20MB), try the 'Compress to 500KB' tool first, or rescan the document at a lower DPI (150 DPI).",
-      },
-      {
-        q: "Do you add a watermark?",
-        a: "No. The compressed PDF is clean, professional, and free of any watermarks.",
-      },
-      {
-        q: "Why is the text slightly less sharp?",
-        a: "To reach 200KB from a large file, we must reduce image quality. However, we ensure it remains 'Verification Ready' (readable by officials).",
+        q: "What if I need to compress PDF under 100KB?",
+        a: "You can use our specific 'Compress to 100KB' tool or check the settings to apply stronger compression if your file is very large.",
       },
     ],
   },

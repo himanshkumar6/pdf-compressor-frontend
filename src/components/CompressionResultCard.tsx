@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import {
   CheckCircle,
   AlertTriangle,
@@ -139,6 +139,19 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         <Download className="w-5 h-5" />
         {t.download} ({formatSizeKB(result.finalSizeKB)})
       </a>
+
+      {/* ✅ Phase 5: Internal Link for <200KB Results */}
+      {isSuccess && result.finalSizeKB < 200 && (
+        <div className="text-center">
+          <Link
+            to="/compress-pdf-to-100kb"
+            className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-cyan-300 transition-colors"
+          >
+            <span>Need it even smaller?</span>
+            <span className="underline decoration-gray-700 underline-offset-4 hover:decoration-cyan-500/50">Compress PDF to 100KB</span>
+          </Link>
+        </div>
+      )}
 
       {/* Try Different Limits (for not_possible) */}
       {isNotPossible && suggestedLimits.length > 0 && onTryDifferentLimit && (

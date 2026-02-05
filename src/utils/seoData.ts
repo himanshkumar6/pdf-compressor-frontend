@@ -149,9 +149,9 @@ export const PAGES_SEO: Record<string, PageSEO> = {
 
   // ✅ Tool pages (your existing ones - unchanged)
   "/compress-pdf-to-200kb": {
-    title: "Compress PDF to 200KB Without Losing Quality | Free Online Tool",
+    title: "Compress PDF to 200KB Online (Free & Without Losing Quality)",
     description:
-      "Free, fast, and secure tool to compress PDF to 200KB without losing quality. Works 100% in your browser for total privacy—no server uploads required.",
+      "Compress PDF to 200KB online for free. Reduce PDF file size to under 200KB without losing quality. Secure, fast, and works on mobile/desktop.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-200kb`,
     faqs: [
       {
@@ -197,9 +197,9 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   },
 
   "/compress-pdf-to-100kb": {
-    title: "Compress PDF to 100KB Online Free | Reduce PDF Size",
+    title: "Compress PDF to 100KB Online (Free Reduces Size Instantly)",
     description:
-      "Compress PDF to 100KB online. Best for forms, email attachments and fast uploads. Private browser-based processing.",
+      "Compress PDF to 100KB online for free. Safely reduce PDF size to under 100KB for forms and email. Fast, secure, and no quality loss.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-100kb`,
     jsonLd: {
       name: "Compress PDF to 100KB",
