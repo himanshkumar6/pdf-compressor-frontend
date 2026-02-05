@@ -45,15 +45,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-FCZXPJB41V');
-  </script>
+  <!-- Google Analytics Defer Strategy: Moved to Body Injection -->
   <meta name="google-site-verification" content="fF6tWHVuhi42MfkcTCr7zcahCCawwtG94qAniZrUSmk" />
   <meta name="monetag" content="d18c4ad49ac179614113fad9ad09ed42">
   <!-- Monetag Popular Ads REMOVED for SEO -->
@@ -66,7 +58,7 @@
     content="Compress PDF files to 200KB online using a free PDF compressor tool. Upload or drag and drop your PDF, reduce file size without quality loss, and download compressed files instantly. Ideal for job applications and government form uploads." />
 
   <!-- AdCash Ad  -->
-  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+  <!-- AdCash Defer Strategy: Moved to Body Injection -->
 
 
   <meta property="og:type" content="website" />
@@ -89,6 +81,37 @@
   </noscript>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+
+  <!-- ✅ Lazy Load Ad Scripts (Performance) -->
+  <script>
+    window.addEventListener("load", function () {
+      // Use requestIdleCallback if available, otherwise setTimeout
+      var deferAds = window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); };
+
+      deferAds(function () {
+        // 1. AdCash
+        var ac = document.createElement("script");
+        ac.id = "aclib";
+        ac.type = "text/javascript";
+        ac.src = "//acscdn.com/script/aclib.js";
+        ac.async = true;
+        document.head.appendChild(ac);
+
+        // 2. Monetag (if needed in future, currently commented)
+        // var mt = document.createElement("script"); ...
+        // 2. Google Analytics (gtag)
+        var ga = document.createElement("script");
+        ga.async = true;
+        ga.src = "https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V";
+        document.head.appendChild(ga);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FCZXPJB41V');
+      });
+    });
+  </script>
 </body>
 
 </html>

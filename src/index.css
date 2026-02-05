@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "./aurora.css";
 
 /* =========================================================
    ✅ PREMIUM DESIGN SYSTEM - CSS CUSTOM PROPERTIES

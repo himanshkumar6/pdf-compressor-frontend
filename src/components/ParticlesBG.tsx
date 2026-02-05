@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type P = {
   x: number;
@@ -7,8 +7,8 @@ type P = {
   vy: number;
   r: number;
   opacity: number;
-  phase: number; // twinkle phase
-  hue: number;   // color shift
+  phase: number;
+  hue: number;
 };
 
 const ParticlesBG: React.FC = () => {
@@ -19,118 +19,101 @@ const ParticlesBG: React.FC = () => {
     active: false,
   });
 
-  // ✅ LCP OPTIMIZATION: Disable particles on mobile & reduced motion
-  const [shouldRender, setShouldRender] = React.useState(true);
+  // ✅ MOBILE OPTIMIZATION: Particles disabled on mobile (<768px)
+  // The CSS Aurora background will still provide a premium feel.
+  const [showParticles, setShowParticles] = useState(true);
 
-  React.useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isMobile || prefersReduced) {
-      setShouldRender(false);
-    }
+  useEffect(() => {
+    const checkSpecs = () => {
+      const isMobile = window.innerWidth <= 768;
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // Disable particles on mobile OR reduced motion
+      setShowParticles(!isMobile && !prefersReduced);
+    };
+
+    checkSpecs();
+    window.addEventListener("resize", checkSpecs);
+    return () => window.removeEventListener("resize", checkSpecs);
   }, []);
 
   useEffect(() => {
-    if (!shouldRender) return;
+    if (!showParticles) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true }); // optimize for transparency
     if (!ctx) return;
 
     let particles: P[] = [];
     let animationFrameId = 0;
-
-    const DPR = Math.min(window.devicePixelRatio || 1, 2);
-
-    const clamp = (n: number, min: number, max: number) =>
-      Math.max(min, Math.min(max, n));
-
-    const getParticleCount = (w: number, h: number) => {
-      const area = w * h;
-      if (w < 600) return Math.floor(area / 26000); // mobile less
-      if (w < 1000) return Math.floor(area / 21000);
-      return Math.floor(area / 17000);
-    };
+    const DPR = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2x for performance
 
     const resize = () => {
-      canvas.width = Math.floor(window.innerWidth * DPR);
-      canvas.height = Math.floor(window.innerHeight * DPR);
+      if (!canvas) return;
+      canvas.width = window.innerWidth * DPR;
+      canvas.height = window.innerHeight * DPR;
       canvas.style.width = `${window.innerWidth}px`;
       canvas.style.height = `${window.innerHeight}px`;
+      ctx.scale(DPR, DPR); // Simplify drawing logic
       initParticles();
+    };
+
+    const getParticleCount = (w: number) => {
+      // Drastically reduced count for performance
+      // Desktop: ~50-60 particles max
+      if (w < 1200) return 30;
+      return 50;
     };
 
     const initParticles = () => {
       particles = [];
-      const w = canvas.width;
-      const h = canvas.height;
-
-      const count = getParticleCount(window.innerWidth, window.innerHeight);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const count = getParticleCount(w);
 
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.55 * DPR,
-          vy: (Math.random() - 0.5) * 0.55 * DPR,
-          r: (Math.random() * 1.9 + 0.6) * DPR,
-          opacity: Math.random() * 0.42 + 0.08,
+          vx: (Math.random() - 0.5) * 0.4, // Slower, calmer motion
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.4 + 0.1,
           phase: Math.random() * Math.PI * 2,
-          hue: 185 + Math.random() * 55, // 185..240 (cyan->purple)
+          hue: 190 + Math.random() * 40, // Cyan to blue range
         });
       }
     };
 
+    // Dark theme check for color adjustments
     const isDarkTheme = () => document.documentElement.classList.contains("dark");
 
-    const drawAuroraNebula = () => {
-      const w = canvas.width;
-      const h = canvas.height;
-      const dark = isDarkTheme();
+    const drawLines = (dark: boolean) => {
+      const maxDist = 130; // Reduced connection distance
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      // base overlay (light mode must not get "smoked" / grey)
-      ctx.fillStyle = dark ? "rgba(0,0,0,0.25)" : "rgba(255,255,255,0.72)";
-      ctx.fillRect(0, 0, w, h);
+      // Reset composite operation for lines
+      ctx.globalCompositeOperation = "source-over";
 
-      // aurora blobs (cheap but looks premium)
-      const blob = (x: number, y: number, r: number, c1: string, c2: string) => {
-        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
-        g.addColorStop(0, c1);
-        g.addColorStop(1, c2);
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, w, h);
-      };
-
-      if (dark) {
-        blob(w * 0.20, h * 0.15, Math.max(w, h) * 0.55, "rgba(34,211,238,0.10)", "rgba(0,0,0,0)");
-        blob(w * 0.82, h * 0.25, Math.max(w, h) * 0.60, "rgba(168,85,247,0.10)", "rgba(0,0,0,0)");
-        blob(w * 0.55, h * 0.88, Math.max(w, h) * 0.70, "rgba(59,130,246,0.07)", "rgba(0,0,0,0)");
-      } else {
-        blob(w * 0.20, h * 0.15, Math.max(w, h) * 0.55, "rgba(8,145,178,0.06)", "rgba(255,255,255,0)");
-        blob(w * 0.82, h * 0.25, Math.max(w, h) * 0.60, "rgba(147,51,234,0.05)", "rgba(255,255,255,0)");
-        blob(w * 0.55, h * 0.88, Math.max(w, h) * 0.70, "rgba(37,99,235,0.04)", "rgba(255,255,255,0)");
-      }
-    };
-
-    const drawLines = () => {
-      const maxDist = 155 * DPR;
-      const dark = isDarkTheme();
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i];
           const b = particles[j];
           const dx = a.x - b.x;
           const dy = a.y - b.y;
+          // Fast cleanup for distant particles
+          if (Math.abs(dx) > maxDist || Math.abs(dy) > maxDist) continue;
+
           const d = Math.sqrt(dx * dx + dy * dy);
 
           if (d < maxDist) {
-            const base = dark ? 0.18 : 0.06;
-            const alpha = (1 - d / maxDist) * base;
-            const hue = (a.hue + b.hue) / 2;
-            ctx.strokeStyle = `hsla(${hue}, 100%, 65%, ${alpha})`;
-            ctx.lineWidth = 1 * DPR;
+            const alpha = (1 - d / maxDist) * (dark ? 0.15 : 0.08); // Subtle lines
+            ctx.strokeStyle = dark 
+              ? `rgba(34, 211, 238, ${alpha})` // Cyan in dark
+              : `rgba(8, 145, 178, ${alpha})`; // Teal in light
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -140,170 +123,121 @@ const ParticlesBG: React.FC = () => {
       }
     };
 
-    const drawMouseAura = () => {
-      const mouse = mouseRef.current;
-      if (!mouse.active) return;
-
-      const mx = mouse.x * DPR;
-      const my = mouse.y * DPR;
+    const updateAndDraw = (t: number) => {
       const dark = isDarkTheme();
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      // premium aura ring
-      const g = ctx.createRadialGradient(mx, my, 0, mx, my, 220 * DPR);
-      g.addColorStop(0, dark ? "rgba(34,211,238,0.10)" : "rgba(8,145,178,0.08)");
-      g.addColorStop(0.35, dark ? "rgba(168,85,247,0.06)" : "rgba(147,51,234,0.04)");
-      g.addColorStop(1, dark ? "rgba(0,0,0,0)" : "rgba(255,255,255,0)");
+      // 1. Clear Canvas (Transparent)
+      ctx.clearRect(0, 0, w, h);
 
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // subtle ring
-      ctx.strokeStyle = dark ? "rgba(34,211,238,0.15)" : "rgba(8,145,178,0.12)";
-      ctx.lineWidth = 1 * DPR;
-      ctx.beginPath();
-      ctx.arc(mx, my, 55 * DPR, 0, Math.PI * 2);
-      ctx.stroke();
-    };
-
-    const drawParticle = (p: P, t: number) => {
-      const dark = isDarkTheme();
-
-      // twinkle effect
-      const tw = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 0.002 + p.phase));
-      const op = clamp(p.opacity * tw * (dark ? 1 : 0.55), dark ? 0.06 : 0.03, dark ? 0.55 : 0.22);
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-
-      ctx.shadowBlur = 18 * DPR;
-      ctx.shadowColor = `hsla(${p.hue}, 100%, 70%, ${dark ? 0.45 : 0.22})`;
-      ctx.fillStyle = `hsla(${p.hue}, 100%, 65%, ${op})`;
-      ctx.fill();
-
-      // tiny bright core
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = `hsla(${p.hue}, 100%, 85%, ${op * 0.75})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, Math.max(0.6 * DPR, p.r * 0.35), 0, Math.PI * 2);
-      ctx.fill();
-    };
-
-    const update = (t: number) => {
-      const w = canvas.width;
-      const h = canvas.height;
-
-      const mouse = mouseRef.current;
-      const mx = mouse.x * DPR;
-      const my = mouse.y * DPR;
-
+      // 2. Draw Particles
       particles.forEach((p) => {
-        // slight natural drift
-        p.phase += 0.003;
-
-        // mouse magnet effect
-        if (mouse.active) {
-          const dx = mx - p.x;
-          const dy = my - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          const influence = 240 * DPR;
-          if (dist < influence) {
-            // magnetic pull (looks premium)
-            const pull = (1 - dist / influence) * 0.06;
-            p.vx += (dx / (dist || 1)) * pull;
-            p.vy += (dy / (dist || 1)) * pull;
-
-            // hue gets a bit more vibrant near mouse
-            p.hue = clamp(p.hue + 0.15, 180, 250);
-          }
-        }
-
-        // movement
+        // Update position
         p.x += p.vx;
         p.y += p.vy;
 
-        // wrap edges
-        if (p.x > w) p.x = 0;
-        if (p.x < 0) p.x = w;
-        if (p.y > h) p.y = 0;
-        if (p.y < 0) p.y = h;
+        // Mouse interaction (Vector based push)
+        if (mouseRef.current.active) {
+          const dx = mouseRef.current.x - p.x;
+          const dy = mouseRef.current.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const influence = 150;
+          
+          if (dist < influence) {
+            const force = (influence - dist) / influence;
+            p.vx -= (dx / dist) * force * 0.02;
+            p.vy -= (dy / dist) * force * 0.02;
+            p.opacity = Math.min(0.8, p.opacity + 0.01); // Brighten on hover
+          }
+        }
 
-        // damping
-        p.vx *= 0.992;
-        p.vy *= 0.992;
+        // Wrap around
+        if (p.x > w) p.x = 0; else if (p.x < 0) p.x = w;
+        if (p.y > h) p.y = 0; else if (p.y < 0) p.y = h;
 
-        // subtle per-frame color shift (cyan->purple cycle)
-        p.hue = 195 + 35 * Math.sin(t * 0.00008 + p.phase);
+        // Draw Dot
+        const pulse = Math.sin(t * 0.002 + p.phase);
+        const op = p.opacity * (0.8 + 0.2 * pulse); // Subtle pulse
+        
+        ctx.fillStyle = dark 
+          ? `rgba(34, 211, 238, ${op})` 
+          : `rgba(14, 116, 144, ${op})`;
+        
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
       });
+
+      // 3. Draw Lines
+      drawLines(dark);
+
+      // 4. Mouse Aura (Optional, keeps it interactive)
+      if (mouseRef.current.active) {
+        const { x, y } = mouseRef.current;
+        const g = ctx.createRadialGradient(x, y, 0, x, y, 200);
+        g.addColorStop(0, dark ? "rgba(34,211,238,0.05)" : "rgba(8,145,178,0.05)");
+        g.addColorStop(1, "transparent");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(x, y, 200, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      animationFrameId = requestAnimationFrame(updateAndDraw);
     };
 
-    const animate = (t: number) => {
-      // clear
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // nebula + aurora
-      drawAuroraNebula();
-
-      // interaction aura
-      drawMouseAura();
-
-      // update & render
-      update(t);
-      drawLines();
-      particles.forEach((p) => drawParticle(p, t));
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
+    // Events
     const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
+      mouseRef.current.active = true;
     };
+    const onLeave = () => { mouseRef.current.active = false; };
 
-    const onMouseLeave = () => {
-      mouseRef.current.active = false;
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      const t = e.touches?.[0];
-      if (!t) return;
-      mouseRef.current = { x: t.clientX, y: t.clientY, active: true };
-    };
-    const onTouchEnd = () => {
-      mouseRef.current.active = false;
-    };
-
-    resize();
-    animationFrameId = requestAnimationFrame(animate);
-
-    window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseleave", onMouseLeave);
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
-    window.addEventListener("touchend", onTouchEnd);
+    window.addEventListener("mouseleave", onLeave);
+    
+    // Initial start
+    resize();
+    
+    // Start loop
+    animationFrameId = requestAnimationFrame(updateAndDraw);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseleave", onMouseLeave);
-      window.removeEventListener("touchmove", onTouchMove);
-      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("mouseleave", onLeave);
     };
-  }, [shouldRender]);
-
-  if (!shouldRender) {
-    return (
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[var(--bg)]">
-        <div className="absolute inset-0 bg-[image:var(--gradient-bg)] opacity-60" />
-      </div>
-    );
-  }
+  }, [showParticles]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 particles-bg"
-    />
+    <>
+      {/* 
+        ✅ ELEMENT 1: CSS Aurora Background 
+        - Always rendered (Mobile & Desktop) 
+        - GPU accelerated 
+        - Zero JS thread usage
+      */}
+      <div className="aurora-container">
+        <div className="aurora-blob aurora-blob-1" />
+        <div className="aurora-blob aurora-blob-2" />
+        <div className="aurora-blob aurora-blob-3" />
+      </div>
+
+      {/* 
+        ✅ ELEMENT 2: Interactive Particles
+        - Only on desktop
+        - Lightweight canvas
+      */}
+      {showParticles && (
+        <canvas
+          ref={canvasRef}
+          className="fixed inset-0 pointer-events-none z-0"
+          style={{ opacity: 0.8 }}
+        />
+      )}
+    </>
   );
 };
 
