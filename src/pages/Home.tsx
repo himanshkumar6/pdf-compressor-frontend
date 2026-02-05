@@ -106,11 +106,11 @@ const Home: React.FC = () => {
           <div className="section-divider" />
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
-              Why choose CompressPDF?
+              Why I built CompressPDF?
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              A simple, fast, and privacy-first PDF compressor built for real
-              uploads.
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              After facing rejection 5 times on the SSC portal due to "File Too Large" errors,
+              I decided to build a tool that actually understands the strict 200KB limit.
             </p>
           </div>
 
@@ -118,18 +118,18 @@ const Home: React.FC = () => {
             {[
               {
                 icon: <Shield className="w-10 h-10 text-cyan-400" />,
-                title: "Privacy First",
-                desc: "Your PDF is processed securely. We focus on safe document handling and minimal data retention.",
+                title: "100% Privacy Check",
+                desc: "I know how scary it is to upload your Aadhar Card online. That's why I used WebAssembly — so your files never leave your device.",
               },
               {
                 icon: <FastForward className="w-10 h-10 text-cyan-400" />,
-                title: "Fast Processing",
-                desc: "Optimized processing flow with instant download, even on mobile devices.",
+                title: "Tuned for Portals",
+                desc: "Generic compressors make files blurry. I calibrated this engine to keep text sharp specifically for NTA/SSC verification officers.",
               },
               {
                 icon: <UserCheck className="w-10 h-10 text-cyan-400" />,
-                title: "Portal Friendly",
-                desc: "Perfect for job forms, govt websites, scholarship uploads, and email attachments.",
+                title: "Zero Failures",
+                desc: "Stop guessing file sizes. This tool targets the exact 20KB-200KB range required by government servers.",
               },
             ].map((item, i) => (
               <div

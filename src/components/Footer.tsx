@@ -209,23 +209,30 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* ✅ Trust/Disclaimer Block */}
+              {!isRu && (
+                <div className="mt-8 text-xs text-gray-500 max-w-xs leading-relaxed border-l-2 border-gray-800 pl-3">
+                  <p>
+                    <strong>Disclaimer:</strong> We are a private utility tool and not affiliated with SSC, UPSC, or any government body. All branding belongs to respective owners.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
         {/* ✅ Bottom bar */}
-        <div className="py-7 border-t border-gray-900 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-          <p className="text-gray-600 text-xs">
+        <div className="py-8 border-t border-gray-900 mt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+          <p className="text-gray-600">
             {t.bottom.rights}
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-600">
-            <span className="px-3 py-1 rounded-full border border-gray-800 bg-gray-900/30">
-              {t.bottom.clientSide}
-            </span>
-            <span className="px-3 py-1 rounded-full border border-gray-800 bg-gray-900/30">
-              {t.bottom.madeWith}
-            </span>
+          <div className="flex items-center gap-3 text-gray-500">
+            <span>Built with <span className="text-red-500 animate-pulse">❤️</span> by</span>
+            <a href="/about" className="text-cyan-500 hover:text-cyan-400 font-medium transition-colors">Himanshu</a>
+            <span className="w-1 h-1 rounded-full bg-gray-700 mx-1"></span>
+            <span>{t.bottom.clientSide}</span>
           </div>
         </div>
       </div>

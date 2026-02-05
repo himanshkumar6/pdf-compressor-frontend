@@ -113,51 +113,58 @@ Kuch scholarship forms strict 100KB maangte hain. Is tool se tum PDF ko us limit
   },
 
   "/compress-pdf-to-200kb": {
-    content: `SSC form, passport portal, scholarship — jahan bhi 200KB limit hai, yahan se fix karo.
+    content: `**Why is the 200KB PDF Limit so Common?**
+Most Indian government recruitment portals (SSC, UPSC, IBPS, Railways) and admission forms (JEE, NEET) rely on legacy server infrastructure. To prevent database crashes during peak traffic (like the last day of application submission), they enforce strict file size limits—usually **20KB to 200KB**.
 
-Govt portals pe PDF upload karte waqt sabse common error: "File size exceeds 200KB". Bahut students ko ye problem aati hai. Humara tool specifically isi ke liye hai — PDF ko 200KB ke andar laata hai bina readability kharab kiye.
+**The Problem: "File Size Exceeded" Error**
+When you scan a document using a mobile app (CamScanner, Adobe Scan) or a cyber cafe scanner, the default output is often **2MB to 5MB**. This is 10x to 25x larger than the allowed limit. Uploading this results in immediate rejection: *"File size must be less than 200KB"*.
 
-Passport application, SSC CGL form, scholarship documents — sab ke liye use kar sakte ho. Mobile pe bhi kaam karega, koi app nahi chahiye. Browser open karo, PDF select karo, compress karo, download karo. Form pe upload karte waqt ab error nahi aayega.
+**The Solution: Privacy-First Compression**
+Unlike other tools that upload your private documents to a remote cloud server for processing (which is a privacy risk), **CompressPDF** uses advanced WebAssembly technology to compress your PDF **right inside your browser**.
+- **Your file never leaves your device.**
+- **Zero data usage** for upload/download (since it's offline-ready).
+- **Legible Text:** We optimize the hidden metadata and image assets while keeping the text sharp enough for verification officers to read.
 
-100% secure. Aapka PDF kisi server pe nahi jata. Sab aapke device pe hi process hota hai. Students ke liye trusted tool — try karo, tension mat lo.
+**Best Practices for SSC/UPSC Uploads:**
+1. **Resolution:** If your original scan is too blurry, compression will make it worse. Scan at 200 DPI first.
+2. **B&W vs Color:** Most portals accept Grayscale (B&W). Converting to B&W saves huge space.
+3. **Verify:** Always open the compressed PDF before uploading to ensure your Name and Roll Number are readable.
 
-Agar PDF scanned hai — marksheet, certificate — toh Scanned PDF to 200KB tool use karo. Woh scanned documents ke liye better optimize hai. Normal PDF ke liye yahi tool sahi hai.
-
-Passport application, SSC form, scholarship — jahan bhi 200KB limit hai, wahan pehle is tool se size check karo. Bada hai toh compress kar lo. Form reject hone se bach jayega. Mobile pe bhi same — koi app nahi chahiye.`,
+Use this tool to fix your document size instantly and submit your application on time.`,
     steps: [
       {
-        title: "PDF select karo",
-        desc: "Upar click karke ya drag-drop se PDF choose karo.",
+        title: "Select your oversized PDF",
+        desc: "Choose the document giving you the 'File too large' error.",
       },
       {
-        title: "Compress to 200KB pe click karo",
-        desc: "Tool 200KB target pe optimize karega.",
+        title: "Auto-Optimize to <200KB",
+        desc: "Our engine strips metadata and optimizes images to fit the 200KB limit.",
       },
       {
-        title: "Download karo aur portal pe upload karo",
-        desc: "Ready PDF download karke form pe upload kar do.",
+        title: "Download & Verify",
+        desc: "Save the file. Open it to check readability before uploading to the portal.",
       },
     ],
     faqs: [
       {
-        q: "SSC form ke liye sahi hai?",
-        a: "Haan, SSC portal pe 200KB limit hoti hai — is tool se perfect fit ho jayega.",
+        q: "Will this work for SSC CGL/CHSL forms?",
+        a: "Yes. This tool is specifically tuned for the 200KB limit required by SSC, IBPS, and Railways recruitment forms.",
       },
       {
-        q: "Passport application mein use kar sakte hain?",
-        a: "Haan, passport portal bhi 200KB maangta hai. Ye tool wahi ke liye hai.",
+        q: "Is it safe for Aadhar/PAN cards?",
+        a: "Absolutely. We use 'Client-Side Processing'. Your Aadhar/PAN card data stays in your browser's memory and is never sent to our servers.",
       },
       {
-        q: "Quality kaise rahegi?",
-        a: "Optimized compression use karte hain. Text clear rahega, photos bhi readable.",
+        q: "What if my file is still >200KB?",
+        a: "If your original file is huge (e.g., 20MB), try the 'Compress to 500KB' tool first, or rescan the document at a lower DPI (150 DPI).",
       },
       {
-        q: "Mobile se kaise use karen?",
-        a: "Browser open karo, is page pe aao, PDF select karo. Koi app install nahi karni.",
+        q: "Do you add a watermark?",
+        a: "No. The compressed PDF is clean, professional, and free of any watermarks.",
       },
       {
-        q: "Mera data safe hai?",
-        a: "Haan. PDF aapke device pe hi process hota hai, kahi upload nahi hota.",
+        q: "Why is the text slightly less sharp?",
+        a: "To reach 200KB from a large file, we must reduce image quality. However, we ensure it remains 'Verification Ready' (readable by officials).",
       },
     ],
   },
@@ -210,51 +217,59 @@ Marksheet, TC, certificate — scan karte waqt resolution high hoti hai, file ba
   },
 
   "/scanned-pdf-to-200kb": {
-    content: `Scanned document hai aur 200KB limit hai? Yahi solution hai.
+    content: `**Optimizing Scanned Documents (Marksheets, Caste Certificates) for 200KB**
 
-Passport, scholarship, SSC — kabhi kabhi scanned PDF chahiye hota hai aur size 200KB ke andar hona chahiye. High-quality scan ka size zyada hota hai. Is tool se tum scanned PDF ko specifically 200KB ke andar laa sakte ho.
+One of the biggest challenges for students is compressing **Scanned PDFs**. Unlike digital-born PDFs (created from Word), scanned PDFs are essentially high-resolution images wrapped in a PDF container. They are heavy, noisy, and difficult to compress without becoming unreadable blur.
 
-Marksheet, certificate, ID proof — jo bhi scan kiya hai, is tool pe daalo. Text readable rahega, bas file size target pe aajayega. Students ke liye bohot useful — form reject hone se bach jayega. Govt portals pe upload karte waqt "file too large" error nahi aayega.
+**Why General Compressors Fail on Scanned PDFs**
+Standard tools try to compress the whole file evenly, which ruins the text clarity of stamps, signatures, and small print (like serial numbers). Our **Specialized Scanned PDF Engine**:
+- Detects image layers separately.
+- Applies "Intelligent Downsampling" to reduce file size while preserving edge sharpness.
+- Ensures the final output is **Printable** and **Readable**.
 
-100% browser-based. Safe, free, koi upload nahi. Trust karo aur use karo.
+**Perfect for:**
+- **Marksheets (10th/12th):** Keeps grades visible.
+- **Caste/EWS Certificates:** Ensures QR codes and stamps remain scannable.
+- **ID Proofs (Aadhar/Voter ID):** Balances photo quality with text legibility.
 
-Agar normal (non-scanned) PDF hai toh Compress PDF to 200KB tool use karo. Scanned docs ke liye yahi tool best hai. Form fill karte waqt PDF ready rakho — last moment pe tension nahi lena padega.
-
-Passport portal, scholarship form, SSC — scanned document maangte hain aur 200KB limit bhi hoti hai. Scanner se bani file ka size zyada hota hai. Is tool se target pe laa sakte ho. Mobile pe bhi kaam karega. Data safe rahega.`,
+**Instructions for Best Results:**
+1. **Crop First:** If your scan has extra table background, crop it. Unnecessary background adds file weight.
+2. **Flatten:** If you used an app like CamScanner, ensure the "Magic Color" filter isn't overly saturated.
+3. **Use this Tool:** Select your file above and let our algorithm handle the rest.`,
     steps: [
       {
-        title: "Scanned PDF choose karo",
-        desc: "Apna scanned document select karo.",
+        title: "Upload Scanned Document",
+        desc: "Select your marksheet, certificate, or ID proof scan.",
       },
       {
-        title: "200KB target pe compress karo",
-        desc: "Tool 200KB ke andar optimize karega.",
+        title: "Smart Scan Compression",
+        desc: "We analyze the visual data to reduce size while keeping text sharp.",
       },
       {
-        title: "Download karo aur upload karo",
-        desc: "Ready file portal pe upload kar do.",
+        title: "Download & Check",
+        desc: "Download the file. Zoom in to ensure all details are clear before submitting.",
       },
     ],
     faqs: [
       {
-        q: "Kis type ke scanned PDF ke liye hai?",
-        a: "Marksheet, certificate, ID proof, TC — koi bhi scanned document. Image-based PDF ke liye best hai.",
+        q: "Will my marksheet grades be readable?",
+        a: "Yes. Our algorithm prioritizes text contrast so numbers and grades remain visible even at 200KB.",
       },
       {
-        q: "200KB ke andar guarantee?",
-        a: "Tool 200KB target pe optimize karta hai. Zyada bade scans mein thoda quality adjust ho sakti hai.",
+        q: "Does it work on old/faded documents?",
+        a: "It works, but for very old docs, we recommend scanning at higher contrast before compressing.",
       },
       {
-        q: "Passport document ke liye?",
-        a: "Haan, passport portal pe scanned docs upload karte waqt use kar sakte ho.",
+        q: "Is this accepted by Passport Seva?",
+        a: "Yes. Passport Seva accepts PDFs under 200KB (or 1MB depending on doc type). This tool ensures compliance.",
       },
       {
-        q: "Mobile pe kaam karega?",
-        a: "Haan, browser se mobile pe bhi use kar sakte ho.",
+        q: "Is my data private?",
+        a: "100% Private. The processing happens in your browser. We never see your personal certificates.",
       },
       {
-        q: "Data safe hai?",
-        a: "Haan. Sab aapke device pe process hota hai, kahi upload nahi.",
+        q: "Can I compress multiple pages?",
+        a: "Yes. If you have a multi-page PDF (e.g. 5-page marksheet), the tool will optimize all pages to try and fit the limit.",
       },
     ],
   },
@@ -351,25 +366,57 @@ SSC CGL, CHSL, passport application, scholarship forms — sab ke liye use kar s
   },
 
   "/compress-pdf-to-500kb": {
-    content: `500KB PDF size limit hai? Email attachment ya job portal ke liye document compress karna hai? Ye tool tumhare kaam ka hai.
+    content: `**Reliable Compression for Job Portals (Naukri, LinkedIn) & Corporate Use**
 
-500KB ka limit medium-sized PDFs ke liye perfect hai. Job portals, email attachments, company forms — sab jagah 500KB limit common hai. Is tool se tum PDF ko 500KB ke andar laa sakte ho.
+While government forms often demand extreme compression (200KB), the private sector (MNCs, Startups, HR Portals) usually sets a **500KB to 1MB** limit for Resumes and Portfolios.
 
-Naukri.com, LinkedIn, company career pages — sab pe resume upload karte waqt 500KB-1MB limit hoti hai. Humara tool quality maintain karte hue size reduce karta hai.
+**Why 500KB is the Professional Standard:**
+- **Email Safe:** Fast to attach and open on mobile networks.
+- **ATS Friendly:** Applicant Tracking Systems (ATS) reject files that are too heavy or non-standard.
+- **Visual Quality:** At 500KB, your resume can include a professional photo, icons, and decent layout design without looking pixelated.
 
-100% browser mein chalta hai. Safe, free, koi upload nahi. Mobile pe bhi kaam karega. Email mein PDF attach karte waqt bhi useful hai.`,
+**Fixing "Resume Upload Failed" on Naukri.com/LinkedIn:**
+If you get an error while uploading your CV, it's often due to high-resolution assets exporting from tools like Canva or Photoshop.
+1. **Export to PDF Standard:** Always choose "Standard" not "Print" quality.
+2. **Use this Tool:** If it's still >1MB, run it through our **500KB Compressor**. It cleans up the internal structure without harming the text or layout.
+
+**Secure for Corporate Data:**
+We understand that Resumes, Offer Letters, and Contracts are sensitive. Our **client-side technology** ensures your professional data never leaves your browser session.`,
     steps: [
-      { title: "PDF select karo", desc: "Heavy PDF file choose karo." },
-      { title: "500KB target pe compress karo", desc: "Tool 500KB ke andar optimize karega." },
-      { title: "Download aur share karo", desc: "Compressed PDF download karke email ya portal pe use karo." },
+      {
+        title: "Select Resume/Document",
+        desc: "Choose the file you want to upload to a Job Portal or Email.",
+      },
+      {
+        title: "Optimize to 500KB",
+        desc: "We prioritize maintaining layout and font sharpness for professional documents.",
+      },
+      {
+        title: "Download & Apply",
+        desc: "Use the optimized PDF for Naukri, LinkedIn, or Email attachments.",
+      },
     ],
     faqs: [
-      { q: "Job portal ke liye sahi hai?", a: "Haan, Naukri, LinkedIn jaise portals pe 500KB limit common hai." },
-      { q: "Email attachment ke liye?", a: "Haan, email mein PDF attach karte waqt 500KB perfect size hai." },
-      { q: "Resume compress ho jayega?", a: "Haan, resume PDFs easily 500KB ke andar fit ho jate hain." },
-      { q: "Quality kharab hogi?", a: "Nahi. 500KB mein quality theek rahegi." },
-      { q: "Mobile se kaam karega?", a: "Haan, browser se mobile pe bhi use kar sakte ho." },
-      { q: "Free hai?", a: "Haan, completely free. No signup required." },
+      {
+        q: "Will this mess up my Resume formatting?",
+        a: "No. We only optimize the internal data stream. Your fonts, margins, and layout remain exactly 100% same.",
+      },
+      {
+        q: "Is 500KB good for Resumes?",
+        a: "Yes, 500KB is the industry sweet spot. It's high quality enough for print, but small enough for any email system.",
+      },
+      {
+        q: "Can I compress password protected Offer Letters?",
+        a: "You must remove the password first. Browsers cannot process encrypted files.",
+      },
+      {
+        q: "Is it free for commercial use?",
+        a: "Yes, the tool is free for everyone, including professionals and freelancers.",
+      },
+      {
+        q: "Do you store my resume?",
+        a: "Never. Your resume is processed in your browser RAM and wiped instantly when you close the tab.",
+      },
     ],
   },
 
