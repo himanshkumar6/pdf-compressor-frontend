@@ -66,6 +66,16 @@ const CANONICAL_PATHS = [
   "/ru/szhat-skanirovannyj-pdf",
   "/ru/szhat-skanirovannyj-pdf-do-200kb",
   "/ru/udalit-metadannye-pdf",
+  "/resize-pdf-kb",
+  "/resize-pdf-mb",
+  "/pdf-to-jpg",
+  "/merge-pdf",
+  "/split-pdf",
+  "/ru/izmenit-razmer-pdf-kb",
+  "/ru/izmenit-razmer-pdf-mb",
+  "/ru/pdf-v-jpg",
+  "/ru/obedinit-pdf",
+  "/ru/razdelit-pdf",
 ];
 
 /** Build canonical URL: https only, trailing slash only for home. */
@@ -99,17 +109,18 @@ function generateXmlForRoutes(paths, today) {
       "/scanned-pdf-to-200kb",
       "/remove-metadata-from-pdf",
       // RU Tools
-      "/ru/szhat-pdf",
-      "/ru/szhat-pdf-do-50kb",
-      "/ru/szhat-pdf-do-100kb",
-      "/ru/szhat-pdf-do-150kb",
-      "/ru/szhat-pdf-do-200kb",
-      "/ru/szhat-pdf-do-500kb",
-      "/ru/szhat-pdf-do-1mb",
-      "/ru/umenshit-razmer-pdf-do-500kb",
-      "/ru/szhat-skanirovannyj-pdf",
       "/ru/szhat-skanirovannyj-pdf-do-200kb",
-      "/ru/udalit-metadannye-pdf"
+      "/ru/udalit-metadannye-pdf",
+      "/resize-pdf-kb",
+      "/resize-pdf-mb",
+      "/pdf-to-jpg",
+      "/merge-pdf",
+      "/split-pdf",
+      "/ru/izmenit-razmer-pdf-kb",
+      "/ru/izmenit-razmer-pdf-mb",
+      "/ru/pdf-v-jpg",
+      "/ru/obedinit-pdf",
+      "/ru/razdelit-pdf"
     ].includes(p);
 
     let changefreq = "monthly";

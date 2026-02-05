@@ -32,6 +32,11 @@ import CompressTo1mb from "./pages/CompressTo1mb";
 import ReducePdfSizeTo500kb from "./pages/ReducePdfSizeTo500kb";
 import ScannedPdfCompressor from "./pages/ScannedPdfCompressor";
 import ScannedPdfTo200kb from "./pages/ScannedPdfTo200kb";
+import PdfToJpg from "./pages/PdfToJpg";
+import MergePdf from "./pages/MergePdf";
+import SplitPdf from "./pages/SplitPdf";
+import ResizePdfInKb from "./pages/ResizePdfInKb";
+import ResizePdfInMb from "./pages/ResizePdfInMb";
 
 // ✅ Russian Pages
 import HomeRu from "./pages/ru/Home";
@@ -127,6 +132,11 @@ const App: React.FC = () => {
             <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
             <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
             <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
+            <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
+            <Route path="/merge-pdf" element={<MergePdf />} />
+            <Route path="/split-pdf" element={<SplitPdf />} />
+            <Route path="/resize-pdf-kb" element={<ResizePdfInKb />} />
+            <Route path="/resize-pdf-mb" element={<ResizePdfInMb />} />
 
             {/* ✅ Russian Pages (RU) */}
             <Route path="/ru" element={<HomeRu />} />

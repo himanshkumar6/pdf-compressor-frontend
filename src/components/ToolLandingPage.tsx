@@ -32,6 +32,7 @@ type ToolLandingPageProps = {
   defaultTargetSize?: number;
   targetSizeOptions?: TargetSizeOption[];
   ctaText?: string;
+  children?: React.ReactNode;
 };
 
 export default function ToolLandingPage({
@@ -42,6 +43,7 @@ export default function ToolLandingPage({
   defaultTargetSize,
   targetSizeOptions,
   ctaText,
+  children,
 }: ToolLandingPageProps) {
   const page = PAGES_SEO[routeKey];
 
@@ -85,6 +87,7 @@ export default function ToolLandingPage({
   };
 
   const renderTool = () => {
+    if (children) return children;
     if (toolType === "REMOVE_METADATA") return <ToolSectionRemoveMetadata />;
     return <ToolSection defaultTargetSize={defaultTargetSize} targetSizeOptions={targetSizeOptions} ctaText={ctaText} />;
   };
@@ -98,7 +101,8 @@ export default function ToolLandingPage({
       back: "На главную",
       worksInBrowser: "Работает в браузере",
       free: "Бесплатно • Без регистрации",
-      whatAndHow: "Что и Как?",
+      howItWorks: "Как это работает",
+      whenToUse: "Когда использовать",
       steps: "Пошаговая инструкция",
       related: "Другие инструменты",
       relatedDesc: "Попробуйте эти бесплатные PDF инструменты.",
@@ -107,7 +111,8 @@ export default function ToolLandingPage({
       back: "Back to Website",
       worksInBrowser: "Works 100% in browser",
       free: "No signup • Free",
-      whatAndHow: "Kya aur Kaise?",
+      howItWorks: "How this tool works",
+      whenToUse: "When you should use this tool",
       steps: "Step-by-Step",
       related: "Related Tools",
       relatedDesc: "Try these PDF tools — all free and run in your browser.",
@@ -174,7 +179,7 @@ export default function ToolLandingPage({
         <section className="w-full max-w-4xl mx-auto mt-12 space-y-12">
           <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
             <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
-              {labels.whatAndHow}
+              {labels.whenToUse}
             </h2>
             <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
               {toolContent.content}
@@ -183,7 +188,7 @@ export default function ToolLandingPage({
 
           <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
             <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
-              {labels.steps}
+              {labels.howItWorks}
             </h2>
             <ol className="space-y-6">
               {toolContent.steps.map((step, i) => (

@@ -74,6 +74,16 @@ const ROUTES = [
   "/ru/szhat-skanirovannyj-pdf",
   "/ru/szhat-skanirovannyj-pdf-do-200kb",
   "/ru/udalit-metadannye-pdf",
+  "/resize-pdf-kb",
+  "/resize-pdf-mb",
+  "/pdf-to-jpg",
+  "/merge-pdf",
+  "/split-pdf",
+  "/ru/izmenit-razmer-pdf-kb",
+  "/ru/izmenit-razmer-pdf-mb",
+  "/ru/pdf-v-jpg",
+  "/ru/obedinit-pdf",
+  "/ru/razdelit-pdf",
 ];
 
 // ✅ Basic SEO
@@ -200,6 +210,46 @@ const SEO = {
   "/ru/udalit-metadannye-pdf": {
     title: "Удалить метаданные из PDF Онлайн (Очистить свойства файла)",
     description: "Удалить автора, дату создания и скрытые метаданные из PDF онлайн. Повысьте конфиденциальность перед отправкой документа.",
+  },
+  "/resize-pdf-kb": {
+    title: "Resize PDF to KB Online | Set Target Size for SSC, UPSC Forms",
+    description: "Resize PDF in KB online for free. Set a target size like 50KB, 100KB, or 200KB for government portals and job forms. Fast and private.",
+  },
+  "/resize-pdf-mb": {
+    title: "Resize PDF to MB Online | Reduce Large PDFs for Email",
+    description: "Resize PDF in MB online to reduce large documents for email attachments. Set target size to 1MB, 2MB, or 5MB easily in your browser.",
+  },
+  "/pdf-to-jpg": {
+    title: "PDF to JPG Converter Online | High Quality (Free & Private)",
+    description: "Convert PDF pages to JPG images online for free. Maintain high resolution for document scans and ID proofs. No upload required.",
+  },
+  "/merge-pdf": {
+    title: "Merge PDF Online | Combine Multiple PDFs into One (Free)",
+    description: "Merge multiple PDF files into a single document online. Rearrange pages easily and combine certificates or reports securely.",
+  },
+  "/split-pdf": {
+    title: "Split PDF Online | Extract Pages from PDF (Free & Private)",
+    description: "Split PDF pages online or extract specific pages from a document. Visual preview available for easy page selection. 100% private.",
+  },
+  "/ru/izmenit-razmer-pdf-kb": {
+    title: "Изменить размер PDF в КБ Онлайн | Уменьшить вес документа",
+    description: "Изменить размер PDF в КБ онлайн. Задайте точный размер (50 КБ, 100 КБ) для загрузки на порталы. Конфиденциально и бесплатно.",
+  },
+  "/ru/izmenit-razmer-pdf-mb": {
+    title: "Изменить размер PDF в МБ Онлайн | Уменьшить объем PDF",
+    description: "Изменить размер PDF в МБ онлайн для почты и хранения. Уменьшите тяжелые файлы до 1 МБ или 2 МБ прямо в браузере.",
+  },
+  "/ru/pdf-v-jpg": {
+    title: "PDF в JPG Онлайн | Конвертировать страницы в изображения",
+    description: "Конвертировать PDF в JPG онлайн бесплатно. Превратите страницы PDF в четкие картинки JPG без загрузки на сервер.",
+  },
+  "/ru/obedinit-pdf": {
+    title: "Объединить PDF Онлайн | Склеить несколько PDF файлов",
+    description: "Объединить PDF онлайн бесплатно. Склейте страницы и документы в один файл. Удобная сортировка и полная безопасность.",
+  },
+  "/ru/razdelit-pdf": {
+    title: "Разделить PDF Онлайн | Извлечь страницы из документа",
+    description: "Разделить PDF онлайн бесплатно. Выбирайте страницы визуально и извлекайте их в новый файл. Быстро и приватно.",
   },
 };
 
@@ -395,6 +445,11 @@ function getAlternateUrl(route) {
     "/scanned-pdf-compressor": "/ru/szhat-skanirovannyj-pdf",
     "/scanned-pdf-to-200kb": "/ru/szhat-skanirovannyj-pdf-do-200kb",
     "/remove-metadata-from-pdf": "/ru/udalit-metadannye-pdf",
+    "/resize-pdf-kb": "/ru/izmenit-razmer-pdf-kb",
+    "/resize-pdf-mb": "/ru/izmenit-razmer-pdf-mb",
+    "/pdf-to-jpg": "/ru/pdf-v-jpg",
+    "/merge-pdf": "/ru/obedinit-pdf",
+    "/split-pdf": "/ru/razdelit-pdf",
   };
 
   // Reverse mapping for RU -> EN

@@ -228,8 +228,8 @@ const ToolSection: React.FC<ToolSectionProps> = ({
   const buttonText =
     ctaText ??
     (lang === "ru"
-      ? `Сжать до ${formatSizeLabel(targetSize)}`
-      : `Compress to ≤${formatSizeLabel(targetSize)} (Recommended)`);
+      ? `Цель: до ${formatSizeLabel(targetSize).replace("≤ ", "")}`
+      : `Target: ${formatSizeLabel(targetSize).replace("≤ ", "")}`);
 
   return (
     <div className="max-w-225 mx-auto w-full px-4 sm:px-0">
@@ -366,8 +366,8 @@ const ToolSection: React.FC<ToolSectionProps> = ({
                 </p>
 
                 {/* Locked limit badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-sm font-semibold">
-                  <span>🔒 {t.target}: ≤{formatSizeLabel(targetSize)}</span>
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-sm font-bold shadow-lg">
+                  <span>🔒 {lang === 'ru' ? 'Цель: до' : 'Target:'} {formatSizeLabel(targetSize).replace("≤ ", "")}</span>
                 </div>
               </div>
             )}
@@ -378,6 +378,7 @@ const ToolSection: React.FC<ToolSectionProps> = ({
                 result={result}
                 onTryDifferentLimit={handleTryDifferentLimit}
                 onReset={resetAll}
+                availableOptions={targetSizeOptions}
               />
             )}
           </div>

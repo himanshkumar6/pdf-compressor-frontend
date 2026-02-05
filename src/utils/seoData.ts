@@ -135,9 +135,9 @@ export const getJsonLd = () => ({
 export const PAGES_SEO: Record<string, PageSEO> = {
   // ✅ HOME
   "/": {
-    title: "Compress PDF to 200KB Online | Free PDF Compressor Tool",
+    title: "Compress PDF to 200KB for SSC, UPSC & Govt Forms (Free)",
     description:
-      "Compress PDF to 200KB online for free. Reduce PDF size instantly without losing quality. Best for SSC, UPSC, passport, scholarship and government portal uploads.",
+      "Compress PDF to 200KB online for free. Safely reduce PDF size for SSC, UPSC, IBPS, and government portal uploads. 100% private browser-based processing.",
     canonical: `${SITE.baseUrl}/`,
     jsonLd: {
       name: "Compress PDF to 200KB Online",
@@ -151,18 +151,18 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   "/compress-pdf-to-200kb": {
     title: "Compress PDF to 200KB Online (Free & Without Losing Quality)",
     description:
-      "Compress PDF to 200KB online for free. Reduce PDF file size to under 200KB without losing quality. Secure, fast, and works on mobile/desktop.",
+      "Reduce PDF size under 200KB for SSC, UPSC, and IBPS online forms. Securely compress your PDF in-browser without uploading to any server. Free & fast.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-200kb`,
     faqs: [
       {
         question: "How can I compress a PDF to 200KB without losing quality?",
         answer:
-          "Our tool optimizes resources in-browser to reduce size while maintaining visual clarity.",
+          "Our tool optimizes invisible metadata and image assets in-browser to reduce size while maintaining 100% readable text and sharp clarity.",
       },
       {
-        question: "Is it safe to compress my PDFs here?",
+        question: "Is it safe to compress my Aadhaar or PAN card here?",
         answer:
-          "Yes. Files are processed locally in your browser and never uploaded to a server.",
+          "Yes. Files are processed locally in your browser's RAM and never uploaded to any server. Your sensitive data stays on your device.",
       },
     ],
     jsonLd: {
@@ -175,143 +175,193 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   "/compress-pdf": {
     title: "Compress PDF Online Free (Fast & Secure PDF Compressor)",
     description:
-      "Compress PDF online for free. Reduce PDF file size instantly without losing quality. 100% client-side processing.",
+      "Compress PDF online instantly for free. Reduce PDF file size for email, WhatsApp, and form uploads without losing quality. 100% private browser processing.",
     canonical: `${SITE.baseUrl}/compress-pdf`,
     jsonLd: {
       name: "Compress PDF Online",
       url: `${SITE.baseUrl}/compress-pdf`,
-      description: "Compress PDF online quickly and securely.",
+      description: "Compress PDF online quickly and securely for free.",
     },
   },
 
   "/compress-pdf-to-50kb": {
-    title: "Compress PDF to 50KB Online Free | Reduce PDF Size",
+    title: "Compress PDF to 50KB Online Free | Reduce PDF Size for Forms",
     description:
-      "Compress PDF to 50KB online for free. Best for strict upload limits on govt forms, SSC, scholarship portals. 100% browser-based.",
+      "Compress PDF to 50KB online. Perfect for strict signature and photo upload limits on NSP, SSC, and govt scholarship portals. Safe browser-only processing.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-50kb`,
     jsonLd: {
       name: "Compress PDF to 50KB",
       url: `${SITE.baseUrl}/compress-pdf-to-50kb`,
-      description: "Reduce PDF size to 50KB online.",
+      description: "Reduce PDF size to 50KB online for free.",
     },
   },
 
   "/compress-pdf-to-100kb": {
-    title: "Compress PDF to 100KB Online (Free Reduces Size Instantly)",
+    title: "Compress PDF to 100KB Online (Free & Fast PDF Smallizer)",
     description:
-      "Compress PDF to 100KB online for free. Safely reduce PDF size to under 100KB for forms and email. Fast, secure, and no quality loss.",
+      "Compress PDF to 100KB online for free. Safely reduce PDF size for scholarship forms, job applications, and email attachments. No quality loss, no uploads.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-100kb`,
     jsonLd: {
       name: "Compress PDF to 100KB",
       url: `${SITE.baseUrl}/compress-pdf-to-100kb`,
-      description: "Reduce PDF size to 100KB online.",
+      description: "Reduce PDF size to 100KB online for scholarship portals.",
     },
   },
 
   "/compress-pdf-to-150kb": {
-    title: "Compress PDF to 150KB Online Free | Reduce PDF Size",
+    title: "Compress PDF to 150KB Online Free | Reduce PDF for Passport",
     description:
-      "Compress PDF to 150KB online for free. Perfect for SSC, UPSC, passport & scholarship form uploads. Browser-based, no uploads.",
+      "Compress PDF to 150KB online for free. Safely reduce PDF size for passport applications, scholarship portals, and govt forms. 100% private in-browser tool.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-150kb`,
     jsonLd: {
       name: "Compress PDF to 150KB",
       url: `${SITE.baseUrl}/compress-pdf-to-150kb`,
-      description: "Reduce PDF size to 150KB online.",
+      description: "Reduce PDF size to 150KB online for government forms.",
     },
   },
 
   "/compress-pdf-to-500kb": {
-    title: "Compress PDF to 500KB Online Free | Reduce PDF Size",
+    title: "Compress PDF to 500KB Online Free | Reduce Size for Resume",
     description:
-      "Compress PDF to 500KB online for free. Ideal for email attachments, job portals & document uploads. 100% private.",
+      "Compress PDF to 500KB online for free. Ideal for resume uploads on Naukri, LinkedIn, and corporate portals. Safely reduce PDF size without losing readability.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-500kb`,
     jsonLd: {
       name: "Compress PDF to 500KB",
       url: `${SITE.baseUrl}/compress-pdf-to-500kb`,
-      description: "Reduce PDF size to 500KB online.",
+      description: "Reduce PDF size to 500KB online for professional use.",
     },
   },
 
   "/compress-pdf-to-1mb": {
-    title: "Compress PDF to 1MB Online Free | Reduce PDF Size",
+    title: "Compress PDF to 1MB Online Free | Reduce Size for Portals",
     description:
-      "Compress PDF to 1MB online for free. Best for large documents, job applications & email. Browser-based, no server uploads.",
+      "Compress PDF to 1MB online for free. Perfect for heavy documents, university applications, and email. 100% private browser processing. No uploads, no risk.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-1mb`,
     jsonLd: {
       name: "Compress PDF to 1MB",
       url: `${SITE.baseUrl}/compress-pdf-to-1mb`,
-      description: "Reduce PDF size to 1MB online.",
+      description: "Reduce PDF size to 1MB online while maintaining quality.",
     },
   },
 
   "/reduce-pdf-size-to-500kb": {
-    title: "Reduce PDF Size to 500KB Online Free | PDF Compressor",
+    title: "Reduce PDF Size to 500KB Online Free (Secure & Private)",
     description:
-      "Reduce PDF size to 500KB online for free. Perfect for email, job portals & govt form uploads. 100% browser-based.",
+      "Reduce PDF size to 500KB online for free. Safely compress your PDF for job portals like Naukri and LinkedIn. 100% private browser-based processing.",
     canonical: `${SITE.baseUrl}/reduce-pdf-size-to-500kb`,
     jsonLd: {
       name: "Reduce PDF Size to 500KB",
       url: `${SITE.baseUrl}/reduce-pdf-size-to-500kb`,
-      description: "Reduce PDF file size to 500KB online.",
+      description: "Reduce PDF file size to 500KB online for free.",
+    },
+  },
+
+  "/pdf-to-jpg": {
+    title: "Convert PDF to JPG Online - High Quality & Secure (Free)",
+    description:
+      "Convert PDF to JPG online for free. Extract sharp images from PDF pages for government forms and social media. 100% private, browser-based processing.",
+    canonical: `${SITE.baseUrl}/pdf-to-jpg`,
+    jsonLd: {
+      name: "PDF to JPG Converter",
+      url: `${SITE.baseUrl}/pdf-to-jpg`,
+      description: "Convert PDF pages into high-quality JPG images securely in-browser.",
+    },
+  },
+
+  "/merge-pdf": {
+    title: "Merge PDF Online - Combine Multiple PDFs for Free",
+    description:
+      "Merge multiple PDF files into one document instantly. Perfect for combining marksheets and certificates for government portals. Safe and 100% free.",
+    canonical: `${SITE.baseUrl}/merge-pdf`,
+    jsonLd: {
+      name: "Merge PDF Tool",
+      url: `${SITE.baseUrl}/merge-pdf`,
+      description: "Combine multiple PDF files into a single document securely.",
+    },
+  },
+
+  "/split-pdf": {
+    title: "Split PDF Online - Extract Specific Pages for Free",
+    description:
+      "Split PDF files and extract specific pages online. Select pages visually to create a new PDF. 100% private, browser-based tool for all your document needs.",
+    canonical: `${SITE.baseUrl}/split-pdf`,
+    jsonLd: {
+      name: "Split PDF Tool",
+      url: `${SITE.baseUrl}/split-pdf`,
+      description: "Extract specific pages from PDF documents securely and for free.",
+    },
+  },
+
+  "/resize-pdf-kb": {
+    title: "Resize PDF in KB Online (SSC, UPSC & Passport Form Fixer)",
+    description:
+      "Resize your PDF to specific KB limits (20KB, 50KB, 100KB, 200KB) online for free. Best for Indian govt portals and exam forms. No uploads, stays private.",
+    canonical: `${SITE.baseUrl}/resize-pdf-kb`,
+    jsonLd: {
+      name: "Resize PDF in KB",
+      url: `${SITE.baseUrl}/resize-pdf-kb`,
+      description: "Resize PDF to specific KB limits for Indian govt portal uploads.",
+    },
+  },
+
+  "/resize-pdf-mb": {
+    title: "Resize PDF in MB Online Free | Reduce Heavy Document Size",
+    description:
+      "Resize PDF in MB online for free. Shrink large 10MB+ files to 1MB, 2MB, or 5MB for email and corporate portals. Fast browser processing without uploads.",
+    canonical: `${SITE.baseUrl}/resize-pdf-mb`,
+    jsonLd: {
+      name: "Resize PDF in MB",
+      url: `${SITE.baseUrl}/resize-pdf-mb`,
+      description: "Resize PDF to specific MB limits securely and for free.",
     },
   },
 
   "/remove-metadata-from-pdf": {
-    title: "Remove Metadata from PDF Online (Free & Secure) | CompressPDF Tool",
+    title: "Remove Metadata from PDF Online (Free, Secure & Private)",
     description:
-      "Remove hidden PDF metadata like author, creator, title, keywords & timestamps. Free browser-only tool (no uploads). Best for resumes, job portals & US forms.",
+      "Clear author, keywords, and hidden data from your PDF/Resume online. Best for job applications and privacy. 100% private browser processing.",
     canonical: `${SITE.baseUrl}/remove-metadata-from-pdf`,
     faqs: [
       {
         question: "What does removing metadata from PDF mean?",
         answer:
-          "It means deleting hidden PDF properties such as author name, creator tool, timestamps, title, keywords, and other embedded information.",
+          "It means deleting hidden properties like author name, creator software, and timestamps. This is critical for privacy before uploading resumes to job sites.",
       },
       {
-        question: "Is this tool safe and private?",
+        question: "Is this tool safe for clearing my Resume data?",
         answer:
-          "Yes. Your PDF is processed only inside your browser. Files are not uploaded to a server.",
-      },
-      {
-        question: "Does metadata removal change PDF content?",
-        answer:
-          "No. This removes hidden properties only. Your PDF pages, text and layout remain unchanged.",
-      },
-      {
-        question: "Can I remove metadata from resume PDFs?",
-        answer:
-          "Yes. This is ideal for resume uploads on job portals where privacy matters.",
+          "Yes. Your Resume is never uploaded to any server. All metadata scrubbing happens locally in your browser session for 100% privacy.",
       },
     ],
     jsonLd: {
       name: "Remove Metadata from PDF",
       url: `${SITE.baseUrl}/remove-metadata-from-pdf`,
-      description: "Remove hidden metadata from PDF online securely.",
+      description: "Remove hidden metadata from PDF online securely without uploads.",
     },
   },
 
   "/scanned-pdf-compressor": {
-    title: "Scanned PDF Compressor Online (Reduce Scanned PDF Size Fast)",
+    title: "Scanned PDF Compressor Online | Reduce Marksheet Size Free",
     description:
-      "Compress scanned PDF documents online and reduce file size without ruining readability. Perfect for forms & uploads.",
+      "Compress scanned marksheets, certificates, and ID cards online safely. Reduce file size while keeping text sharp and readable for university admissions.",
     canonical: `${SITE.baseUrl}/scanned-pdf-compressor`,
     jsonLd: {
       name: "Scanned PDF Compressor",
       url: `${SITE.baseUrl}/scanned-pdf-compressor`,
       description:
-        "Compress scanned PDF file size while keeping text readable.",
+        "Compress scanned PDF marksheets and certificates while keeping text readable.",
     },
   },
 
   "/scanned-pdf-to-200kb": {
-    title: "Compress Scanned PDF to 200KB Online (Fast & Free)",
+    title: "Compress Scanned PDF to 200KB Online (Marksheet & Certs Fix)",
     description:
-      "Compress scanned PDF to 200KB online for free. Reduce scanned documents while keeping them readable.",
+      "Compress scanned marksheets and caste certificates to under 200KB for scholarship and govt jobs. Maintain readability without ruining quality.",
     canonical: `${SITE.baseUrl}/scanned-pdf-to-200kb`,
     jsonLd: {
       name: "Compress Scanned PDF to 200KB",
       url: `${SITE.baseUrl}/scanned-pdf-to-200kb`,
-      description: "Compress scanned PDFs to 200KB online.",
+      description: "Compress scanned PDFs to 200KB for scholarship portal uploads.",
     },
   },
 

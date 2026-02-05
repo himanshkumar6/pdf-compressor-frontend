@@ -9,13 +9,14 @@ import {
   TrendingDown,
   RefreshCcw,
 } from "lucide-react";
-import type { CompressionResult } from "../types";
+import type { CompressionResult, TargetSizeOption } from "../types";
 import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
 
 type CompressionResultCardProps = {
   result: CompressionResult;
   onTryDifferentLimit?: (newLimit: number) => void;
   onReset?: () => void;
+  availableOptions?: TargetSizeOption[];
 };
 
 const formatSizeKB = (kb: number): string => {
@@ -23,15 +24,21 @@ const formatSizeKB = (kb: number): string => {
   return `${Math.round(kb)}KB`;
 };
 
-const getSuggestedLimits = (currentLimit: number): number[] => {
-  const allLimits = [200, 300, 500, 700, 1024];
-  return allLimits.filter((l) => l > currentLimit).slice(0, 2);
+const getSuggestedLimits = (currentLimit: number, options?: TargetSizeOption[]): number[] => {
+  if (!options) return [];
+  // Find limits higher than current, sorted by size
+  return options
+    .filter((opt) => opt.v > currentLimit)
+    .map((opt) => opt.v)
+    .sort((a, b) => a - b)
+    .slice(0, 2);
 };
 
 const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
   result,
   onTryDifferentLimit,
   onReset,
+  availableOptions,
 }) => {
   const location = useLocation();
   const lang = getLanguage(location.pathname);
@@ -39,7 +46,7 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
 
   const isSuccess = result.status === "success";
   const isNotPossible = result.status === "not_possible";
-  const suggestedLimits = getSuggestedLimits(result.targetLimitKB);
+  const suggestedLimits = getSuggestedLimits(result.targetLimitKB, availableOptions);
 
   const tryHigherLimitMsg =
     lang === "ru"
@@ -84,14 +91,14 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
           </span>
         </div>
 
-        {/* Selected Limit */}
+        {/* Selected Limit (Target) */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3 text-gray-400">
             <Target className="w-5 h-5" />
-            <span className="text-sm">{t.selectedLimit}</span>
+            <span className="text-sm">{lang === "ru" ? "Цель:" : "Target:"}</span>
           </div>
           <span className="text-cyan-400 font-bold">
-            ≤{formatSizeKB(result.targetLimitKB)}
+            {formatSizeKB(result.targetLimitKB).replace("≤ ", "")}
           </span>
         </div>
 
@@ -118,14 +125,18 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
           <span className="text-gray-300">{result.attempts}</span>
         </div>
 
-        {/* Saved Percentage */}
+        {/* Saved / Increased Percentage */}
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-3 text-gray-400">
-            <TrendingDown className="w-4 h-4" />
-            <span>{t.saved}</span>
+            <TrendingDown className={`w-4 h-4 ${result.finalSizeBytes > result.originalSizeBytes ? 'rotate-180 text-blue-400' : ''}`} />
+            <span>{result.finalSizeBytes > result.originalSizeBytes
+              ? (lang === 'ru' ? "Увеличено" : "Increased")
+              : t.saved}</span>
           </div>
-          <span className="text-green-400 font-semibold">
-            {result.savedPercentage}%
+          <span className={result.finalSizeBytes > result.originalSizeBytes ? "text-blue-400 font-semibold" : "text-green-400 font-semibold"}>
+            {result.finalSizeBytes > result.originalSizeBytes
+              ? `+${Math.round(((result.finalSizeBytes - result.originalSizeBytes) / result.originalSizeBytes) * 100)}%`
+              : `${result.savedPercentage}%`}
           </span>
         </div>
       </div>
