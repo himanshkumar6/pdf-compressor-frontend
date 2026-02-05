@@ -38,9 +38,17 @@ export default function Navbar() {
         {/* LOGO */}
         <Link
           to={routes.home}
-          className="brand-logo text-[var(--text)] font-black text-xl shrink-0"
+          className="brand-logo group relative z-10 flex items-center gap-1 focus:outline-none"
+          aria-label={labels.brand}
         >
-          {labels.brand}
+          {/* Accent Glow (Subtle) */}
+          <div className="absolute -inset-2 bg-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+
+          {/* Text Mark */}
+          <div className="relative flex items-center font-bold text-xl tracking-wide text-[var(--text)]">
+            <span>{labels.brand.replace(" PDF", "")}</span>
+            <span className="text-cyan-500 ml-[1px]">PDF</span>
+          </div>
         </Link>
 
         {/* ✅ Desktop Navigation */}

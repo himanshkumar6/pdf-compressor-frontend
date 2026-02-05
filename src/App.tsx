@@ -62,6 +62,7 @@ declare global {
 }
 
 import { TOOL_ROUTES_SET } from "./data/pages";
+import NavigationPageLoader from "./components/NavigationPageLoader";
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -88,6 +89,9 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* ✅ Premium Centered Navigation Loader */}
+      <NavigationPageLoader />
+
       {/* ✅ Background */}
       <ParticlesBG />
 
