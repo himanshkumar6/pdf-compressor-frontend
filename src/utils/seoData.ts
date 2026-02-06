@@ -13,6 +13,8 @@ export type PageSEO = {
     name: string;
     url: string;
     description: string;
+    applicationCategory?: string;
+    operatingSystem?: string;
   };
 };
 
@@ -208,6 +210,19 @@ export const PAGES_SEO: Record<string, PageSEO> = {
     },
   },
 
+  "/edit-pdf": {
+    title: "Edit PDF Online – Add Text, Modify PDF Free (Secure)",
+    description: "Edit PDF online for free. Add text, modify documents, and update PDFs securely in your browser. No signup required. Fast & private.",
+    canonical: `${SITE.baseUrl}/edit-pdf`,
+    jsonLd: {
+      name: "Edit PDF Online",
+      url: `${SITE.baseUrl}/edit-pdf`,
+      description: "A free, secure, browser-based PDF editor to add text and modify documents.",
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Windows, Mac, Linux, Android, iOS",
+    },
+  },
+
   "/compress-pdf-to-100kb": {
     title: "Compress PDF to 100KB Online (Free & Fast PDF Smallizer)",
     description:
@@ -277,6 +292,33 @@ export const PAGES_SEO: Record<string, PageSEO> = {
       name: "PDF to JPG Converter",
       url: `${SITE.baseUrl}/pdf-to-jpg`,
       description: "Convert PDF pages into high-quality JPG images securely in-browser.",
+    },
+  },
+
+  "/jpg-to-pdf": {
+    title: "JPG to PDF Converter - Convert Images to PDF Online (Free)",
+    description: "Convert JPG to PDF online for free. Merge multiple images into one PDF document securely in your browser. No signup required. Fast & Private.",
+    canonical: `${SITE.baseUrl}/jpg-to-pdf`,
+    faqs: [
+      {
+        question: "How to convert JPG to PDF online for free?",
+        answer: "Just open our tool, select your images, and click convert. It's completely free and works in your browser without any software installation.",
+      },
+      {
+        question: "Can I merge multiple images into one PDF?",
+        answer: "Yes! You can select multiple JPGs at once, rearrange them, and we will combine them into a single multi-page PDF document.",
+      },
+      {
+        question: "Is it safe to convert my photos here?",
+        answer: "Yes, extremely safe. We use client-side technology, meaning your photos are processed on your device and are never uploaded to our servers.",
+      },
+    ],
+    jsonLd: {
+      name: "JPG to PDF Converter",
+      url: `${SITE.baseUrl}/jpg-to-pdf`,
+      description: "Convert and merge JPG/PNG images into PDF format securely.",
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Windows, Mac, Linux, Android, iOS",
     },
   },
 
@@ -557,6 +599,33 @@ export const PAGES_SEO: Record<string, PageSEO> = {
       name: "Remove Metadata from PDF",
       url: `${SITE.baseUrl}/remove-metadata-from-pdf`,
       description: "Remove hidden metadata from PDF online securely without uploads.",
+    },
+  },
+
+  "/resize-pdf-200kb": {
+    title: "Resize PDF to 200KB Online - Reduce File Size (Free & Secure)",
+    description: "Resize PDF to 200KB online for free. Reduce PDF file size to under 200KB for SSC, UPSC, and government form uploads. Privacy-first, no quality loss.",
+    canonical: `${SITE.baseUrl}/resize-pdf-200kb`,
+    faqs: [
+      {
+        question: "How to resize PDF to 200KB?",
+        answer: "Upload your file, select '200KB' as the target size, and our tool will automatically resize the PDF while maintaining the best possible quality.",
+      },
+      {
+        question: "What is the difference between resize and compress?",
+        answer: "Technically they are similar, but 'resizing' often refers to changing dimensions or strict byte-limit targets (like 200KB), while compression focuses on general size reduction.",
+      },
+      {
+        question: "Can I resize PDF without losing quality?",
+        answer: "Yes, our smart engine removes unnecessary metadata and optimizes fonts so the visual quality remains high even at lower file sizes.",
+      },
+    ],
+    jsonLd: {
+      name: "Resize PDF to 200KB",
+      url: `${SITE.baseUrl}/resize-pdf-200kb`,
+      description: "Resize and reduce PDF file size to specifically under 200KB for government portals.",
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Windows, Mac, Linux, Android, iOS",
     },
   },
 

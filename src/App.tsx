@@ -1,11 +1,15 @@
-import React, { Suspense, useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import ParticlesBG from "./components/ParticlesBG";
+import NavigationPageLoader from "./components/NavigationPageLoader";
 
+// ✅ Layouts
+import MainLayout from "./layouts/MainLayout";
+import ToolLayout from "./layouts/ToolLayout";
+
+// ✅ Main Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -15,12 +19,10 @@ import Disclaimer from "./pages/Disclaimer";
 import Sitemap from "./pages/Sitemap";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
-import RemoveMetadataFromPdf from "./pages/RemoveMetadataFromPdf";
 
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 
-// ✅ Tool Pages
 // ✅ Tool Pages
 import CompressPdf from "./pages/CompressPDF";
 import ScannedPdfCompressor from "./pages/ScannedPdfCompressor";
@@ -28,8 +30,12 @@ import ScannedPdfTo200kb from "./pages/ScannedPdfTo200kb";
 import PdfToJpg from "./pages/PdfToJpg";
 import MergePdf from "./pages/MergePdf";
 import SplitPdf from "./pages/SplitPdf";
+import EditPdf from "./pages/EditPdf";
 import ResizePdfInKb from "./pages/ResizePdfInKb";
 import ResizePdfInMb from "./pages/ResizePdfInMb";
+import ResizePdf200kb from "./pages/ResizePdf200kb";
+import RemoveMetadataFromPdf from "./pages/RemoveMetadataFromPdf";
+import JpgToPdf from "./pages/JpgToPdf";
 
 // ✅ Russian Pages
 import HomeRu from "./pages/ru/Home";
@@ -59,22 +65,8 @@ declare global {
   }
 }
 
-import { TOOL_ROUTES_SET } from "./data/pages";
-import NavigationPageLoader from "./components/NavigationPageLoader";
-
 const App: React.FC = () => {
   const location = useLocation();
-
-  // ✅ Normalize pathname (remove trailing slash)
-  const normalizedPath = useMemo(() => {
-    const p = location.pathname.replace(/\/$/, "");
-    return p === "" ? "/" : p;
-  }, [location.pathname]);
-
-  // ✅ Tool pages par navbar/footer hide
-  const isToolPage = useMemo(() => {
-    return TOOL_ROUTES_SET.has(normalizedPath);
-  }, [normalizedPath]);
 
   // ✅ GA4 SPA page_view tracking (Realtime fix)
   useEffect(() => {
@@ -93,13 +85,13 @@ const App: React.FC = () => {
       {/* ✅ Background */}
       <ParticlesBG />
 
-      {/* ✅ Foreground */}
+      {/* ✅ Focal Layer */}
       <div className="relative z-10 flex min-h-screen flex-col">
-        {!isToolPage && <Navbar />}
-
-        <main className={`grow ${isToolPage ? "py-10" : ""}`}>
-          <Routes>
-            {/* ✅ Main Pages */}
+        <Routes>
+          {/* =========================================
+              MAIN LAYOUT ROUTES (Navbar + Footer)
+          ========================================= */}
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
@@ -109,38 +101,10 @@ const App: React.FC = () => {
             <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/tools" element={<Tools />} />
 
-            {/* ✅ Blog */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
 
-            {/* ✅ Tool Pages */}
-            <Route path="/compress-pdf" element={<CompressPdf />} />
-            <Route path="/compress-pdf-to-50kb" element={<ResizePdfInKb initialLimit={50} routeKey="/compress-pdf-to-50kb" />} />
-            <Route path="/compress-pdf-to-100kb" element={<ResizePdfInKb initialLimit={100} routeKey="/compress-pdf-to-100kb" />} />
-            <Route path="/compress-pdf-to-150kb" element={<ResizePdfInKb initialLimit={150} routeKey="/compress-pdf-to-150kb" />} />
-            <Route path="/compress-pdf-to-200kb" element={<ResizePdfInKb initialLimit={200} routeKey="/compress-pdf-to-200kb" />} />
-            <Route path="/compress-pdf-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/compress-pdf-to-500kb" />} />
-            <Route path="/compress-pdf-to-1mb" element={<ResizePdfInKb initialLimit={1000} routeKey="/compress-pdf-to-1mb" />} />
-            <Route path="/reduce-pdf-size-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/reduce-pdf-size-to-500kb" />} />
-            <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
-            <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
-            <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
-            <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
-            <Route path="/merge-pdf" element={<MergePdf />} />
-            <Route path="/merge-pdf-mac" element={<MergePdf routeKey="/merge-pdf-mac" />} />
-            <Route path="/merge-pdf-windows" element={<MergePdf routeKey="/merge-pdf-windows" />} />
-            <Route path="/merge-pdf-linux" element={<MergePdf routeKey="/merge-pdf-linux" />} />
-            <Route path="/split-pdf" element={<SplitPdf />} />
-            <Route path="/split-pdf-mac" element={<SplitPdf routeKey="/split-pdf-mac" />} />
-            <Route path="/split-pdf-windows" element={<SplitPdf routeKey="/split-pdf-windows" />} />
-            <Route path="/split-pdf-adobe" element={<SplitPdf routeKey="/split-pdf-adobe" />} />
-            <Route path="/split-pdf-by-pages" element={<SplitPdf routeKey="/split-pdf-by-pages" />} />
-            <Route path="/split-pdf-online" element={<SplitPdf routeKey="/split-pdf-online" />} />
-            <Route path="/resize-pdf-kb" element={<ResizePdfInKb />} />
-            <Route path="/resize-pdf-mb" element={<ResizePdfInMb />} />
-            <Route path="/compress-pdf-to-20kb" element={<ResizePdfInKb initialLimit={20} routeKey="/compress-pdf-to-20kb" />} />
-
-            {/* ✅ Russian Pages (RU) */}
+            {/* Russian Main Pages */}
             <Route path="/ru" element={<HomeRu />} />
             <Route path="/ru/o-nas" element={<AboutRu />} />
             <Route path="/ru/kontakty" element={<ContactRu />} />
@@ -150,7 +114,50 @@ const App: React.FC = () => {
             <Route path="/ru/instrumenty" element={<ToolsRu />} />
             <Route path="/ru/blog" element={<div className="min-h-screen pt-32 text-center text-white text-3xl font-bold">Блог скоро будет...</div>} />
 
-            {/* ✅ Russian Tool Pages */}
+            {/* 404 - Show inside layout? Or outside? Usually inside. */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+          {/* =========================================
+              TOOL LAYOUT ROUTES (Minimal Header)
+          ========================================= */}
+          <Route element={<ToolLayout />}>
+            {/* Compress Group */}
+            <Route path="/compress-pdf" element={<CompressPdf />} />
+            <Route path="/compress-pdf-to-50kb" element={<ResizePdfInKb initialLimit={50} routeKey="/compress-pdf-to-50kb" />} />
+            <Route path="/compress-pdf-to-100kb" element={<ResizePdfInKb initialLimit={100} routeKey="/compress-pdf-to-100kb" />} />
+            <Route path="/compress-pdf-to-150kb" element={<ResizePdfInKb initialLimit={150} routeKey="/compress-pdf-to-150kb" />} />
+            <Route path="/compress-pdf-to-200kb" element={<ResizePdfInKb initialLimit={200} routeKey="/compress-pdf-to-200kb" />} />
+            <Route path="/compress-pdf-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/compress-pdf-to-500kb" />} />
+            <Route path="/compress-pdf-to-1mb" element={<ResizePdfInKb initialLimit={1000} routeKey="/compress-pdf-to-1mb" />} />
+            <Route path="/reduce-pdf-size-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/reduce-pdf-size-to-500kb" />} />
+            <Route path="/compress-pdf-to-20kb" element={<ResizePdfInKb initialLimit={20} routeKey="/compress-pdf-to-20kb" />} />
+
+            <Route path="/resize-pdf-kb" element={<ResizePdfInKb />} />
+            <Route path="/resize-pdf-200kb" element={<ResizePdf200kb />} />
+            <Route path="/resize-pdf-mb" element={<ResizePdfInMb />} />
+
+            <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
+            <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
+            <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
+
+            <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
+            <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
+            <Route path="/merge-pdf" element={<MergePdf />} />
+            <Route path="/merge-pdf-mac" element={<MergePdf routeKey="/merge-pdf-mac" />} />
+            <Route path="/merge-pdf-windows" element={<MergePdf routeKey="/merge-pdf-windows" />} />
+            <Route path="/merge-pdf-linux" element={<MergePdf routeKey="/merge-pdf-linux" />} />
+
+            <Route path="/split-pdf" element={<SplitPdf />} />
+            <Route path="/split-pdf-mac" element={<SplitPdf routeKey="/split-pdf-mac" />} />
+            <Route path="/split-pdf-windows" element={<SplitPdf routeKey="/split-pdf-windows" />} />
+            <Route path="/split-pdf-adobe" element={<SplitPdf routeKey="/split-pdf-adobe" />} />
+            <Route path="/split-pdf-by-pages" element={<SplitPdf routeKey="/split-pdf-by-pages" />} />
+            <Route path="/split-pdf-online" element={<SplitPdf routeKey="/split-pdf-online" />} />
+
+            <Route path="/edit-pdf" element={<EditPdf />} />
+
+            {/* Russian Tool Pages */}
             <Route path="/ru/szhat-pdf" element={<SzhatPdf />} />
             <Route path="/ru/szhat-pdf-do-50kb" element={<SzhatPdfDo50kb />} />
             <Route path="/ru/szhat-pdf-do-100kb" element={<SzhatPdfDo100kb />} />
@@ -162,17 +169,9 @@ const App: React.FC = () => {
             <Route path="/ru/szhat-skanirovannyj-pdf" element={<SzhatSkanirovannyjPdf />} />
             <Route path="/ru/szhat-skanirovannyj-pdf-do-200kb" element={<SzhatSkanirovannyjPdfDo200kb />} />
             <Route path="/ru/udalit-metadannye-pdf" element={<UdalitMetadannyePdf />} />
+          </Route>
 
-            {/* ✅ fallback */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-
-        {!isToolPage && (
-          <Suspense fallback={<div className="h-20" />}>
-            <Footer />
-          </Suspense>
-        )}
+        </Routes>
       </div>
 
       {/* ✅ Toast */}

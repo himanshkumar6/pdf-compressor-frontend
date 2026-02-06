@@ -14,7 +14,7 @@ import {
 export type ToolCategory =
   | "Compress & Resize"
   | "Convert"
-  | "Edit & Organize"
+  | "PDF Editing Tools"
   | "Security & Utility";
 
 export interface Tool {
@@ -53,12 +53,12 @@ export const TOOL_CATEGORIES_INFO = [
     },
   },
   {
-    name: "Edit & Organize" as ToolCategory,
-    description: "Merge, split, and rearrange PDF pages.",
+    name: "PDF Editing Tools" as ToolCategory,
+    description: "Edit, Merge, split, and rearrange PDF pages.",
     icon: Layers,
     ru: {
-      name: "Редактирование и организация",
-      description: "Объединяйте, разделяйте и меняйте порядок страниц PDF.",
+      name: "Инструменты редактирования PDF",
+      description: "Редактируйте, объединяйте, разделяйте и меняйте порядок страниц PDF.",
     },
   },
   {
@@ -202,6 +202,21 @@ export const TOOLS_REGISTRY: Tool[] = [
     },
   },
   {
+    id: "resize-pdf-200kb",
+    title: "Resize PDF to 200KB",
+    slug: "/resize-pdf-200kb",
+    category: "Compress & Resize",
+    icon: Zap,
+    shortDescription: "Resize PDF file size to 200KB instantly.",
+    isActive: true,
+    isNew: true,
+    ru: {
+      title: "Размер PDF 200 КБ",
+      slug: "/ru/razmer-pdf-200kb",
+      shortDescription: "Измените размер PDF до 200 КБ.",
+    },
+  },
+  {
     id: "resize-pdf-mb",
     title: "Resize PDF in MB",
     slug: "/resize-pdf-mb",
@@ -261,13 +276,43 @@ export const TOOLS_REGISTRY: Tool[] = [
       shortDescription: "Преобразуйте страницы PDF в четкие изображения JPG.",
     },
   },
+  {
+    id: "jpg-to-pdf",
+    title: "JPG to PDF",
+    slug: "/jpg-to-pdf",
+    category: "Convert",
+    icon: ImageIcon,
+    shortDescription: "Convert images to PDF documents instantly.",
+    isActive: true,
+    isNew: true,
+    ru: {
+      title: "JPG в PDF",
+      slug: "/ru/jpg-v-pdf",
+      shortDescription: "Преобразование изображений в PDF.",
+    },
+  },
 
-  // 🟢 EDIT & ORGANIZE
+  // 🟢 PDF EDITING TOOLS
+  {
+    id: "edit-pdf",
+    title: "Edit PDF",
+    slug: "/edit-pdf",
+    category: "PDF Editing Tools",
+    icon: Scissors,
+    shortDescription: "Modify text, images, and pages in your PDF.",
+    isActive: true,
+    isNew: true,
+    ru: {
+      title: "Редактировать PDF",
+      slug: "/ru/redaktirovat-pdf",
+      shortDescription: "Изменяйте текст, изображения и страницы в PDF.",
+    },
+  },
   {
     id: "merge-pdf",
     title: "Merge PDF",
     slug: "/merge-pdf",
-    category: "Edit & Organize",
+    category: "PDF Editing Tools",
     icon: Layers,
     shortDescription: "Combine multiple PDFs into one single file.",
     isActive: true,
@@ -282,7 +327,7 @@ export const TOOLS_REGISTRY: Tool[] = [
     id: "split-pdf",
     title: "Split PDF",
     slug: "/split-pdf",
-    category: "Edit & Organize",
+    category: "PDF Editing Tools",
     icon: Scissors,
     shortDescription: "Extract specific pages from your document.",
     isActive: true,
