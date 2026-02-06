@@ -170,10 +170,10 @@ const MergePdfContent: React.FC = () => {
   );
 };
 
-const MergePdf: React.FC = () => (
+const MergePdf: React.FC<{ routeKey?: string }> = ({ routeKey = "/merge-pdf" }) => (
   <ToolErrorBoundary toolName="Merge PDF">
     <ToolLandingPage
-      routeKey="/merge-pdf"
+      routeKey={routeKey}
       heading={<>Merge <span className="text-blue-400">PDF</span> Documents</>}
       tagline="Combine certificates and forms effortlessly • Private • Fast"
     >

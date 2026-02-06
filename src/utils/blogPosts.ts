@@ -1919,6 +1919,68 @@ export const BLOG_POSTS: BlogPost[] = [
 <p>Stop worrying about bounce-back emails and slow uploads. Choose the method that fits your workflow and keep your documents moving!</p>
 `,
   },
+  {
+    slug: "ssc-photo-resize-50kb-guide",
+    title: "SSC Photo Resize Guide: Photo को 50KB में Resize और Compress कैसे करें (2026)",
+    date: "2026-02-06",
+    author: "Himanshu",
+
+    metaTitle: "SSC Photo Resize Guide: 50KB Photo Fix for SSC Exams (Free)",
+    metaDescription:
+      "SSC registration में photo reject हो रहा है? Photo को 50KB में resize और compress करने का step-by-step guide. Free online tool se fix karein.",
+
+    coverImage: "/blog/ssc-photo-resize-50kb.jpg",
+    excerpt:
+      "SSC forms में photo upload reject होने का सबसे बड़ा reason incorrect size (50KB limit) होता है. इस guide में photo resize करने का सबसे आसान तरीका है.",
+
+    primaryKeyword: "ssc photo resize to 50kb",
+    secondaryKeywords: [
+      "ssc photo size limit",
+      "resize photo for ssc exam",
+      "ssc registration photo upload error",
+      "compress photo to 50kb online",
+      "ssc photo dimensions fix",
+    ],
+
+    contentHtml: optimizeContentHtml(`
+<h2>SSC Photo Resize Guide: Photo को 50KB में Resize और Compress कैसे करें</h2>
+
+<p>Staff Selection Commission (SSC) ka naya registration portal launch ho chuka hai, lekin students ke liye ek purani pareshani waisi hi bani hui hai: <strong>Photo aur Signature upload error</strong>. SSC ke exams (CGL, CHSL, MTS) mein photo upload karte waqt sabse jyada log "File size exceeds 50KB" ka error face karte hain.</p>
+
+<p>Agar aapka photo 51KB ka bhi hai, toh system use reject kar dega. Iska matlab ye hai ki aapko apne photo ko exactly <strong>20KB se 50KB</strong> ke beech rakhna hota hai. Is guide mein hum aapko batayenge ki bina cyber cafe gaye, aap apne mobile se hi <strong>ssc photo resize to 50kb</strong> kaise kar sakte hain.</p>
+
+<h2>SSC Photo Requirements 2026 (Quick Check)</h2>
+<p>Form bharne se pehle ye verify kar lein ki aapka photo in standards par khara utarta hai:</p>
+<ul>
+  <li><strong>Size Limit:</strong> 20 KB to 50 KB.</li>
+  <li><strong>Format:</strong> JPEG / JPG.</li>
+  <li><strong>Dimensions:</strong> 3.5 cm (width) x 4.5 cm (height).</li>
+  <li><strong>Background:</strong> Light background (White preferred) and without cap or spectacles.</li>
+</ul>
+
+<h2>Step-by-Step: SSC Photo Ko 50KB Mein Kaise Resize Karein</h2>
+<ol>
+  <li>Apne phone ke camera se ek saaf photo lerein ya existing photo select karein.</li>
+  <li>Hamare <a href="https://compresspdfto200kb.online/compress-pdf-to-200kb">Online Image Compressor</a> (which also handles PDFs) ya kisi reliable tool par upload karein.</li>
+  <li>Compression quality ko is tarah adjust karein ki size 40KB ke aas-paas aa jaye.</li>
+  <li>File download karein aur ensure karein ki face saaf dikh raha hai.</li>
+</ol>
+
+<p><strong>Pro Tip:</strong> Agar aapka photo scan heavy hai (MBs mein), toh directly upload karne par result dhundhla ho sakta hai. Pehle photo ko crop karein taaki sirf face aur shoulders dikhein, isse size naturally kam ho jayega.</p>
+
+<h2>Common Reasons for SSC Photo Rejection</h2>
+<p>Bahut se aspirants ka admit card sirf isliye nahi aata kyunki unka photo reject ho jata hai. In baaton ka dhyan rakhein:</p>
+<ul>
+  <li><strong>Spectacles (Chashma):</strong> Agar aap daily chashma pehente hain, tab bhi photo bina chashme ke honi chahiye.</li>
+  <li><strong>Old Photo:</strong> Photo 3 mahine se purani nahi honi chahiye.</li>
+  <li><strong>Selfie:</strong> Kabhi bhi selfie upload na karein, ye instant rejection ka karan banti hai.</li>
+</ul>
+
+<p>Aap hamare homepage par jakar baki documents (certificates, marksheets) ko bhi 200KB limit mein compress kar sakte hain. SSC portal par documents ke liye <a href="https://compresspdfto200kb.online/split-pdf">Split PDF</a> tool bhi bahut kaam aata hai agar aapne ek hi file mein sab kuch scan kar liya hai.</p>
+
+<p><strong>Disclaimer:</strong> This article is for informational purposes only. Always check the official SSC notification for the latest rules.</p>
+`),
+  },
 ];
 
 /**

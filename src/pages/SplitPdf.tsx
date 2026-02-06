@@ -308,12 +308,16 @@ const SplitPdfContent: React.FC = () => {
   );
 };
 
-const SplitPdf: React.FC = () => (
+interface SplitPdfProps {
+  routeKey?: string;
+}
+
+const SplitPdf: React.FC<SplitPdfProps> = ({ routeKey = "/split-pdf" }) => (
   <ToolErrorBoundary toolName="Split PDF">
     <ToolLandingPage
-      routeKey="/split-pdf"
-      heading={<>Split <span className="text-orange-400">PDF</span> Online</>}
-      tagline="Extract specific pages manually or by range • Private • Fast"
+      routeKey={routeKey}
+      heading={<>Split <span className="text-orange-400">PDF</span> Documents & Extract Pages Instantly</>}
+      tagline="100% Private • No Upload Required • Safe for Government Forms"
     >
       <SplitPdfContent />
     </ToolLandingPage>

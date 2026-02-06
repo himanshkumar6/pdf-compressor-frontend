@@ -23,13 +23,6 @@ import BlogPost from "./pages/BlogPost";
 // ✅ Tool Pages
 // ✅ Tool Pages
 import CompressPdf from "./pages/CompressPDF";
-import CompressTo50kb from "./pages/CompressTo50kb";
-import CompressTo100kb from "./pages/CompressTo100kb";
-import CompressTo150kb from "./pages/CompressTo150kb";
-import CompressTo200kb from "./pages/CompressTo200kb";
-import CompressTo500kb from "./pages/CompressTo500kb";
-import CompressTo1mb from "./pages/CompressTo1mb";
-import ReducePdfSizeTo500kb from "./pages/ReducePdfSizeTo500kb";
 import ScannedPdfCompressor from "./pages/ScannedPdfCompressor";
 import ScannedPdfTo200kb from "./pages/ScannedPdfTo200kb";
 import PdfToJpg from "./pages/PdfToJpg";
@@ -122,21 +115,30 @@ const App: React.FC = () => {
 
             {/* ✅ Tool Pages */}
             <Route path="/compress-pdf" element={<CompressPdf />} />
-            <Route path="/compress-pdf-to-50kb" element={<CompressTo50kb />} />
-            <Route path="/compress-pdf-to-100kb" element={<CompressTo100kb />} />
-            <Route path="/compress-pdf-to-150kb" element={<CompressTo150kb />} />
-            <Route path="/compress-pdf-to-200kb" element={<CompressTo200kb />} />
-            <Route path="/compress-pdf-to-500kb" element={<CompressTo500kb />} />
-            <Route path="/compress-pdf-to-1mb" element={<CompressTo1mb />} />
-            <Route path="/reduce-pdf-size-to-500kb" element={<ReducePdfSizeTo500kb />} />
+            <Route path="/compress-pdf-to-50kb" element={<ResizePdfInKb initialLimit={50} routeKey="/compress-pdf-to-50kb" />} />
+            <Route path="/compress-pdf-to-100kb" element={<ResizePdfInKb initialLimit={100} routeKey="/compress-pdf-to-100kb" />} />
+            <Route path="/compress-pdf-to-150kb" element={<ResizePdfInKb initialLimit={150} routeKey="/compress-pdf-to-150kb" />} />
+            <Route path="/compress-pdf-to-200kb" element={<ResizePdfInKb initialLimit={200} routeKey="/compress-pdf-to-200kb" />} />
+            <Route path="/compress-pdf-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/compress-pdf-to-500kb" />} />
+            <Route path="/compress-pdf-to-1mb" element={<ResizePdfInKb initialLimit={1000} routeKey="/compress-pdf-to-1mb" />} />
+            <Route path="/reduce-pdf-size-to-500kb" element={<ResizePdfInKb initialLimit={500} routeKey="/reduce-pdf-size-to-500kb" />} />
             <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
             <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
             <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
             <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
             <Route path="/merge-pdf" element={<MergePdf />} />
+            <Route path="/merge-pdf-mac" element={<MergePdf routeKey="/merge-pdf-mac" />} />
+            <Route path="/merge-pdf-windows" element={<MergePdf routeKey="/merge-pdf-windows" />} />
+            <Route path="/merge-pdf-linux" element={<MergePdf routeKey="/merge-pdf-linux" />} />
             <Route path="/split-pdf" element={<SplitPdf />} />
+            <Route path="/split-pdf-mac" element={<SplitPdf routeKey="/split-pdf-mac" />} />
+            <Route path="/split-pdf-windows" element={<SplitPdf routeKey="/split-pdf-windows" />} />
+            <Route path="/split-pdf-adobe" element={<SplitPdf routeKey="/split-pdf-adobe" />} />
+            <Route path="/split-pdf-by-pages" element={<SplitPdf routeKey="/split-pdf-by-pages" />} />
+            <Route path="/split-pdf-online" element={<SplitPdf routeKey="/split-pdf-online" />} />
             <Route path="/resize-pdf-kb" element={<ResizePdfInKb />} />
             <Route path="/resize-pdf-mb" element={<ResizePdfInMb />} />
+            <Route path="/compress-pdf-to-20kb" element={<ResizePdfInKb initialLimit={20} routeKey="/compress-pdf-to-20kb" />} />
 
             {/* ✅ Russian Pages (RU) */}
             <Route path="/ru" element={<HomeRu />} />

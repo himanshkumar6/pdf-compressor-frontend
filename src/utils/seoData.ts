@@ -190,9 +190,21 @@ export const PAGES_SEO: Record<string, PageSEO> = {
       "Compress PDF to 50KB online. Perfect for strict signature and photo upload limits on NSP, SSC, and govt scholarship portals. Safe browser-only processing.",
     canonical: `${SITE.baseUrl}/compress-pdf-to-50kb`,
     jsonLd: {
-      name: "Compress PDF to 50KB",
-      url: `${SITE.baseUrl}/compress-pdf-to-50kb`,
-      description: "Reduce PDF size to 50KB online for free.",
+      name: "Compress PDF to 100KB",
+      url: `${SITE.baseUrl}/compress-pdf-to-100kb`,
+      description: "Reduce PDF size to 100KB online for free.",
+    },
+  },
+
+  "/compress-pdf-to-20kb": {
+    title: "Compress PDF to 20KB Online Free | Reduce PDF Size for Mobile",
+    description:
+      "Compress PDF to 20KB online instantly. Ideal for small signature upload limits on SSC, UPSC and State Govt job portals. Private in-browser processing.",
+    canonical: `${SITE.baseUrl}/compress-pdf-to-20kb`,
+    jsonLd: {
+      name: "Compress PDF to 20kb",
+      url: `${SITE.baseUrl}/compress-pdf-to-20kb`,
+      description: "Reduce PDF size to 20KB online for free.",
     },
   },
 
@@ -273,6 +285,48 @@ export const PAGES_SEO: Record<string, PageSEO> = {
     description:
       "Merge multiple PDF files into one document instantly. Perfect for combining marksheets and certificates for government portals. Safe and 100% free.",
     canonical: `${SITE.baseUrl}/merge-pdf`,
+    faqs: [
+      {
+        question: "How to merge PDF files Mac?",
+        answer: "Honestly, if you're tryin' to figure out how to merge pdf files mac style, most people tell you to use the built-in apps. It's okay, but can be a bit of a click-fest if you have more than two files. If you want a zero-install way that's actually faster, just use our Merge PDF tool. It works right in Safari or Chrome on your Macbook, and you don't have to fiddle with sidebar thumbnails or hidden menus.",
+      },
+      {
+        question: "How to merge PDF documents in Preview?",
+        answer: "Look, knowing how to merge pdf documents in preview is a good skill for Mac users, but dragging those tiny pages in the sidebar is super annoying if you have a bunch of files. Most of us just want to get it over with. Our online PDF combiner is way easier—just drop 'em all at once and you're good to go. No dragging required.",
+      },
+      {
+        question: "Mail merge PDF?",
+        answer: "If you're doing a mail merge pdf for work and end up with like fifty separate files, you probably need them in one big doc to print or save. Instead of clicking 'Save as PDF' on every single one, just run your merge and then use our Merge PDF utility to stack them up. It saves a ton of time whether you're on Windows or a Mac.",
+      },
+      {
+        question: "How to merge PDF documents Acrobat style?",
+        answer: "Acrobat is expensive, let's be real. If you don't have the paid Pro version, you can't even merge pdf documents acrobat style without that annoying 'Start Free Trial' popup. Skip the subscription and use our free tool. It does the same exact thing without asking for your credit card.",
+      },
+      {
+        question: "Linux merge PDF?",
+        answer: "For the Linux folks, yeah you can use Ghostscript or PDFtk, but let's be honest—remembering the command line syntax for a linux merge pdf task is just a pain. If you're using Ubuntu or Fedora and just want a quick GUI, our Merge PDF online tool works perfectly in Firefox. It's 100% private too, so your data stays safe.",
+      },
+      {
+        question: "How to merge PDF files on Mac?",
+        answer: "A lot of people keep asking how to merge pdf files on mac because the built-in way is kinda hidden inside the Quick Actions menu. If you can't find it or it's being buggy (which happens sometimes), our site is always up. Just upload, merge, and download—it literally takes like 5-10 seconds tops.",
+      },
+      {
+        question: "How to mail merge PDF documents?",
+        answer: "Trying to figure out how to mail merge pdf documents in Word or Excel can be tricky because you usually get separate PDFs for each person. Our tool helps you combine those individual results into one final report for your records or for emailing out as one file.",
+      },
+      {
+        question: "How to merge PDF files in Windows?",
+        answer: "Windows doesn't really have a built-in 'Preview' app like Mac does, so how to merge pdf files in windows is a constant headache for most. You usually end up downloading some random app that probably has viruses. Don't do that. Just use our secure Merge PDF tool. It’s clean, fast, and stays entirely in your browser memory.",
+      },
+      {
+        question: "Merge PDF files Mac OS",
+        answer: "Whether you're on the new Sequoia or some older version, to merge pdf files mac os provides a few ways, but they keep changing where the buttons are. Our online merger is consistent. Works perfectly on any iMac or MacBook without needing to learn whatever new thing Apple changed this year.",
+      },
+      {
+        question: "Dropbox merge PDF?",
+        answer: "If you got a bunch of files in a shared folder, doing a dropbox merge pdf manually means downloading everything, merging, and re-uploading. If you use our site, you just drag the files directly from your sync folder to the browser and it combines them instantly. Super simple.",
+      },
+    ],
     jsonLd: {
       name: "Merge PDF Tool",
       url: `${SITE.baseUrl}/merge-pdf`,
@@ -281,14 +335,180 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   },
 
   "/split-pdf": {
-    title: "Split PDF Online - Extract Specific Pages for Free",
+    title: "Split PDF Online - Extract Pages & Separate PDF Files (Free & Private)",
     description:
-      "Split PDF files and extract specific pages online. Select pages visually to create a new PDF. 100% private, browser-based tool for all your document needs.",
+      "Easily split PDF files into multiple documents or extract specific pages online. 100% private, browser-based, and free. No upload needed for Acrobat-style splitting.",
     canonical: `${SITE.baseUrl}/split-pdf`,
+    faqs: [
+      {
+        question: "How do I split PDF pages without paying for a subscription?",
+        answer: "Honestly, you don't need a pro editor. If you're wondering how do i split pdf pages quickly, just use our Split PDF tool. It's totally free, and because it runs in your browser, it's actually faster than most paid software. Just select the pages you want and hit extract—it’s that simple.",
+      },
+      {
+        question: "What is the best way to split PDF in Preview Mac?",
+        answer: "If you have a MacBook and want to split pdf in preview mac, you usually have to drag pages one by one to your desktop. It’s okay for one page, but if you have a big file, it’s much easier to just drop it here and click the pages you need visually. No more messy desktops!",
+      },
+      {
+        question: "How to split PDF Adobe Acrobat style?",
+        answer: "Everyone wants to know how to split pdf adobe acrobat style but without the huge monthly bill. Our tool gives you that same 'Extract' and 'Split' functionality you'd find in the acrobat pro dc split pdf menu. You get high-quality separate files without the Adobe price tag or annoying login requirements.",
+      },
+      {
+        question: "How to split PDF by pages for government forms?",
+        answer: "When you're applying for a job or a scholarship and the portal only wants your 'Page 3' certificate, you need to know how to split pdf by pages instantly. Just upload your multi-page scan here, click the specific page you need, and download it as a new file. It stays 100% readable for official verification.",
+      },
+      {
+        question: "How to split PDF file into separate PDF files?",
+        answer: "If you have one big scan of all your documents and need to know how to split pdf file into separate pdf files, you've found the right spot. Our tool lets you select custom page ranges so you can turn one giant scan into five or ten individual PDFs in one go. Much better than re-scanning every single page!",
+      },
+      {
+        question: "How to split PDF file into multiple files on Windows?",
+        answer: "Windows doesn't have a built-in 'Preview' app like Mac, so knowing how to split pdf file into multiple files on PC can be a headache. Don't download random apps that might have viruses. Just use our secure Split PDF online tool. It works on any Windows 10 or 11 browser safely.",
+      },
+      {
+        question: "Can I split PDF in Adobe without a Pro account?",
+        answer: "It’s really hard to figure out how to split pdf in adobe if you only have the free Reader version (they usually gray out the button). Instead of getting frustrated, just use our Split PDF utility. It’s built to be a free alternative that just works, no strings attached.",
+      },
+      {
+        question: "Is it possible to split PDF pages into separate files on mobile?",
+        answer: "Yes! If you need to split pdf pages into separate files using your phone, our mobile-responsive tool is perfect. Whether you're at a cyber cafe or on the go, you can separate your certificates directly from your mobile storage without needing a computer.",
+      },
+      {
+        question: "What if I need to split a large PDF for a team project?",
+        answer: "If you're handling a massive report and need to extract pdf pages into separate files for different colleagues, our tool handles large files easily. It’s fast, keeps the formatting perfect, and ensures everyone gets exactly the pages they need.",
+      },
+      {
+        question: "How to evaluate the intelligent automation software company NICE on Split PDF?",
+        answer: "When enterprise users evaluate the intelligent automation software company nice on split pdf workflows, they're looking for high-end robotic processing. For most of us, though, we just need a simple, safe way to fix a PDF. Our tool is 'nice' and free, giving you that automated feel without the corporate complexity.",
+      },
+    ],
     jsonLd: {
       name: "Split PDF Tool",
       url: `${SITE.baseUrl}/split-pdf`,
       description: "Extract specific pages from PDF documents securely and for free.",
+    },
+  },
+
+  "/split-pdf-mac": {
+    title: "Split PDF in Preview Mac - How to Extract PDF Pages on Mac OS",
+    description: "Learn how to split PDF in Preview on Mac or use our faster online tool to extract PDF pages on Mac OS. Free, private, and simple step-by-step guide.",
+    canonical: `${SITE.baseUrl}/split-pdf-mac`,
+    faqs: [
+      {
+        question: "Is there a faster way than Preview to split a PDF on Mac?",
+        answer: "Yes, our online Split PDF tool is much faster for multi-page extractions than manually dragging pages in Preview.",
+      },
+    ],
+    jsonLd: {
+      name: "Split PDF Mac Guide",
+      url: `${SITE.baseUrl}/split-pdf-mac`,
+      description: "Guide to splitting PDF files on Mac OS.",
+    },
+  },
+
+  "/split-pdf-windows": {
+    title: "How to Split PDF File in Windows - Separate PDF Files Easily",
+    description: "Need to separate PDF files in Windows? Learn how to split PDF file into multiple files on Windows 10/11 using our private browser-based tool. No software required.",
+    canonical: `${SITE.baseUrl}/split-pdf-windows`,
+    jsonLd: {
+      name: "Split PDF Windows Guide",
+      url: `${SITE.baseUrl}/split-pdf-windows`,
+      description: "Guide to splitting PDF files on Windows.",
+    },
+  },
+
+  "/split-pdf-adobe": {
+    title: "Acrobat Pro DC Split PDF Alternative - Split PDF Free",
+    description: "Looking for an Acrobat Pro DC split PDF alternative? Split PDF files for free without a subscription. Professional-grade extraction tools right in your browser.",
+    canonical: `${SITE.baseUrl}/split-pdf-adobe`,
+    jsonLd: {
+      name: "Split PDF Adobe Alternative",
+      url: `${SITE.baseUrl}/split-pdf-adobe`,
+      description: "Free alternative to Adobe Acrobat for splitting PDFs.",
+    },
+  },
+
+  "/split-pdf-by-pages": {
+    title: "How to Split PDF by Pages - Extract Specific PDF Ranges Online",
+    description: "Learn how to split PDF by pages instantly. Select custom ranges or individual pages to extract from your document. Perfect for marksheets and certificates.",
+    canonical: `${SITE.baseUrl}/split-pdf-by-pages`,
+    jsonLd: {
+      name: "Split PDF by Pages Guide",
+      url: `${SITE.baseUrl}/split-pdf-by-pages`,
+      description: "Detailed guide on extracting specific ranges from PDFs.",
+    },
+  },
+
+  "/split-pdf-online": {
+    title: "Split PDF Online - Split PDF Pages into Separate Files (Private)",
+    description: "Split PDF pages into separate files online. Our private, browser-based tool is the most secure way to separate your important PDF documents for free.",
+    canonical: `${SITE.baseUrl}/split-pdf-online`,
+    jsonLd: {
+      name: "Split PDF Online Tool",
+      url: `${SITE.baseUrl}/split-pdf-online`,
+      description: "Secure online tool to split PDF pages.",
+    },
+  },
+
+  "/merge-pdf-mac": {
+    title: "How to Merge PDF Files on Mac Free - Mac OS PDF Combiner",
+    description: "Learn how to merge PDF files on Mac using Preview, Acrobat, or our free online tool. Step-by-step guide for Mac OS users to combine PDF documents.",
+    canonical: `${SITE.baseUrl}/merge-pdf-mac`,
+    faqs: [
+      {
+        question: "How to merge PDF files on Mac using just the mouse?",
+        answer: "You can use our merge pdf tool to drag and drop your files. It's much faster than manual methods when you need to merge pdf files on mac quickly.",
+      },
+      {
+        question: "Is there a free way to mail merge PDF documents on Mac?",
+        answer: "Yes! After you mail merge pdf documents using Word or Pages, use our tool to merge pdf online to combine those results into one file.",
+      },
+    ],
+    jsonLd: {
+      name: "Merge PDF Mac Guide",
+      url: `${SITE.baseUrl}/merge-pdf-mac`,
+      description: "Step-by-step guide to merge PDF files on Mac OS.",
+    },
+  },
+
+  "/merge-pdf-windows": {
+    title: "How to Merge PDF Files in Windows - Best Windows PDF Merger",
+    description: "Need to combine PDFs in Windows? Learn how to merge PDF files in Windows using Acrobat or our free, private online tool. Easy 3-step guide for PC users.",
+    canonical: `${SITE.baseUrl}/merge-pdf-windows`,
+    faqs: [
+      {
+        question: "How do I merge PDF documents Acrobat style on a work PC?",
+        answer: "If you can't install software, you can still merge pdf documents acrobat style by using our merge pdf tool directly in your browser.",
+      },
+      {
+        question: "Can I combine PDF files from my Dropbox on Windows?",
+        answer: "Yes, simply download your files and use our site to dropbox merge pdf files into one. Merge pdf online safely with us.",
+      },
+    ],
+    jsonLd: {
+      name: "Merge PDF Windows Guide",
+      url: `${SITE.baseUrl}/merge-pdf-windows`,
+      description: "Step-by-step guide to merge PDF files on Windows.",
+    },
+  },
+
+  "/merge-pdf-linux": {
+    title: "Linux Merge PDF Guide - Combine PDF Files on Linux Online",
+    description: "The ultimate guide to Linux merge PDF methods. Use command-line tools like Ghostscript or our private online PDF merger. Free, fast, and secure.",
+    canonical: `${SITE.baseUrl}/merge-pdf-linux`,
+    faqs: [
+      {
+        question: "Is there a way to mail merge PDF documents on Linux?",
+        answer: "While Linux offers many scripts, it's often hard to mail merge pdf documents correctly. Use our merge pdf tool to combine the results of your scripts easily.",
+      },
+      {
+        question: "How to merge PDF files in Windows vs Linux?",
+        answer: "While the methods differ locally, our tool provides a unified way to merge pdf online regardless of the OS. Whether you need to merge pdf files in windows or Linux, combine pdf files seamlessly here.",
+      },
+    ],
+    jsonLd: {
+      name: "Merge PDF Linux Guide",
+      url: `${SITE.baseUrl}/merge-pdf-linux`,
+      description: "Step-by-step guide to merge PDF files on Linux.",
     },
   },
 

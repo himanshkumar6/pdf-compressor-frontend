@@ -1,23 +1,31 @@
 import ToolLandingPage from "../components/ToolLandingPage";
 
-export default function ResizePdfInKb() {
+interface ResizePdfInKbProps {
+  initialLimit?: number;
+  routeKey?: string;
+}
+
+export default function ResizePdfInKb({
+  initialLimit = 100,
+  routeKey = "/resize-pdf-kb",
+}: ResizePdfInKbProps) {
   return (
     <ToolLandingPage
-      routeKey="/resize-pdf-kb"
+      routeKey={routeKey}
       heading={
         <>
-          Resize PDF in <span className="text-cyan-400">KB</span>
+          Resize PDF to <span className="text-cyan-400">{initialLimit}KB</span>
         </>
       }
-      tagline="Target specific KB limits • Browser processing • Safe & Secure"
-      defaultTargetSize={100}
+      tagline={`Target ≤ ${initialLimit}KB limit • Browser processing • Safe & Secure`}
+      defaultTargetSize={initialLimit}
       targetSizeOptions={[
         { v: 50, l: "≤ 50KB" },
         { v: 100, l: "≤ 100KB" },
         { v: 150, l: "≤ 150KB" },
         { v: 200, l: "≤ 200KB" },
       ]}
-      ctaText="Resize to Target KB"
+      ctaText={`Resize to ${initialLimit}KB`}
     />
   );
 }
