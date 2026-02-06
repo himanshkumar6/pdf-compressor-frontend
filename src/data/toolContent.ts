@@ -1795,4 +1795,81 @@ If you are on a system where you can't install packages (like a server or a lock
       },
     ],
   },
+
+  "/flipkart-label-cropper": {
+    intro: `Flipkart sellers ke liye sabse badi problem kya hai? Shipping label ka waste hona. Flipkart legal page pe label generate karta hai, lekin thermal printer (4x6 inch) ke liye use crop karna padta hai.
+    
+    Agar aap A4 sheet pe print karte hain, toh aadha paper waste hota hai. Hamara Flipkart Label Cropper tool specifically sellers ke liye banaya gaya hai. Ye smartly aapke PDF ko detect karta hai aur shipping label wale hisse ko crop karke thermal printer ready PDF deta hai.`,
+    steps: [
+      {
+        title: "Upload Label PDF",
+        desc: "Apna Flipkart shipping label PDF upload karein.",
+      },
+      {
+        title: "Select Crop Mode",
+        desc: "Choose correct preset: Thermal (4x6) ya A4 Half Page.",
+      },
+      {
+        title: "Download & Print",
+        desc: "Auto-cropped PDF download karein aur thermal printer se print nikalein.",
+      },
+      {
+        title: "Save Paper",
+        desc: "Isse aapka paper cost 50% tak bachega.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Kya ye tool free hai?",
+        a: "Jee haan, ye tool bilkul free hai Flipkart sellers ke liye.",
+      },
+      {
+        q: "Thermal Printer ke liye kaunsa size choose karein?",
+        a: "Agar aapke paas 4x6 inch (100x150mm) ka thermal printer hai, toh 'Thermal Label' preset choose karein.",
+      },
+      {
+        q: "Bulk crop kar sakte hain?",
+        a: "Abhi ye tool ek file process karta hai, lekin agar aapke PDF mein multiple labels hain toh ye sabko same size pe crop karega.",
+      },
+      {
+        q: "Mera data safe hai?",
+        a: "Bilkul. Processing aapke browser mein hoti hai, koi bhi label hamare server pe upload nahi hota.",
+      },
+    ],
+  },
+
+  "/meesho-label-cropper": {
+    intro: `Meesho sellers aksar pareshan rehte hain kyunki Meesho labels ka format thoda alag hota hai. Unhe thermal printer pe set karne ke liye manually crop karna padta hai.
+    
+    Hamara tool Meesho labels ko auto-detect karta hai aur unhe perfectly 4x6 ya 6x4 size mein resize karta hai. Chaahe aap TSC, Zebra, ya Xprinter use kar rahe ho, ye cropped PDF perfectly print hoga.`,
+    steps: [
+      {
+        title: "Upload Meesho Label",
+        desc: "Apna downloaded dispatch label select karein.",
+      },
+      {
+        title: "Resize for Thermal",
+        desc: "Presests mein se 'Thermal Label' select karein.",
+      },
+      {
+        title: "Instant Download",
+        desc: "Bina quality loss ke HD label download karein.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Meesho label crop kyu zaruri hai?",
+        a: "Direct A4 print karne se paper waste hota hai aur barcode chhota dikhta hai. Cropping se label bada aur clear print hota hai.",
+      },
+      {
+        q: "Kya ye 4x6 sticker roll pe chalega?",
+        a: "Haan, hamara 'Thermal' preset specially 4x6 inch rolls ke liye designed hai.",
+      },
+      {
+        q: "Quality kharab toh nahi hogi?",
+        a: "Nahi, hum PDF vector data use karte hain, isliye barcode scan karne mein koi dikkat nahi aayegi.",
+      },
+    ],
+  },
 };
+

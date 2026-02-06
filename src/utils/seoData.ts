@@ -1083,7 +1083,28 @@ export const PAGES_SEO: Record<string, PageSEO> = {
     title: "Условия Использования - CompressPDFto200KB.online",
     description: "Правила использования наших бесплатных инструментов для работы с PDF.",
     canonical: `${SITE.baseUrl}/ru/usloviya`,
-  }
+  },
+  "/flipkart-label-cropper": {
+    title: "Flipkart Label Cropper & Resizer (Thermal 4x6) - Free Tool",
+    description: "Crop Flipkart shipping labels for 4x6 Thermal Printer online. Remove extra white space from A4 invoice labels. Free, fast & secure browser-based tool.",
+    canonical: `${SITE.baseUrl}/flipkart-label-cropper`,
+    jsonLd: {
+      name: "Flipkart Label Cropper",
+      url: `${SITE.baseUrl}/flipkart-label-cropper`,
+      description: "Crop and resize Flipkart shipping labels for thermal printers.",
+    },
+  },
+
+  "/meesho-label-cropper": {
+    title: "Meesho Label Cropper - Resize for Thermal Printer (Online)",
+    description: "Resize and crop Meesho shipping labels for 4x6 Thermal Printer. Convert A4 labels to thermal size instantly without quality loss. Free tool.",
+    canonical: `${SITE.baseUrl}/meesho-label-cropper`,
+    jsonLd: {
+      name: "Meesho Label Cropper",
+      url: `${SITE.baseUrl}/meesho-label-cropper`,
+      description: "Resize and crop Meesho labels for thermal printers.",
+    },
+  },
 };
 
 /**

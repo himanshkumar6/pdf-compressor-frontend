@@ -17,7 +17,7 @@ import { getRelatedTools } from "../data/pages";
 import { TOOL_CONTENT } from "../data/toolContent";
 import FAQAccordion from "./FAQAccordion";
 
-type ToolType = "COMPRESS" | "REMOVE_METADATA";
+type ToolType = "COMPRESS" | "REMOVE_METADATA" | "PDF_EDITING" | "UTILITY";
 
 type TargetSizeOption = { v: number; l: string };
 

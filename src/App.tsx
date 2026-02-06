@@ -36,6 +36,8 @@ import ResizePdfInMb from "./pages/ResizePdfInMb";
 import ResizePdf200kb from "./pages/ResizePdf200kb";
 import RemoveMetadataFromPdf from "./pages/RemoveMetadataFromPdf";
 import JpgToPdf from "./pages/JpgToPdf";
+import FlipkartLabelCropper from "./pages/FlipkartLabelCropper";
+import MeeshoLabelCropper from "./pages/MeeshoLabelCropper";
 
 // ✅ Russian Pages
 import HomeRu from "./pages/ru/Home";
@@ -139,7 +141,10 @@ const App: React.FC = () => {
 
             <Route path="/scanned-pdf-compressor" element={<ScannedPdfCompressor />} />
             <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
+            <Route path="/scanned-pdf-to-200kb" element={<ScannedPdfTo200kb />} />
             <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
+            <Route path="/flipkart-label-cropper" element={<FlipkartLabelCropper />} />
+            <Route path="/meesho-label-cropper" element={<MeeshoLabelCropper />} />
 
             <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
             <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
