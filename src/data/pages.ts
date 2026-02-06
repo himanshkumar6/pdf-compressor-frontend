@@ -76,7 +76,24 @@ export function getRelatedTools(
   const isRu = currentPath.startsWith("/ru");
   const sourceList = isRu ? RU_TOOL_PAGES : TOOL_PAGES;
 
-  return sourceList.filter((t) => t.path !== currentPath);
+  /* ✅ SMART CLUSTERING: Prioritize same category */
+  const allTools = isRu ?  TOOLS_REGISTRY.filter(t => t.ru) : TOOLS_REGISTRY;
+  const currentTool = allTools.find(t => isRu ? t.ru?.slug === currentPath : t.slug === currentPath);
+  
+  const category = currentTool?.category;
+
+  const sameCategory = sourceList.filter(t => {
+     const tool = allTools.find(at => (isRu ? at.ru?.slug : at.slug) === t.path);
+     return tool?.category === category && t.path !== currentPath;
+  });
+
+  const otherCategory = sourceList.filter(t => {
+     const tool = allTools.find(at => (isRu ? at.ru?.slug : at.slug) === t.path);
+     return tool?.category !== category && t.path !== currentPath;
+  });
+
+  // Interleave or just concat: Same Cat (High Priority) + Others
+  return [...sameCategory, ...otherCategory].slice(0, 4);
 }
 
 /** Navbar Tools dropdown */
