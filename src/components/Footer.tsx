@@ -69,6 +69,7 @@ const Footer: React.FC = () => {
     { label: labels.privacy, path: routes.privacy },
     { label: labels.terms, path: routes.terms },
     { label: labels.disclaimer, path: routes.disclaimer },
+    { label: labels.cookies, path: routes.cookies },
   ];
 
   // CTA Link Dests

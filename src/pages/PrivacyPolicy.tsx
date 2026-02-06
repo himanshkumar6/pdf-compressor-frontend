@@ -12,33 +12,39 @@ const PrivacyPolicy: React.FC = () => {
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-5xl font-bold text-white">Privacy Policy</h1>
-      <br />
-      <p>Last updated: 25 January 2026</p>
-      <br />
+      <h1 className="text-5xl font-bold text-white mb-8">PRIVACY POLICY</h1>
 
-      <h2 className='font-semibold'>1. Introduction</h2>
-      <p>At CompressPDF, accessible from https://compresspdfto200kb.online, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by CompressPDF and how we use it.</p>
+      <p className="text-gray-300 leading-relaxed">
+        Hey there, I'm the owner of CompressPDF. I've built this tool to make your life easier when dealing with large PDF files, especially for government forms. Because I value your privacy as much as my own, here is exactly how I handle your data.
+      </p>
 
-      <br />
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">NO FILE UPLOADS</h2>
+      <p className="text-gray-300 leading-relaxed">
+        The most important thing to know is that your PDFs never leave your computer. When you "upload" a file here, it stays in your browser. My website uses local processing technology. This means your private documents, photos, or ID proofs are never sent to my server or stored anywhere online by me.
+      </p>
 
-      <h2 className='font-semibold'>2. Client-Side Processing</h2>
-      <p>Our primary feature—PDF compression—runs 100% in your local web browser. We do NOT upload your files to our servers. All document processing happens locally on your computer, which means we never see, store, or have access to your sensitive documents.</p>
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">PERSONAL DATA</h2>
+      <p className="text-gray-300 leading-relaxed">
+        I don't ask for your name, phone number, or email address to use the tools. There are no user accounts here. If you use the contact form, I'll see your email just so I can reply to you, but that's it.
+      </p>
 
-      <br />
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">SERVER LOGS</h2>
+      <p className="text-gray-300 leading-relaxed">
+        Like any other website on the internet, my server automatically picks up some basic info like your IP address, what browser you are using, and the time you visited. This is just standard stuff for security and to see how many people are using the site.
+      </p>
 
-      <h2 className='font-semibold'>3. Log Files</h2>
-      <p>CompressPDF follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this as part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.</p>
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">THIRD PARTIES</h2>
+      <p className="text-gray-300 leading-relaxed">
+        Since I don't collect your files or personal info, I have nothing to sell to anyone. If I ever add ads or analytics in the future to help pay for the server costs, those services might have their own way of looking at anonymous data, but your PDFs will always remain private and local.
+      </p>
 
-      <br />
+      <p className="mt-12 text-gray-400 italic">
+        If you have questions, just email me at himanshucareer01@gmail.com.
+      </p>
 
-      <h2 className='font-semibold'>4. Cookies and Web Beacons</h2>
-      <p>Like any other website, CompressPDF uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
-
-      <br />
-
-      <h2 className='font-semibold'>5. Google DoubleClick DART Cookie</h2>
-      <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p>
+      <p className="mt-4 text-gray-500 text-sm">
+        Last updated: February 7, 2026
+      </p>
     </div>
   );
 };

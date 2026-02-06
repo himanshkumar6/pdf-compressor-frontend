@@ -1,0 +1,14 @@
+DISCLAIMER
+
+Please read this before using the tools on https://compresspdfto200kb.online.
+
+NOT A GOVERNMENT SITE
+I want to be 100% clear: This website, CompressPDF, is NOT affiliated with, authorized by, or endorsed by any government body, including SSC, UPSC, or any state portal. I am an independent developer providing these tools to help people meet size requirements easily.
+
+RESULTS MAY VARY
+Every PDF is different. Depending on how your original file was made, the compression might work better or worse. I can't guarantee that every file will reach exactly 200KB or that the quality will be perfect for your specific needs. Please check your document before submitting it to any official portal.
+
+USE AT YOUR OWN RISK
+I am not responsible for any missed deadlines, rejected applications, or data issues that might happen. It's your responsibility to make sure the final document meets the requirements of the portal you are uploading to.
+
+If you find a bug or something isn't working, let me know at himanshucareer01@gmail.com and I'll try to fix it.

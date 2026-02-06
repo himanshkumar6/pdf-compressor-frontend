@@ -55,6 +55,7 @@ export const FOOTER_LEGAL_PAGES: MainPageItem[] = [
   { path: "/privacy-policy", label: "Privacy Policy" },
   { path: "/terms-conditions", label: "Terms & Conditions" },
   { path: "/disclaimer", label: "Disclaimer" },
+  { path: "/cookies-policy", label: "Cookie Policy" },
 ];
 
 /** Set of active tool paths (for App: hide nav/footer on tool pages) */

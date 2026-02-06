@@ -45,19 +45,34 @@ function generateXmlForRoutes(paths, today) {
       "/scanned-pdf-compressor",
       "/scanned-pdf-to-200kb",
       "/remove-metadata-from-pdf",
-      // RU Tools
-      "/ru/szhat-skanirovannyj-pdf-do-200kb",
-      "/ru/udalit-metadannye-pdf",
       "/resize-pdf-kb",
+      "/resize-pdf-200kb",
       "/resize-pdf-mb",
       "/pdf-to-jpg",
+      "/jpg-to-pdf",
       "/merge-pdf",
       "/split-pdf",
+      "/flipkart-label-cropper",
+      "/meesho-label-cropper",
+      // RU Tools
+      "/ru/szhat-pdf",
+      "/ru/szhat-pdf-do-50kb",
+      "/ru/szhat-pdf-do-100kb",
+      "/ru/szhat-pdf-do-150kb",
+      "/ru/szhat-pdf-do-200kb",
+      "/ru/szhat-pdf-do-500kb",
+      "/ru/szhat-pdf-do-1mb",
+      "/ru/umenshit-razmer-pdf-do-500kb",
+      "/ru/szhat-skanirovannyj-pdf",
+      "/ru/szhat-skanirovannyj-pdf-do-200kb",
+      "/ru/udalit-metadannye-pdf",
       "/ru/izmenit-razmer-pdf-kb",
       "/ru/izmenit-razmer-pdf-mb",
       "/ru/pdf-v-jpg",
       "/ru/obedinit-pdf",
-      "/ru/razdelit-pdf"
+      "/ru/razdelit-pdf",
+      "/ru/flipkart-label-cropper",
+      "/ru/meesho-label-cropper"
     ].includes(p);
 
     let changefreq = "monthly";

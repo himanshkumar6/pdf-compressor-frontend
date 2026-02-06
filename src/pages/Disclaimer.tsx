@@ -12,20 +12,30 @@ const Disclaimer: React.FC = () => {
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-5xl font-bold text-white">Disclaimer</h1>
-      <br />
-      <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at <span className='font-semibold text-blue-400'>himanshucareer01@gmail.com.</span></p>
-      <br />
-      <h2 className='text-2xl'>Disclaimers for CompressPDF</h2>
-      <br />
-      <p>All the information on this website - https://compresspdfto200kb.online - is published in good faith and for general information purpose only. CompressPDF does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information you find on this website (CompressPDF), is strictly at your own risk. CompressPDF will not be liable for any losses and/or damages in connection with the use of our website.</p>
-      <br />
-      <h2>Consent</h2>
-      <p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
-      <br />
-      <h2>Updates</h2>
+      <h1 className="text-5xl font-bold text-white mb-8">DISCLAIMER</h1>
 
-      <p>Should we update, amend or make any changes to this document, those changes will be prominently posted here.</p>
+      <p className="text-gray-300 leading-relaxed mb-6 italic">
+        Please read this before using the tools on https://compresspdfto200kb.online.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">NOT A GOVERNMENT SITE</h2>
+      <p className="text-gray-300 leading-relaxed">
+        I want to be 100% clear: This website, CompressPDF, is NOT affiliated with, authorized by, or endorsed by any government body, including SSC, UPSC, or any state portal. I am an independent developer providing these tools to help people meet size requirements easily.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">RESULTS MAY VARY</h2>
+      <p className="text-gray-300 leading-relaxed">
+        Every PDF is different. Depending on how your original file was made, the compression might work better or worse. I can't guarantee that every file will reach exactly 200KB or that the quality will be perfect for your specific needs. Please check your document before submitting it to any official portal.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">USE AT YOUR OWN RISK</h2>
+      <p className="text-gray-300 leading-relaxed">
+        I am not responsible for any missed deadlines, rejected applications, or data issues that might happen. It's your responsibility to make sure the final document meets the requirements of the portal you are uploading to.
+      </p>
+
+      <p className="mt-12 text-gray-400 leading-relaxed">
+        If you find a bug or something isn't working, let me know at <span className="text-cyan-400 font-medium whitespace-nowrap">himanshucareer01@gmail.com</span> and I'll try to fix it.
+      </p>
     </div>
   );
 };

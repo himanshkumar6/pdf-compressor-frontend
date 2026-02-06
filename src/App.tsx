@@ -16,6 +16,7 @@ import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import Disclaimer from "./pages/Disclaimer";
+import CookiesPolicy from "./pages/CookiesPolicy";
 import Sitemap from "./pages/Sitemap";
 import Tools from "./pages/Tools";
 import NotFound from "./pages/NotFound";
@@ -77,6 +78,8 @@ const App: React.FC = () => {
         page_path: location.pathname + location.search,
       });
     }
+    // ✅ Add hydrated class to hide static SEO content
+    document.body.classList.add("hydrated");
   }, [location.pathname, location.search]);
 
   return (
@@ -100,6 +103,7 @@ const App: React.FC = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/cookies-policy" element={<CookiesPolicy />} />
             <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/tools" element={<Tools />} />
 

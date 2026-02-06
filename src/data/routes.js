@@ -15,6 +15,7 @@ export const MAIN_ROUTES = [
   "/privacy-policy",
   "/terms-conditions",
   "/disclaimer",
+  "/cookies-policy",
   "/sitemap",
   "/tools",
   "/blog",
@@ -43,7 +44,6 @@ export const TOOL_ROUTES = [
   "/jpg-to-pdf",
   "/flipkart-label-cropper",
   "/meesho-label-cropper",
-  "/pdf-to-word" // Added new tool
 ];
 
 // ✅ Blog Routes

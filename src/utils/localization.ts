@@ -9,6 +9,7 @@ export const NAV_LABELS = {
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
     disclaimer: "Disclaimer",
+    cookies: "Cookie Policy",
   },
   ru: {
     brand: "Сжать PDF",
@@ -20,6 +21,7 @@ export const NAV_LABELS = {
     privacy: "Политика конфиденциальности",
     terms: "Условия использования",
     disclaimer: "Отказ от ответственности",
+    cookies: "Политика использования куки",
   },
 };
 
@@ -33,6 +35,7 @@ export const ROUTE_MAP = {
     privacy: "/privacy-policy",
     terms: "/terms-conditions",
     disclaimer: "/disclaimer",
+    cookies: "/cookies-policy",
   },
   ru: {
     home: "/ru/",
@@ -43,6 +46,7 @@ export const ROUTE_MAP = {
     privacy: "/ru/politika-konfidencialnosti",
     terms: "/ru/usloviya",
     disclaimer: "/ru/otkaz-ot-otvetstvennosti",
+    cookies: "/ru/cookie-policy", // Simplified/placeholder as /ru usually uses same
   },
 };
 

@@ -715,6 +715,18 @@ export const PAGES_SEO: Record<string, PageSEO> = {
     },
   },
 
+  "/cookies-policy": {
+    title: "Cookie Policy - CompressPDFto200KB.online",
+    description:
+      "CompressPDFto200KB.online cookie policy. We currently do not use any cookies or tracking pixels.",
+    canonical: `${SITE.baseUrl}/cookies-policy`,
+    jsonLd: {
+      name: "Cookie Policy",
+      url: `${SITE.baseUrl}/cookies-policy`,
+      description: "Cookie policy for CompressPDFto200KB.online.",
+    },
+  },
+
   "/sitemap": {
     title: "Sitemap - CompressPDFto200KB.online",
     description:
@@ -1103,6 +1115,28 @@ export const PAGES_SEO: Record<string, PageSEO> = {
       name: "Meesho Label Cropper",
       url: `${SITE.baseUrl}/meesho-label-cropper`,
       description: "Resize and crop Meesho labels for thermal printers.",
+    },
+  },
+
+  "/ru/flipkart-label-cropper": {
+    title: "Flipkart Label Cropper - Обрезка этикеток для термопринтера",
+    description: "Обрезайте этикетки Flipkart для термопринтеров 4x6 онлайн. Удалите лишние поля с транспортных этикеток A4. Бесплатный и безопасный инструмент.",
+    canonical: `${SITE.baseUrl}/ru/flipkart-label-cropper`,
+    jsonLd: {
+      name: "Flipkart Label Cropper",
+      url: `${SITE.baseUrl}/ru/flipkart-label-cropper`,
+      description: "Обрезка этикеток Flipkart для термопринтеров.",
+    },
+  },
+
+  "/ru/meesho-label-cropper": {
+    title: "Meesho Label Cropper - Обрезка этикеток Meesho онлайн",
+    description: "Изменяйте размер и обрезайте этикетки Meesho для термопринтеров 4x6. Переводите этикетки A4 в формат для термопечати мгновенно и бесплатно.",
+    canonical: `${SITE.baseUrl}/ru/meesho-label-cropper`,
+    jsonLd: {
+      name: "Meesho Label Cropper",
+      url: `${SITE.baseUrl}/ru/meesho-label-cropper`,
+      description: "Обрезка этикеток Meesho для термопринтеров.",
     },
   },
 };
