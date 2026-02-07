@@ -143,13 +143,14 @@ export default function ToolLandingPage({
       {/* ✅ SEO content */}
       <section className="w-full max-w-4xl mx-auto mt-12 space-y-12">
         {/* Intro / When to Use */}
-        {(content || intro) && (
+        {(intro || content) && (
           <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
             <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
               {labels.whenToUse}
             </h2>
             <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
-              {intro || content}
+              {intro && <div>{intro}</div>}
+              {content && <div className={intro ? "mt-8" : ""}>{content}</div>}
             </div>
           </div>
         )}

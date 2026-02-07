@@ -137,7 +137,7 @@ export const getJsonLd = () => ({
 export const PAGES_SEO: Record<string, PageSEO> = {
   // ✅ HOME
   "/": {
-    title: "Compress PDF to 200KB for SSC, UPSC & Govt Forms (Free)",
+    title: "Compress PDF to 200KB Online - Free & Secure PDF Reduction",
     description:
       "Compress PDF to 200KB online for free. Safely reduce PDF size for SSC, UPSC, IBPS, and government portal uploads. 100% private browser-based processing.",
     canonical: `${SITE.baseUrl}/`,
@@ -656,7 +656,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
 
   // ✅ Static pages SEO (new)
   "/about": {
-    title: "About Us - CompressPDFto200KB.online",
+    title: "About CompressPDF – Our Mission & Browser-Side Technology",
     description:
       "Learn more about CompressPDFto200KB.online — a free PDF compression website built to help users reduce PDF file size for uploads and government portals.",
     canonical: `${SITE.baseUrl}/about`,
@@ -668,7 +668,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   },
 
   "/contact": {
-    title: "Contact Us - CompressPDFto200KB.online",
+    title: "Contact Support - Get Help with PDF Compression & Tools",
     description:
       "Get in touch with CompressPDFto200KB.online for feedback, support, or suggestions related to PDF compression tools and upload fixes.",
     canonical: `${SITE.baseUrl}/contact`,
@@ -728,7 +728,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   },
 
   "/sitemap": {
-    title: "Sitemap - CompressPDFto200KB.online",
+    title: "Site Map: Browse all PDF Tools and Government Form Guides",
     description:
       "HTML sitemap of CompressPDFto200KB.online. Find all PDF tools and blog posts in one place.",
     canonical: `${SITE.baseUrl}/sitemap`,
@@ -740,7 +740,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
   },
 
   "/tools": {
-    title: "PDF Tools – Compress, Reduce Size, Remove Metadata | Free",
+    title: "All PDF Tools: Compress to 100KB, 200KB, Merge & Edit Free",
     description:
       "All PDF tools in one place: compress PDF, compress to 200KB or 100KB, scanned PDF compressor, remove metadata. Free, private, browser-based.",
     canonical: `${SITE.baseUrl}/tools`,
@@ -753,7 +753,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {
 
   // ✅ Blog index and posts (SEO only)
   "/blog": {
-    title: "Blog - CompressPDFto200KB.online",
+    title: "PDF Guides & Tutorials: Fix Upload Errors for Govt Portals",
     description:
       "Read guides on compressing PDFs for government portals, SSC forms, UPSC documents, passport uploads, scholarships and more.",
     canonical: `${SITE.baseUrl}/blog`,
