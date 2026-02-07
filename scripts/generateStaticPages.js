@@ -4,11 +4,11 @@ import path from "path";
 const SITE = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
 
-// ✅ Yandex Verification
-const YANDEX_VERIFICATION = "45b0752a7d05cc01";
+// ✅ IMPORT UNIFIED METADATA
+import { SITE_CONFIG, SEO_METADATA, RU_METADATA, BLOG_METADATA } from "../src/data/metadata.js";
 
-// ✅ GA4 Measurement ID
-const GA_ID = "G-FCZXPJB41V";
+const YANDEX_VERIFICATION = SITE_CONFIG.yandexVerification;
+const GA_ID = SITE_CONFIG.gaId;
 
 /** Canonical URL: https only, trailing slash only for home (matches sitemap). */
 function getCanonicalUrl(route) {
@@ -22,199 +22,7 @@ function getCanonicalUrl(route) {
 import { ALL_ROUTES as ROUTES } from "../src/data/routes.js";
 
 // ✅ Basic SEO
-const SEO = {
-  "/": {
-    title: "Compress PDF to 200KB Online | Free PDF Compressor Tool",
-    description: "Compress PDF files to 200KB online using a free PDF compressor tool. Upload PDF, reduce size without losing readability, and download instantly.",
-  },
-  "/compress-pdf": {
-    title: "Compress PDF Online | Free PDF Compressor Tool",
-    description: "Compress PDF files online for free. Reduce file size instantly while maintaining quality. Safe, private, and works in your browser.",
-  },
-  "/compress-pdf-to-200kb": {
-    title: "Compress PDF to 200KB Online | Free Tool for Govt Forms",
-    description: "Compress PDF to 200KB online for free. Ideal for SSC, UPSC, and passport portal uploads. Reduce PDF size to exactly under 200 KB safely.",
-  },
-  "/compress-pdf-to-100kb": {
-    title: "Compress PDF to 100KB Online | Free Tool for Resumes",
-    description: "Reduce PDF size to 100KB online for free. Perfect for job portals and scholarship forms requiring a strict 100 KB limit document.",
-  },
-  "/compress-pdf-to-50kb": {
-    title: "Compress PDF to 50KB Online | Free Ultra-Small Size Tool",
-    description: "Compress PDF to 50KB online. Best for uploading signed documents and small certificates with tight size restrictions on online portals.",
-  },
-  "/compress-pdf-to-150kb": {
-    title: "Compress PDF to 150KB Online | Free Tool for Web Forms",
-    description: "Reduce PDF size to 150KB online. Ideal for university admissions and email attachments requiring a file size under 150 KB.",
-  },
-  "/compress-pdf-to-500kb": {
-    title: "Compress PDF to 500KB Online | Quality Document Reducer",
-    description: "Reduce PDF size to 500KB online. Perfect for high-quality portfolios and multipage documents while staying under common email limits.",
-  },
-  "/compress-pdf-to-1mb": {
-    title: "Compress PDF to 1MB Online | Reduce Large PDF Files",
-    description: "Compress large PDF files to 1MB or less online. Maintain document integrity for official reports and books while reducing storage space.",
-  },
-  "/reduce-pdf-size-to-500kb": {
-    title: "Reduce PDF Size to 500KB Online | Free Document Reducer",
-    description: "Quickly reduce your PDF file size to 500KB online. Perfect for email attachments and portals requiring documents to be under 500 KB limit.",
-  },
-  "/resize-pdf-kb": {
-    title: "Resize PDF in KB Online | Set Custom Target PDF Size",
-    description: "Specify a custom target size in KB for your PDF. Perfect for strict government portals (SSC, UPSC) where you need exactly 20KB, 50KB or 100KB.",
-  },
-  "/resize-pdf-200kb": {
-    title: "Resize PDF to 200KB Online | Quickly Set PDF Size Limit",
-    description: "Resize your PDF file to exactly 200KB online for free. This tool is designed for students applying for SSC, UPSC, and other government jobs.",
-  },
-  "/resize-pdf-mb": {
-    title: "Resize PDF in MB Online | Set Target File Size in MB",
-    description: "Reduce large PDF files to a specific size in MB (1MB, 2MB, 5MB). Ideal for email attachments and cloud storage optimization.",
-  },
-  "/scanned-pdf-compressor": {
-    title: "Scanned PDF Compressor Online | Reduce Scan File Size",
-    description: "Compress scanned PDF documents without losing text clarity. Optimized for passports, IDs, and certificates captured via mobile or scanner.",
-  },
-  "/scanned-pdf-to-200kb": {
-    title: "Scanned PDF to 200KB Online | High Quality Scan Reducer",
-    description: "Compress scanned PDF files to 200KB online. Specially optimized for scanned certificates, marksheets, and IDs for seamless online uploads.",
-  },
-  "/pdf-to-jpg": {
-    title: "PDF to JPG Converter Online | High Quality (Free)",
-    description: "Convert PDF pages to high-resolution JPG images online for free. Extract images or convert whole document to pictures securely in your browser.",
-  },
-  "/jpg-to-pdf": {
-    title: "JPG to PDF Converter Online | Convert Images to PDF Free",
-    description: "Convert JPG, PNG, and other images to PDF documents online for free. Combine multiple photos into a single PDF file instantly in your browser.",
-  },
-  "/edit-pdf": {
-    title: "Edit PDF Online | Free Online PDF Editor & Annotator",
-    description: "Edit PDF files online for free. Add text, images, and shapes to your documents. Secure, private, and works directly in your browser without uploads.",
-  },
-  "/merge-pdf": {
-    title: "Merge PDF Online | Combine Multiple PDF Files Free",
-    description: "Combine multiple PDF files into a single document online. Drag and drop to rearrange pages and merge certificates or reports securely.",
-  },
-  "/split-pdf": {
-    title: "Split PDF Online | Extract Pages from PDF for Free",
-    description: "Split PDF pages or extract specific sections from your document. Safe, fast, and entirely browser-based with a visual page selector.",
-  },
-  "/remove-metadata-from-pdf": {
-    title: "Remove PDF Metadata Online | Clear PDF File Properties",
-    description: "Clear PDF metadata like author, creator, and creation date online. Enhance your privacy by removing hidden properties before sharing documents.",
-  },
-  "/flipkart-label-cropper": {
-    title: "Flipkart Label Cropper Online | Crop for 4x6 Thermal Print",
-    description: "Flipkart sellers can crop shipping labels online for free. Optimized for 4x6 thermal printers to save paper and time. 100% private processing.",
-  },
-  "/meesho-label-cropper": {
-    title: "Meesho Label Cropper Online | Crop for 4x6 Thermal Print",
-    description: "Crop Meesho shipping labels online for free. Specifically designed for 4x6 thermal printers. Resize and print labels instantly and securely.",
-  },
-  "/privacy-policy": {
-    title: "Privacy Policy - CompressPDFto200KB.online",
-    description: "Read how CompressPDFto200KB.online protects your privacy. Your PDF files are processed in your browser and never uploaded to our servers.",
-  },
-  "/terms-conditions": {
-    title: "Terms & Conditions - CompressPDFto200KB.online",
-    description: "Terms and conditions for using CompressPDFto200KB.online PDF tools and guides.",
-  },
-  "/disclaimer": {
-    title: "Disclaimer - CompressPDFto200KB.online",
-    description: "Disclaimer for CompressPDFto200KB.online. We provide tools and guides for PDF compression and portal upload help.",
-  },
-  "/cookies-policy": {
-    title: "Cookie Policy - CompressPDFto200KB.online",
-    description: "CompressPDFto200KB.online cookie policy. We currently do not use any cookies or tracking pixels.",
-  },
-
-  // ✅ Russian SEO (Strictly No Changes)
-  "/ru": { title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF", description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере." },
-  "/ru/o-nas": { title: "О Нас - CompressPDFto200KB.online", description: "Узнайте больше о нашем сервисе. Мы помогаем студентам и специалистам бесплатно сжимать PDF документы для государственных порталов." },
-  "/ru/kontakty": { title: "Контакты - CompressPDFto200KB.online", description: "Свяжитесь с нами, если у вас есть вопросы или предложения по улучшению сервиса сжатия PDF." },
-  "/ru/politika-konfidencialnosti": { title: "Политика Конфиденциальности - CompressPDFto200KB.online", description: "Мы уважаем вашу приватность. Ваши файлы обрабатываются локально в браузере и никогда не загружаются на наши серверы." },
-  "/ru/usloviya": { title: "Условия Использования - CompressPDFto200KB.online", description: "Правила использования наших бесплатных инструментов для работы с PDF." },
-  "/ru/otkaz-ot-otvetstvennosti": { title: "Отказ от Ответственности - CompressPDFto200KB.online", description: "Отказ от ответственности: мы предоставляем инструменты 'как есть' без гарантий для конкретных порталов." },
-  "/ru/blog": { title: "Блог - CompressPDFto200KB.online", description: "Блог о сжатии PDF и работе с документами." },
-  "/ru/instrumenty": { title: "PDF Инструменты – Сжать, Уменьшить, Очистить | Бесплатно", description: "Все инструменты для работы с PDF: сжатие до 200кб, 100кб, удаление метаданных. Бесплатно, безопасно, в браузере." },
-  "/ru/szhat-pdf": { title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF", description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере." },
-  "/ru/szhat-pdf-do-50kb": { title: "Сжать PDF до 50 КБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 50 кб онлайн бесплатно. Идеально для строгих лимитов при загрузке документов и подписей." },
-  "/ru/szhat-pdf-do-100kb": { title: "Сжать PDF до 100 КБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 100 кб онлайн. Подходит для резюме, анкет и заявлений. Быстрая обработка в браузере." },
-  "/ru/szhat-pdf-do-150kb": { title: "Сжать PDF до 150 КБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 150 кб онлайн бесплатно. Оптимально для порталов госуслуг, вузов и паспортных столов." },
-  "/ru/szhat-pdf-do-200kb": { title: "Сжать PDF до 200 КБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 200 кб онлайн. Самый популярный формат для Госуслуг, ФНС и других государственных порталов." },
-  "/ru/szhat-pdf-do-500kb": { title: "Сжать PDF до 500 КБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 500 кб онлайн. Отлично подходит для отправки по почте, портфолио и презентаций." },
-  "/ru/szhat-pdf-do-1mb": { title: "Сжать PDF до 1 МБ Онлайн | Уменьшить размер PDF бесплатно", description: "Сжать PDF до 1 МБ онлайн. Для больших договоров, книг и отчетов. Сохраняет высокое качество." },
-  "/ru/umenshit-razmer-pdf-do-500kb": { title: "Уменьшить размер PDF файла до 500 КБ Онлайн (Бесплатно)", description: "Бесплатно уменьшить размер PDF до 500 КБ. Быстрая оптимизация для отправки по email и загрузки на сайты." },
-  "/ru/szhat-skanirovannyj-pdf": { title: "Сжать Сканированный PDF Онлайн | Уменьшить размер скана", description: "Сжать сканированный PDF онлайн. Умная оптимизация сканов документов, квитанций и рукописей без размытия текста." },
-  "/ru/szhat-skanirovannyj-pdf-do-200kb": { title: "Сжать Скан PDF до 200 КБ Онлайн | Уменьшить размер скана", description: "Сжать сканированный PDF до 200 КБ. Специальный алгоритм для паспортов, дипломов и справок. Проходит проверки на порталах." },
-  "/ru/udalit-metadannye-pdf": { title: "Удалить метаданные из PDF Онлайн (Очистить свойства файла)", description: "Удалить автора, дату создания и скрытые метаданные из PDF онлайн. Повысьте конфиденциальность перед отправкой документа." },
-  "/ru/izmenit-razmer-pdf-kb": { title: "Изменить размер PDF в КБ Онлайн | Уменьшить вес документа", description: "Изменить размер PDF в КБ онлайн. Задайте точный размер (50 КБ, 100 КБ) для загрузки на порталы. Конфиденциально и бесплатно." },
-  "/ru/izmenit-razmer-pdf-mb": { title: "Изменить размер PDF в МБ Онлайн | Уменьшить объем PDF", description: "Изменить размер PDF в МБ онлайн для почты и хранения. Уменьшите тяжелые файлы до 1 МБ или 2 МБ прямо в браузере." },
-  "/ru/pdf-v-jpg": { title: "PDF в JPG Онлайн | Конвертировать страницы в изображения", description: "Конвертировать PDF в JPG онлайн бесплатно. Превратите страницы PDF в четкие картинки JPG без загрузки на сервер." },
-  "/ru/obedinit-pdf": { title: "Объединить PDF Онлайн | Склеить несколько PDF файлов", description: "Объединить PDF онлайн бесплатно. Склейте страницы и документы в один файл. Удобная сортировка и полная безопасность." },
-  "/ru/razdelit-pdf": { title: "Разделить PDF Онлайн | Извлечь страницы из документа", description: "Разделить PDF онлайн бесплатно. Выбирайте страницы визуально и извлекайте их в новый файл. Быстро и приватно." },
-  "/ru/flipkart-label-cropper": { title: "Flipkart Label Cropper (RU)", description: "Flipkart label cropping tool in Russian language." },
-  "/ru/meesho-label-cropper": { title: "Meesho Label Cropper (RU)", description: "Meesho label cropping tool in Russian language." },
-};
-
-// ✅ Blog SEO (fill as much as you want)
-const BLOG_SEO = {
-  "how-to-compress-a-pdf-on-mac": {
-    title: "How to Compress a PDF on Mac (Without Losing Quality)",
-    description:
-      "Learn how to compress PDF on Mac using Preview and free methods. Reduce PDF size without blurry text.",
-  },
-  "govt-form-pdf-reject-fix-compress-200kb": {
-    title: "Govt Form PDF Rejected? Fix Upload Issue (Compress to 200KB)",
-    description:
-      "Fix PDF upload rejected error on government portals due to large file size. Compress PDF to 200KB quickly.",
-  },
-  "ssc-form-pdf-size-limit-200kb": {
-    title: "SSC Form PDF Size Limit 200KB? Compress PDF to 200KB (Fix)",
-    description:
-      "SSC form PDF upload error due to size limit? Learn how to compress PDF to 200KB on mobile/PC.",
-  },
-  "upsc-documents-upload-guide-pdf-compress": {
-    title: "UPSC Document Upload PDF Size Limit? Compress PDF (Guide)",
-    description:
-      "UPSC portal document upload size issue fix. Compress PDF to required limit without losing readability.",
-  },
-  "job-portal-resume-upload-problem-pdf-size-reduce": {
-    title: "Job Portal Resume Upload Problem? Reduce PDF Size (Fix)",
-    description:
-      "Resume PDF too large? Fix job portal upload issue by reducing PDF size without breaking formatting.",
-  },
-  "passport-portal-200kb-limit-pdf-upload-error-fix": {
-    title: "Passport Portal PDF Size Limit 200KB? Fix Upload Error",
-    description:
-      "Passport portal PDF upload issue due to size limit? Compress PDF to 200KB and upload successfully.",
-  },
-  "mobile-se-pdf-compress-kaise-kare-without-app": {
-    title: "Mobile Se PDF Compress Kaise Kare? (Without App)",
-    description:
-      "Mobile se PDF compress karne ka easy method without app. Browser se PDF ko 200KB tak compress karo.",
-  },
-  "visa-kyc-pdf-upload-fail-size-reduce-solution": {
-    title: "Visa / KYC PDF Upload Failed? Reduce Size (Solution)",
-    description:
-      "Visa/KYC portal PDF upload fail due to large file? Compress PDF and fix size limit issue quickly.",
-  },
-  "scanned-pdf-heavy-size-reduce-complete-guide": {
-    title: "Scanned PDF Too Large? Reduce Size (Complete Guide)",
-    description:
-      "Scanned PDF file size heavy? Learn how to compress scanned PDF while keeping text readable.",
-  },
-  "scholarship-form-pdf-upload-guide-200kb-document": {
-    title: "Scholarship Form PDF Upload Guide (200KB Document Fix)",
-    description:
-      "Scholarship portal PDF upload error due to size limit? Compress PDF to 200KB and upload successfully.",
-  },
-  "email-me-pdf-attach-nahi-ho-rahi-size-reduce": {
-    title: "Email Me PDF Attach Nahi Ho Rahi? Reduce Size (Fix)",
-    description:
-      "Email attachment PDF too large? Reduce PDF size and attach easily without quality loss.",
-  },
-};
+// ✅ Metadata is now imported from ../src/data/metadata.js
 
 // ✅ Utilities
 function ensureDir(dirPath) {
@@ -230,23 +38,28 @@ function escapeHtml(str = "") {
 }
 
 function getMeta(route) {
-  if (SEO[route]) return SEO[route];
-
-  if (route.startsWith("/blog/")) {
-    const slug = route.replace("/blog/", "");
-    return (
-      BLOG_SEO[slug] || {
-        title: slug.replace(/-/g, " ").toUpperCase(),
-        description:
-          "Read the complete guide to compress PDF size and fix upload errors.",
-      }
-    );
+  // Check regular routes
+  if (SEO_METADATA[route]) {
+    return SEO_METADATA[route];
   }
 
+  // Check RU routes
+  if (RU_METADATA[route]) {
+    return RU_METADATA[route];
+  }
+
+  // Check blog routes
+  if (route.startsWith("/blog/")) {
+    const slug = route.split("/").pop();
+    if (BLOG_METADATA[slug]) {
+      return BLOG_METADATA[slug];
+    }
+  }
+
+  // Fallback
   return {
-    title: "CompressPDFto200KB.online",
-    description:
-      "Free PDF compression tools to reduce PDF size for government forms, job portals and uploads.",
+    title: "Compress PDF to 200KB Online",
+    description: "Free PDF compression tools to reduce PDF size for government forms, job portals and uploads.",
   };
 }
 
@@ -281,22 +94,21 @@ function buildGoogleTag() {
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '${GA_ID}');
+  gtag('config', '${GA_ID}', { send_page_view: false });
 </script>
   `.trim();
 }
 
-// ✅ Offscreen CSS for bots
-const OFFSCREEN_STYLE = "position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;";
-
-/** Build descriptive internal links nav */
+/** Build descriptive internal links nav for crawlers */
 function buildCrawlableLinksHtml() {
-  const links = ROUTES.slice(0, 15).map((p) => {
+  const links = ROUTES.slice(0, 20).map((p) => {
     const meta = getMeta(p);
-    const text = meta.title.split("|")[0].trim();
-    return `<a href="${p}">${escapeHtml(text)}</a>`;
-  }).join(" | ");
-  return `<nav id="crawlable-internal-links" style="${OFFSCREEN_STYLE}" aria-label="Internal links">${links}</nav>`;
+    return `<a href="${p}" style="color: #666; margin-right: 15px; text-decoration: none;">${escapeHtml(meta.title.split("|")[0].trim())}</a>`;
+  }).join(" ");
+
+  return `<div class="crawlable-links" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; font-size: 12px;">
+    <strong>Quick Links:</strong> ${links}
+  </div>`;
 }
 
 /** Get translated version for hreflang */
@@ -373,8 +185,9 @@ ${selfLink}
 ${alternateLink}
 ${xDefault}
 
-<!-- ✅ Yandex Verification -->
+<!-- ✅ Verification -->
 <meta name="yandex-verification" content="${YANDEX_VERIFICATION}" />
+<meta name="google-site-verification" content="${SITE_CONFIG.googleVerification}" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="${title}" />
@@ -393,27 +206,15 @@ ${buildGoogleTag()}
 </head>
 
 <body>
-${buildCrawlableLinksHtml()}
 
-<!-- ✅ RICH SEO CONTENT (Visible to Crawlers) -->
-<div id="seo-content" style="padding: 20px; max-width: 800px; margin: 0 auto; color: #333;">
-  ${buildSeoContentHtml(route, meta)}
+<div id="root">
+  <!-- ✅ PRE-RENDERED SEO CONTENT (Hydrated by React) -->
+  <div class="pre-rendered-seo" style="padding: 20px; max-width: 800px; margin: 0 auto; color: #333;">
+    ${buildSeoContentHtml(route, meta)}
+    ${buildCrawlableLinksHtml()}
+  </div>
 </div>
 
-<div id="root"></div>
-
-<script>
-  history.replaceState({}, "", "${route}");
-</script>
-
-<style>
-  /* Hide SEO content once React hydrates to avoid double H1s */
-  .hydrated #seo-content { display: none !important; }
-  /* Fallback visibility for crawlers */
-  #seo-content h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-  #seo-content h2 { font-size: 1.5rem; margin-top: 1.5rem; }
-  #seo-content p { line-height: 1.6; }
-</style>
 </body>
 </html>`;
 }

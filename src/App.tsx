@@ -78,8 +78,6 @@ const App: React.FC = () => {
         page_path: location.pathname + location.search,
       });
     }
-    // ✅ Add hydrated class to hide static SEO content
-    document.body.classList.add("hydrated");
   }, [location.pathname, location.search]);
 
   return (
