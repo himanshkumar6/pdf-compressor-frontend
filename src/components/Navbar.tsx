@@ -29,7 +29,7 @@ export default function Navbar() {
   }, [location.pathname]);
 
   return (
-    <header className="w-full sticky top-0 z-50 backdrop-blur-xl bg-(--navbar-bg) border-b border-(--navbar-border) theme-transition">
+    <header className="w-full sticky top-0 z-50 backdrop-blur-xl bg-(--navbar-bg)/90 border-b border-(--navbar-border) theme-transition">
       <div className="w-full max-w-(--page-max-width) mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
 
         {/* LOGO */}
@@ -38,31 +38,41 @@ export default function Navbar() {
           className="brand-logo group relative z-10 flex items-center gap-1 focus:outline-none"
           aria-label={labels.brand}
         >
-          <div className="absolute -inset-2 bg-cyan-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+          <div className="absolute -inset-2 rounded-xl bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg" />
 
-          <div className="relative flex items-center font-bold text-xl tracking-wide text-(--text)">
+          <div className="relative flex items-center font-extrabold text-xl tracking-tight text-(--text)">
             <span>{labels.brand.replace(" PDF", "")}</span>
             <span className="text-cyan-500 ml-px">PDF</span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 text-sm font-semibold">
-          {navItems.filter((p) => p.key !== "tools").map((p) => {
-            const isActive =
-              location.pathname === p.path ||
-              (p.key === "blog" && location.pathname.startsWith(routes.blog));
+        <nav className="hidden md:flex items-center gap-1 text-sm font-semibold">
+          {navItems
+            .filter((p) => p.key !== "tools")
+            .map((p) => {
+              const isActive =
+                location.pathname === p.path ||
+                (p.key === "blog" &&
+                  location.pathname.startsWith(routes.blog));
 
-            return (
-              <Link
-                key={p.path}
-                className={`nav-link ${isActive ? "nav-link--active" : ""}`}
-                to={p.path}
-              >
-                {p.label}
-              </Link>
-            );
-          })}
+              return (
+                <Link
+                  key={p.path}
+                  to={p.path}
+                  className={`relative px-3 py-2 rounded-lg transition-colors
+                ${isActive
+                      ? "text-cyan-400"
+                      : "text-(--text-muted) hover:text-(--text) hover:bg-(--color-bg-hover)"
+                    }`}
+                >
+                  {p.label}
+                  {isActive && (
+                    <span className="absolute left-2 right-2 -bottom-1 h-0.5 bg-cyan-400 rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
         </nav>
 
         {/* Right Side */}
@@ -72,7 +82,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Link
             to={ctaLink}
-            className="btnPrimary hidden sm:inline-flex px-4 py-2.5 rounded-xl text-sm shadow-sm"
+            className="btnPrimary hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-cyan-500/20 transition-shadow"
           >
             {ctaLabel}
           </Link>
@@ -95,37 +105,47 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-out 
-        border-t border-(--navbar-border) bg-(--card) backdrop-blur-xl
-        ${openMobile ? "max-h-125 opacity-100" : "max-h-0 opacity-0"}`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-out
+      border-t border-(--navbar-border) bg-(--card)/95 backdrop-blur-xl
+      ${openMobile
+            ? "max-h-105 opacity-100 translate-y-0"
+            : "max-h-0 opacity-0 -translate-y-1"
+          }`}
       >
         <div className="px-4 sm:px-6 py-4 space-y-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              to={item.path}
-              className={`nav-link-mobile block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${location.pathname === item.path ||
-                (item.key === "blog" &&
-                  location.pathname.startsWith(routes.blog))
-                ? "nav-link--active"
-                : ""
-                }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active =
+              location.pathname === item.path ||
+              (item.key === "blog" &&
+                location.pathname.startsWith(routes.blog));
+
+            return (
+              <Link
+                key={item.key}
+                to={item.path}
+                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors
+              ${active
+                    ? "bg-cyan-500/10 text-cyan-400"
+                    : "text-(--text-muted) hover:text-(--text) hover:bg-(--color-bg-hover)"
+                  }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
 
           <div className="my-3 border-t border-(--border)" />
 
           {/* Mobile CTA */}
           <Link
             to={ctaLink}
-            className="btnPrimary block text-center px-4 py-3 rounded-xl"
+            className="btnPrimary block text-center px-4 py-3 rounded-xl shadow-sm"
           >
             {ctaLabel}
           </Link>
         </div>
       </div>
     </header>
+
   );
 }
