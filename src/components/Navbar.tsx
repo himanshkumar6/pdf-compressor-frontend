@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeMenuDropdown from "./ThemeMenuDropdown";
-import { getLanguage, NAV_LABELS, ROUTE_MAP } from "../utils/localization";
+import { getLanguage, NAV_LABELS, ROUTE_MAP, CRUD_LABELS, getLocalizedRouteGuard } from "../utils/localization";
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false);
@@ -12,9 +12,9 @@ export default function Navbar() {
   const labels = NAV_LABELS[lang];
   const routes = ROUTE_MAP[lang];
 
-  // ✅ FIXED: Try Free should always go to /tools
-  const ctaLink = "/tools";
-  const ctaLabel = lang === "ru" ? "Попробовать" : "Try Free";
+  // ✅ FIXED: Try Free now respects locale
+  const ctaLink = routes.cta;
+  const ctaLabel = CRUD_LABELS[lang].cta;
 
   const navItems = [
     { key: "home", label: labels.home, path: routes.home },
@@ -34,7 +34,7 @@ export default function Navbar() {
 
         {/* LOGO */}
         <Link
-          to={routes.home}
+          to={getLocalizedRouteGuard(routes.home, lang)}
           className="brand-logo group relative z-10 flex items-center gap-1 focus:outline-none"
           aria-label={labels.brand}
         >
@@ -59,7 +59,7 @@ export default function Navbar() {
               return (
                 <Link
                   key={p.path}
-                  to={p.path}
+                  to={getLocalizedRouteGuard(p.path, lang)}
                   className={`relative px-3 py-2 rounded-lg transition-colors
                 ${isActive
                       ? "text-cyan-400"
@@ -81,7 +81,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <Link
-            to={ctaLink}
+            to={getLocalizedRouteGuard(ctaLink, lang)}
             className="btnPrimary hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:shadow-cyan-500/20 transition-shadow"
           >
             {ctaLabel}
@@ -122,7 +122,7 @@ export default function Navbar() {
             return (
               <Link
                 key={item.key}
-                to={item.path}
+                to={getLocalizedRouteGuard(item.path, lang)}
                 className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors
               ${active
                     ? "bg-cyan-500/10 text-cyan-400"
@@ -138,7 +138,7 @@ export default function Navbar() {
 
           {/* Mobile CTA */}
           <Link
-            to={ctaLink}
+            to={getLocalizedRouteGuard(ctaLink, lang)}
             className="btnPrimary block text-center px-4 py-3 rounded-xl shadow-sm"
           >
             {ctaLabel}

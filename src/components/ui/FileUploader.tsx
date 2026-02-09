@@ -7,14 +7,32 @@ interface FileUploaderProps {
   accept?: string;
   maxSizeMB?: number;
   className?: string;
+  labels?: {
+    clickToUpload?: string;
+    filesUpTo?: string;
+    pdfUpTo?: string;
+    invalidType?: string;
+    fileTooLarge?: string;
+  };
 }
+
+const DEFAULT_LABELS = {
+  clickToUpload: "Click to upload or drag and drop",
+  filesUpTo: "Files up to",
+  pdfUpTo: "PDF up to",
+  invalidType: "Invalid file type. Please upload",
+  fileTooLarge: "File is too large. Max size is",
+};
 
 const FileUploader: React.FC<FileUploaderProps> = ({
   onFileSelect,
   accept = "application/pdf",
   maxSizeMB = 50,
-  className = ""
+  className = "",
+  labels = DEFAULT_LABELS
 }) => {
+  const t = { ...DEFAULT_LABELS, ...labels };
+
   const [isDragOver, setIsDragOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -34,14 +52,14 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       // Simple check basically.
       // For PDF: application/pdf
       if (!file.type.match(accept.replace("*", ""))) {
-        toast.error(`Invalid file type. Please upload ${accept}`);
+        toast.error(`${t.invalidType} ${accept}`);
         return;
       }
     }
 
     // Check size
     if (file.size > maxSizeMB * 1024 * 1024) {
-      toast.error(`File is too large. Max size is ${maxSizeMB}MB`);
+      toast.error(`${t.fileTooLarge} ${maxSizeMB}MB`);
       return;
     }
 
@@ -98,10 +116,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       </div>
 
       <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2">
-        Click to upload or drag and drop
+        {t.clickToUpload}
       </h3>
       <p className="text-slate-500 dark:text-slate-400 text-sm">
-        {accept === "application/pdf" ? "PDF" : "Files"} up to {maxSizeMB}MB
+        {accept === "application/pdf" ? "PDF" : "Files"} {t.pdfUpTo.includes("PDF") ? t.pdfUpTo.replace("PDF", "") : t.filesUpTo} {maxSizeMB}MB
       </p>
     </div>
   );

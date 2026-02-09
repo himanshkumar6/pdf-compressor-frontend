@@ -50,16 +50,30 @@ import DisclaimerRu from "./pages/ru/OtkazOtOtvetsvennosti";
 import ToolsRu from "./pages/ru/Instrumenty";
 
 import SzhatPdf from "./pages/ru/SzhatPdf";
+import SzhatPdfDo20kb from "./pages/ru/SzhatPdfDo20kb";
 import SzhatPdfDo50kb from "./pages/ru/SzhatPdfDo50kb";
 import SzhatPdfDo100kb from "./pages/ru/SzhatPdfDo100kb";
 import SzhatPdfDo150kb from "./pages/ru/SzhatPdfDo150kb";
 import SzhatPdfDo200kb from "./pages/ru/SzhatPdfDo200kb";
+import SzhatPdfDo300kb from "./pages/ru/SzhatPdfDo300kb";
 import SzhatPdfDo500kb from "./pages/ru/SzhatPdfDo500kb";
 import SzhatPdfDo1mb from "./pages/ru/SzhatPdfDo1mb";
 import UmenshitRazmerPdfDo500kb from "./pages/ru/UmenshitRazmerPdfDo500kb";
 import SzhatSkanirovannyjPdf from "./pages/ru/SzhatSkanirovannyjPdf";
 import SzhatSkanirovannyjPdfDo200kb from "./pages/ru/SzhatSkanirovannyjPdfDo200kb";
 import UdalitMetadannyePdf from "./pages/ru/UdalitMetadannyePdf";
+import IzmenitRazmerPdfKb from "./pages/ru/IzmenitRazmerPdfKb";
+import IzmenitRazmerPdfMb from "./pages/ru/IzmenitRazmerPdfMb";
+import PdfToJpgRu from "./pages/ru/PdfToJpgRu";
+import JpgToPdfRu from "./pages/ru/JpgToPdfRu";
+import ObedinitPdf from "./pages/ru/ObedinitPdf";
+import RazdelitPdf from "./pages/ru/RazdelitPdf";
+import RedaktirovatPdf from "./pages/ru/RedaktirovatPdf";
+import FlipkartLabelCropperRu from "./pages/ru/FlipkartLabelCropperRu";
+import MeeshoLabelCropperRu from "./pages/ru/MeeshoLabelCropperRu";
+import RazmerPdf200kb from "./pages/ru/RazmerPdf200kb";
+import CookiePolicyRu from "./pages/ru/CookiePolicyRu";
+
 
 // ✅ TS: window.gtag type
 declare global {
@@ -115,6 +129,7 @@ const App: React.FC = () => {
             <Route path="/ru/politika-konfidencialnosti" element={<PrivacyPolicyRu />} />
             <Route path="/ru/usloviya" element={<TermsConditionsRu />} />
             <Route path="/ru/otkaz-ot-otvetstvennosti" element={<DisclaimerRu />} />
+            <Route path="/ru/cookie-policy" element={<CookiePolicyRu />} />
             <Route path="/ru/instrumenty" element={<ToolsRu />} />
             <Route path="/ru/blog" element={<div className="min-h-screen pt-32 text-center text-white text-3xl font-bold">Блог скоро будет...</div>} />
 
@@ -166,16 +181,29 @@ const App: React.FC = () => {
 
             {/* Russian Tool Pages */}
             <Route path="/ru/szhat-pdf" element={<SzhatPdf />} />
+            <Route path="/ru/szhat-pdf-do-20kb" element={<SzhatPdfDo20kb />} />
             <Route path="/ru/szhat-pdf-do-50kb" element={<SzhatPdfDo50kb />} />
             <Route path="/ru/szhat-pdf-do-100kb" element={<SzhatPdfDo100kb />} />
             <Route path="/ru/szhat-pdf-do-150kb" element={<SzhatPdfDo150kb />} />
             <Route path="/ru/szhat-pdf-do-200kb" element={<SzhatPdfDo200kb />} />
+            <Route path="/ru/szhat-pdf-do-300kb" element={<SzhatPdfDo300kb />} />
             <Route path="/ru/szhat-pdf-do-500kb" element={<SzhatPdfDo500kb />} />
             <Route path="/ru/szhat-pdf-do-1mb" element={<SzhatPdfDo1mb />} />
             <Route path="/ru/umenshit-razmer-pdf-do-500kb" element={<UmenshitRazmerPdfDo500kb />} />
             <Route path="/ru/szhat-skanirovannyj-pdf" element={<SzhatSkanirovannyjPdf />} />
             <Route path="/ru/szhat-skanirovannyj-pdf-do-200kb" element={<SzhatSkanirovannyjPdfDo200kb />} />
             <Route path="/ru/udalit-metadannye-pdf" element={<UdalitMetadannyePdf />} />
+            <Route path="/ru/izmenit-razmer-pdf-kb" element={<IzmenitRazmerPdfKb />} />
+            <Route path="/ru/izmenit-razmer-pdf-mb" element={<IzmenitRazmerPdfMb />} />
+            <Route path="/ru/pdf-v-jpg" element={<PdfToJpgRu />} />
+            <Route path="/ru/jpg-v-pdf" element={<JpgToPdfRu />} />
+            <Route path="/ru/obedinit-pdf" element={<ObedinitPdf />} />
+            <Route path="/ru/razdelit-pdf" element={<RazdelitPdf />} />
+            <Route path="/ru/redaktirovat-pdf" element={<RedaktirovatPdf />} />
+            <Route path="/ru/flipkart-label-cropper" element={<FlipkartLabelCropperRu />} />
+            <Route path="/ru/meesho-label-cropper" element={<MeeshoLabelCropperRu />} />
+            <Route path="/ru/razmer-pdf-200kb" element={<RazmerPdf200kb />} />
+
           </Route>
 
         </Routes>

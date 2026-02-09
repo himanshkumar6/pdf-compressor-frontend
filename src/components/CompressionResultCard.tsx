@@ -10,7 +10,11 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import type { CompressionResult, TargetSizeOption } from "../types";
-import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
+import {
+  getLanguage,
+  TOOL_UI_LABELS,
+  getLocalizedRouteGuard,
+} from "../utils/localization";
 
 type CompressionResultCardProps = {
   result: CompressionResult;
@@ -19,20 +23,26 @@ type CompressionResultCardProps = {
   availableOptions?: TargetSizeOption[];
 };
 
+/* ---------------- HELPERS ---------------- */
+
 const formatSizeKB = (kb: number): string => {
   if (kb >= 1024) return `${(kb / 1024).toFixed(1)}MB`;
   return `${Math.round(kb)}KB`;
 };
 
-const getSuggestedLimits = (currentLimit: number, options?: TargetSizeOption[]): number[] => {
+const getSuggestedLimits = (
+  currentLimit: number,
+  options?: TargetSizeOption[]
+): number[] => {
   if (!options) return [];
-  // Find limits higher than current, sorted by size
   return options
     .filter((opt) => opt.v > currentLimit)
     .map((opt) => opt.v)
     .sort((a, b) => a - b)
     .slice(0, 2);
 };
+
+/* ---------------- COMPONENT ---------------- */
 
 const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
   result,
@@ -46,16 +56,21 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
 
   const isSuccess = result.status === "success";
   const isNotPossible = result.status === "not_possible";
-  const suggestedLimits = getSuggestedLimits(result.targetLimitKB, availableOptions);
+  const suggestedLimits = getSuggestedLimits(
+    result.targetLimitKB,
+    availableOptions
+  );
 
-  const tryHigherLimitMsg =
+  const smallerLimitLink = getLocalizedRouteGuard(
     lang === "ru"
-      ? "Попробуйте лимит выше:"
-      : "Try a higher limit for better results:";
+      ? "/ru/szhat-pdf-do-100kb"
+      : "/compress-pdf-to-100kb",
+    lang
+  );
 
   return (
     <div className="space-y-6">
-      {/* Status Icon */}
+      {/* Status */}
       <div className="flex justify-center">
         {isSuccess ? (
           <CheckCircle className="w-16 h-16 text-cyan-400" />
@@ -64,133 +79,59 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
         )}
       </div>
 
-      {/* Warning Banner for not_possible */}
-      {isNotPossible && (
-        <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-2xl text-center">
-          <p className="text-yellow-400 font-semibold text-sm">
-            {lang === "ru"
-              ? `⚠️ Этот PDF не может быть сжат до ≤${result.targetLimitKB}KB без потери качества.`
-              : `⚠️ This PDF cannot reach ≤${result.targetLimitKB}KB without severe quality loss.`}
-          </p>
-          {result.message && (
-            <p className="text-yellow-500/80 text-xs mt-1">{result.message}</p>
-          )}
-        </div>
-      )}
-
-      {/* Summary Card */}
+      {/* Summary */}
       <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 space-y-4">
-        {/* Original Size */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-gray-400">
-            <FileText className="w-5 h-5" />
-            <span className="text-sm">{t.originalSize}</span>
-          </div>
-          <span className="text-white font-bold">
-            {formatSizeKB(result.originalSizeKB)}
-          </span>
+        <div className="flex justify-between">
+          <span>{t.originalSize}</span>
+          <span>{formatSizeKB(result.originalSizeKB)}</span>
         </div>
 
-        {/* Selected Limit (Target) */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 text-gray-400">
-            <Target className="w-5 h-5" />
-            <span className="text-sm">{lang === "ru" ? "Цель:" : "Target:"}</span>
-          </div>
-          <span className="text-cyan-400 font-bold">
-            {formatSizeKB(result.targetLimitKB).replace("≤ ", "")}
-          </span>
+        <div className="flex justify-between">
+          <span>{lang === "ru" ? "Цель" : "Target"}</span>
+          <span>{formatSizeKB(result.targetLimitKB)}</span>
         </div>
 
-        {/* Final Size */}
-        <div className="flex items-center justify-between border-t border-gray-800 pt-4">
-          <div className="flex items-center gap-3 text-white">
-            <CheckCircle className="w-5 h-5 text-cyan-400" />
-            <span className="text-sm font-semibold">{t.finalSize}</span>
-          </div>
-          <span
-            className={`text-xl font-black ${isSuccess ? "text-cyan-400" : "text-yellow-400"
-              }`}
-          >
-            {formatSizeKB(result.finalSizeKB)}
-          </span>
+        <div className="flex justify-between border-t pt-4">
+          <span>{t.finalSize}</span>
+          <span>{formatSizeKB(result.finalSizeKB)}</span>
         </div>
 
-        {/* Attempts */}
-        <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-3 text-gray-400">
-            <RefreshCcw className="w-4 h-4" />
-            <span>{t.attempts}</span>
-          </div>
-          <span className="text-gray-300">{result.attempts}</span>
+        <div className="flex justify-between text-sm">
+          <span>{t.attempts}</span>
+          <span>{result.attempts}</span>
         </div>
 
-        {/* Saved / Increased Percentage */}
-        <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-3 text-gray-400">
-            <TrendingDown className={`w-4 h-4 ${result.finalSizeBytes > result.originalSizeBytes ? 'rotate-180 text-blue-400' : ''}`} />
-            <span>{result.finalSizeBytes > result.originalSizeBytes
-              ? (lang === 'ru' ? "Увеличено" : "Increased")
-              : t.saved}</span>
-          </div>
-          <span className={result.finalSizeBytes > result.originalSizeBytes ? "text-blue-400 font-semibold" : "text-green-400 font-semibold"}>
-            {result.finalSizeBytes > result.originalSizeBytes
-              ? `+${Math.round(((result.finalSizeBytes - result.originalSizeBytes) / result.originalSizeBytes) * 100)}%`
-              : `${result.savedPercentage}%`}
-          </span>
+        <div className="flex justify-between text-sm">
+          <span>{t.saved}</span>
+          <span>{result.savedPercentage}%</span>
         </div>
       </div>
 
-      {/* Download Button */}
+      {/* Download */}
       <a
         href={result.downloadUrl}
         download={result.fileName}
-        className="btnPrimary w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl"
+        className="btnPrimary w-full flex justify-center gap-2"
       >
         <Download className="w-5 h-5" />
-        {t.download} ({formatSizeKB(result.finalSizeKB)})
+        {t.download}
       </a>
 
-      {/* ✅ Phase 5: Internal Link for <200KB Results */}
+      {/* Internal Hint */}
       {isSuccess && result.finalSizeKB < 200 && (
         <div className="text-center">
-          <Link
-            to="/compress-pdf-to-100kb"
-            className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-cyan-300 transition-colors"
-          >
-            <span>Need it even smaller?</span>
-            <span className="underline decoration-gray-700 underline-offset-4 hover:decoration-cyan-500/50">Compress PDF to 100KB</span>
+          <Link to={smallerLimitLink} className="underline">
+            {lang === "ru"
+              ? "Сжать PDF до 100 КБ"
+              : "Compress PDF to 100KB"}
           </Link>
         </div>
       )}
 
-      {/* Try Different Limits (for not_possible) */}
-      {isNotPossible && suggestedLimits.length > 0 && onTryDifferentLimit && (
-        <div className="space-y-3">
-          <p className="text-center text-gray-500 text-sm">
-            {tryHigherLimitMsg}
-          </p>
-          <div className="flex gap-3 justify-center">
-            {suggestedLimits.map((limit) => (
-              <button
-                key={limit}
-                onClick={() => onTryDifferentLimit(limit)}
-                className="px-5 py-3 rounded-2xl border border-cyan-500/30 text-cyan-400 font-semibold hover:bg-cyan-500/10 transition"
-              >
-                {lang === "ru" ? "До " : "Try ≤"}{formatSizeKB(limit)}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Compress Another */}
+      {/* Reset */}
       {onReset && (
-        <button
-          onClick={onReset}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 border border-gray-700 text-gray-400 font-semibold rounded-2xl hover:border-gray-600 hover:text-gray-300 transition"
-        >
-          <RefreshCcw className="w-4 h-4" />
+        <button onClick={onReset} className="w-full border p-3 rounded">
+          <RefreshCcw className="w-4 h-4 inline mr-2" />
           {t.reset}
         </button>
       )}

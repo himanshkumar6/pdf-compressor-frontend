@@ -16,7 +16,34 @@ interface LabelCropperProps {
   presets: CropPreset[];
   defaultPresetName?: string;
   toolName: string;
+  labels?: {
+    uploadTitle?: string;
+    uploadHint?: string;
+    startOver?: string;
+    cropPreset?: string;
+    tip?: string;
+    cropButton?: string;
+    errorValidPdf?: string;
+    errorLoadPdf?: string;
+    errorCropFailed?: string;
+    thermalInfo?: string;
+    a4Info?: string;
+  };
 }
+
+const DEFAULT_LABELS = {
+  uploadTitle: "Upload {toolName} PDF",
+  uploadHint: "Select your shipping label file",
+  startOver: "Start Over",
+  cropPreset: "Crop Preset",
+  tip: "💡 Tip: Drag the blue box to position. Drag the corner to resize (ratio locked).",
+  cropButton: "Crop & Download PDF",
+  errorValidPdf: "Please upload a valid PDF file",
+  errorLoadPdf: "Failed to load PDF",
+  errorCropFailed: "Crop failed",
+  thermalInfo: "For 4x6 Thermal Printers",
+  a4Info: "For Standard A4 Paper",
+};
 
 // Helper: Clamp value between min and max
 const clamp = (val: number, min: number, max: number) => Math.min(Math.max(val, min), max);
@@ -25,7 +52,10 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
   presets,
   defaultPresetName,
   toolName,
+  labels = DEFAULT_LABELS,
 }) => {
+  const t = { ...DEFAULT_LABELS, ...labels };
+
   const [file, setFile] = useState<File | null>(null);
   const [pdfDoc, setPdfDoc] = useState<PDFDocument | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -85,7 +115,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
     const selected = e.target.files?.[0];
     if (!selected) return;
     if (selected.type !== "application/pdf") {
-      alert("Please upload a valid PDF file");
+      alert(t.errorValidPdf);
       return;
     }
 
@@ -139,7 +169,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
       }
     } catch (err) {
       console.error(err);
-      alert("Failed to load PDF");
+      alert(t.errorLoadPdf);
     } finally {
       setIsProcessing(false);
     }
@@ -277,7 +307,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
       document.body.removeChild(link);
     } catch (err) {
       console.error(err);
-      alert("Crop failed");
+      alert(t.errorCropFailed);
     } finally {
       setIsProcessing(false);
     }
@@ -290,8 +320,8 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
           <div className="p-14 text-center border-2 border-dashed border-(--border) hover:border-(--border-hover) rounded-3xl cursor-pointer relative bg-(--bg2) m-8">
             <input type="file" accept="application/pdf" onChange={handleFileChange} className="absolute inset-0 opacity-0 cursor-pointer" />
             <Upload className="w-12 h-12 mx-auto text-cyan-400 mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Upload {toolName} PDF</h3>
-            <p className="text-gray-400">Select your shipping label file</p>
+            <h3 className="text-xl font-bold text-white mb-2">{t.uploadTitle.replace("{toolName}", toolName)}</h3>
+            <p className="text-gray-400">{t.uploadHint}</p>
           </div>
         ) : (
           <div className="p-4 lg:p-8 flex flex-col lg:flex-row gap-8">
@@ -349,20 +379,20 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
               <div className="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
                 <h3 className="font-bold text-white truncate max-w-[200px]">{file.name}</h3>
                 <button onClick={reset} className="text-red-400 text-sm flex items-center gap-2 hover:bg-red-500/10 px-3 py-1.5 rounded-lg transition">
-                  <RefreshCw className="w-4 h-4" /> Start Over
+                  <RefreshCw className="w-4 h-4" /> {t.startOver}
                 </button>
               </div>
 
               <div className="mb-6">
-                <label className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-3 block">Crop Preset</label>
+                <label className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-3 block">{t.cropPreset}</label>
                 <div className="grid grid-cols-1 gap-2">
                   {presets.map(p => (
                     <button
                       key={p.name}
                       onClick={() => handlePresetChange(p.name)}
                       className={`p-4 rounded-xl border text-left transition-all ${selectedPreset === p.name
-                          ? "bg-cyan-500/10 border-cyan-500 text-cyan-400"
-                          : "bg-gray-800/50 border-gray-700 text-gray-400 hover:border-gray-600"
+                        ? "bg-cyan-500/10 border-cyan-500 text-cyan-400"
+                        : "bg-gray-800/50 border-gray-700 text-gray-400 hover:border-gray-600"
                         }`}
                     >
                       <div className="flex items-center gap-3 mb-1">
@@ -374,7 +404,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
                         <span className="font-bold text-lg">{p.label}</span>
                       </div>
                       <div className="text-xs opacity-70">
-                        For {p.name.includes("thermal") ? "4x6 Thermal Printers" : "Standard A4 Paper"}
+                        {p.name.includes("thermal") ? t.thermalInfo : t.a4Info}
                       </div>
                     </button>
                   ))}
@@ -382,7 +412,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
               </div>
 
               <div className="mt-auto bg-gray-800/30 p-4 rounded-xl border border-gray-800 mb-4">
-                <p className="text-xs text-gray-400 mb-1">💡 Tip: Drag the blue box to position. Drag the corner to resize (ratio locked).</p>
+                <p className="text-xs text-gray-400 mb-1">{t.tip}</p>
               </div>
 
               <button
@@ -391,7 +421,7 @@ const LabelCropper: React.FC<LabelCropperProps> = ({
                 className="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-cyan-500/25 transition-all flex items-center justify-center gap-3 transform active:scale-95 disabled:opacity-50"
               >
                 {isProcessing ? <Loader2 className="animate-spin w-5 h-5" /> : <Crop className="w-5 h-5" />}
-                Crop & Download PDF
+                {t.cropButton}
               </button>
             </div>
 

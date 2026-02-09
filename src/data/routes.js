@@ -72,10 +72,12 @@ export const RU_ROUTES = [
   "/ru/blog",
   "/ru/instrumenty",
   "/ru/szhat-pdf",
+  "/ru/szhat-pdf-do-20kb",
   "/ru/szhat-pdf-do-50kb",
   "/ru/szhat-pdf-do-100kb",
   "/ru/szhat-pdf-do-150kb",
   "/ru/szhat-pdf-do-200kb",
+  "/ru/szhat-pdf-do-300kb",
   "/ru/szhat-pdf-do-500kb",
   "/ru/szhat-pdf-do-1mb",
   "/ru/umenshit-razmer-pdf-do-500kb",
@@ -89,7 +91,12 @@ export const RU_ROUTES = [
   "/ru/razdelit-pdf",
   "/ru/flipkart-label-cropper",
   "/ru/meesho-label-cropper",
+  "/ru/jpg-v-pdf",
+  "/ru/redaktirovat-pdf",
+  "/ru/razmer-pdf-200kb",
+  "/ru/cookie-policy",
 ];
+
 
 // Combine all for Sitemap/StaticGen
 export const ALL_ROUTES = [

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   const seo = PAGES_SEO["/ru/szhat-pdf"];
-  const canonical = "https://compresspdfto200kb.online/ru/";
+  const canonical = "https://compresspdfto200kb.online/ru";
 
   const websiteSchema = {
     "@context": "https://schema.org",

@@ -9,7 +9,35 @@ import FileUploader from "../../components/ui/FileUploader";
 
 const BACKEND_URL = "https://pdf-editor-production-1aa6.up.railway.app/edit-position";
 
-const PdfEditor: React.FC = () => {
+interface PdfEditorProps {
+  labels?: {
+    noEditsToSave?: string;
+    processingPdf?: string;
+    pdfSaved?: string;
+    saveFailed?: string;
+    loadingEngine?: string;
+    addText?: string;
+    pageOf?: string;
+    download?: string;
+    newText?: string;
+  };
+}
+
+const DEFAULT_LABELS = {
+  noEditsToSave: "No edits to save",
+  processingPdf: "Processing PDF...",
+  pdfSaved: "PDF saved!",
+  saveFailed: "Save failed. Backend might be down.",
+  loadingEngine: "Loading PDF engine...",
+  addText: "Add Text",
+  pageOf: "Page {current} of {total}",
+  download: "Download",
+  newText: "New Text",
+};
+
+const PdfEditor: React.FC<PdfEditorProps> = ({ labels = DEFAULT_LABELS }) => {
+  const t = { ...DEFAULT_LABELS, ...labels };
+
   const { pdfDocument, numPages, isLoading, loadPdf, file, reset } = usePdfDocument();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +83,7 @@ const PdfEditor: React.FC = () => {
       page: currentPage,
       x: 100,
       y: 100,
-      text: "New Text",
+      text: t.newText,
       fontSize: 18,
       width: 120,
       height: 30
@@ -88,12 +116,12 @@ const PdfEditor: React.FC = () => {
     ];
 
     if (editsToExport.length === 0) {
-      toast.error("No edits to save");
+      toast.error(t.noEditsToSave);
       return;
     }
 
     setIsExporting(true);
-    const toastId = toast.loading("Processing PDF...");
+    const toastId = toast.loading(t.processingPdf);
 
     try {
       const targetPageNum = editsToExport[0].page;
@@ -125,10 +153,10 @@ const PdfEditor: React.FC = () => {
       a.click();
       URL.revokeObjectURL(url);
 
-      toast.success("PDF saved!");
+      toast.success(t.pdfSaved);
     } catch (e) {
       console.error(e);
-      toast.error("Save failed. Backend might be down.");
+      toast.error(t.saveFailed);
     } finally {
       setIsExporting(false);
       toast.dismiss(toastId);
@@ -141,10 +169,16 @@ const PdfEditor: React.FC = () => {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center p-20">
             <Loader2 className="w-12 h-12 animate-spin text-cyan-600 mb-4" />
-            <p className="text-slate-500">Loading PDF engine...</p>
+            <p className="text-slate-500">{t.loadingEngine}</p>
           </div>
         ) : (
-          <FileUploader onFileSelect={handleFileSelect} maxSizeMB={50} />
+          <FileUploader
+            onFileSelect={handleFileSelect}
+            maxSizeMB={50}
+            labels={{
+              clickToUpload: t.loadingEngine.includes("PDF") ? undefined : "Нажмите для загрузки или перетащите файл", // Placeholder for actual RU logic
+            }}
+          />
         )}
       </div>
     );
@@ -160,7 +194,7 @@ const PdfEditor: React.FC = () => {
             onClick={() => handleAddText()}
             className="btn-secondary flex items-center gap-2"
           >
-            <TypeIcon className="w-4 h-4" /> <span>Add Text</span>
+            <TypeIcon className="w-4 h-4" /> <span>{t.addText}</span>
           </button>
           <div className="h-6 w-px bg-slate-300 mx-2" />
           <button
@@ -183,7 +217,9 @@ const PdfEditor: React.FC = () => {
             <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage <= 1} className="p-1 hover:bg-white rounded shadow-sm disabled:opacity-50">
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="text-sm px-2 font-medium">Page {currentPage} of {numPages}</span>
+            <span className="text-sm px-2 font-medium">
+              {t.pageOf.replace("{current}", String(currentPage)).replace("{total}", String(numPages))}
+            </span>
             <button onClick={() => setCurrentPage(p => Math.min(numPages, p + 1))} disabled={currentPage >= numPages} className="p-1 hover:bg-white rounded shadow-sm disabled:opacity-50">
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -200,7 +236,7 @@ const PdfEditor: React.FC = () => {
             className="btn-primary flex items-center gap-2"
           >
             {isExporting ? <Loader2 className="animate-spin w-4 h-4" /> : <Download className="w-4 h-4" />}
-            <span>Download</span>
+            <span>{t.download}</span>
           </button>
         </div>
       </div>

@@ -2,11 +2,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { FileText, Github, Twitter, Mail } from "lucide-react";
-import {
-  TOOL_PAGES,
-  RU_TOOL_PAGES,
-} from "../data/pages";
-import { getLanguage, NAV_LABELS, ROUTE_MAP } from "../utils/localization";
+import { getLanguage, NAV_LABELS, ROUTE_MAP, getLocalizedRouteGuard } from "../utils/localization";
 
 /** Internal links use plain <a href> so crawlers (e.g. Ahrefs) see them. Navigation works via full page load. */
 
@@ -15,7 +11,6 @@ const Footer: React.FC = () => {
   const lang = getLanguage(location.pathname);
   const labels = NAV_LABELS[lang];
   const routes = ROUTE_MAP[lang];
-  const tools = lang === "ru" ? RU_TOOL_PAGES : TOOL_PAGES;
 
   const isRu = lang === "ru";
 
@@ -35,7 +30,8 @@ const Footer: React.FC = () => {
     bottom: {
       rights: `© ${new Date().getFullYear()} CompressPDF Tool. Все права защищены.`,
       clientSide: "100% на клиенте",
-      madeWith: "Сделано с ❤️ для работы с PDF"
+      madeWith: "Сделано с",
+      by: "кем",
     }
   } : {
     headline: <>Compress PDFs the <span className="text-cyan-400">secure</span> way.</>,
@@ -52,7 +48,8 @@ const Footer: React.FC = () => {
     bottom: {
       rights: `© ${new Date().getFullYear()} CompressPDF Tool. All rights reserved.`,
       clientSide: "100% Client-side",
-      madeWith: "Made with ❤️ for PDF lovers"
+      madeWith: "Made with",
+      by: "by",
     }
   };
 
@@ -110,13 +107,13 @@ const Footer: React.FC = () => {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <a
-                href={link200}
+                href={getLocalizedRouteGuard(link200, lang)}
                 className="btnPrimary w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold"
               >
                 {t.btn200}
               </a>
               <a
-                href={linkHome}
+                href={getLocalizedRouteGuard(linkHome, lang)}
                 className="w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold border border-gray-800 text-white hover:border-cyan-500/50 hover:text-cyan-300 transition-colors"
               >
                 {t.btnHome}
@@ -131,7 +128,7 @@ const Footer: React.FC = () => {
 
           {/* Brand */}
           <div className="lg:col-span-4">
-            <a href={routes.home} className="flex items-center gap-2">
+            <a href={getLocalizedRouteGuard(routes.home, lang)} className="flex items-center gap-2">
               <FileText className="w-6 h-6 text-cyan-400" />
               <span className="text-xl font-extrabold tracking-tight">
                 <span className="text-white">Compress</span>
@@ -175,7 +172,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 {supportLinks.map((p) => (
                   <li key={p.path}>
-                    <a href={p.path} className="footer-link">
+                    <a href={getLocalizedRouteGuard(p.path, lang)} className="footer-link">
                       {p.label}
                     </a>
                   </li>
@@ -191,7 +188,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 {legalLinks.map((p) => (
                   <li key={p.path}>
-                    <a href={p.path} className="footer-link">
+                    <a href={getLocalizedRouteGuard(p.path, lang)} className="footer-link">
                       {p.label}
                     </a>
                   </li>
@@ -206,10 +203,10 @@ const Footer: React.FC = () => {
           <p>{t.bottom.rights}</p>
 
           <div className="flex items-center gap-2">
-            <span>Built with</span>
+            <span>{t.bottom.madeWith}</span>
             <span className="text-red-500 animate-pulse">❤️</span>
-            <span>by</span>
-            <a href="/about" className="text-cyan-500 hover:text-cyan-400 font-medium">
+            <span>{t.bottom.by}</span>
+            <a href={getLocalizedRouteGuard(routes.about, lang)} className="text-cyan-500 hover:text-cyan-400 font-medium">
               Himanshu
             </a>
             <span className="hidden sm:inline">• {t.bottom.clientSide}</span>
