@@ -44,31 +44,48 @@ const ToolHeader: React.FC<ToolHeaderProps> = ({ title, description }) => {
   // ✅ LOCALIZATION: Detect language
   const isRu = location.pathname.startsWith("/ru");
 
+  // 🔥 STRICT FIX: If Russian, render ONLY the header content. NO breadcrumbs.
+  if (isRu) {
+    return (
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 mt-2 flex flex-col items-center">
+        <div className="text-center max-w-3xl">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">
+            {displayTitle}
+          </h1>
+          {displayDesc && (
+            <p className="text-lg text-slate-600 dark:text-slate-400">
+              {displayDesc}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // 🇺🇸 English: Render Breadcrumbs + Header
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 mt-2 flex flex-col items-center">
-      {/* Breadcrumbs - 🔥 STRICTLY DISABLED ON RUSSIAN ROUTES */}
-      {!isRu && (
-        <nav className="flex items-center justify-center text-sm text-slate-500 mb-4 overflow-hidden">
-          {breadcrumbs.map((item, index) => (
-            <React.Fragment key={index}>
-              {index > 0 && <ChevronRight className="w-4 h-4 mx-2 text-slate-400" />}
-              {index === 0 ? (
-                <Link to={item.path} className="hover:text-cyan-600 transition-colors">
-                  <Home className="w-4 h-4" />
-                </Link>
-              ) : index === breadcrumbs.length - 1 ? (
-                <span className="font-medium text-slate-800 dark:text-slate-200 truncate">
-                  {item.label}
-                </span>
-              ) : (
-                <Link to={item.path} className="hover:text-cyan-600 transition-colors whitespace-nowrap">
-                  {item.label}
-                </Link>
-              )}
-            </React.Fragment>
-          ))}
-        </nav>
-      )}
+      {/* Breadcrumbs */}
+      <nav className="flex items-center justify-center text-sm text-slate-500 mb-4 overflow-hidden">
+        {breadcrumbs.map((item, index) => (
+          <React.Fragment key={index}>
+            {index > 0 && <ChevronRight className="w-4 h-4 mx-2 text-slate-400" />}
+            {index === 0 ? (
+              <Link to={item.path} className="hover:text-cyan-600 transition-colors">
+                <Home className="w-4 h-4" />
+              </Link>
+            ) : index === breadcrumbs.length - 1 ? (
+              <span className="font-medium text-slate-800 dark:text-slate-200 truncate">
+                {item.label}
+              </span>
+            ) : (
+              <Link to={item.path} className="hover:text-cyan-600 transition-colors whitespace-nowrap">
+                {item.label}
+              </Link>
+            )}
+          </React.Fragment>
+        ))}
+      </nav>
 
       {/* Header Content */}
       <div className="text-center max-w-3xl">

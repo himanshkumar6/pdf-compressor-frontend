@@ -86,6 +86,11 @@ export function buildBreadcrumbSchemaItems(
   let path = pathname?.trim() || "/";
   if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
 
+  // ❌ STRICT: No schema for RU routes to avoid English leaks
+  if (path.startsWith("/ru")) {
+    return [];
+  }
+
   // homepage => no breadcrumb schema needed usually (but safe)
   // still return Home only, optional
   if (path === "/") {

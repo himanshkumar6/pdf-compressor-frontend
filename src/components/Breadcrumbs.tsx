@@ -60,6 +60,8 @@ export default function Breadcrumbs() {
     // 🔥 HARD BLOCK — no breadcrumbs on RU (checking inside memo to avoid hook violation)
     if (lang === "ru") return [];
     if (location.pathname === "/") return [];
+
+    // Only build for English
     return buildCrumbs(location.pathname);
   }, [location.pathname, lang]);
 

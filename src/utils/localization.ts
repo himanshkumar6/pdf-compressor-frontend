@@ -133,6 +133,23 @@ export const TOOL_UI_LABELS = {
     saved: "Saved",
     download: "Download",
     reset: "Upload another file",
+    
+    // Toasts
+    toastTooLarge: "File is too large (max 5MB)",
+    toastUploadError: "This is not a PDF file",
+    toastDone: "Compression complete!",
+    toastCompressFailed: "Compression failed",
+    toastNetworkError: "Network error. Please try again.",
+
+    // Upload
+    uploadTitle: "Click to Select PDF",
+    uploadHint: "or drag and drop PDF file here",
+    uploadHint2: "Max size: 5MB. Files are processed locally.",
+
+    // Processing
+    compressingTitle: "Compressing PDF...",
+    attempt: "Attempt",
+    optimizing: "Optimizing content structure...",
   },
   ru: {
     originalSize: "Исходный размер",
@@ -141,6 +158,23 @@ export const TOOL_UI_LABELS = {
     saved: "Экономия",
     download: "Скачать",
     reset: "Загрузить другой файл",
+
+    // Toasts
+    toastTooLarge: "Файл слишком большой (макс. 5 МБ)",
+    toastUploadError: "Это не PDF файл",
+    toastDone: "Сжатие завершено!",
+    toastCompressFailed: "Ошибка сжатия",
+    toastNetworkError: "Ошибка сети. Попробуйте снова.",
+
+    // Upload
+    uploadTitle: "Нажмите для выбора PDF",
+    uploadHint: "или перетащите файл сюда",
+    uploadHint2: "Макс. размер: 5 МБ. Обработка на устройстве.",
+
+    // Processing
+    compressingTitle: "Сжимаем PDF...",
+    attempt: "Попытка",
+    optimizing: "Оптимизация структуры...",
   },
 } as const;
 

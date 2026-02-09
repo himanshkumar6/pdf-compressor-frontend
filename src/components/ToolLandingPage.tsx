@@ -135,7 +135,7 @@ export default function ToolLandingPage({
       <BreadcrumbSchema items={breadcrumbItems} />
 
       {/* HERO SECTION REMOVED - Handled by ToolLayout */}
-      <div className="mt-8" />
+      {/* ToolSection now handles its own top spacing */}
 
       {/* ✅ TOOL */}
       <section className="w-full max-w-4xl mx-auto">{renderTool()}</section>

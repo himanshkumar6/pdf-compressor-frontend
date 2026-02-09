@@ -232,7 +232,7 @@ const ToolSection: React.FC<ToolSectionProps> = ({
       : `Target: ${formatSizeLabel(targetSize).replace("≤ ", "")}`);
 
   return (
-    <div className="max-w-225 mx-auto w-full px-4 sm:px-0">
+    <div className="max-w-4xl mx-auto w-full px-4 sm:px-0 mt-8">
       <div className="bg-(--card) border border-(--border) rounded-[2.5rem] p-6 md:p-10 shadow-(--shadow-card) theme-transition">
         {/* ✅ UPLOAD */}
         {!file && (
