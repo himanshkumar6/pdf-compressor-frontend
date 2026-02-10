@@ -14,23 +14,46 @@ const About: React.FC = () => {
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">About the Developer</h1>
+
+      <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+        About the Developer
+      </h1>
 
       {/* Intro Block */}
       <div className="bg-gray-900/50 border border-gray-800 rounded-3xl p-8 mb-10 leading-relaxed">
         <p className="text-lg text-gray-300 mb-6">
           Hi, I’m <strong className="text-white">Himanshu</strong>.
         </p>
+
         <p className="mb-6">
           I built <strong className="text-cyan-400">CompressPDF</strong> because I was tired of seeing my own applications get rejected.
           While applying for various exams myself, I constantly hit the "File Too Large" error.
           Existing tools were frustrating—either they asked for a login, added a watermark, or made my clear documents blurry.
         </p>
+
         <p>
           So, I used my background in web development to build the tool I wish I had back then.
           A simple, secure, and private way to get your PDF under 200KB without any headaches.
           This isn't a corporate product; it's a utility built by a developer who understands the pain of submitting a government form at the last minute.
         </p>
+      </div>
+
+      {/* Related Educational Project (IQ Checker) */}
+      <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 mb-12 text-sm leading-relaxed">
+        <p className="mb-3">
+          In addition to document utilities, I also work on an independent educational project focused on
+          logic, reasoning, and cognitive self-assessment.
+        </p>
+        <p className="mb-4">
+          That project is designed purely for learning and exploration, following the same principles of
+          privacy, transparency, and user-first design.
+        </p>
+        <a
+          href="https://iqcheckerxyz.compresspdfto200kb.online"
+          className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
+        >
+          Visit the cognitive assessment project
+        </a>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -45,6 +68,7 @@ const About: React.FC = () => {
                 I coded this to run locally on your device. No server uploads means your data never leaves your control.
               </span>
             </li>
+
             <li className="flex gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2.5 shrink-0" />
               <span>
@@ -52,6 +76,7 @@ const About: React.FC = () => {
                 I tuned the compression engine specifically for the 200KB limit used by NIC, SSC, and NTA portals.
               </span>
             </li>
+
             <li className="flex gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2.5 shrink-0" />
               <span>
@@ -70,9 +95,7 @@ const About: React.FC = () => {
               During my own application processes, I noticed that most free online tools add watermarks,
               require email signups, or simply fail to compress scanned documents properly.
             </p>
-            <p>
-              I wanted to create a solution that is:
-            </p>
+            <p>I wanted to create a solution that is:</p>
             <ul className="list-disc list-inside space-y-1 ml-2 text-cyan-200/80">
               <li>100% Free forever (no paywalls)</li>
               <li>No Signup required (speed matters)</li>
