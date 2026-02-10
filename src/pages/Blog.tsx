@@ -92,7 +92,7 @@ const Blog: React.FC = () => {
       </div>
 
       {/* Header */}
-      <div className="text-center mb-14">
+      <div className="text-center mb-10 md:mb-14">
         <h1 className="text-3xl md:text-5xl font-bold text-white">
           CompressPDF <span className="text-cyan-400">Blog</span>
         </h1>

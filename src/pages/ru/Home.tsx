@@ -49,12 +49,12 @@ const Home: React.FC = () => {
       />
 
       {/* HERO */}
-      <div className="text-center pt-16 pb-10 px-4">
-        <h1 className="text-4xl md:text-7xl font-black text-white mb-6 tracking-tight">
+      <div className="text-center pt-10 md:pt-16 pb-10 px-4">
+        <h1 className="text-3xl md:text-7xl font-black text-white mb-6 tracking-tight">
           Сжать <span className="text-cyan-400">PDF</span> Онлайн <br className="hidden md:block" />
-          <span className="text-3xl md:text-5xl opacity-90">Быстро и Безопасно</span>
+          <span className="text-2xl md:text-5xl opacity-90">Быстро и Безопасно</span>
         </h1>
-        <p className="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-gray-400 text-base md:text-2xl max-w-3xl mx-auto mb-10 leading-relaxed">
           Профессиональный инструмент для уменьшения размера PDF файлов прямо в вашем браузере.
           Ваши документы <strong>не загружаются на сервер</strong> — это на 100% приватно.
         </p>
@@ -72,23 +72,23 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 py-6">
+      <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 py-6 md:py-10">
         <div className="section-divider" />
 
         {/* ✅ Tool Section */}
-        <section id="tool" className="mt-10 mb-20 scroll-mt-24">
+        <section id="tool" className="mt-6 md:mt-10 mb-10 md:mb-14 scroll-mt-24">
           <ToolSection />
         </section>
 
         {/* ✅ Primary Content Section */}
         <section className="max-w-5xl mx-auto mb-20">
           <div className="space-y-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
+                <h2 className="text-2xl md:text-4xl font-black text-white mb-6 leading-tight">
                   Почему сжатие PDF необходимо для современных порталов?
                 </h2>
-                <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+                <div className="space-y-4 text-gray-400 text-sm md:text-lg leading-relaxed">
                   <p>
                     В современном цифровом мире большинство государственных и частных порталов, таких как <strong>Госуслуги</strong>, сайты ФНС, вузов или системы подачи резюме, накладывают строгие ограничения на размер загружаемых документов. Часто лимит составляет скромные <strong>200 КБ</strong> или <strong>500 КБ</strong>.
                   </p>

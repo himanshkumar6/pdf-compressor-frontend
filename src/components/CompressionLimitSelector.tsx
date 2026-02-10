@@ -109,18 +109,17 @@ const CompressionLimitSelector: React.FC<CompressionLimitSelectorProps> = ({
         </div>
       )}
 
-      {/* Selected Limit Badge */}
-      <div className="flex justify-center">
+      <div className="flex justify-center px-2">
         <div
-          className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border text-sm font-bold shadow-sm transition-all
+          className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-2xl border text-[13px] sm:text-sm font-bold shadow-sm transition-all
             ${disabled
               ? "bg-cyan-500/20 border-cyan-500/50 text-cyan-300"
-              : "bg-gray-900/50 border-gray-700 text-gray-300 scale-105"
+              : "bg-gray-900/50 border-gray-700 text-gray-300 scale-100 sm:scale-105"
             }
           `}
         >
-          {disabled && <Lock className="w-4 h-4" />}
-          <span>{selectedTargetLabel}</span>
+          {disabled && <Lock className="w-4 h-4 shrink-0" />}
+          <span className="leading-tight">{selectedTargetLabel}</span>
         </div>
       </div>
     </div>

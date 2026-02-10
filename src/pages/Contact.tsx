@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="pt-32 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-16 md:pt-32 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -150,7 +150,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold text-white mb-6"
+          className="text-3xl md:text-5xl font-bold text-white mb-6"
         >
           Get in <span className="text-cyan-400">Touch</span>
         </motion.h1>

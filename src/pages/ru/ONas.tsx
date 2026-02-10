@@ -7,14 +7,14 @@ const ONas: React.FC = () => {
   const seo = PAGES_SEO["/ru/o-nas"];
 
   return (
-    <div className="pt-32 pb-20 max-w-4xl mx-auto px-4">
+    <div className="pt-16 md:pt-32 pb-20 max-w-4xl mx-auto px-4">
       <SEO
         title={seo.title}
         description={seo.description}
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-4xl font-bold text-white mb-8 text-center">О сервисе</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">О сервисе</h1>
       <div className="bg-gray-900/50 border border-gray-800 rounded-3xl p-8 text-gray-400 space-y-6 leading-relaxed">
         <p>
           Добро пожаловать в <span className="text-cyan-400 font-bold">CompressPDF</span> — ваш сервис для качественного и безопасного сжатия PDF файлов. Наша цель проста: дать пользователям возможность сжать документы для государственных порталов без передачи данных на сторонние серверы.

@@ -232,22 +232,26 @@ const ToolSection: React.FC<ToolSectionProps> = ({
       : `Target: ${formatSizeLabel(targetSize).replace("≤ ", "")}`);
 
   return (
-    <div className="max-w-4xl mx-auto w-full px-4 sm:px-0 mt-8">
-      <div className="bg-(--card) border border-(--border) rounded-[2.5rem] p-6 md:p-10 shadow-(--shadow-card) theme-transition">
+    <div className="max-w-4xl mx-auto w-full px-4 sm:px-0 mt-4 md:mt-8">
+      <div className="bg-(--card) border border-(--border) rounded-[2.5rem] p-5 md:p-10 shadow-(--shadow-card) theme-transition">
         {/* ✅ UPLOAD */}
         {!file && (
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="cursor-pointer border-2 border-dashed border-(--border) hover:border-(--border-hover) rounded-4xl py-24 flex flex-col items-center justify-center bg-(--bg2)"
+            className="cursor-pointer border-2 border-dashed border-(--border) hover:border-(--border-hover) rounded-4xl py-12 md:py-24 px-6 md:px-10 flex flex-col items-center justify-center bg-(--bg2) text-center group/uploader transition-all"
           >
-            <Upload className="w-12 h-12 text-cyan-400 mb-6" />
-            <h2 className="text-2xl font-bold text-white">{t.uploadTitle}</h2>
-            <p className="text-gray-500 text-sm mt-2">
+            <Upload className="w-10 h-10 md:w-12 md:h-12 text-cyan-400 mb-6 group-hover/uploader:scale-110 transition-transform" />
+            <h2 className="text-lg sm:text-2xl font-bold text-white leading-snug tracking-tight text-balance max-w-[280px] sm:max-w-md">
+              {t.uploadTitle}
+            </h2>
+            <p className="text-gray-500 text-[11px] sm:text-sm mt-4 max-w-[220px] sm:max-w-md mx-auto leading-relaxed">
               {t.uploadHint}
             </p>
-            <p className="text-gray-400 text-xs mt-4 max-w-xs text-center border border-dashed border-gray-700 p-2 rounded-lg">
-              {t.uploadHint2}
-            </p>
+            <div className="mt-8 max-w-[280px] sm:max-w-xs mx-auto border border-dashed border-gray-800 p-4 rounded-2xl bg-black/20">
+              <p className="text-gray-400 text-[10px] sm:text-xs leading-relaxed">
+                {t.uploadHint2}
+              </p>
+            </div>
 
             <input
               ref={fileInputRef}

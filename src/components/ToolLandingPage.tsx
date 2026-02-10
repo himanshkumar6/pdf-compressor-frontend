@@ -144,8 +144,8 @@ export default function ToolLandingPage({
       <section className="w-full max-w-4xl mx-auto mt-12 space-y-12">
         {/* Intro / When to Use */}
         {(intro || content) && (
-          <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
-            <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
+          <div className="rounded-3xl md:rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
+            <h2 className="text-white text-xl md:text-3xl font-black mb-6">
               {labels.whenToUse}
             </h2>
             <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
@@ -169,8 +169,8 @@ export default function ToolLandingPage({
 
         {/* How It Works */}
         {steps && (
-          <div className="rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
-            <h2 className="text-white text-2xl md:text-3xl font-black mb-6">
+          <div className="rounded-3xl md:rounded-[2.5rem] border border-gray-800 bg-black/30 p-6 md:p-10">
+            <h2 className="text-white text-xl md:text-3xl font-black mb-6">
               {labels.howItWorks}
             </h2>
             <ol className="space-y-6">
@@ -208,8 +208,8 @@ export default function ToolLandingPage({
 
         {/* Trust Block */}
         {trustBlock && (
-          <div className="rounded-[2.5rem] border border-cyan-900/30 bg-cyan-950/10 p-6 md:p-10 text-center">
-            <h2 className="text-white text-2xl md:text-3xl font-black mb-4">
+          <div className="rounded-3xl md:rounded-[2.5rem] border border-cyan-900/30 bg-cyan-950/10 p-6 md:p-10 text-center">
+            <h2 className="text-white text-xl md:text-3xl font-black mb-4">
               {labels.trust}
             </h2>
             <h3 className="text-cyan-400 font-bold text-lg mb-2">{trustBlock.title}</h3>

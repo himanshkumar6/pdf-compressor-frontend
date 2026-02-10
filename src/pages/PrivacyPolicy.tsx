@@ -5,14 +5,14 @@ import { PAGES_SEO, buildWebAppJsonLd } from "../utils/seoData";
 const PrivacyPolicy: React.FC = () => {
   const seo = PAGES_SEO["/privacy-policy"];
   return (
-    <div className="pt-32 pb-20 max-w-4xl mx-auto px-4 prose prose-invert">
+    <div className="pt-16 md:pt-32 pb-20 max-w-4xl mx-auto px-4 prose prose-invert">
       <SEO
         title={seo.title}
         description={seo.description}
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-5xl font-bold text-white mb-8">PRIVACY POLICY</h1>
+      <h1 className="text-3xl md:text-5xl font-bold text-white mb-8">PRIVACY POLICY</h1>
 
       <p className="text-gray-300 leading-relaxed">
         Hey there, I'm the owner of CompressPDF. I've built this tool to make your life easier when dealing with large PDF files, especially for government forms. Because I value your privacy as much as my own, here is exactly how I handle your data.

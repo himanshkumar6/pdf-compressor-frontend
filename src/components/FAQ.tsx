@@ -10,7 +10,7 @@ interface FAQProps {
 
 const FAQ: React.FC<FAQProps> = ({ data = FAQ_DATA, title = "Frequently Asked Questions" }) => {
   return (
-    <section className="py-20 bg-transparent">
+    <section className="py-12 md:py-20 bg-transparent">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-center space-x-3 mb-12">
           <HelpCircle className="w-8 h-8 text-cyan-400" />

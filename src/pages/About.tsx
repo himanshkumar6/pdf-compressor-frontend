@@ -7,14 +7,14 @@ const About: React.FC = () => {
   const seo = PAGES_SEO["/about"];
 
   return (
-    <div className="pt-32 pb-20 max-w-4xl mx-auto px-4 text-gray-400">
+    <div className="pt-16 md:pt-32 pb-20 max-w-4xl mx-auto px-4 text-gray-400">
       <SEO
         title={seo.title}
         description={seo.description}
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-4xl font-bold text-white mb-8 text-center">About the Developer</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">About the Developer</h1>
 
       {/* Intro Block */}
       <div className="bg-gray-900/50 border border-gray-800 rounded-3xl p-8 mb-10 leading-relaxed">

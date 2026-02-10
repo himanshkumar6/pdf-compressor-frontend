@@ -53,11 +53,11 @@ const Home: React.FC = () => {
       {/* HERO */}
       <Hero />
 
-      <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 py-10">
+      <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 py-6 md:py-10">
         <div className="section-divider" />
 
         {/* ✅ Tool Section */}
-        <section id="tool" className="mt-10 mb-14 scroll-mt-24">
+        <section id="tool" className="mt-6 md:mt-10 mb-10 md:mb-14 scroll-mt-24">
           <ToolSection />
         </section>
 
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
             {[
               {
                 icon: <Shield className="w-10 h-10 text-cyan-400" />,
@@ -134,7 +134,7 @@ const Home: React.FC = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="text-center p-8 premium-card rounded-3xl"
+                className="text-center p-6 md:p-8 premium-card rounded-3xl"
               >
                 <div className="inline-flex p-4 bg-cyan-500/10 rounded-2xl mb-6">
                   {item.icon}
@@ -142,7 +142,7 @@ const Home: React.FC = () => {
                 <h3 className="text-xl font-black text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 leading-relaxed">{item.desc}</p>
+                <p className="text-gray-500 text-sm md:text-base leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

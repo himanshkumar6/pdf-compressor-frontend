@@ -28,7 +28,7 @@ const Instrumenty: React.FC = () => {
   }, []);
 
   return (
-    <div className="pt-32 pb-24 max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6">
+    <div className="pt-16 md:pt-32 pb-24 max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -38,7 +38,7 @@ const Instrumenty: React.FC = () => {
 
       {/* Hero Section */}
       <div className="mb-16 animate-fade-in-up">
-        <h1 className="text-4xl sm:text-5xl font-bold text-[var(--text)] mb-6 flex items-center gap-3 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-bold text-[var(--text)] mb-6 flex items-center gap-3 tracking-tight">
           <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
             <Wrench className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-500" />
           </div>

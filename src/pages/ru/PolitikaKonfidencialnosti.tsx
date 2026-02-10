@@ -16,8 +16,8 @@ const PolitikaKonfidencialnosti: React.FC = () => {
         lang="ru"
       />
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-4xl md:text-5xl font-black text-center mb-12">
+      <div className="max-w-4xl mx-auto px-6 pt-10 md:pt-20 pb-20">
+        <h1 className="text-3xl md:text-5xl font-black text-center mb-12">
           Политика <span className="text-cyan-400">Конфиденциальности</span>
         </h1>
 

@@ -53,39 +53,39 @@ const CompressionResultCard: React.FC<CompressionResultCardProps> = ({
       </div>
 
       {/* Summary */}
-      <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 space-y-3 text-sm">
-        <div className="flex justify-between">
-          <span className="text-gray-400">{t.originalSize}</span>
-          <span className="text-white">
+      <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-5 sm:p-6 space-y-4 text-sm">
+        <div className="flex justify-between items-center gap-4">
+          <span className="text-gray-400 shrink-0">{t.originalSize}</span>
+          <span className="text-white font-mono">
             {formatSizeKB(result.originalSizeKB)}
           </span>
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-gray-400">
+        <div className="flex justify-between items-center gap-4">
+          <span className="text-gray-400 shrink-0">
             {lang === "ru" ? "Цель" : "Target"}
           </span>
-          <span className="text-white">
+          <span className="text-white font-mono">
             {formatSizeKB(result.targetLimitKB)}
           </span>
         </div>
 
-        <div className="flex justify-between border-t border-gray-800 pt-3">
-          <span className="text-gray-300 font-semibold">
+        <div className="flex justify-between items-center gap-4 border-t border-gray-800 pt-4">
+          <span className="text-gray-300 font-semibold shrink-0">
             {t.finalSize}
           </span>
-          <span className="text-cyan-400 font-bold">
+          <span className="text-cyan-400 font-bold font-mono">
             {formatSizeKB(result.finalSizeKB)}
           </span>
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-gray-400">{t.attempts}</span>
+        <div className="flex justify-between items-center gap-4">
+          <span className="text-gray-400 shrink-0">{t.attempts}</span>
           <span className="text-gray-300">{result.attempts}</span>
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-gray-400">{t.saved}</span>
+        <div className="flex justify-between items-center gap-4">
+          <span className="text-gray-400 shrink-0">{t.saved}</span>
           <span className="text-green-400 font-semibold">
             {result.savedPercentage}%
           </span>

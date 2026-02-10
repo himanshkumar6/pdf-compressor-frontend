@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
       <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* 🔝 Top strip */}
-        <div className="py-8 sm:py-12 border-b border-gray-900">
+        <div className="py-6 sm:py-12 border-b border-gray-900">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
 
             <div>

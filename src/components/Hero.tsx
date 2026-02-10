@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative pt-20 md:pt-24 pb-12 md:pb-16 overflow-hidden bg-transparent">
+    <div className="relative pt-12 md:pt-24 pb-12 md:pb-16 overflow-hidden bg-transparent">
       <HeroBackground />
       {/* ✅ Smooth fade overlay (removes visible hero section box) */}
       <div className="absolute inset-0 pointer-events-none" />
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* ✅ Mini trust line (NEW) */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-10 text-sm text-gray-400">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-2 mb-10 text-sm text-gray-400">
           <span className="inline-flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-cyan-400" />
             Used by students & professionals
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* ✅ Headline */}
-        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+        <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
           Compress PDF to{" "}
           <span className="relative inline-block">
             <span className="absolute inset-0 blur-2xl bg-cyan-400/20 rounded-full" />

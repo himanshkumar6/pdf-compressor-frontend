@@ -166,7 +166,7 @@ const BlogPost: React.FC = () => {
           ← Back to blogs
         </Link>
 
-        <h1 className="text-3xl md:text-6xl font-black text-white mt-8 leading-tight">
+        <h1 className="text-2xl md:text-6xl font-black text-white mt-8 leading-tight">
           {post.title}
         </h1>
 

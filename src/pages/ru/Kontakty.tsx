@@ -8,7 +8,7 @@ const Kontakty: React.FC = () => {
   const seo = PAGES_SEO["/ru/kontakty"];
 
   return (
-    <div className="pt-32 pb-20 max-w-4xl mx-auto px-4 text-center">
+    <div className="pt-16 md:pt-32 pb-20 max-w-4xl mx-auto px-4 text-center">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -21,7 +21,7 @@ const Kontakty: React.FC = () => {
           <Mail className="w-12 h-12 text-cyan-400" />
         </div>
       </div>
-      <h1 className="text-4xl font-bold text-white mb-6">Свяжитесь с нами</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Свяжитесь с нами</h1>
       <p className="text-gray-400 max-w-xl mx-auto mb-12 text-lg">
         Мы здесь, чтобы помочь. Если у вас есть вопросы о нашем инструменте сжатия PDF, предложения или отчеты об ошибках, напишите нам.
       </p>
