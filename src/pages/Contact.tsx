@@ -175,7 +175,6 @@ const Contact: React.FC = () => {
           className="space-y-6 lg:col-span-1"
         >
           {/* Card 1: Direct Support */}
-          {/* Card 1: Direct Support */}
           <div
             className="
     w-full
@@ -183,19 +182,18 @@ const Contact: React.FC = () => {
     lg:max-w-none
     mx-auto lg:mx-0
 
-    p-6 sm:p-6 md:p-8
-    rounded-2xl md:rounded-3xl
-    border
-    bg-gray-50 dark:bg-gray-900/60
-    border-gray-200 dark:border-gray-800
+   sm:p-6 md:p-8
+  md:rounded-3xl
+    dark:bg-gray-900/60
+     dark:border-gray-800
 
-    transition-all duration-300
     group
 
     lg:hover:-translate-y-1
     lg:hover:shadow-xl
     lg:hover:shadow-cyan-500/10
     lg:hover:border-cyan-400/40
+    p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group
   "
           >
             <div className="flex flex-col gap-5">
@@ -203,12 +201,10 @@ const Contact: React.FC = () => {
               {/* Icon */}
               <div
                 className="
-        w-12 h-12 md:w-14 md:h-14
-        bg-gray-200 dark:bg-gray-800
-        rounded-2xl
-        flex items-center justify-center
-        transition-transform duration-300
+        md:w-14 md:h-14
+         dark:bg-gray-800
         lg:group-hover:scale-110
+        w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300
       "
               >
                 <Mail className="w-6 h-6 md:w-7 md:h-7 text-cyan-500 dark:text-cyan-400" />
@@ -248,7 +244,23 @@ const Contact: React.FC = () => {
 
 
           {/* Card 2: Location */}
-          <div className="p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group">
+          <div className="    w-full
+    max-w-md
+    lg:max-w-none
+    mx-auto lg:mx-0
+
+   sm:p-6 md:p-8
+  md:rounded-3xl
+    dark:bg-gray-900/60
+     dark:border-gray-800
+
+    group
+
+    lg:hover:-translate-y-1
+    lg:hover:shadow-xl
+    lg:hover:shadow-cyan-500/10
+    lg:hover:border-cyan-400/40
+    p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group">
             <div className="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
               <MapPin className="w-6 h-6 text-cyan-400" />
             </div>
