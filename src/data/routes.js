@@ -46,20 +46,20 @@ export const TOOL_ROUTES = [
   "/meesho-label-cropper",
 ];
 
-// ✅ Blog Routes
-export const BLOG_ROUTES = [
-  "/blog/govt-form-pdf-reject-fix-compress-200kb",
-  "/blog/ssc-form-pdf-size-limit-200kb",
-  "/blog/upsc-documents-upload-guide-pdf-compress",
-  "/blog/job-portal-resume-upload-problem-pdf-size-reduce",
-  "/blog/passport-portal-200kb-limit-pdf-upload-error-fix",
-  "/blog/mobile-se-pdf-compress-kaise-kare-without-app",
-  "/blog/visa-kyc-pdf-upload-fail-size-reduce-solution",
-  "/blog/scanned-pdf-heavy-size-reduce-complete-guide",
-  "/blog/scholarship-form-pdf-upload-guide-200kb-document",
-  "/blog/email-me-pdf-attach-nahi-ho-rahi-size-reduce",
-  "/blog/how-to-compress-a-pdf-on-mac",
-];
+// // ✅ Blog Routes
+// export const BLOG_ROUTES = [
+//   "/blog/govt-form-pdf-reject-fix-compress-200kb",
+//   "/blog/ssc-form-pdf-size-limit-200kb",
+//   "/blog/upsc-documents-upload-guide-pdf-compress",
+//   "/blog/job-portal-resume-upload-problem-pdf-size-reduce",
+//   "/blog/passport-portal-200kb-limit-pdf-upload-error-fix",
+//   "/blog/mobile-se-pdf-compress-kaise-kare-without-app",
+//   "/blog/visa-kyc-pdf-upload-fail-size-reduce-solution",
+//   "/blog/scanned-pdf-heavy-size-reduce-complete-guide",
+//   "/blog/scholarship-form-pdf-upload-guide-200kb-document",
+//   "/blog/email-me-pdf-attach-nahi-ho-rahi-size-reduce",
+//   "/blog/how-to-compress-a-pdf-on-mac",
+// ];
 
 // ✅ Russian Routes
 export const RU_ROUTES = [
@@ -102,6 +102,6 @@ export const RU_ROUTES = [
 export const ALL_ROUTES = [
   ...MAIN_ROUTES,
   ...TOOL_ROUTES,
-  ...BLOG_ROUTES,
+  // ...BLOG_ROUTES,
   ...RU_ROUTES,
 ];
