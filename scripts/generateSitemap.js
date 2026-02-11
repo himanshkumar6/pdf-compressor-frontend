@@ -7,7 +7,6 @@ const DIST_DIR = path.resolve("dist");
 
 // ✅ Import Routes
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
-import { BLOG_POSTS } from "../src/utils/blogPosts.js";
 
 /* ----------------------------- */
 /* Canonical URL Builder */
