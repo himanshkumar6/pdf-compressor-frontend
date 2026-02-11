@@ -4,6 +4,7 @@ import path from "path";
 
 const BASE_URL = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
+import { BLOG_POSTS } from "../src/utils/blogPosts.js"
 
 // ✅ Import Routes
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
