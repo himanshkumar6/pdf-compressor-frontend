@@ -109,8 +109,8 @@ const Home: React.FC = () => {
               Why I built CompressPDF?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              After facing rejection 5 times on the SSC portal due to "File Too Large" errors,
-              I decided to build a tool that actually understands the strict 200KB limit.
+              After experiencing repeated upload size issues on application portals,
+              I decided to build a tool specifically optimized for strict size limits.
             </p>
           </div>
 
@@ -118,18 +118,18 @@ const Home: React.FC = () => {
             {[
               {
                 icon: <Shield className="w-10 h-10 text-cyan-400" />,
-                title: "100% Privacy Check",
-                desc: "I know how scary it is to upload your Aadhar Card online. That's why I used WebAssembly — so your files never leave your device.",
+                title: "Privacy-Focused Design",
+                desc: "Your files are processed securely in the browser. We prioritize document privacy and minimal data exposure.",
               },
               {
                 icon: <FastForward className="w-10 h-10 text-cyan-400" />,
-                title: "Tuned for Portals",
-                desc: "Generic compressors make files blurry. I calibrated this engine to keep text sharp specifically for NTA/SSC verification officers.",
+                title: "Optimized for Portal Limits",
+                desc: "Designed specifically for common 20KB–200KB upload requirements used by government and academic portals.",
               },
               {
                 icon: <UserCheck className="w-10 h-10 text-cyan-400" />,
-                title: "Zero Failures",
-                desc: "Stop guessing file sizes. This tool targets the exact 20KB-200KB range required by government servers.",
+                title: "Accurate Size Targeting",
+                desc: "Instead of guessing file size, the tool helps adjust documents close to required limits while keeping text readable.",
               },
             ].map((item, i) => (
               <div

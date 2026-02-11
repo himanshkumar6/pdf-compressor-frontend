@@ -175,21 +175,77 @@ const Contact: React.FC = () => {
           className="space-y-6 lg:col-span-1"
         >
           {/* Card 1: Direct Support */}
-          <div className="p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group">
-            <div className="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-6 h-6 text-cyan-400" />
+          {/* Card 1: Direct Support */}
+          <div
+            className="
+    w-full
+    max-w-md
+    lg:max-w-none
+    mx-auto lg:mx-0
+
+    p-6 sm:p-6 md:p-8
+    rounded-2xl md:rounded-3xl
+    border
+    bg-gray-50 dark:bg-gray-900/60
+    border-gray-200 dark:border-gray-800
+
+    transition-all duration-300
+    group
+
+    lg:hover:-translate-y-1
+    lg:hover:shadow-xl
+    lg:hover:shadow-cyan-500/10
+    lg:hover:border-cyan-400/40
+  "
+          >
+            <div className="flex flex-col gap-5">
+
+              {/* Icon */}
+              <div
+                className="
+        w-12 h-12 md:w-14 md:h-14
+        bg-gray-200 dark:bg-gray-800
+        rounded-2xl
+        flex items-center justify-center
+        transition-transform duration-300
+        lg:group-hover:scale-110
+      "
+              >
+                <Mail className="w-6 h-6 md:w-7 md:h-7 text-cyan-500 dark:text-cyan-400" />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                Direct Support
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base max-w-sm">
+                Hi, I'm Himanshu. I personally read and reply to all emails regarding this tool.
+                If you face any upload issue, feel free to reach out directly.
+              </p>
+
+              {/* Email */}
+              <a
+                href="mailto:support@compresspdfto200kb.online"
+                className="
+        text-cyan-600 dark:text-cyan-400
+        hover:text-cyan-500
+        font-semibold
+        text-sm md:text-base
+        wrap-break-word
+        transition-all duration-300
+        lg:group-hover:translate-x-1
+      "
+              >
+                support@compresspdfto200kb.online
+              </a>
+
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Direct Support</h3>
-            <p className="text-gray-400 mb-4 leading-relaxed">
-              Hi, I'm Himanshu. I personally read and reply to all emails regarding this tool.
-            </p>
-            <a
-              href="mailto:himanshucareer01@gmail.com"
-              className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors font-medium group-hover:translate-x-1 duration-300"
-            >
-              himanshucareer01@gmail.com
-            </a>
           </div>
+
+
+
 
           {/* Card 2: Location */}
           <div className="p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group">
@@ -220,7 +276,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="lg:col-span-2"
         >
-          <div className="bg-gray-900/80 border border-gray-800 rounded-4xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+          <div className=" border border-gray-800 rounded-4xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
             {/* Background Gradient Blob */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
