@@ -48,7 +48,7 @@ const TermsConditions: React.FC = () => {
       </p>
 
       <p className="mt-4 text-gray-400">
-        Email: himanshucareer01@gmail.com
+        Email: support@compresspdfto200kb.online
       </p>
 
       <p className="mt-2 text-gray-500 text-sm">
