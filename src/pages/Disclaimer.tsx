@@ -34,7 +34,7 @@ const Disclaimer: React.FC = () => {
       </p>
 
       <p className="mt-12 text-gray-400 leading-relaxed">
-        If you find a bug or something isn't working, let me know at <span className="text-cyan-400 font-medium whitespace-nowrap">himanshucareer01@gmail.com</span> and I'll try to fix it.
+        If you find a bug or something isn't working, let me know at <span className="text-cyan-400 font-medium whitespace-nowrap">support@compresspdfto200kb.online</span> and I'll try to fix it.
       </p>
     </div>
   );

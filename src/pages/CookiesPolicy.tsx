@@ -37,7 +37,7 @@ const CookiesPolicy: React.FC = () => {
       </p>
 
       <p className="mt-12 text-gray-400">
-        If you have any questions about this, feel free to reach me at himanshucareer01@gmail.com.
+        If you have any questions about this, feel free to reach me at support@compresspdfto200kb.online.
       </p>
 
       <p className="mt-4 text-gray-500 text-sm">
