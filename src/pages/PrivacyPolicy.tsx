@@ -39,7 +39,7 @@ const PrivacyPolicy: React.FC = () => {
       </p>
 
       <p className="mt-12 text-gray-400 italic">
-        If you have questions, just email me at himanshucareer01@gmail.com.
+        If you have questions, just email me at support@compresspdfto200kb.online.
       </p>
 
       <p className="mt-4 text-gray-500 text-sm">
