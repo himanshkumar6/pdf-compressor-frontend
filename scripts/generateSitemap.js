@@ -1,34 +1,37 @@
-console.log("Starting Sitemap Generation...");
+console.log("🚀 Starting Sitemap Generation...");
+
 import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
-import { BLOG_SLUGS } from "../src/data/blogSlugs.js";
 
-// ✅ Import Routes
+// ✅ Import canonical routes
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
+
+// ✅ Import dynamic blog slugs
+import { BLOG_SLUGS } from "../src/data/blogSlugs.js";
 
 /* ----------------------------- */
 /* Canonical URL Builder */
 /* ----------------------------- */
-function toCanonicalUrl(pathStr) {
+function toCanonicalUrl(routePath) {
   const base = BASE_URL.replace(/\/$/, "");
-  const clean = pathStr.replace(/\/+$/, "") || "/";
+  const clean = routePath.replace(/\/+$/, "") || "/";
   return clean === "/" ? `${base}/` : `${base}${clean}`;
 }
 
 /* ----------------------------- */
-/* Generate XML */
+/* XML Generator */
 /* ----------------------------- */
-function generateXmlForRoutes(paths, today) {
+function generateXml(paths, today) {
   const urls = paths.map((p) => {
     const loc = toCanonicalUrl(p);
 
-    const isHome = p === "/" || p === "/ru";
+    const isHome = p === "/" || p === "/ru" || p === "/es/dividir-pdf-en-varias-partes-online";
     const isBlogIndex = p.endsWith("/blog");
     const isBlogPost = p.includes("/blog/") && !isBlogIndex;
-    const isTool = !isHome && !isBlogIndex && !isBlogPost && !p.startsWith("/ru/blog");
+    const isTool = !isHome && !isBlogIndex && !isBlogPost;
 
     let changefreq = "monthly";
     let priority = "0.6";
@@ -47,11 +50,9 @@ function generateXmlForRoutes(paths, today) {
       priority = "0.5";
     }
 
-    const lastmod = today;
-
     return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${today}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
@@ -69,22 +70,25 @@ ${urls.join("\n")}
 function run() {
   const today = new Date().toISOString().slice(0, 10);
 
-  // ✅ Auto add blog paths
-  const blogPaths = BLOG_SLUGS.map(
-    (slug) => `/blog/${slug}`
-  );
+  console.log("📌 Blog slugs loaded:", BLOG_SLUGS.length);
 
-  // Merge & remove duplicates
+  // ✅ Dynamic Blog Paths
+  const blogPaths = BLOG_SLUGS.map((slug) => `/blog/${slug}`);
+
+  // ✅ Merge + remove duplicates
   const ALL_PATHS = [...new Set([...CANONICAL_PATHS, ...blogPaths])];
 
-  // Partition
+  // ✅ Partition by locale
   const ruPaths = ALL_PATHS.filter((p) => p.startsWith("/ru"));
   const esPaths = ALL_PATHS.filter((p) => p.startsWith("/es"));
-  const hiPaths = ALL_PATHS.filter((p) => !p.startsWith("/ru") && !p.startsWith("/es"));
+  const hiPaths = ALL_PATHS.filter(
+    (p) => !p.startsWith("/ru") && !p.startsWith("/es")
+  );
 
-  const hiXml = generateXmlForRoutes(hiPaths, today);
-  const ruXml = generateXmlForRoutes(ruPaths, today);
-  const esXml = generateXmlForRoutes(esPaths, today);
+  // ✅ Generate XMLs
+  const hiXml = generateXml(hiPaths, today);
+  const ruXml = generateXml(ruPaths, today);
+  const esXml = generateXml(esPaths, today);
 
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -106,15 +110,15 @@ function run() {
     fs.mkdirSync(DIST_DIR, { recursive: true });
   }
 
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-hi.xml"), hiXml, "utf8");
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-ru.xml"), ruXml, "utf8");
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-es.xml"), esXml, "utf8");
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), indexXml, "utf8");
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-hi.xml"), hiXml);
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-ru.xml"), ruXml);
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-es.xml"), esXml);
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), indexXml);
 
   console.log("✅ Sitemap Generated Successfully");
-  console.log(`HI URLs: ${hiPaths.length}`);
-  console.log(`RU URLs: ${ruPaths.length}`);
-  console.log(`ES URLs: ${esPaths.length}`);
+  console.log("HI URLs:", hiPaths.length);
+  console.log("RU URLs:", ruPaths.length);
+  console.log("ES URLs:", esPaths.length);
 }
 
 run();
