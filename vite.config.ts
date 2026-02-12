@@ -20,8 +20,16 @@ export default defineConfig({
             "/contact",
           ],
           renderer: new puppeteerRenderer({
-            headless: true,
+            headless: true, // ✅ fixed
             renderAfterDocumentEvent: "render-event",
+            launchOptions: {
+              args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-gpu",
+              ],
+            },
           }),
         }),
       ],
