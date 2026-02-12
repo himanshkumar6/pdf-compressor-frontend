@@ -52,28 +52,13 @@
       "source": "/split-pdf-:variant",
       "destination": "/split-pdf",
       "permanent": true
-    },
+    }
+  ],
 
+  "rewrites": [
     {
-      "source": "/flipkart-label-cropper",
-      "destination": "/pdf-to-jpg",
-      "permanent": true
-    },
-    {
-      "source": "/meesho-label-cropper",
-      "destination": "/pdf-to-jpg",
-      "permanent": true
-    },
-
-    {
-      "source": "/ru/:path*",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/es/:path*",
-      "destination": "/",
-      "permanent": true
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ]
 }
