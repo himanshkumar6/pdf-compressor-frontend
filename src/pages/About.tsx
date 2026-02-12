@@ -3,7 +3,6 @@ import SEO from "../components/SEO";
 import { PAGES_SEO, buildWebAppJsonLd } from "../utils/seoData";
 
 const About: React.FC = () => {
-
   const seo = PAGES_SEO["/about"];
 
   return (
@@ -15,8 +14,9 @@ const About: React.FC = () => {
         schema={buildWebAppJsonLd(seo)}
       />
 
+      {/* ✅ Updated H1 (Brand Authority Boost) */}
       <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
-        About the Developer
+        About Himanshu – Creator of CompressPDFto200KB
       </h1>
 
       {/* Intro Block */}
@@ -38,7 +38,7 @@ const About: React.FC = () => {
         </p>
       </div>
 
-      {/* Related Educational Project (IQ Checker) */}
+      {/* Related Educational Project */}
       <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 mb-12 text-sm leading-relaxed">
         <p className="mb-3">
           In addition to document utilities, I also work on an independent educational project focused on
@@ -50,6 +50,8 @@ const About: React.FC = () => {
         </p>
         <a
           href="https://iqcheckerxyz.compresspdfto200kb.online"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
         >
           Visit the cognitive assessment project
@@ -106,6 +108,11 @@ const About: React.FC = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* ✅ Freshness Signal (SEO Boost) */}
+      <div className="mt-14 text-center text-xs text-gray-500">
+        Last updated: February 2026
       </div>
     </div>
   );

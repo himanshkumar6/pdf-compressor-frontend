@@ -17,21 +17,21 @@ import { useState } from "react";
 // ---- Types ----
 type Quality = "low" | "medium" | "high";
 
-
-
 const PdfToJpgContent: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [pages, setPages] = useState<string[]>([]);
-  const [quality, setQuality] = useState<Quality>("medium");
-  const [dpi, setDpi] = useState<number>(150);
+  const [quality] = useState<Quality>("medium");
+  const [dpi] = useState<number>(150);
   const [progress, setProgress] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
   const reset = () => {
     setFile(null);
     setPages([]);
     setIsProcessing(false);
     setProgress(0);
+    setCurrentPage(0);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +53,7 @@ const PdfToJpgContent: React.FC = () => {
     setIsProcessing(true);
     setPages([]);
     setProgress(0);
+    setCurrentPage(0);
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -75,6 +76,8 @@ const PdfToJpgContent: React.FC = () => {
       const scale = dpi / 72;
 
       for (let i = 1; i <= totalPages; i++) {
+        setCurrentPage(i);
+
         const page = await pdf.getPage(i);
         const viewport = page.getViewport({ scale });
 
@@ -93,9 +96,14 @@ const PdfToJpgContent: React.FC = () => {
         const q =
           quality === "high" ? 0.95 : quality === "medium" ? 0.8 : 0.6;
 
-        const img = canvas.toDataURL("image/jpeg", q);
+        // 🔥 Memory-Optimized Blob Conversion
+        const blob = await new Promise<Blob>((resolve) =>
+          canvas.toBlob((b) => resolve(b!), "image/jpeg", q)
+        );
 
-        setPages((prev) => [...prev, img]);
+        const imgUrl = URL.createObjectURL(blob);
+
+        setPages((prev) => [...prev, imgUrl]);
         setProgress(Math.round((i / totalPages) * 100));
       }
     } catch (err) {
@@ -126,17 +134,18 @@ const PdfToJpgContent: React.FC = () => {
       }
 
       const jszipModule = await safeLoadLibrary<{ default: new () => JSZip }>(
-        () => import(jszip),
+        () => import("jszip"), // ✅ FIXED IMPORT
         "jszip"
       );
 
       const zip = new jszipModule.default();
       const folder = zip.folder("images");
 
-      pages.forEach((img, i) => {
-        const base64 = img.split(",")[1];
-        folder?.file(`page-${i + 1}.jpg`, base64, { base64: true });
-      });
+      for (let i = 0; i < pages.length; i++) {
+        const response = await fetch(pages[i]);
+        const blob = await response.blob();
+        folder?.file(`page-${i + 1}.jpg`, blob);
+      }
 
       const blob = await zip.generateAsync({ type: "blob" });
       saveAs(blob, `${file.name.replace(".pdf", "")}-images.zip`);
@@ -173,33 +182,6 @@ const PdfToJpgContent: React.FC = () => {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="text-xs text-gray-500 block mb-2 px-1">Quality</label>
-                <select
-                  value={quality}
-                  onChange={(e) => setQuality(e.target.value as Quality)}
-                  className="w-full bg-(--bg) border border-(--border) p-3 rounded-xl text-sm text-white outline-none focus:border-purple-500/50"
-                >
-                  <option value="low">Low (Fast)</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High (Best)</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-xs text-gray-500 block mb-2 px-1">DPI</label>
-                <select
-                  value={dpi}
-                  onChange={(e) => setDpi(Number(e.target.value))}
-                  className="w-full bg-(--bg) border border-(--border) p-3 rounded-xl text-sm text-white outline-none focus:border-purple-500/50"
-                >
-                  <option value={72}>72 DPI</option>
-                  <option value={150}>150 DPI</option>
-                  <option value={300}>300 DPI</option>
-                </select>
-              </div>
-            </div>
-
             {!pages.length && !isProcessing && (
               <button
                 onClick={convertPdfToImages}
@@ -219,7 +201,9 @@ const PdfToJpgContent: React.FC = () => {
                     style={{ width: `${progress}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-2">Processing page {Math.ceil((progress / 100) * (pages.length || 1))}...</p>
+                <p className="text-xs text-gray-500 mt-2">
+                  Processing page {currentPage}...
+                </p>
               </div>
             )}
 
@@ -243,9 +227,16 @@ const PdfToJpgContent: React.FC = () => {
                         src={img}
                         className="w-full h-auto object-cover"
                         alt={`page-${i + 1}`}
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                        <a href={img} download={`page-${i + 1}.jpg`} className="p-2 bg-white/10 rounded-lg text-white text-xs backdrop-blur-md">Download Page</a>
+                        <a
+                          href={img}
+                          download={`page-${i + 1}.jpg`}
+                          className="p-2 bg-white/10 rounded-lg text-white text-xs backdrop-blur-md"
+                        >
+                          Download Page
+                        </a>
                       </div>
                     </div>
                   ))}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { Upload, Download, Loader2, Trash2, Check } from "lucide-react";
 import ToolLandingPage from "../components/ToolLandingPage";
@@ -25,8 +26,11 @@ const SplitPdfContent: React.FC = () => {
 
   const loadPreviews = async (f: File, count: number) => {
     try {
-      // 1. Load library and worker once
-      const pdfjsLib = await safeLoadLibrary<any>(() => import("pdfjs-dist"), "pdfjs-dist");
+      const pdfjsLib: any = await safeLoadLibrary(
+        () => import("pdfjs-dist"),
+        "pdfjs-dist"
+      );
+
       const pdfWorker = await safeLoadLibrary<{ default: string }>(
         () => import("pdfjs-dist/build/pdf.worker?url"),
         "pdfjs-worker"
@@ -34,19 +38,15 @@ const SplitPdfContent: React.FC = () => {
 
       pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker.default;
 
-      // 2. Load document once
       const arrayBuffer = await f.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
 
-      // 3. Render pages sequentially in batches to support infinite pages safely
       const batchSize = 10;
       setPreviewsLoaded(0);
 
-
       for (let i = 1; i <= count; i++) {
         const page = await pdf.getPage(i);
-        const scale = 0.3; // Small thumbnail scale
-        const viewport = page.getViewport({ scale });
+        const viewport = page.getViewport({ scale: 0.3 });
 
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
@@ -62,23 +62,27 @@ const SplitPdfContent: React.FC = () => {
 
         const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
 
-        // Update state
-        setPreviews(prev => ({ ...prev, [i - 1]: dataUrl }));
+        setPreviews((prev) => ({
+          ...prev,
+          [i - 1]: dataUrl,
+        }));
+
         setPreviewsLoaded(i);
 
-        // Memory cleanup: Release canvas resources immediately
         canvas.width = 0;
         canvas.height = 0;
 
-        // Batching: allow the UI to remain responsive by pausing after each batch
         if (i % batchSize === 0) {
-          await new Promise(resolve => window.requestAnimationFrame(resolve));
+          await new Promise<void>((resolve) =>
+            requestAnimationFrame(() => resolve())
+          );
         }
       }
     } catch (err) {
       console.error("Preview generation failed:", err);
     }
   };
+
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -91,9 +95,14 @@ const SplitPdfContent: React.FC = () => {
 
     try {
       setIsProcessing(true);
-      const { PDFDocument } = await safeLoadLibrary<any>(() => import("pdf-lib"), "pdf-lib");
+
+      const pdfLib: any = await safeLoadLibrary(
+        () => import("pdf-lib"),
+        "pdf-lib"
+      );
+
       const arrayBuffer = await selectedFile.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer);
+      const pdfDoc = await pdfLib.PDFDocument.load(arrayBuffer);
       const count = pdfDoc.getPageCount();
 
       setFile(selectedFile);
@@ -102,7 +111,6 @@ const SplitPdfContent: React.FC = () => {
       setRangeInput("");
       setPreviews({});
 
-      // Start loading previews in background
       loadPreviews(selectedFile, count);
     } catch (err) {
       console.error(err);
@@ -111,6 +119,7 @@ const SplitPdfContent: React.FC = () => {
       setIsProcessing(false);
     }
   };
+
 
   const togglePage = (index: number) => {
     const newSet = new Set(selectedPages);
@@ -171,7 +180,8 @@ const SplitPdfContent: React.FC = () => {
       copiedPages.forEach(p => newPdf.addPage(p));
 
       const pdfBytes = await newPdf.save();
-      const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" });
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+
 
       const fileSaverModule = await safeLoadLibrary<any>(() => import("file-saver"), "file-saver");
       const saveAs = fileSaverModule.saveAs || fileSaverModule.default || fileSaverModule;
@@ -188,17 +198,17 @@ const SplitPdfContent: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="max-w-4xl mx-auto bg-[var(--card)] border border-[var(--border)] rounded-3xl shadow-xl overflow-hidden min-h-[400px]">
+      <div className="max-w-4xl mx-auto bg-(--card) border border-(--border) rounded-3xl shadow-xl overflow-hidden min-h-100">
         {!file ? (
           // Upload State
-          <div className="p-10 sm:p-20 text-center flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed border-gray-700 hover:border-orange-500/50 hover:bg-orange-500/5 transition-all cursor-pointer relative group bg-(--bg2) rounded-3xl">
+          <div className="p-10 sm:p-20 text-center flex flex-col items-center justify-center h-full min-h-100 border-2 border-dashed border-gray-700 hover:border-orange-500/50 hover:bg-orange-500/5 transition-all cursor-pointer relative group bg-(--bg2) rounded-3xl">
             <input
               type="file"
               accept="application/pdf"
               onChange={handleFileChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             />
-            <div className="mx-auto w-20 h-20 bg-[var(--bg)] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/5">
+            <div className="mx-auto w-20 h-20 bg-(--bg) rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/5">
               <Upload className="w-10 h-10 text-orange-400" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2">Select PDF to Split</h3>
@@ -207,13 +217,13 @@ const SplitPdfContent: React.FC = () => {
         ) : (
           <div className="p-6">
             {/* Toolbar */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-[var(--bg)] p-4 rounded-2xl border border-[var(--border)]">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-(--bg) p-4 rounded-2xl border border-(--border)">
               <div className="flex items-center gap-3 w-full md:w-auto overflow-hidden">
                 <div className="w-10 h-10 shrink-0 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 font-bold text-xs border border-red-500/20">
                   PDF
                 </div>
                 <div className="min-w-0">
-                  <div className="text-sm font-bold text-[var(--text)] truncate">{file.name}</div>
+                  <div className="text-sm font-bold text-(--text) truncate">{file.name}</div>
                   <div className="text-xs text-gray-500">
                     {pageCount} Pages
                     {previewsLoaded < pageCount && (
@@ -231,7 +241,7 @@ const SplitPdfContent: React.FC = () => {
                   placeholder="e.g. 1-5, 8"
                   value={rangeInput}
                   onChange={handleRangeChange}
-                  className="grow md:w-40 bg-[var(--card)] border border-[var(--border)] text-[var(--text)] text-sm px-3 py-2 rounded-lg focus:ring-2 focus:ring-orange-500/50 outline-none"
+                  className="grow md:w-40 bg-(--card) border border-(--border) text-(--text) text-sm px-3 py-2 rounded-lg focus:ring-2 focus:ring-orange-500/50 outline-none"
                 />
                 <button
                   onClick={reset}
@@ -243,18 +253,18 @@ const SplitPdfContent: React.FC = () => {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar p-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8 max-h-125 overflow-y-auto pr-2 custom-scrollbar p-1">
               {Array.from({ length: pageCount }).map((_, i) => (
                 <div
                   key={i}
                   onClick={() => togglePage(i)}
                   className={`relative cursor-pointer rounded-lg border-2 transition-all overflow-hidden aspect-[1/1.4] group ${selectedPages.has(i)
                     ? "border-orange-500 shadow-[0_0_15px_-3px_rgba(249,115,22,0.3)] scale-[1.02]"
-                    : "border-[var(--border)] hover:border-gray-500"
+                    : "border-(--border) hover:border-gray-500"
                     }`}
                 >
                   {/* Bg Number */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg)] text-gray-800 font-bold text-4xl select-none">
+                  <div className="absolute inset-0 flex items-center justify-center bg-(--bg) text-gray-800 font-bold text-4xl select-none">
                     {i + 1}
                   </div>
 
