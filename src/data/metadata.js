@@ -28,8 +28,8 @@ export const SEO_METADATA = {
     h1: "About CompressPDF"
   },
   "/tools": {
-    title: "All PDF Tools: Compress to 100KB, 200KB, Merge & Edit Free",
-    description: "All PDF tools in one place: compress PDF, compress to 200KB or 100KB, scanned PDF compressor, remove metadata. Free, private, browser-based.",
+    title: "All PDF Tools: Compress to 200KB, Merge, Split & Edit Free",
+    description: "All PDF tools in one place: compress PDF to 200KB, merge, split, and edit PDFs. Free, private, browser-based.",
     h1: "All PDF Tools"
   },
   "/blog": {
@@ -68,51 +68,11 @@ export const SEO_METADATA = {
     h1: "Cookie Policy"
   },
 
-  // --- TOOL ROUTES ---
-  "/compress-pdf": {
-    title: "Compress PDF Online Free (Fast & Secure PDF Compressor)",
-    description: "Compress PDF online instantly for free. Reduce PDF file size for email, WhatsApp, and form uploads without losing quality. 100% private browser processing.",
-    h1: "Compress PDF Online"
-  },
-  "/compress-pdf-to-20kb": {
-    title: "Compress PDF to 20KB Online Free | Reduce PDF Size for Mobile",
-    description: "Compress PDF to 20KB online instantly. Ideal for small signature upload limits on SSC, UPSC and State Govt job portals. Private in-browser processing.",
-    h1: "Compress PDF to 20KB"
-  },
-  "/compress-pdf-to-50kb": {
-    title: "Compress PDF to 50KB Online Free | Reduce PDF Size for Forms",
-    description: "Compress PDF to 50KB online. Perfect for strict signature and photo upload limits on NSP, SSC, and govt scholarship portals. Safe browser-only processing.",
-    h1: "Compress PDF to 50KB"
-  },
-  "/compress-pdf-to-100kb": {
-    title: "Compress PDF to 100KB Online (Free & Fast PDF Smallizer)",
-    description: "Compress PDF to 100KB online for free. Safely reduce PDF size for scholarship forms, job applications, and email attachments. No quality loss, no uploads.",
-    h1: "Compress PDF to 100KB"
-  },
-  "/compress-pdf-to-150kb": {
-    title: "Compress PDF to 150KB Online Free | Reduce PDF for Passport",
-    description: "Compress PDF to 150KB online for free. Safely reduce PDF size for passport applications, scholarship portals, and govt forms. 100% private in-browser tool.",
-    h1: "Compress PDF to 150KB"
-  },
+  // --- CONSOLIDATED TOOL ROUTES ---
   "/compress-pdf-to-200kb": {
     title: "Compress PDF to 200KB Online (Free & Without Losing Quality)",
     description: "Reduce PDF size under 200KB for SSC, UPSC, and IBPS online forms. Securely compress your PDF in-browser without uploading to any server. Free & fast.",
     h1: "Compress PDF to 200KB"
-  },
-  "/compress-pdf-to-500kb": {
-    title: "Compress PDF to 500KB Online Free | Reduce Size for Resume",
-    description: "Compress PDF to 500KB online for free. Ideal for resume uploads on Naukri, LinkedIn, and corporate portals. Safely reduce PDF size without losing readability.",
-    h1: "Compress PDF to 500KB"
-  },
-  "/compress-pdf-to-1mb": {
-    title: "Compress PDF to 1MB Online Free | Reduce Size for Portals",
-    description: "Compress PDF to 1MB online for free. Perfect for heavy documents, university applications, and email. 100% private browser processing. No uploads, no risk.",
-    h1: "Compress PDF to 1MB"
-  },
-  "/reduce-pdf-size-to-500kb": {
-    title: "Reduce PDF Size to 500KB Online Free (Secure & Private)",
-    description: "Reduce PDF size to 500KB online for free. Safely compress your PDF for job portals like Naukri and LinkedIn. 100% private browser-based processing.",
-    h1: "Reduce PDF Size to 500KB"
   },
   "/pdf-to-jpg": {
     title: "Convert PDF to JPG Online - High Quality & Secure (Free)",
@@ -143,208 +103,11 @@ export const SEO_METADATA = {
     title: "Remove Metadata from PDF Online (Free, Secure & Private)",
     description: "Clear author, keywords, and hidden data from your PDF/Resume online. Best for job applications and privacy. 100% private browser processing.",
     h1: "Remove Metadata from PDF"
-  },
-  "/resize-pdf-kb": {
-    title: "Resize PDF in KB Online (SSC, UPSC & Passport Form Fixer)",
-    description: "Resize your PDF to specific KB limits (20KB, 50KB, 100KB, 200KB) online for free. Best for Indian govt portals and exam forms. No uploads, stays private.",
-    h1: "Resize PDF in KB"
-  },
-  "/resize-pdf-mb": {
-    title: "Resize PDF in MB Online Free | Reduce Heavy Document Size",
-    description: "Resize PDF in MB online for free. Shrink large 10MB+ files to 1MB, 2MB, or 5MB for email and corporate portals. Fast browser processing without uploads.",
-    h1: "Resize PDF in MB"
-  },
-  "/resize-pdf-200kb": {
-    title: "Resize PDF to 200KB Online - Reduce File Size (Free & Secure)",
-    description: "Resize PDF to 200KB online for free. Reduce PDF file size to under 200KB for SSC, UPSC, and government form uploads. Privacy-first, no quality loss.",
-    h1: "Resize PDF to 200KB"
-  },
-  "/scanned-pdf-compressor": {
-    title: "Scanned PDF Compressor Online | Reduce Marksheet Size Free",
-    description: "Compress scanned marksheets, certificates, and ID cards online safely. Reduce file size while keeping text sharp and readable for university admissions.",
-    h1: "Scanned PDF Compressor"
-  },
-  "/scanned-pdf-to-200kb": {
-    title: "Compress Scanned PDF to 200KB Online (Marksheet & Certs Fix)",
-    description: "Compress scanned marksheets and caste certificates to under 200KB for scholarship and govt jobs. Maintain readability without ruining quality.",
-    h1: "Scanned PDF to 200KB"
-  },
-  "/flipkart-label-cropper": {
-    title: "Flipkart Label Cropper & Resizer (Thermal 4x6) - Free Tool",
-    description: "Crop Flipkart shipping labels for 4x6 Thermal Printer online. Remove extra white space from A4 invoice labels. Free, fast & secure browser-based tool.",
-    h1: "Flipkart Label Cropper"
-  },
-  "/meesho-label-cropper": {
-    title: "Meesho Label Cropper - Resize for Thermal Printer (Online)",
-    description: "Resize and crop Meesho shipping labels for 4x6 Thermal Printer. Convert A4 labels to thermal size instantly without quality loss. Free tool.",
-    h1: "Meesho Label Cropper"
   }
 };
 
-export const RU_METADATA = {
-  "/ru": {
-    title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF",
-    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере.",
-    h1: "Сжать PDF Онлайн Бесплатно"
-  },
-  "/ru/szhat-pdf": {
-    title: "Сжать PDF Онлайн Бесплатно | Уменьшить размер PDF",
-    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF файла без потери качества. Быстро, безопасно, без регистрации. Работает в браузере.",
-    h1: "Сжать PDF Онлайн Бесплатно"
-  },
-  "/ru/szhat-pdf-do-20kb": {
-    title: "Сжать PDF до 20 КБ Онлайн | Уменьшить вес PDF бесплатно",
-    description: "Сжать PDF до 20 кб онлайн бесплатно. Специальный профиль для загрузки подписей и маленьких документов на порталы.",
-    h1: "Сжать PDF до 20 КБ"
-  },
-  "/ru/szhat-pdf-do-50kb": {
-    title: "Сжать PDF до 50 КБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF до 50 кб онлайн бесплатно. Идеально для строгих лимитов при загрузке документов и подписей.",
-    h1: "Сжать PDF до 50 КБ"
-  },
-  "/ru/szhat-pdf-do-100kb": {
-    title: "Сжать PDF до 100 КБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF до 100 кб онлайн. Подходит для резюме, анкет и заявлений. Быстрая обработка в браузере.",
-    h1: "Сжать PDF до 100 КБ"
-  },
-  "/ru/szhat-pdf-do-150kb": {
-    title: "Сжать PDF до 150 КБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF до 150 кб онлайн бесплатно. Оптимально для порталов госуслуг, вузов и паспортных столов.",
-    h1: "Сжать PDF до 150 КБ"
-  },
-  "/ru/szhat-pdf-do-200kb": {
-    title: "Сжать PDF до 200 КБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF онлайн бесплатно. Уменьшить размер PDF до 200 кб. Самый популярный формат для Госуслуг, ФНС и других государственных порталов.",
-    h1: "Сжать PDF до 200 КБ"
-  },
-  "/ru/szhat-pdf-do-300kb": {
-    title: "Сжать PDF до 300 КБ Онлайн | Уменьшить вес PDF бесплатно",
-    description: "Сжать PDF до 300 кб онлайн бесплатно. Оптимизируйте ваши документы для быстрой загрузки и отправки по Email.",
-    h1: "Сжать PDF до 300 КБ"
-  },
-  "/ru/szhat-pdf-do-500kb": {
-    title: "Сжать PDF до 500 КБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF до 500 кб онлайн. Отлично подходит для отправки по почте, портфолио и презентаций.",
-    h1: "Сжать PDF до 500 КБ"
-  },
-  "/ru/szhat-pdf-do-1mb": {
-    title: "Сжать PDF до 1 МБ Онлайн | Уменьшить размер PDF бесплатно",
-    description: "Сжать PDF до 1 МБ онлайн. Для больших договоров, книг и отчетов. Сохраняет высокое качество.",
-    h1: "Сжать PDF до 1 МБ"
-  },
-  "/ru/umenshit-razmer-pdf-do-500kb": {
-    title: "Уменьшить размер PDF файла до 500 КБ Онлайн (Бесплатно)",
-    description: "Бесплатно уменьшить размер PDF до 500 КБ. Быстрая оптимизация для отправки по email и загрузки на сайты.",
-    h1: "Уменьшить размер PDF до 500 КБ"
-  },
-  "/ru/szhat-skanirovannyj-pdf": {
-    title: "Сжать Сканированный PDF Онлайн | Уменьшить размер скана",
-    description: "Сжать сканированный PDF онлайн. Умная оптимизация сканов документов, квитанций и рукописей без размытия текста.",
-    h1: "Сжать Сканированный PDF Онлайн"
-  },
-  "/ru/szhat-skanirovannyj-pdf-do-200kb": {
-    title: "Сжать Скан PDF до 200 КБ Онлайн | Уменьшить размер скана",
-    description: "Сжать сканированный PDF до 200 КБ. Специальный алгоритм для паспортов, дипломов и справок. Проходит проверки на порталах.",
-    h1: "Сжать Скан PDF до 200 КБ"
-  },
-  "/ru/udalit-metadannye-pdf": {
-    title: "Удалить метаданные из PDF Онлайн (Очистить свойства файла)",
-    description: "Удалить автора, дату создания и скрытые метаданные из PDF онлайн. Повысьте конфиденциальность перед отправкой документа.",
-    h1: "Удалить метаданные из PDF"
-  },
-  "/ru/izmenit-razmer-pdf-kb": {
-    title: "Изменить размер PDF в КБ Онлайн | Уменьшить вес документа",
-    description: "Изменить размер PDF в КБ онлайн. Задайте точный размер (50 КБ, 100 КБ) для загрузки на порталы. Конфиденциально и бесплатно.",
-    h1: "Изменить размер PDF в КБ"
-  },
-  "/ru/izmenit-razmer-pdf-mb": {
-    title: "Изменить размер PDF в МБ Онлайн | Уменьшить объем PDF",
-    description: "Изменить размер PDF в МБ онлайн для почты и хранения. Уменьшите тяжелые файлы до 1 МБ или 2 МБ прямо в браузере.",
-    h1: "Изменить размер PDF в МБ"
-  },
-  "/ru/pdf-v-jpg": {
-    title: "PDF в JPG Онлайн | Конвертировать страницы в изображения",
-    description: "Конвертировать PDF в JPG онлайн бесплатно. Превратите страницы PDF в четкие картинки JPG без загрузки на сервер.",
-    h1: "PDF в JPG Онлайн"
-  },
-  "/ru/obedinit-pdf": {
-    title: "Объединить PDF Онлайн | Склеить несколько PDF файлов",
-    description: "Объединить PDF онлайн бесплатно. Склейте страницы и документы в один файл. Удобная сортировка и полная безопасность.",
-    h1: "Объединить PDF Онлайн"
-  },
-  "/ru/razdelit-pdf": {
-    title: "Разделить PDF Онлайн | Извлечь страницы из документа",
-    description: "Разделить PDF онлайн бесплатно. Выбирайте страницы визуально и извлекайте их в новый файл. Быстро и приватно.",
-    h1: "Разделить PDF Онлайн"
-  },
-  "/ru/instrumenty": {
-    title: "PDF Инструменты – Сжать, Уменьшить, Очистить | Бесплатно",
-    description: "Все инструменты для работы с PDF: сжатие до 200кб, 100кб, удаление метаданных. Бесплатно, безопасно, в браузере.",
-    h1: "PDF Инструменты"
-  },
-  "/ru/o-nas": {
-    title: "О Нас - CompressPDFto200KB.online",
-    description: "Узнайте больше о нашем сервисе. Мы помогаем студентам и специалистам бесплатно сжимать PDF документы для государственных порталов.",
-    h1: "О Нас"
-  },
-  "/ru/kontakty": {
-    title: "Контакты - CompressPDFto200KB.online",
-    description: "Свяжитесь с нами, если у вас есть вопросы или предложения по улучшению сервиса сжатия PDF.",
-    h1: "Контакты"
-  },
-  "/ru/politika-konfidencialnosti": {
-    title: "Политика Конфиденциальности - CompressPDFto200KB.online",
-    description: "Мы уважаем вашу приватность. Ваши файлы обрабатываются локально в браузере и никогда не загружаются на наши серверы.",
-    h1: "Политика Конфиденциальности"
-  },
-  "/ru/usloviya": {
-    title: "Условия Использования - CompressPDFto200KB.online",
-    description: "Правила использования наших бесплатных инструментов для работы с PDF.",
-    h1: "Условия Использования"
-  },
-  "/ru/otkaz-ot-otvetstvennosti": {
-    title: "Отказ от Ответственности - CompressPDFto200KB.online",
-    description: "Отказ от ответственности: мы предоставляем инструменты 'как есть' без гарантий для конкретных порталов.",
-    h1: "Отказ от Ответственности"
-  },
-  "/ru/blog": {
-    title: "Блог - CompressPDFto200KB.online",
-    description: "Блог о сжатии PDF и работе с документами.",
-    h1: "Блог"
-  },
-  "/ru/flipkart-label-cropper": {
-    title: "Flipkart Label Cropper - Обрезка этикеток для термопринтера",
-    description: "Обрезайте этикетки Flipkart для термопринтеров 4x6 онлайн. Удалите лишние поля с транспортных этикеток A4. Бесплатный и безопасный инструмент.",
-    h1: "Flipkart Label Cropper"
-  },
-  "/ru/meesho-label-cropper": {
-    title: "Meesho Label Cropper - Обрезка этикеток Meesho онлайн",
-    description: "Изменяйте размер и обрезайте этикетки Meesho для термопринтеров 4x6. Переводите этикетки A4 в формат для термопечати мгновенно и бесплатно.",
-    h1: "Meesho Label Cropper"
-  },
-  "/ru/jpg-v-pdf": {
-    title: "JPG в PDF Онлайн | Конвертировать изображения в PDF бесплатно",
-    description: "Конвертируйте JPG, PNG и другие изображения в PDF онлайн бесплатно. Объединяйте несколько фото в один документ прямо в браузере.",
-    h1: "JPG в PDF Онлайн"
-  },
-  "/ru/redaktirovat-pdf": {
-    title: "Редактировать PDF Онлайн | Бесплатный редактор PDF в браузере",
-    description: "Редактируйте PDF файлы онлайн бесплатно. Добавляйте текст, изображения и фигуры в ваши документы. Безопасно, приватно и без загрузки на сервер.",
-    h1: "Редактировать PDF Онлайн"
-  },
-  "/ru/razmer-pdf-200kb": {
-    title: "Изменить размер PDF до 200 КБ Онлайн | Бесплатно и безопасно",
-    description: "Измените размер вашего PDF файла ровно до 200 КБ онлайн бесплатно. Идеально для загрузки документов на государственные порталы и сайты вакансий.",
-    h1: "Изменить размер PDF до 200 КБ"
-  },
-  "/ru/cookie-policy": {
-    title: "Политика использования куки - CompressPDFto200KB.online",
-    description: "Узнайте о политике использования куки на сайте CompressPDFto200KB.online. На данный момент мы не используем куки или пиксели отслеживания.",
-    h1: "Политика использования куки"
-  }
-};
-
-
+export const RU_METADATA = {};
+export const ES_METADATA = {};
 
 export const BLOG_METADATA = {
   "how-to-compress-a-pdf-on-mac": {
@@ -401,13 +164,5 @@ export const BLOG_METADATA = {
     title: "Email Me PDF Attach Nahi Ho Rahi? PDF Size Reduce Kaise Kare",
     description: "Email me PDF attach nahi ho rahi due to large file size? Learn how to reduce PDF size quickly and send attachments easily.",
     h1: "Email Me PDF Attach Nahi Ho Rahi? Fix"
-  }
-};
-
-export const ES_METADATA = {
-  "/es/dividir-pdf-en-varias-partes-online": {
-    title: "Dividir PDF en varias partes online - Sin archivos a la nube",
-    description: "¿Harto de que el portal no acepte tu PDF? Divide tu PDF en varias partes online hoy mismo. 100% privado, gratis y sin rollos raros.",
-    h1: "Dividir PDF en varias partes online (y que dejen de darte errores)"
   }
 };

@@ -10,14 +10,47 @@
       ],
       "destination": "https://compresspdfto200kb.online/$1",
       "permanent": true
+    },
+    {
+      "source": "/(compress-pdf|compress-pdf-to-(20kb|50kb|100kb|150kb|500kb|1mb)|reduce-pdf-size-to-500kb|resize-pdf-kb|resize-pdf-200kb|resize-pdf-mb|scanned-pdf-compressor|scanned-pdf-to-200kb)",
+      "destination": "/compress-pdf-to-200kb",
+      "permanent": true
+    },
+    {
+      "source": "/merge-pdf-(mac|windows|linux)",
+      "destination": "/merge-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/split-pdf-(mac|windows|adobe|by-pages|online)",
+      "destination": "/split-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/(flipkart|meesho)-label-cropper",
+      "destination": "/pdf-to-jpg",
+      "permanent": true
+    },
+    {
+      "source": "/ru(.*)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/es(.*)",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ],
-  "build" : {
+  "build": {
     "env": {
-       "PUPPETEER_SKIP_DOWNLOAD": "true"
-     }
+      "PUPPETEER_SKIP_DOWNLOAD": "true"
+    }
   }
 }

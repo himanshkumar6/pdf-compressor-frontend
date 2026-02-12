@@ -28,7 +28,7 @@ function generateXml(paths, today) {
   const urls = paths.map((p) => {
     const loc = toCanonicalUrl(p);
 
-    const isHome = p === "/" || p === "/ru" || p === "/es/dividir-pdf-en-varias-partes-online";
+    const isHome = p === "/";
     const isBlogIndex = p.endsWith("/blog");
     const isBlogPost = p.includes("/blog/") && !isBlogIndex;
     const isTool = !isHome && !isBlogIndex && !isBlogPost;
@@ -78,47 +78,21 @@ function run() {
   // ✅ Merge + remove duplicates
   const ALL_PATHS = [...new Set([...CANONICAL_PATHS, ...blogPaths])];
 
-  // ✅ Partition by locale
-  const ruPaths = ALL_PATHS.filter((p) => p.startsWith("/ru"));
-  const esPaths = ALL_PATHS.filter((p) => p.startsWith("/es"));
-  const hiPaths = ALL_PATHS.filter(
-    (p) => !p.startsWith("/ru") && !p.startsWith("/es")
-  );
+  // ✅ Filtering empty or invalid paths (just in case)
+  const finalPaths = ALL_PATHS.filter(p => p && p !== "");
 
-  // ✅ Generate XMLs
-  const hiXml = generateXml(hiPaths, today);
-  const ruXml = generateXml(ruPaths, today);
-  const esXml = generateXml(esPaths, today);
-
-  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>${BASE_URL}/sitemap-hi.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${BASE_URL}/sitemap-ru.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${BASE_URL}/sitemap-es.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-</sitemapindex>`;
+  // ✅ Generate XML
+  const sitemapXml = generateXml(finalPaths, today);
 
   if (!fs.existsSync(DIST_DIR)) {
     fs.mkdirSync(DIST_DIR, { recursive: true });
   }
 
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-hi.xml"), hiXml);
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-ru.xml"), ruXml);
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap-es.xml"), esXml);
-  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), indexXml);
+  // Write single sitemap.xml
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), sitemapXml);
 
   console.log("✅ Sitemap Generated Successfully");
-  console.log("HI URLs:", hiPaths.length);
-  console.log("RU URLs:", ruPaths.length);
-  console.log("ES URLs:", esPaths.length);
+  console.log("Total URLs:", finalPaths.length);
 }
 
 run();

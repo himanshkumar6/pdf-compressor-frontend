@@ -23,14 +23,8 @@ export const TOOL_PAGES: ToolPageItem[] = TOOLS_REGISTRY.map((t) => ({
   shortDesc: t.shortDescription,
 }));
 
-/** Russian Tool Pages List */
-export const RU_TOOL_PAGES: ToolPageItem[] = TOOLS_REGISTRY.filter(
-  (t) => t.ru
-).map((t) => ({
-  path: t.ru!.slug,
-  label: t.ru!.title,
-  shortDesc: t.ru!.shortDescription,
-}));
+/** Russian Tool Pages List (Consolidated to English) */
+export const RU_TOOL_PAGES: ToolPageItem[] = [];
 
 /** Main nav links (header): Home, Tools, Blog, About, Contact */
 export const MAIN_NAV_PAGES: MainPageItem[] = [
@@ -61,7 +55,6 @@ export const FOOTER_LEGAL_PAGES: MainPageItem[] = [
 /** Set of active tool paths (for App: hide nav/footer on tool pages) */
 const ALL_TOOL_PATHS = [
   ...TOOLS_REGISTRY.map((t) => t.slug),
-  ...TOOLS_REGISTRY.filter((t) => t.ru).map((t) => t.ru!.slug),
 ];
 
 export const TOOL_ROUTES_SET = new Set(ALL_TOOL_PATHS);
@@ -74,26 +67,22 @@ export function getRelatedTools(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _minCount = 4
 ): ToolPageItem[] {
-  const isRu = currentPath.startsWith("/ru");
-  const sourceList = isRu ? RU_TOOL_PAGES : TOOL_PAGES;
-
-  /* ✅ SMART CLUSTERING: Prioritize same category */
-  const allTools = isRu ?  TOOLS_REGISTRY.filter(t => t.ru) : TOOLS_REGISTRY;
-  const currentTool = allTools.find(t => isRu ? t.ru?.slug === currentPath : t.slug === currentPath);
+  const sourceList = TOOL_PAGES;
+  const allTools = TOOLS_REGISTRY;
+  const currentTool = allTools.find(t => t.slug === currentPath);
   
   const category = currentTool?.category;
 
   const sameCategory = sourceList.filter(t => {
-     const tool = allTools.find(at => (isRu ? at.ru?.slug : at.slug) === t.path);
+     const tool = allTools.find(at => at.slug === t.path);
      return tool?.category === category && t.path !== currentPath;
   });
 
   const otherCategory = sourceList.filter(t => {
-     const tool = allTools.find(at => (isRu ? at.ru?.slug : at.slug) === t.path);
+     const tool = allTools.find(at => at.slug === t.path);
      return tool?.category !== category && t.path !== currentPath;
   });
 
-  // Interleave or just concat: Same Cat (High Priority) + Others
   return [...sameCategory, ...otherCategory].slice(0, 4);
 }
 

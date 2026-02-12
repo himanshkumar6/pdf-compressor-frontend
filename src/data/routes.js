@@ -21,93 +21,29 @@ export const MAIN_ROUTES = [
   "/blog",
 ];
 
-// ✅ Tool Routes (Hinglish/English)
+// ✅ Tool Routes (Consolidated to 7 primary tools)
 export const TOOL_ROUTES = [
-  "/compress-pdf",
-  "/compress-pdf-to-50kb",
-  "/compress-pdf-to-100kb",
-  "/compress-pdf-to-150kb",
   "/compress-pdf-to-200kb",
-  "/compress-pdf-to-500kb",
-  "/compress-pdf-to-1mb",
-  "/reduce-pdf-size-to-500kb",
-  "/scanned-pdf-compressor",
-  "/scanned-pdf-to-200kb",
-  "/remove-metadata-from-pdf",
-  "/resize-pdf-kb",
-  "/resize-pdf-200kb",
-  "/resize-pdf-mb",
   "/pdf-to-jpg",
+  "/jpg-to-pdf",
   "/merge-pdf",
   "/split-pdf",
   "/edit-pdf",
-  "/jpg-to-pdf",
-  "/flipkart-label-cropper",
-  "/meesho-label-cropper",
+  "/remove-metadata-from-pdf",
 ];
 
-// // ✅ Blog Routes
-// export const BLOG_ROUTES = [
-//   "/blog/govt-form-pdf-reject-fix-compress-200kb",
-//   "/blog/ssc-form-pdf-size-limit-200kb",
-//   "/blog/upsc-documents-upload-guide-pdf-compress",
-//   "/blog/job-portal-resume-upload-problem-pdf-size-reduce",
-//   "/blog/passport-portal-200kb-limit-pdf-upload-error-fix",
-//   "/blog/mobile-se-pdf-compress-kaise-kare-without-app",
-//   "/blog/visa-kyc-pdf-upload-fail-size-reduce-solution",
-//   "/blog/scanned-pdf-heavy-size-reduce-complete-guide",
-//   "/blog/scholarship-form-pdf-upload-guide-200kb-document",
-//   "/blog/email-me-pdf-attach-nahi-ho-rahi-size-reduce",
-//   "/blog/how-to-compress-a-pdf-on-mac",
-// ];
+// ✅ Blog Routes (Handled dynamically in sitemap script usually, or kept empty if not needed here)
+export const BLOG_ROUTES = [];
 
-// ✅ Russian Routes
-export const RU_ROUTES = [
-  "/ru",
-  "/ru/o-nas",
-  "/ru/kontakty",
-  "/ru/politika-konfidencialnosti",
-  "/ru/usloviya",
-  "/ru/otkaz-ot-otvetstvennosti",
-  "/ru/blog",
-  "/ru/instrumenty",
-  "/ru/szhat-pdf",
-  "/ru/szhat-pdf-do-20kb",
-  "/ru/szhat-pdf-do-50kb",
-  "/ru/szhat-pdf-do-100kb",
-  "/ru/szhat-pdf-do-150kb",
-  "/ru/szhat-pdf-do-200kb",
-  "/ru/szhat-pdf-do-300kb",
-  "/ru/szhat-pdf-do-500kb",
-  "/ru/szhat-pdf-do-1mb",
-  "/ru/umenshit-razmer-pdf-do-500kb",
-  "/ru/szhat-skanirovannyj-pdf",
-  "/ru/szhat-skanirovannyj-pdf-do-200kb",
-  "/ru/udalit-metadannye-pdf",
-  "/ru/izmenit-razmer-pdf-kb",
-  "/ru/izmenit-razmer-pdf-mb",
-  "/ru/pdf-v-jpg",
-  "/ru/obedinit-pdf",
-  "/ru/razdelit-pdf",
-  "/ru/flipkart-label-cropper",
-  "/ru/meesho-label-cropper",
-  "/ru/jpg-v-pdf",
-  "/ru/redaktirovat-pdf",
-  "/ru/razmer-pdf-200kb",
-  "/ru/cookie-policy",
-];
-
-// ✅ Spanish Routes
-export const ES_ROUTES = [
-  "/es/dividir-pdf-en-varias-partes-online",
-];
-
+// ✅ Russian & Spanish Routes (Removed - Consolidated to Home)
+export const RU_ROUTES = [];
+export const ES_ROUTES = [];
 
 // Combine all for Sitemap/StaticGen
 export const ALL_ROUTES = [
   ...MAIN_ROUTES,
   ...TOOL_ROUTES,
-  // ...BLOG_ROUTES,
+  ...BLOG_ROUTES,
   ...RU_ROUTES,
   ...ES_ROUTES,
 ];
