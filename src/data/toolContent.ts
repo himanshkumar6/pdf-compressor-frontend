@@ -2134,6 +2134,98 @@ If you are on a system where you can't install packages (like a server or a lock
       },
     ],
   },
+  "/es/dividir-pdf-en-varias-partes-online": {
+    intro:
+      "¿Te suena la escena? Estás intentando subir la declaración de la renta o los papeles del paro y el portal te suelta: *'El archivo supera el tamaño permitido'*. No pierdas más tiempo. Aquí puedes **dividir tu PDF en varias partes online** ahora mismo y terminar con el trámite de una vez.",
+    content: `
+### ¿Por qué tienes que andar dividiendo tus PDF?
+
+Pues básicamente porque los portales oficiales (sí, Hacienda, el SEPE o la Seguridad Social) suelen ser muy tiquismiquis. Te piden escaneos perfectos, pero luego te limitan el tamaño por archivo. 
+
+Si has buscado cómo **dividir pdf en varias partes online**, ya habrás visto cientos de webs que te bombardean a publicidad. Aquí hemos quitado todo el ruido para que vayas al grano.
+
+#### Tu privacidad no es negociable
+Lo habitual es que, al usar una web para cortar un PDF, tu archivo se suba a su "nube". Pero si es una nómina o tu DNI, ¿quién sabe quién se queda con una copia?
+
+Aquí el proceso es distinto. Todo ocurre **dentro de tu navegador**. Tus papeles no salen de tu casa. Es como usar un programa en tu PC, pero sin instalaciones raras. Rápido, limpio y blindado.
+
+---
+
+### Cómo separar un PDF en partes sin volverte loco
+
+Hemos simplificado el proceso al máximo. Tres pasos y fuera:
+
+1.  **Sube tu PDF**: Arrástralo o búscalo en tus carpetas. Se carga al instante porque no tiene que viajar por la red.
+2.  **Elige las páginas**: Verás las miniaturas de tu archivo. Pincha en las que necesites o pon el rango (ideal si solo quieres de la página 2 a la 5).
+3.  **Descárgalo**: Dale al botón y, antes de que parpadees, tendrás los archivos listos para subirlos a donde necesites.
+
+---
+
+### Errores habituales al subir PDFs (y cómo evitarlos)
+
+Si el portal te sigue dando problemas, echa un ojo a estos fallos que todos cometemos alguna vez:
+
+- **Archivo demasiado pesado**: Aunque lo dividas, si una sola página pesa mucho, te la rechazarán. Pásala por nuestro compresor si te ocurre.
+- **Nombres de archivo prohibidos**: No uses tildes, ñ ni espacios en el nombre del archivo. Pon algo sencillo como \`certificado-parte-1.pdf\`.
+- **Formato incorrecto**: Asegúrate de que el portal pide PDF y no JPG. Si ves que piden fotos, también puedes convertirlo aquí mismo.
+- **PDF bloqueado**: Si el documento tiene contraseña, el portal no podrá leerlo. Tendrás que quitarle la protección antes de subirlo.
+
+---
+
+### Lo que nos diferencia de verdad
+
+No vamos a venderte humo. Lo que te damos es una herramienta útil y honesta:
+
+- **Gratis de verdad**: Sin correos, sin tarjetas y sin marcas de agua que te estropeen el papel oficial.
+- **En cualquier dispositivo**: Da igual si es el Mac de casa o un Android barato en la oficina. Funciona perfecto.
+- **Sin esperas**: Al usar la potencia de tu propio móvil o PC, no hay colas de espera. Es inmediato.
+
+---
+
+### ¿Cuándo te va a salvar la vida este divisor?
+
+#### Trámites oficiales en España
+Desde presentar una beca hasta los papeles de la jubilación. Si el PDF es un bloque de 20 páginas y solo te piden la tercera, aquí la sacas en un segundo.
+
+#### Oposiciones y empleo
+No te arriesgues a que te rechacen por un error técnico. Separa tus méritos en archivos individuales y asegúrate de que cada uno cumple con lo que pide la convocatoria.
+
+#### Estudiantes y el bendito Erasmus
+Si el sistema de la facultad se queda colgado al subir tus notas, la solución suele ser cortar el PDF y subirlo por trozos pequeños. Mano de santo.
+`,
+    steps: [
+      {
+        title: "Sube tu PDF",
+        desc: "Selecciona el archivo que quieres dividir. Se carga al instante.",
+      },
+      {
+        title: "Elige las páginas",
+        desc: "Pincha en las miniaturas o escribe el rango de páginas que necesitas.",
+      },
+      {
+        title: "Descarga",
+        desc: "Pulsa el botón y guarda tus archivos divididos listos para usar.",
+      },
+    ],
+    faqs: [
+      {
+        q: "¿De verdad es 100% privado?",
+        a: "Sí. El archivo entra en tu memoria RAM, se divide y sale a tus descargas. Nosotros ni lo vemos ni podemos guardarlo aunque quisiéramos.",
+      },
+      {
+        q: "¿Se pierde calidad al separar las páginas?",
+        a: "Para nada. El texto sigue siendo nítido y las fotos mantienen su resolución original. Solo reorganizamos el archivo.",
+      },
+      {
+        q: "¿Puedo dividir PDFs muy largos?",
+        a: "Sin problema. La herramienta aguanta archivos de cientos de páginas. Eso sí, ten un poco de paciencia si vas con un móvil con poca memoria.",
+      },
+      {
+        q: "¿Hay algún límite diario?",
+        a: "Ninguno. Puedes procesar 1 o 100 documentos. No hay cuentas premium ni límites que te frenen el trabajo.",
+      },
+    ],
+  },
 };
 
 

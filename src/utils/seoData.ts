@@ -23,6 +23,7 @@ import {
   SEO_METADATA,
   RU_METADATA,
   BLOG_METADATA,
+  ES_METADATA,
 } from "../data/metadata.js";
 
 export const SITE = {
@@ -190,6 +191,20 @@ Object.entries(BLOG_METADATA).forEach(([slug, data]) => {
   PAGES_SEO[route] = {
     title: meta.title,
     description: meta.description,
+    canonical: `${SITE.baseUrl}${route}`,
+    jsonLd: {
+      name: meta.h1,
+      url: `${SITE.baseUrl}${route}`,
+      description: meta.description,
+    },
+  };
+});
+
+// 4. Map Spanish Routes
+Object.entries(ES_METADATA).forEach(([route, data]) => {
+  const meta = data as any;
+  PAGES_SEO[route] = {
+    ...meta,
     canonical: `${SITE.baseUrl}${route}`,
     jsonLd: {
       name: meta.h1,

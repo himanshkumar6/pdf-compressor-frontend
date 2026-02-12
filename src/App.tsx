@@ -73,6 +73,7 @@ import FlipkartLabelCropperRu from "./pages/ru/FlipkartLabelCropperRu";
 import MeeshoLabelCropperRu from "./pages/ru/MeeshoLabelCropperRu";
 import RazmerPdf200kb from "./pages/ru/RazmerPdf200kb";
 import CookiePolicyRu from "./pages/ru/CookiePolicyRu";
+import DividerPDF from "./pages/es/DividerPDF";
 
 
 // ✅ TS: window.gtag type
@@ -212,6 +213,11 @@ const App: React.FC = () => {
             <Route path="/ru/flipkart-label-cropper" element={<FlipkartLabelCropperRu />} />
             <Route path="/ru/meesho-label-cropper" element={<MeeshoLabelCropperRu />} />
             <Route path="/ru/razmer-pdf-200kb" element={<RazmerPdf200kb />} />
+            <Route
+              path="/es/dividir-pdf-en-varias-partes-online"
+              element={<DividerPDF />}
+            />
+
 
           </Route>
 

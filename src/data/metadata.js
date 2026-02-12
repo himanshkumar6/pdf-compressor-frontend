@@ -403,3 +403,11 @@ export const BLOG_METADATA = {
     h1: "Email Me PDF Attach Nahi Ho Rahi? Fix"
   }
 };
+
+export const ES_METADATA = {
+  "/es/dividir-pdf-en-varias-partes-online": {
+    title: "Dividir PDF en varias partes online - Sin archivos a la nube",
+    description: "¿Harto de que el portal no acepte tu PDF? Divide tu PDF en varias partes online hoy mismo. 100% privado, gratis y sin rollos raros.",
+    h1: "Dividir PDF en varias partes online (y que dejen de darte errores)"
+  }
+};

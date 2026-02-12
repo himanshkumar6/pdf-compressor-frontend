@@ -18,6 +18,8 @@ export interface SEOProps {
   schema?: unknown;
   /** Language code (e.g. "en", "ru") */
   lang?: string;
+  /** Alternate language links for hreflang */
+  alternateLinks?: Array<{ href: string; lang: string }>;
 }
 
 function setMetaByName(name: string, content: string) {
@@ -61,7 +63,32 @@ function setJsonLd(schema: unknown) {
   document.head.appendChild(script);
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang }) => {
+function setHreflangLinks(links: Array<{ href: string; lang: string }>) {
+  // Remove existing hreflang links
+  const existing = document.querySelectorAll(`link[rel="alternate"][hreflang]`);
+  existing.forEach((el) => el.remove());
+
+  // Add new ones
+  links.forEach(({ href, lang }) => {
+    const link = document.createElement("link");
+    link.setAttribute("rel", "alternate");
+    link.setAttribute("hreflang", lang);
+    link.setAttribute("href", href);
+    document.head.appendChild(link);
+  });
+
+  // Also add x-default if it's not provided (usually pointing to English home)
+  if (!links.find((l) => l.lang === "x-default")) {
+    const defaultLink = document.createElement("link");
+    defaultLink.setAttribute("rel", "alternate");
+    defaultLink.setAttribute("hreflang", "x-default");
+    const enHome = links.find(l => l.lang === 'en')?.href || 'https://compresspdfto200kb.online/';
+    defaultLink.setAttribute("href", enHome);
+    document.head.appendChild(defaultLink);
+  }
+}
+
+const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang, alternateLinks }) => {
   useEffect(() => {
     const metaTitle = title || DEFAULT_SEO.title;
     const metaDescription = description || DEFAULT_SEO.description;
@@ -94,7 +121,12 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang }
 
     // ✅ Schema JSON-LD
     if (schema) setJsonLd(schema);
-  }, [title, description, canonical, schema, lang]);
+
+    // ✅ Hreflang
+    if (alternateLinks) {
+      setHreflangLinks(alternateLinks);
+    }
+  }, [title, description, canonical, schema, lang, alternateLinks]);
 
   return null;
 };

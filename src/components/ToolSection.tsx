@@ -194,7 +194,9 @@ const ToolSection: React.FC<ToolSectionProps> = ({
         isApproximate: !headerSize,
         message:
           status === "not_possible"
-            ? (lang === 'ru' ? `Лучшее сжатие: ${finalSizeKB}KB. Попробуйте лимит выше.` : `Best achievable: ${finalSizeKB}KB. Try a higher limit.`)
+            ? (lang === 'ru' ? `Лучшее сжатие: ${finalSizeKB}KB. Попробуйте лимит выше.` :
+              lang === 'es' ? `Mejor resultado: ${finalSizeKB}KB. Prueba un límite mayor.` :
+                `Best achievable: ${finalSizeKB}KB. Try a higher limit.`)
             : undefined,
       });
       showSuccess(t.toastDone);
@@ -218,18 +220,9 @@ const ToolSection: React.FC<ToolSectionProps> = ({
   );
 
   // Generate CTA text
-  // For RU, strictly follow requirement "Цель: до 1000 КБ" instead of "Target: ≤1000KB" if logic permits?
-  // Current buttonText uses `formatSizeLabel` which adds MB/KB. 
-  // User req: "Show: "Цель: до 1000 КБ" instead of "Target: ≤1000KB""
-  // The CTA text might be passed as prop. 
-  // Default logic: `Compress to ≤${formatSizeLabel(targetSize)} (Recommended)` 
-  // I need to localize this too.
-
   const buttonText =
     ctaText ??
-    (lang === "ru"
-      ? `Цель: до ${formatSizeLabel(targetSize).replace("≤ ", "")}`
-      : `Target: ${formatSizeLabel(targetSize).replace("≤ ", "")}`);
+    `${t.targetLimit} ${formatSizeLabel(targetSize).replace("≤ ", "")}`;
 
   return (
     <div className="max-w-4xl mx-auto w-full px-4 sm:px-0 mt-4 md:mt-8">
@@ -273,7 +266,7 @@ const ToolSection: React.FC<ToolSectionProps> = ({
                 <div>
                   <p className="text-white font-bold text-sm">{file.name}</p>
                   <p className="text-xs text-gray-500">
-                    {formatSize(file.size)} {isLargeFile ? "• Large PDF" : ""}
+                    {formatSize(file.size)} {isLargeFile ? (lang === 'ru' ? "• Большой PDF" : lang === 'es' ? "• PDF Grande" : "• Large PDF") : ""}
                   </p>
                 </div>
               </div>
@@ -311,7 +304,7 @@ const ToolSection: React.FC<ToolSectionProps> = ({
 
                 {isLargeFile && (
                   <div className="p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-xl text-xs text-yellow-400 text-center">
-                    {lang === "ru" ? "⚠️ Большой файл: может занять 30–120 секунд" : "⚠️ Large file: may take 30–120 seconds"}
+                    {t.warnLargeFile}
                   </div>
                 )}
 
@@ -328,11 +321,11 @@ const ToolSection: React.FC<ToolSectionProps> = ({
                 <div className="space-y-2 text-center">
                   <div className="flex items-center justify-center gap-2 text-green-400 text-sm font-semibold">
                     <CheckCircle className="w-4 h-4" />
-                    <span>{lang === "ru" ? "Всегда сжимаем до выбранного вами лимита." : "We always compress under your selected limit."}</span>
+                    <span>{t.trustMain}</span>
                   </div>
                   <p className="text-gray-500 text-xs flex items-center justify-center gap-1">
                     <Info className="w-3 h-3" />
-                    {lang === "ru" ? "Итоговый размер может быть меньше в зависимости от контента PDF." : "Final size may be lower depending on PDF content."}
+                    {t.trustSub}
                   </p>
                 </div>
               </>
@@ -363,15 +356,15 @@ const ToolSection: React.FC<ToolSectionProps> = ({
 
                 <p className="text-gray-400 text-sm max-w-md mx-auto">
                   {isVeryLargeFile
-                    ? (lang === 'ru' ? "Очень большой PDF — может занять 1–2 минуты." : "Very large PDF — may take 1–2 minutes.")
+                    ? t.veryLargeFile
                     : isLargeFile
-                      ? (lang === 'ru' ? "Большой PDF — пожалуйста, подождите." : "Large PDF — please wait.")
+                      ? t.largeFile
                       : t.optimizing}
                 </p>
 
                 {/* Locked limit badge */}
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-sm font-bold shadow-lg">
-                  <span>🔒 {lang === 'ru' ? 'Цель: до' : 'Target:'} {formatSizeLabel(targetSize).replace("≤ ", "")}</span>
+                  <span>🔒 {t.targetLimit} {formatSizeLabel(targetSize).replace("≤ ", "")}</span>
                 </div>
               </div>
             )}

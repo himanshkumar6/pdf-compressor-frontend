@@ -211,7 +211,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
                 </div>
               ) : (
                 <p className="text-gray-500 text-sm">
-                  {lang === "ru" ? "Макс. 5 МБ • Офлайн" : "Max 5MB • Works offline"}
+                  {t.uploadHint2.split('. ')[0]}
                 </p>
               )}
             </div>
@@ -258,7 +258,7 @@ const ToolSectionRemoveMetadata: React.FC = () => {
             >
 
               <Download className="w-5 h-5" />
-              {lang === "ru" ? "Скачать очищенный PDF" : "Download Clean PDF"}
+              {t.downloadClean}
             </a>
           )}
         </div>

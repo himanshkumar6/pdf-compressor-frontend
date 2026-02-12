@@ -13,6 +13,7 @@ const Footer: React.FC = () => {
   const routes = ROUTE_MAP[lang];
 
   const isRu = lang === "ru";
+  const isEs = lang === "es";
 
   // Marketing Text
   const t = isRu ? {
@@ -32,6 +33,24 @@ const Footer: React.FC = () => {
       clientSide: "100% на клиенте",
       madeWith: "Сделано с",
       by: "кем",
+    }
+  } : isEs ? {
+    headline: <>Comprime tus PDF de forma <span className="text-cyan-400">segura</span>.</>,
+    subhead: "Compresión de PDF privada en tu navegador. Sin subidas, sin rastreo, sin marcas de agua — ideal para trámites oficiales y portales de empleo.",
+    badges: ["100% en Navegador", "Sin Subidas", "Móvil Friendly", "Gratis"],
+    btn200: "Comprimir a 200KB",
+    btnHome: "Comprimir PDF Online",
+    desc: "Compresión de PDF segura y privada. Tus archivos se procesan localmente en tu navegador — nunca se suben a nuestros servidores.",
+    headers: {
+      tools: "Herramientas",
+      support: "Soporte",
+      legal: "Legal"
+    },
+    bottom: {
+      rights: `© ${new Date().getFullYear()} CompressPDF Tool. Todos los derechos reservados.`,
+      clientSide: "100% en tu PC/Móvil",
+      madeWith: "Hecho con",
+      by: "por",
     }
   } : {
     headline: <>Compress PDFs the <span className="text-cyan-400">secure</span> way.</>,

@@ -1,10 +1,10 @@
-
+console.log("Starting Sitemap Generation...");
 import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
-import { BLOG_POSTS } from "../src/utils/blogPosts.ts"
+import { BLOG_SLUGS } from "../src/data/blogSlugs.js";
 
 // ✅ Import Routes
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
@@ -25,22 +25,10 @@ function generateXmlForRoutes(paths, today) {
   const urls = paths.map((p) => {
     const loc = toCanonicalUrl(p);
 
-    // Detect blog post
-    const blogMatch = BLOG_POSTS.find(
-      (post) => `/blog/${post.slug}` === p
-    );
-
     const isHome = p === "/" || p === "/ru";
     const isBlogIndex = p.endsWith("/blog");
-    const isBlogPost = blogMatch !== undefined;
-    const isTool =
-      !isHome &&
-      !isBlogIndex &&
-      !isBlogPost &&
-      !p.startsWith("/ru/blog");
-
-    // Blog lastmod = blog date
-    const lastmod = blogMatch ? blogMatch.date : today;
+    const isBlogPost = p.includes("/blog/") && !isBlogIndex;
+    const isTool = !isHome && !isBlogIndex && !isBlogPost && !p.startsWith("/ru/blog");
 
     let changefreq = "monthly";
     let priority = "0.6";
@@ -58,6 +46,8 @@ function generateXmlForRoutes(paths, today) {
       changefreq = "yearly";
       priority = "0.5";
     }
+
+    const lastmod = today;
 
     return `  <url>
     <loc>${loc}</loc>
@@ -80,8 +70,8 @@ function run() {
   const today = new Date().toISOString().slice(0, 10);
 
   // ✅ Auto add blog paths
-  const blogPaths = BLOG_POSTS.map(
-    (post) => `/blog/${post.slug}`
+  const blogPaths = BLOG_SLUGS.map(
+    (slug) => `/blog/${slug}`
   );
 
   // Merge & remove duplicates
@@ -89,10 +79,12 @@ function run() {
 
   // Partition
   const ruPaths = ALL_PATHS.filter((p) => p.startsWith("/ru"));
-  const hiPaths = ALL_PATHS.filter((p) => !p.startsWith("/ru"));
+  const esPaths = ALL_PATHS.filter((p) => p.startsWith("/es"));
+  const hiPaths = ALL_PATHS.filter((p) => !p.startsWith("/ru") && !p.startsWith("/es"));
 
   const hiXml = generateXmlForRoutes(hiPaths, today);
   const ruXml = generateXmlForRoutes(ruPaths, today);
+  const esXml = generateXmlForRoutes(esPaths, today);
 
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -104,6 +96,10 @@ function run() {
     <loc>${BASE_URL}/sitemap-ru.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>${BASE_URL}/sitemap-es.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
 </sitemapindex>`;
 
   if (!fs.existsSync(DIST_DIR)) {
@@ -112,11 +108,13 @@ function run() {
 
   fs.writeFileSync(path.join(DIST_DIR, "sitemap-hi.xml"), hiXml, "utf8");
   fs.writeFileSync(path.join(DIST_DIR, "sitemap-ru.xml"), ruXml, "utf8");
+  fs.writeFileSync(path.join(DIST_DIR, "sitemap-es.xml"), esXml, "utf8");
   fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), indexXml, "utf8");
 
   console.log("✅ Sitemap Generated Successfully");
   console.log(`HI URLs: ${hiPaths.length}`);
   console.log(`RU URLs: ${ruPaths.length}`);
+  console.log(`ES URLs: ${esPaths.length}`);
 }
 
 run();

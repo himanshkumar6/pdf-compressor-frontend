@@ -97,6 +97,11 @@ export const RU_ROUTES = [
   "/ru/cookie-policy",
 ];
 
+// ✅ Spanish Routes
+export const ES_ROUTES = [
+  "/es/dividir-pdf-en-varias-partes-online",
+];
+
 
 // Combine all for Sitemap/StaticGen
 export const ALL_ROUTES = [
@@ -104,4 +109,5 @@ export const ALL_ROUTES = [
   ...TOOL_ROUTES,
   // ...BLOG_ROUTES,
   ...RU_ROUTES,
+  ...ES_ROUTES,
 ];

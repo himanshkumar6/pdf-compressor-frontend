@@ -10,7 +10,10 @@ import {
   PAGES_SEO,
   buildFAQJsonLd,
   buildWebAppJsonLd,
+  SITE,
 } from "../utils/seoData";
+
+import { TOOLS_REGISTRY } from "../data/toolsRegistry";
 
 import { buildBreadcrumbSchemaItems } from "../utils/breadcrumbItems";
 import { getRelatedTools } from "../data/pages";
@@ -45,6 +48,26 @@ export default function ToolLandingPage({
   // ✅ Breadcrumb JSON-LD items (Auto)
   const breadcrumbItems = useMemo(() => {
     return buildBreadcrumbSchemaItems(routeKey);
+  }, [routeKey]);
+
+  // ✅ Hreflang logic (Alternate language pages)
+  const alternateLinks = useMemo(() => {
+    const currentTool = TOOLS_REGISTRY.find(
+      (t) => t.slug === routeKey || t.ru?.slug === routeKey || t.es?.slug === routeKey
+    );
+
+    if (!currentTool) return undefined;
+
+    const links = [
+      { lang: "en", href: `${SITE.baseUrl}${currentTool.slug}` },
+    ];
+    if (currentTool.ru) {
+      links.push({ lang: "ru", href: `${SITE.baseUrl}${currentTool.ru.slug}` });
+    }
+    if (currentTool.es) {
+      links.push({ lang: "es", href: `${SITE.baseUrl}${currentTool.es.slug}` });
+    }
+    return links;
   }, [routeKey]);
 
   if (!page) {
@@ -98,7 +121,8 @@ export default function ToolLandingPage({
 
   /* Determine language */
   const isRu = routeKey.startsWith("/ru");
-  const lang = isRu ? "ru" : "en";
+  const isEs = routeKey.startsWith("/es");
+  const lang = isRu ? "ru" : isEs ? "es" : "en";
 
   const labels = isRu
     ? {
@@ -110,15 +134,135 @@ export default function ToolLandingPage({
       useCases: "Сценарии использования",
       trust: "Доверие и Безопасность",
     }
-    : {
-      whenToUse: "When you should use this tool",
-      howItWorks: "How this tool works",
-      related: "Related Tools",
-      relatedDesc: "Try these PDF tools — all free and run in your browser.",
-      features: "Key Features",
-      useCases: "Use Cases",
-      trust: "Why Trust Us",
+    : isEs
+      ? {
+        whenToUse: "¿Cuándo usar esta herramienta?",
+        howItWorks: "¿Cómo funciona?",
+        related: "Herramientas Relacionadas",
+        relatedDesc: "Prueba estas herramientas PDF — todas gratuitas y seguras.",
+        features: "Características Principales",
+        useCases: "Casos de Uso",
+        trust: "Por qué confiar en nosotros",
+      }
+      : {
+        whenToUse: "When you should use this tool",
+        howItWorks: "How this tool works",
+        related: "Related Tools",
+        relatedDesc: "Try these PDF tools — all free and run in your browser.",
+        features: "Key Features",
+        useCases: "Use Cases",
+        trust: "Why Trust Us",
+      };
+
+  /**
+   * Simple Markdown-to-JSX Parser
+   * Converts:
+   * - ### Heading -> <h3>
+   * - #### Heading -> <h4>
+   * - **Bold** -> <strong>
+   * - --- Separator -> <hr>
+   * - Bullet points starting with - -> <li>
+   */
+  const renderMarkdown = (text: string) => {
+    if (!text) return null;
+
+    // Split by lines to handle block elements
+    const lines = text.split("\n");
+    const elements: React.ReactNode[] = [];
+
+    let listItems: string[] = [];
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${elements.length}`} className="list-disc ml-6 space-y-2 text-gray-300">
+            {listItems.map((item, i) => (
+              <li key={i}>{processInlines(item)}</li>
+            ))}
+          </ul>
+        );
+        listItems = [];
+      }
     };
+
+    const processInlines = (line: string) => {
+      // Bold: **text** -> <strong>text</strong>
+      let processed: React.ReactNode[] = [line];
+
+      // Process Bold
+      processed = processed.flatMap((part) => {
+        if (typeof part !== "string") return part;
+        const subParts = part.split(/(\*\*.*?\*\*)/g);
+        return subParts.map((sp, i) => {
+          if (sp.startsWith("**") && sp.endsWith("**")) {
+            return <strong key={`b-${i}`} className="text-white font-bold">{sp.slice(2, -2)}</strong>;
+          }
+          return sp;
+        });
+      });
+
+      // Process Italic: *text* -> <em>text</em>
+      processed = processed.flatMap((part) => {
+        if (typeof part !== "string") return part;
+        const subParts = part.split(/(\*.*?\*)/g);
+        return subParts.map((sp, i) => {
+          if (sp.startsWith("*") && sp.endsWith("*") && !sp.startsWith("**")) {
+            return <em key={`i-${i}`} className="italic text-gray-200">{sp.slice(1, -1)}</em>;
+          }
+          return sp;
+        });
+      });
+
+      return processed;
+    };
+
+    lines.forEach((line, idx) => {
+      const trimmedLine = line.trim();
+
+      // Horizontal Rule
+      if (trimmedLine === "---") {
+        flushList();
+        elements.push(<hr key={idx} className="border-gray-800 my-8" />);
+        return;
+      }
+
+      // Headings
+      if (trimmedLine.startsWith("#### ")) {
+        flushList();
+        elements.push(<h4 key={idx} className="text-white text-lg font-bold mt-6 mb-3">{processInlines(trimmedLine.slice(5))}</h4>);
+        return;
+      }
+      if (trimmedLine.startsWith("### ")) {
+        flushList();
+        elements.push(<h3 key={idx} className="text-white text-xl font-bold mt-8 mb-4">{processInlines(trimmedLine.slice(4))}</h3>);
+        return;
+      }
+      if (trimmedLine.startsWith("## ")) {
+        flushList();
+        elements.push(<h2 key={idx} className="text-white text-2xl font-black mt-10 mb-6">{processInlines(trimmedLine.slice(3))}</h2>);
+        return;
+      }
+
+      // List Items
+      if (trimmedLine.startsWith("- ")) {
+        listItems.push(trimmedLine.slice(2));
+        return;
+      }
+
+      // Empty Lines
+      if (trimmedLine === "") {
+        flushList();
+        return;
+      }
+
+      // Standard Paragraph
+      flushList();
+      elements.push(<p key={idx} className="text-gray-300 leading-relaxed">{processInlines(trimmedLine)}</p>);
+    });
+
+    flushList(); // Final cleanup
+    return <div className="space-y-4">{elements}</div>;
+  };
 
   return (
     <div className="w-full flex flex-col items-center px-4 sm:px-6">
@@ -129,6 +273,7 @@ export default function ToolLandingPage({
         canonical={page.canonical}
         schema={schemaGraph}
         lang={lang}
+        alternateLinks={alternateLinks}
       />
 
       {/* ✅ Breadcrumb Schema (Google) */}
@@ -148,9 +293,9 @@ export default function ToolLandingPage({
             <h2 className="text-white text-xl md:text-3xl font-black mb-6">
               {labels.whenToUse}
             </h2>
-            <div className="text-gray-300 leading-relaxed space-y-4 whitespace-pre-line">
-              {intro && <div>{intro}</div>}
-              {content && <div className={intro ? "mt-8" : ""}>{content}</div>}
+            <div className="text-gray-300 leading-relaxed">
+              {intro && <div className="mb-8">{renderMarkdown(intro)}</div>}
+              {content && <div>{renderMarkdown(content)}</div>}
             </div>
           </div>
         )}

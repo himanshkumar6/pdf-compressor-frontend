@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeMenuDropdown from "./ThemeMenuDropdown";
+import { translations, getLangFromPath } from "../i18n/translations";
 import { getLanguage, NAV_LABELS, ROUTE_MAP, CRUD_LABELS, getLocalizedRouteGuard } from "../utils/localization";
 
 export default function Navbar() {
@@ -11,6 +12,10 @@ export default function Navbar() {
   const lang = getLanguage(location.pathname);
   const labels = NAV_LABELS[lang];
   const routes = ROUTE_MAP[lang];
+
+
+  const t = translations[lang];
+
 
   // ✅ FIXED: Try Free now respects locale
   const ctaLink = routes.cta;

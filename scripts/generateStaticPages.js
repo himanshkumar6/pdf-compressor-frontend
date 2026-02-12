@@ -5,7 +5,7 @@ const SITE = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
 
 // ✅ IMPORT UNIFIED METADATA
-import { SITE_CONFIG, SEO_METADATA, RU_METADATA, BLOG_METADATA } from "../src/data/metadata.js";
+import { SITE_CONFIG, SEO_METADATA, RU_METADATA, BLOG_METADATA, ES_METADATA } from "../src/data/metadata.js";
 
 const YANDEX_VERIFICATION = SITE_CONFIG.yandexVerification;
 const GA_ID = SITE_CONFIG.gaId;
@@ -46,6 +46,11 @@ function getMeta(route) {
   // Check RU routes
   if (RU_METADATA[route]) {
     return RU_METADATA[route];
+  }
+
+  // Check ES routes
+  if (ES_METADATA[route]) {
+    return ES_METADATA[route];
   }
 
   // Check blog routes
@@ -112,45 +117,61 @@ function buildCrawlableLinksHtml() {
 }
 
 /** Get translated version for hreflang */
-function getAlternateUrl(route) {
+function getAlternateUrls(route) {
   const mapping = {
-    "/": "/ru",
-    "/about": "/ru/o-nas",
-    "/contact": "/ru/kontakty",
-    "/privacy-policy": "/ru/politika-konfidencialnosti",
-    "/terms-conditions": "/ru/usloviya",
-    "/disclaimer": "/ru/otkaz-ot-otvetstvennosti",
-    "/tools": "/ru/instrumenty",
-    "/blog": "/ru/blog",
-    "/compress-pdf": "/ru/szhat-pdf",
-    "/compress-pdf-to-50kb": "/ru/szhat-pdf-do-50kb",
-    "/compress-pdf-to-100kb": "/ru/szhat-pdf-do-100kb",
-    "/compress-pdf-to-150kb": "/ru/szhat-pdf-do-150kb",
-    "/compress-pdf-to-200kb": "/ru/szhat-pdf-do-200kb",
-    "/compress-pdf-to-500kb": "/ru/szhat-pdf-do-500kb",
-    "/compress-pdf-to-1mb": "/ru/szhat-pdf-do-1mb",
-    "/reduce-pdf-size-to-500kb": "/ru/umenshit-razmer-pdf-do-500kb",
-    "/scanned-pdf-compressor": "/ru/szhat-skanirovannyj-pdf",
-    "/scanned-pdf-to-200kb": "/ru/szhat-skanirovannyj-pdf-do-200kb",
-    "/remove-metadata-from-pdf": "/ru/udalit-metadannye-pdf",
-    "/resize-pdf-kb": "/ru/izmenit-razmer-pdf-kb",
-    "/resize-pdf-mb": "/ru/izmenit-razmer-pdf-mb",
-    "/pdf-to-jpg": "/ru/pdf-v-jpg",
-    "/merge-pdf": "/ru/obedinit-pdf",
-    "/split-pdf": "/ru/razdelit-pdf",
+    "/": ["/ru"],
+    "/about": ["/ru/o-nas"],
+    "/contact": ["/ru/kontakty"],
+    "/privacy-policy": ["/ru/politika-konfidencialnosti"],
+    "/terms-conditions": ["/ru/usloviya"],
+    "/disclaimer": ["/ru/otkaz-ot-otvetstvennosti"],
+    "/tools": ["/ru/instrumenty"],
+    "/blog": ["/ru/blog"],
+    "/compress-pdf": ["/ru/szhat-pdf"],
+    "/compress-pdf-to-50kb": ["/ru/szhat-pdf-do-50kb"],
+    "/compress-pdf-to-100kb": ["/ru/szhat-pdf-do-100kb"],
+    "/compress-pdf-to-150kb": ["/ru/szhat-pdf-do-150kb"],
+    "/compress-pdf-to-200kb": ["/ru/szhat-pdf-do-200kb"],
+    "/compress-pdf-to-500kb": ["/ru/szhat-pdf-do-500kb"],
+    "/compress-pdf-to-1mb": ["/ru/szhat-pdf-do-1mb"],
+    "/reduce-pdf-size-to-500kb": ["/ru/umenshit-razmer-pdf-do-500kb"],
+    "/scanned-pdf-compressor": ["/ru/szhat-skanirovannyj-pdf"],
+    "/scanned-pdf-to-200kb": ["/ru/szhat-skanirovannyj-pdf-do-200kb"],
+    "/remove-metadata-from-pdf": ["/ru/udalit-metadannye-pdf"],
+    "/resize-pdf-kb": ["/ru/izmenit-razmer-pdf-kb"],
+    "/resize-pdf-mb": ["/ru/izmenit-razmer-pdf-mb"],
+    "/pdf-to-jpg": ["/ru/pdf-v-jpg"],
+    "/merge-pdf": ["/ru/obedinit-pdf"],
+    "/split-pdf": ["/ru/razdelit-pdf", "/es/dividir-pdf-en-varias-partes-online"],
   };
 
-  // Reverse mapping for RU -> EN
+  // Build a reverse mapping
   const reverseMapping = {};
   for (const en in mapping) {
-    reverseMapping[mapping[en]] = en;
+    mapping[en].forEach(alt => {
+      reverseMapping[alt] = en;
+    });
   }
 
-  const altPath = mapping[route] || reverseMapping[route];
-  if (altPath) {
-    return getCanonicalUrl(altPath);
+  const alts = [];
+  if (mapping[route]) {
+    mapping[route].forEach(pathStr => {
+      const code = pathStr.startsWith("/ru") ? "ru" : pathStr.startsWith("/es") ? "es" : "en";
+      alts.push({ lang: code, href: getCanonicalUrl(pathStr) });
+    });
+  } else if (reverseMapping[route]) {
+    const enPath = reverseMapping[route];
+    alts.push({ lang: "en", href: getCanonicalUrl(enPath) });
+    // Add other siblings
+    mapping[enPath].forEach(pathStr => {
+      if (pathStr !== route) {
+        const code = pathStr.startsWith("/ru") ? "ru" : pathStr.startsWith("/es") ? "es" : "en";
+        alts.push({ lang: code, href: getCanonicalUrl(pathStr) });
+      }
+    });
   }
-  return null;
+
+  return alts;
 }
 
 // ✅ Create proper HTML that loads SPA + correct meta tags
@@ -160,13 +181,16 @@ function createHtml(route, meta, assets) {
   const description = escapeHtml(meta.description);
 
   const isRu = route.startsWith("/ru");
-  const lang = isRu ? "ru" : "en";
-  const alternate = getAlternateUrl(route);
-  const alternateLang = isRu ? "en" : "ru";
+  const isEs = route.startsWith("/es");
+  const lang = isRu ? "ru" : isEs ? "es" : "en";
 
-  const alternateLink = alternate ? `<link rel="alternate" hreflang="${alternateLang}" href="${alternate}" />` : "";
+  const alternates = getAlternateUrls(route);
+  const alternateLinks = alternates.map(alt =>
+    `<link rel="alternate" hreflang="${alt.lang}" href="${alt.href}" />`
+  ).join("\n");
+
   const selfLink = `<link rel="alternate" hreflang="${lang}" href="${canonical}" />`;
-  const xDefault = isRu ? "" : `<link rel="alternate" hreflang="x-default" href="${canonical}" />`;
+  const xDefault = (isRu || isEs) ? "" : `<link rel="alternate" hreflang="x-default" href="${canonical}" />`;
 
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -182,7 +206,7 @@ function createHtml(route, meta, assets) {
 <meta name="description" content="${description}" />
 <link rel="canonical" href="${canonical}" />
 ${selfLink}
-${alternateLink}
+${alternateLinks}
 ${xDefault}
 
 <!-- ✅ Verification -->
@@ -270,6 +294,31 @@ function buildSeoContentHtml(route, meta) {
     html += `
       <h2>Shipping Label Cropping for Thermal Printers</h2>
       <p>Perfect for Flipkart and Meesho sellers. Crop your shipping labels into 4x6 format instantly to save paper and printing costs. Works without uploading images to any server.</p>
+    `;
+  } else if (route.startsWith("/es/")) {
+    // Spanish Content (Sanitized from markdown)
+    html += `
+      <h2>¿Por qué tienes que andar dividiendo tus PDF?</h2>
+      <p>Pues básicamente porque los portales oficiales (sí, Hacienda, el SEPE o la Seguridad Social) suelen ser muy tiquismiquis. Te piden escaneos perfectos, pero luego te limitan el tamaño por archivo.</p>
+      <h2>Tu privacidad no es negociable</h2>
+      <p>Lo habitual es que, al usar una web para cortar un PDF, tu archivo se suba a su "nube". Pero si es una nómina o tu DNI, ¿quién sabe quién se queda con una copia?</p>
+      <p>Aquí el proceso es distinto. Todo ocurre dentro de tu navegador. Tus papeles no salen de tu casa. Es como usar un programa en tu PC, pero sin instalaciones raras. Rápido, limpio y blindado.</p>
+      <h2>Cómo separar un PDF en partes sin volverte loco</h2>
+      <p>Hemos simplificado el proceso al máximo. Tres pasos y fuera:</p>
+      <ol>
+        <li>Sube tu PDF: Arrástralo o búscalo en tus carpetas. Se carga al instante porque no tiene que viajar por la red.</li>
+        <li>Elige las páginas: Verás las miniaturas de tu archivo. Pincha en las que necesites o pon el rango (ideal si solo quieres de la página 2 a la 5).</li>
+        <li>Descárgalo: Dale al botón y, antes de que parpadees, tendrás los archivos listos para subirlos a donde necesites.</li>
+      </ol>
+      <h2>Preguntas Frecuentes</h2>
+      <div class="faq-item">
+        <strong>¿De verdad es 100% privado?</strong>
+        <p>Sí. El archivo entra en tu memoria RAM, se divide y sale a tus descargas. Nosotros ni lo vemos ni podemos guardarlo aunque quisiéramos.</p>
+      </div>
+      <div class="faq-item">
+        <strong>¿Se pierde calidad al separar las páginas?</strong>
+        <p>Para nada. El texto sigue siendo nítido y las fotos mantienen su resolución original. Solo reorganizamos el archivo.</p>
+      </div>
     `;
   } else if (route === "/privacy-policy") {
     html += `

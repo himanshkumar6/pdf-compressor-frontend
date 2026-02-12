@@ -33,6 +33,11 @@ export interface Tool {
     slug: string;
     shortDescription: string;
   };
+  es?: {
+    title: string;
+    slug: string;
+    shortDescription: string;
+  };
 }
 
 export const TOOL_CATEGORIES_INFO = [
@@ -374,6 +379,11 @@ export const TOOLS_REGISTRY: Tool[] = [
       title: "Разделить PDF",
       slug: "/ru/razdelit-pdf",
       shortDescription: "Извлеките нужные страницы из документа.",
+    },
+    es: {
+      title: "Dividir PDF",
+      slug: "/es/dividir-pdf-en-varias-partes-online",
+      shortDescription: "Separa tus documentos en varias partes fácilmente.",
     },
   },
 

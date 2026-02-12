@@ -4,6 +4,8 @@ import { Upload, Download, Loader2, Trash2, Check } from "lucide-react";
 import ToolLandingPage from "../components/ToolLandingPage";
 import { safeLoadLibrary } from "../utils/lazyImport";
 import ToolErrorBoundary from "../components/ToolErrorBoundary";
+import { useLocation } from "react-router-dom";
+import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
 
 const SplitPdfContent: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -13,6 +15,10 @@ const SplitPdfContent: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [previews, setPreviews] = useState<Record<number, string>>({}); // cache previews
   const [previewsLoaded, setPreviewsLoaded] = useState(0);
+
+  const location = useLocation();
+  const lang = getLanguage(location.pathname);
+  const t = TOOL_UI_LABELS[lang];
 
   const reset = () => {
     setFile(null);
@@ -180,7 +186,7 @@ const SplitPdfContent: React.FC = () => {
       copiedPages.forEach(p => newPdf.addPage(p));
 
       const pdfBytes = await newPdf.save();
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const blob = new Blob([pdfBytes as any], { type: "application/pdf" });
 
 
       const fileSaverModule = await safeLoadLibrary<any>(() => import("file-saver"), "file-saver");
@@ -190,7 +196,7 @@ const SplitPdfContent: React.FC = () => {
 
     } catch (err) {
       console.error(err);
-      alert("Extraction failed.");
+      alert(t.toastCompressFailed);
     } finally {
       setIsProcessing(false);
     }
@@ -211,8 +217,8 @@ const SplitPdfContent: React.FC = () => {
             <div className="mx-auto w-20 h-20 bg-(--bg) rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/5">
               <Upload className="w-10 h-10 text-orange-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Select PDF to Split</h3>
-            <p className="text-gray-400 text-sm">Preview pages and select range visually</p>
+            <h3 className="text-xl font-bold text-white mb-2">{t.splitSelect}</h3>
+            <p className="text-gray-400 text-sm">{t.splitPreview}</p>
           </div>
         ) : (
           <div className="p-6">
@@ -225,10 +231,10 @@ const SplitPdfContent: React.FC = () => {
                 <div className="min-w-0">
                   <div className="text-sm font-bold text-(--text) truncate">{file.name}</div>
                   <div className="text-xs text-gray-500">
-                    {pageCount} Pages
+                    {pageCount} {t.splitPages}
                     {previewsLoaded < pageCount && (
                       <span className="ml-2 text-orange-400 font-bold animate-pulse">
-                        (Loading {previewsLoaded}/{pageCount} previews)
+                        ({lang === 'es' ? 'Cargando' : lang === 'ru' ? 'Загрузка' : 'Loading'} {previewsLoaded}/{pageCount} {lang === 'es' ? 'previsualizaciones' : lang === 'ru' ? 'превью' : 'previews'})
                       </span>
                     )}
                   </div>
@@ -238,7 +244,7 @@ const SplitPdfContent: React.FC = () => {
               <div className="flex items-center gap-2 w-full md:w-auto">
                 <input
                   type="text"
-                  placeholder="e.g. 1-5, 8"
+                  placeholder={t.splitPlaceholder}
                   value={rangeInput}
                   onChange={handleRangeChange}
                   className="grow md:w-40 bg-(--card) border border-(--border) text-(--text) text-sm px-3 py-2 rounded-lg focus:ring-2 focus:ring-orange-500/50 outline-none"
@@ -284,7 +290,7 @@ const SplitPdfContent: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-2 left-0 right-0 text-center text-xs font-bold px-2 py-1 bg-black/60 text-white backdrop-blur-sm mx-2 rounded">
-                    Page {i + 1}
+                    {lang === 'es' ? 'Página' : lang === 'ru' ? 'Стр.' : 'Page'} {i + 1}
                   </div>
                 </div>
               ))}
@@ -299,13 +305,13 @@ const SplitPdfContent: React.FC = () => {
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="w-6 h-6 animate-spin" />
-                    Extracting...
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    {t.splitExtracting}
                   </>
                 ) : (
                   <>
-                    <Download className="w-6 h-6" />
-                    Extract {selectedPages.size} Page{selectedPages.size !== 1 ? 's' : ''}
+                    <Download className="w-5 h-5" />
+                    {t.splitExtract} {selectedPages.size > 0 ? `(${selectedPages.size})` : ""}
                   </>
                 )}
               </button>
@@ -322,16 +328,49 @@ interface SplitPdfProps {
   routeKey?: string;
 }
 
-const SplitPdf: React.FC<SplitPdfProps> = ({ routeKey = "/split-pdf" }) => (
-  <ToolErrorBoundary toolName="Split PDF">
-    <ToolLandingPage
-      routeKey={routeKey}
-      heading={<>Split <span className="text-orange-400">PDF</span> Documents & Extract Pages Instantly</>}
-      tagline="100% Private • No Upload Required • Safe for Government Forms"
-    >
-      <SplitPdfContent />
-    </ToolLandingPage>
-  </ToolErrorBoundary>
-);
+const SplitPdf: React.FC<SplitPdfProps> = ({ routeKey = "/split-pdf" }) => {
+  const isRu = routeKey.startsWith("/ru");
+  const isEs = routeKey.startsWith("/es");
+
+  const heading = isRu ? (
+    <>Разделить <span className="text-orange-400">PDF</span> и извлечь страницы мгновенно</>
+  ) : isEs ? (
+    <>Dividir documentos <span className="text-orange-400">PDF</span> y extraer páginas al instante</>
+  ) : (
+    <>Split <span className="text-orange-400">PDF</span> Documents & Extract Pages Instantly</>
+  );
+
+  const tagline = isRu
+    ? "100% приватность • Без загрузки • Безопасно для документов"
+    : isEs
+      ? "100% Privado • Sin subidas • Seguro para trámites oficiales"
+      : "100% Private • No Upload Required • Safe for Government Forms";
+
+  return (
+    <ToolErrorBoundary toolName="Split PDF">
+      <ToolLandingPage
+        routeKey={routeKey}
+        heading={heading}
+        tagline={tagline}
+      >
+        <SplitPdfContent />
+
+        {/* ✅ INTERNAL LINK TO SPANISH (SEO STRATEGY) */}
+        {!isRu && !isEs && (
+          <div className="mt-12 pt-8 border-t border-(--border) text-center">
+            <p className="text-(--text-muted) text-sm mb-3">Versión en Español:</p>
+            <a
+              href="/es/dividir-pdf-en-varias-partes-online"
+              className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold transition-colors group"
+            >
+              Dividir PDF en varias partes online
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </div>
+        )}
+      </ToolLandingPage>
+    </ToolErrorBoundary>
+  );
+};
 
 export default SplitPdf;
