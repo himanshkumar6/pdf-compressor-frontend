@@ -83,6 +83,15 @@ declare global {
 }
 
 const App: React.FC = () => {
+
+
+
+  useEffect(() => {
+    document.dispatchEvent(new Event("render-event"));
+  }, []);
+
+
+
   const location = useLocation();
 
   // ✅ GA4 SPA page_view tracking (Realtime fix)
