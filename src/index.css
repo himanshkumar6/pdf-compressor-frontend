@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "./aurora.css";
@@ -21,6 +23,10 @@
 
   /* Surfaces */
   --surface-radius: 28px;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
 }
 
 /* =========================================================
@@ -380,7 +386,9 @@ a:not(.btnPrimary):not(.btnSecondary):not(.btn-primary):not(.btn-secondary) {
   font-weight: 600;
 }
 
-a:not(.btnPrimary):not(.btnSecondary):not(.btn-primary):not(.btn-secondary):hover {
+a:not(.btnPrimary):not(.btnSecondary):not(.btn-primary):not(
+    .btn-secondary
+  ):hover {
   color: var(--linkHover);
 }
 
@@ -643,7 +651,9 @@ html.light body::after {
   display: inline-flex;
   align-items: center;
   gap: 0.125rem;
-  transition: transform 180ms ease, filter 180ms ease;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
   will-change: transform;
 }
 .brand-logo:hover {
@@ -706,7 +716,9 @@ html.dark .brand-logo__pdf {
   position: relative;
   display: block;
   border-radius: 0.9rem;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 .nav-link-mobile:hover {
   color: var(--accent);
