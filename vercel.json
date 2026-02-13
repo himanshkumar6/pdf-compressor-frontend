@@ -10,7 +10,15 @@
       "destination": "/",
       "permanent": true
     },
-
+{
+  "source" : "/ru",
+  "destination" : "/",
+  "permanent" : true
+}, {
+  "source": "/es",
+  "destination" : "/",
+  "permanent" : true
+},
     {
       "source": "/(.*)",
       "has": [
