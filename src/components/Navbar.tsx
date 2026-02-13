@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeMenuDropdown from "./ThemeMenuDropdown";
-import { translations, getLangFromPath } from "../i18n/translations";
 import { getLanguage, NAV_LABELS, ROUTE_MAP, CRUD_LABELS, getLocalizedRouteGuard } from "../utils/localization";
 
 export default function Navbar() {
@@ -14,7 +13,6 @@ export default function Navbar() {
   const routes = ROUTE_MAP[lang];
 
 
-  const t = translations[lang];
 
 
   // ✅ FIXED: Try Free now respects locale
@@ -54,7 +52,6 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1 text-sm font-semibold">
           {navItems
-            .filter((p) => p.key !== "tools")
             .map((p) => {
               const isActive =
                 location.pathname === p.path ||

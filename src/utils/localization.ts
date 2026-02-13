@@ -350,4 +350,4 @@ export function getLocalizedRouteGuard(
 }
 /* ---------------- CONTACT ---------------- */
 
-export const CONTACT_EMAIL = "himanshucareer01@gmail.com";
+export const CONTACT_EMAIL = "support@compresspdfto200kb.online";
