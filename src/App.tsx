@@ -32,6 +32,7 @@ import SplitPdf from "./pages/SplitPdf";
 import EditPdf from "./pages/EditPdf";
 import RemoveMetadataFromPdf from "./pages/RemoveMetadataFromPdf";
 import JpgToPdf from "./pages/JpgToPdf";
+import CompressTo50kb from "./pages/CompressTo50kb";
 
 
 // ✅ TS: window.gtag type
@@ -99,8 +100,10 @@ const App: React.FC = () => {
           ========================================= */}
           <Route element={<ToolLayout />}>
             <Route path="/compress-pdf-to-200kb" element={<CompressPdfTo200kb initialLimit={200} routeKey="/compress-pdf-to-200kb" />} />
+            <Route path="/compress-pdf-to-50kb" element={<CompressTo50kb />} />
             <Route path="/remove-metadata-from-pdf" element={<RemoveMetadataFromPdf />} />
             <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
+
             <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
             <Route path="/merge-pdf" element={<MergePdf />} />
             <Route path="/split-pdf" element={<SplitPdf />} />

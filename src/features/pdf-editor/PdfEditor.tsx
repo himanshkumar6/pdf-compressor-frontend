@@ -185,64 +185,129 @@ const PdfEditor: React.FC<PdfEditorProps> = ({ labels = DEFAULT_LABELS }) => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      {/* Toolbar */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 flex flex-wrap items-center justify-between gap-4 sticky top-4 z-40">
+    <div className="flex flex-col gap-4 md:gap-6">
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => handleAddText()}
-            className="btn-secondary flex items-center gap-2"
-          >
-            <TypeIcon className="w-4 h-4" /> <span>{t.addText}</span>
-          </button>
-          <div className="h-6 w-px bg-slate-300 mx-2" />
-          <button
-            onClick={() => setZoom(z => Math.max(0.5, z - 0.25))}
-            className="p-2 hover:bg-slate-100 rounded-lg"
-          >
-            <ZoomOut className="w-5 h-5" />
-          </button>
-          <span className="font-mono text-sm w-12 text-center">{Math.round(zoom * 100)}%</span>
-          <button
-            onClick={() => setZoom(z => Math.min(3.0, z + 0.25))}
-            className="p-2 hover:bg-slate-100 rounded-lg"
-          >
-            <ZoomIn className="w-5 h-5" />
-          </button>
-        </div>
+      {/* ============================= */}
+      {/* TOOLBAR - MOBILE FIRST */}
+      {/* ============================= */}
 
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900 rounded-lg p-1">
-            <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage <= 1} className="p-1 hover:bg-white rounded shadow-sm disabled:opacity-50">
-              <ChevronLeft className="w-4 h-4" />
+      <div
+        className="
+        bg-(--card)
+        rounded-2xl md:rounded-(--surface-radius)
+        border border-(--border)
+        p-4
+        flex flex-col
+        gap-4
+        md:flex-row md:items-center md:justify-between
+        theme-transition
+      "
+      >
+
+        {/* ===== ROW 1 (Mobile) - Add + Zoom ===== */}
+        <div className="flex items-center justify-between md:justify-start md:gap-4 w-full">
+
+          <button
+            onClick={handleAddText}
+            className="btnSecondary flex items-center gap-2 text-sm md:text-base px-3 py-2"
+          >
+            <TypeIcon className="w-4 h-4" />
+            {t.addText}
+          </button>
+
+          <div className="flex items-center gap-2">
+
+            <button
+              onClick={() => setZoom(z => Math.max(0.5, z - 0.25))}
+              className="p-2 rounded-lg hover:bg-(--surface-hover) transition"
+            >
+              <ZoomOut className="w-4 h-4 md:w-5 md:h-5" />
             </button>
-            <span className="text-sm px-2 font-medium">
-              {t.pageOf.replace("{current}", String(currentPage)).replace("{total}", String(numPages))}
+
+            <span className="font-mono text-xs md:text-sm w-10 text-center text-(--textBody)">
+              {Math.round(zoom * 100)}%
             </span>
-            <button onClick={() => setCurrentPage(p => Math.min(numPages, p + 1))} disabled={currentPage >= numPages} className="p-1 hover:bg-white rounded shadow-sm disabled:opacity-50">
-              <ChevronRight className="w-4 h-4" />
+
+            <button
+              onClick={() => setZoom(z => Math.min(3.0, z + 0.25))}
+              className="p-2 rounded-lg hover:bg-(--surface-hover) transition"
+            >
+              <ZoomIn className="w-4 h-4 md:w-5 md:h-5" />
             </button>
+
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button onClick={() => reset()} className="text-slate-500 hover:text-red-500 p-2">
-            <Trash2 className="w-5 h-5" />
+        {/* ===== ROW 2 - Pagination ===== */}
+        <div className="flex justify-center md:justify-start w-full md:w-auto">
+          <div className="flex items-center gap-2 bg-(--surface) border border-(--border) rounded-lg px-3 py-1">
+
+            <button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage <= 1}
+              className="disabled:opacity-40"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <span className="text-xs md:text-sm font-medium text-(--textBody)">
+              {currentPage} / {numPages}
+            </span>
+
+            <button
+              onClick={() => setCurrentPage(p => Math.min(numPages, p + 1))}
+              disabled={currentPage >= numPages}
+              className="disabled:opacity-40"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+          </div>
+        </div>
+
+        {/* ===== ROW 3 - Actions ===== */}
+        <div className="flex justify-between md:justify-end items-center gap-3 w-full md:w-auto">
+
+          <button
+            onClick={() => reset()}
+            className="text-(--textMuted) hover:text-red-500 transition p-2"
+          >
+            <Trash2 className="w-4 h-4 md:w-5 md:h-5" />
           </button>
+
           <button
             onClick={handleExport}
             disabled={isExporting}
-            className="btn-primary flex items-center gap-2"
+            className="btnPrimary flex items-center gap-2 text-sm md:text-base px-4 py-2"
           >
-            {isExporting ? <Loader2 className="animate-spin w-4 h-4" /> : <Download className="w-4 h-4" />}
-            <span>{t.download}</span>
+            {isExporting ? (
+              <Loader2 className="animate-spin w-4 h-4" />
+            ) : (
+              <Download className="w-4 h-4" />
+            )}
+            {t.download}
           </button>
+
         </div>
+
       </div>
 
-      {/* Canvas Area */}
-      <div className="bg-slate-100 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 overflow-auto flex justify-center min-h-[600px]">
+      {/* ============================= */}
+      {/* CANVAS AREA */}
+      {/* ============================= */}
+
+      <div
+        className="
+        bg-(--card)
+        rounded-2xl md:rounded-(--surface-radius)
+        border border-(--border)
+        p-2 md:p-6
+        overflow-auto
+        flex justify-center
+        min-h-[400px] md:min-h-[550px] lg:min-h-[650px]
+        theme-transition
+      "
+      >
         <PdfCanvas
           pdfDocument={pdfDocument}
           pageNumber={currentPage}
@@ -255,6 +320,7 @@ const PdfEditor: React.FC<PdfEditorProps> = ({ labels = DEFAULT_LABELS }) => {
           onEditDelete={deleteEdit}
         />
       </div>
+
     </div>
   );
 };

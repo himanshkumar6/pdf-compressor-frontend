@@ -1,11 +1,100 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
-import { Upload, Download, Loader2, Trash2, Check } from "lucide-react";
+import {
+  Upload, Download, Loader2, Trash2, Check,
+  ShieldCheck, Zap,
+  Globe, Layout
+} from "lucide-react";
 import ToolLandingPage from "../components/ToolLandingPage";
 import { safeLoadLibrary } from "../utils/lazyImport";
 import ToolErrorBoundary from "../components/ToolErrorBoundary";
-import { useLocation } from "react-router-dom";
-import { getLanguage, TOOL_UI_LABELS } from "../utils/localization";
+
+const UniqueSEOContent = () => (
+  <div className="space-y-12 text-gray-700 dark:text-gray-300 mt-16 max-w-5xl mx-auto">
+    {/* American Market Focused Hero Content */}
+    <section className="bg-(--card) p-6 md:p-12 rounded-(--surface-radius) border border-(--border) shadow-theme-sm backdrop-blur-sm theme-transition relative overflow-hidden">
+      <div className="absolute top-0 right-0 p-4 opacity-10">
+        <Globe className="w-24 h-24 text-orange-500" />
+      </div>
+      <h2 className="text-xl md:text-3xl font-bold text-(--textHeading) mb-4 leading-tight">
+        Reliable <span className="text-orange-500 italic">Split PDF</span> Tool: Extract Pages in Seconds
+      </h2>
+      <p className="leading-relaxed mb-8 text-base md:text-lg text-(--textBody) max-w-3xl">
+        Are you wondering, <strong>"how do I split a pdf into multiple files"</strong> without paying for expensive software? Our professional-grade splitter is the perfect <strong>adobe pdf split alternative</strong>. Whether you're a student in NYC or a business owner in California, our tool allows you to <strong>split pdf in pages</strong> locally in your browser—meaning your sensitive data never leaves your computer.
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {['Instant Extraction', 'Zero Server Logs', 'High Resolution', 'No Sign-up'].map((tag) => (
+          <span key={tag} className="px-3 md:px-4 py-1.5 bg-orange-50 dark:bg-orange-500/10 border border-orange-100 dark:border-orange-500/20 rounded-full text-[9px] md:text-[10px] font-semibold tracking-wide text-orange-700 dark:text-orange-400 shadow-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </section>
+
+    {/* Human-Centric Features */}
+    <section className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {[
+        {
+          title: "Macbook & PC Ready",
+          desc: "Looking for a <strong>macbook how to split pdf</strong> guide? No need to open Preview. Just drag, drop, and extract pages instantly.",
+          icon: Layout,
+          color: "text-orange-600 bg-orange-50 dark:bg-orange-500/10"
+        },
+        {
+          title: "Browser Privacy",
+          desc: "We prioritize your security. Unlike cloud converters, we don't 'read' your files. Processing is 100% <strong>client-side</strong>.",
+          icon: ShieldCheck,
+          color: "text-green-600 bg-green-50 dark:bg-green-500/10"
+        },
+        {
+          title: "Custom Ranges",
+          desc: "Easily <strong>split pdf into multiple files</strong> by selecting specific page ranges like 1-5 or extracting every page into a ZIP.",
+          icon: Zap,
+          color: "text-blue-600 bg-blue-50 dark:bg-blue-500/10"
+        }
+      ].map((item, i) => (
+        <div key={i} className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-1 transition-all duration-300">
+          <div className={`w-12 h-12 md:w-14 md:h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-inner`}>
+            <item.icon className="w-6 h-6 md:w-7 md:h-7" />
+          </div>
+          <h3 className="font-bold text-(--textHeading) mb-2 md:mb-3 tracking-tight text-lg md:text-xl">{item.title}</h3>
+          <p className="text-sm text-(--textBody) leading-relaxed" dangerouslySetInnerHTML={{ __html: item.desc }} />
+        </div>
+      ))}
+    </section>
+
+    {/* USA Search Intent FAQ */}
+    <section className="space-y-8 md:space-y-10">
+      <div className="text-center space-y-2">
+        <h3 className="text-xl md:text-3xl font-bold text-(--textHeading) tracking-tight">Common Questions</h3>
+        <p className="text-(--textMuted) font-medium text-[10px] md:text-xs tracking-wider uppercase">Helping you master your documents</p>
+      </div>
+      <div className="grid gap-4 md:gap-6">
+        {[
+          {
+            q: "How to split a pdf into separate files easily?",
+            a: "Our interface allows you to visually select pages. Once you hit 'Extract', it generates a <strong>separate PDF file</strong> containing only the pages you chose."
+          },
+          {
+            q: "Is this better than Adobe PDF split?",
+            a: "For most users, yes. It's free, requires no installation, and works on any OS including <strong>Linux and macOS</strong> without a subscription."
+          },
+          {
+            q: "Can I split a PDF file into multiple files on mobile?",
+            a: "Absolutely. Our mobile-optimized engine allows you to <strong>split pdf file into multiple files</strong> directly from your iPhone or Android gallery."
+          }
+        ].map((faq, i) => (
+          <div key={i} className="p-6 md:p-8 bg-white dark:bg-gray-900/40 rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition group">
+            <h4 className="font-bold text-(--textHeading) mb-2 md:mb-3 flex items-start gap-3 md:gap-4 text-base md:text-xl group-hover:text-orange-500 transition-colors">
+              <span className="text-orange-500 font-bold shrink-0">Q.</span> {faq.q}
+            </h4>
+            <p className="text-sm md:text-base text-(--textBody) leading-relaxed pl-6 md:pl-9 border-l-2 border-orange-500/20" dangerouslySetInnerHTML={{ __html: faq.a }} />
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+);
 
 const SplitPdfContent: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -13,12 +102,9 @@ const SplitPdfContent: React.FC = () => {
   const [selectedPages, setSelectedPages] = useState<Set<number>>(new Set());
   const [rangeInput, setRangeInput] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [previews, setPreviews] = useState<Record<number, string>>({}); // cache previews
+  const [previews, setPreviews] = useState<Record<number, string>>({});
   const [previewsLoaded, setPreviewsLoaded] = useState(0);
 
-  const location = useLocation();
-  const lang = getLanguage(location.pathname);
-  const t = TOOL_UI_LABELS[lang];
 
   const reset = () => {
     setFile(null);
@@ -32,342 +118,152 @@ const SplitPdfContent: React.FC = () => {
 
   const loadPreviews = async (f: File, count: number) => {
     try {
-      const pdfjsLib: any = await safeLoadLibrary(
-        () => import("pdfjs-dist"),
-        "pdfjs-dist"
-      );
-
-      const pdfWorker = await safeLoadLibrary<{ default: string }>(
-        () => import("pdfjs-dist/build/pdf.worker?url"),
-        "pdfjs-worker"
-      );
-
+      const pdfjsLib: any = await safeLoadLibrary(() => import("pdfjs-dist"), "pdfjs-dist");
+      const pdfWorker = await safeLoadLibrary<{ default: string }>(() => import("pdfjs-dist/build/pdf.worker?url"), "pdfjs-worker");
       pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker.default;
-
       const arrayBuffer = await f.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-
       const batchSize = 10;
-      setPreviewsLoaded(0);
-
       for (let i = 1; i <= count; i++) {
         const page = await pdf.getPage(i);
         const viewport = page.getViewport({ scale: 0.3 });
-
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
         if (!ctx) continue;
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        await page.render({
-          canvasContext: ctx,
-          viewport,
-        }).promise;
-
+        canvas.width = viewport.width; canvas.height = viewport.height;
+        await page.render({ canvasContext: ctx, viewport }).promise;
         const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
-
-        setPreviews((prev) => ({
-          ...prev,
-          [i - 1]: dataUrl,
-        }));
-
+        setPreviews((prev) => ({ ...prev, [i - 1]: dataUrl }));
         setPreviewsLoaded(i);
-
-        canvas.width = 0;
-        canvas.height = 0;
-
-        if (i % batchSize === 0) {
-          await new Promise<void>((resolve) =>
-            requestAnimationFrame(() => resolve())
-          );
-        }
+        if (i % batchSize === 0) await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
       }
-    } catch (err) {
-      console.error("Preview generation failed:", err);
-    }
+    } catch (err) { console.error(err); }
   };
-
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
-    if (!selectedFile) return;
-
-    if (selectedFile.type !== "application/pdf") {
-      alert("Please upload a valid PDF file");
-      return;
-    }
-
+    if (!selectedFile || selectedFile.type !== "application/pdf") return;
     try {
       setIsProcessing(true);
-
-      const pdfLib: any = await safeLoadLibrary(
-        () => import("pdf-lib"),
-        "pdf-lib"
-      );
-
+      const pdfLib: any = await safeLoadLibrary(() => import("pdf-lib"), "pdf-lib");
       const arrayBuffer = await selectedFile.arrayBuffer();
       const pdfDoc = await pdfLib.PDFDocument.load(arrayBuffer);
-      const count = pdfDoc.getPageCount();
-
       setFile(selectedFile);
-      setPageCount(count);
-      setSelectedPages(new Set());
-      setRangeInput("");
-      setPreviews({});
-
-      loadPreviews(selectedFile, count);
-    } catch (err) {
-      console.error(err);
-      alert("Failed to load PDF. It might be corrupted or protected.");
-    } finally {
-      setIsProcessing(false);
-    }
+      setPageCount(pdfDoc.getPageCount());
+      loadPreviews(selectedFile, pdfDoc.getPageCount());
+    } finally { setIsProcessing(false); }
   };
-
 
   const togglePage = (index: number) => {
     const newSet = new Set(selectedPages);
-    if (newSet.has(index)) {
-      newSet.delete(index);
-    } else {
-      newSet.add(index);
-    }
+    if (newSet.has(index)) newSet.delete(index);
+    else newSet.add(index);
     setSelectedPages(newSet);
-    // updateRangeFromSelection(newSet); // Removed unused
   };
 
-  // Parse range "1-5, 8"
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     setRangeInput(val);
-
-    // Parse
     const parts = val.split(",");
     const newSet = new Set<number>();
-
     parts.forEach(part => {
       const trimmed = part.trim();
       if (trimmed.includes("-")) {
         const [start, end] = trimmed.split("-").map(n => parseInt(n));
         if (!isNaN(start) && !isNaN(end)) {
-          for (let i = start; i <= end; i++) {
-            if (i >= 1 && i <= pageCount) newSet.add(i - 1);
-          }
+          for (let i = start; i <= end; i++) if (i >= 1 && i <= pageCount) newSet.add(i - 1);
         }
       } else {
         const num = parseInt(trimmed);
-        if (!isNaN(num) && num >= 1 && num <= pageCount) {
-          newSet.add(num - 1);
-        }
+        if (!isNaN(num) && num >= 1 && num <= pageCount) newSet.add(num - 1);
       }
     });
-
     setSelectedPages(newSet);
   };
 
-
-
   const extractPages = async () => {
     if (!file || selectedPages.size === 0) return;
-
     setIsProcessing(true);
     try {
       const { PDFDocument } = await safeLoadLibrary(() => import("pdf-lib"), "pdf-lib");
-
       const arrayBuffer = await file.arrayBuffer();
       const srcPdf = await PDFDocument.load(arrayBuffer);
       const newPdf = await PDFDocument.create();
-
       const sortedIndices = Array.from(selectedPages).sort((a, b) => a - b);
       const copiedPages = await newPdf.copyPages(srcPdf, sortedIndices);
-
       copiedPages.forEach(p => newPdf.addPage(p));
-
       const pdfBytes = await newPdf.save();
       const blob = new Blob([pdfBytes as any], { type: "application/pdf" });
-
-
       const fileSaverModule = await safeLoadLibrary<any>(() => import("file-saver"), "file-saver");
       const saveAs = fileSaverModule.saveAs || fileSaverModule.default || fileSaverModule;
-
-      saveAs(blob, `${file.name.replace(".pdf", "")}-split.pdf`);
-
-    } catch (err) {
-      console.error(err);
-      alert(t.toastCompressFailed);
-    } finally {
-      setIsProcessing(false);
-    }
+      saveAs(blob, `${file.name.replace(".pdf", "")}-extracted.pdf`);
+    } finally { setIsProcessing(false); }
   };
 
   return (
     <div className="w-full">
-      <div className="max-w-4xl mx-auto bg-(--card) border border-(--border) rounded-3xl shadow-xl overflow-hidden min-h-100">
+      <div className="max-w-4xl mx-auto bg-(--card) border border-(--border) rounded-3xl shadow-theme-sm overflow-hidden min-h-100 theme-transition">
         {!file ? (
-          // Upload State
-          <div className="p-10 sm:p-20 text-center flex flex-col items-center justify-center h-full min-h-100 border-2 border-dashed border-gray-700 hover:border-orange-500/50 hover:bg-orange-500/5 transition-all cursor-pointer relative group bg-(--bg2) rounded-3xl">
-            <input
-              type="file"
-              accept="application/pdf"
-              onChange={handleFileChange}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-            />
-            <div className="mx-auto w-20 h-20 bg-(--bg) rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/5">
-              <Upload className="w-10 h-10 text-orange-400" />
+          <div className="p-8 md:p-20 text-center flex flex-col items-center justify-center h-full min-h-100 border-2 border-dashed border-(--border) hover:border-orange-500/50 hover:bg-orange-500/5 transition-all text-center cursor-pointer relative group bg-(--bg2) rounded-3xl">
+            <input type="file" accept="application/pdf" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+            <div className="mx-auto w-16 h-16 md:w-20 md:h-20 bg-orange-100 dark:bg-orange-500/10 rounded-2xl md:rounded-full flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform shadow-sm border border-orange-200 dark:border-orange-500/20">
+              <Upload className="w-8 h-8 md:w-10 md:h-10 text-orange-500" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">{t.splitSelect}</h3>
-            <p className="text-gray-400 text-sm">{t.splitPreview}</p>
+            <h3 className="text-lg md:text-xl font-bold text-(--textHeading) mb-2">Select PDF to Split</h3>
+            <p className="text-(--textMuted) text-sm">Click to browse or drag and drop files</p>
           </div>
         ) : (
           <div className="p-6">
-            {/* Toolbar */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-(--bg) p-4 rounded-2xl border border-(--border)">
-              <div className="flex items-center gap-3 w-full md:w-auto overflow-hidden">
-                <div className="w-10 h-10 shrink-0 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 font-bold text-xs border border-red-500/20">
-                  PDF
-                </div>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-(--bg) p-3 md:p-4 rounded-2xl border border-(--border)">
+              <div className="flex items-center gap-3 w-full md:w-auto overflow-hidden min-w-0">
+                <div className="w-9 h-9 md:w-10 md:h-10 shrink-0 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 font-bold text-[10px] md:text-xs border border-orange-500/20 shadow-sm">PDF</div>
                 <div className="min-w-0">
-                  <div className="text-sm font-bold text-(--text) truncate">{file.name}</div>
-                  <div className="text-xs text-gray-500">
-                    {pageCount} {t.splitPages}
-                    {previewsLoaded < pageCount && (
-                      <span className="ml-2 text-orange-400 font-bold animate-pulse">
-                        ({lang === 'es' ? 'Cargando' : lang === 'ru' ? 'Загрузка' : 'Loading'} {previewsLoaded}/{pageCount} {lang === 'es' ? 'previsualizaciones' : lang === 'ru' ? 'превью' : 'previews'})
-                      </span>
-                    )}
-                  </div>
+                  <div className="text-sm font-bold text-(--textHeading) truncate tracking-tight">{file.name}</div>
+                  <div className="text-[10px] md:text-xs text-(--textMuted)">{pageCount} Pages Loaded {previewsLoaded < pageCount && <span className="ml-2 text-orange-500 font-bold animate-pulse">({previewsLoaded}/{pageCount})</span>}</div>
                 </div>
               </div>
-
-              <div className="flex items-center gap-2 w-full md:w-auto">
-                <input
-                  type="text"
-                  placeholder={t.splitPlaceholder}
-                  value={rangeInput}
-                  onChange={handleRangeChange}
-                  className="grow md:w-40 bg-(--card) border border-(--border) text-(--text) text-sm px-3 py-2 rounded-lg focus:ring-2 focus:ring-orange-500/50 outline-none"
-                />
-                <button
-                  onClick={reset}
-                  className="p-2 text-gray-500 hover:text-red-400 transition-colors"
-                >
-                  <Trash2 className="w-5 h-5" />
-                </button>
+              <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
+                <input type="text" placeholder="e.g. 1-3, 5, 8" value={rangeInput} onChange={handleRangeChange} className="grow md:w-40 bg-(--bg2) border border-(--border) text-(--textHeading) text-sm px-4 py-2 rounded-xl focus:ring-2 focus:ring-orange-500/50 outline-none shadow-sm" />
+                <button onClick={reset} className="p-2 md:p-2.5 text-gray-400 hover:text-red-500 transition-colors bg-(--bg2) rounded-xl border border-(--border)"><Trash2 className="w-5 h-5" /></button>
               </div>
             </div>
 
-            {/* Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8 max-h-125 overflow-y-auto pr-2 custom-scrollbar p-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 mb-8 max-h-125 overflow-y-auto pr-2 custom-scrollbar p-1">
               {Array.from({ length: pageCount }).map((_, i) => (
-                <div
-                  key={i}
-                  onClick={() => togglePage(i)}
-                  className={`relative cursor-pointer rounded-lg border-2 transition-all overflow-hidden aspect-[1/1.4] group ${selectedPages.has(i)
-                    ? "border-orange-500 shadow-[0_0_15px_-3px_rgba(249,115,22,0.3)] scale-[1.02]"
-                    : "border-(--border) hover:border-gray-500"
-                    }`}
-                >
-                  {/* Bg Number */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-(--bg) text-gray-800 font-bold text-4xl select-none">
-                    {i + 1}
-                  </div>
-
-                  {/* Preview Image Overlay */}
-                  {previews[i] && (
-                    <img src={previews[i]} alt={`Page ${i + 1}`} className="absolute inset-0 w-full h-full object-contain bg-white" />
-                  )}
-
-                  {/* Selection Overlay */}
-                  <div className={`absolute inset-0 transition-colors ${selectedPages.has(i) ? "bg-orange-500/20" : "bg-transparent group-hover:bg-black/10"
-                    }`} />
-
-                  {/* Checkbox */}
-                  <div className={`absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center transition-all ${selectedPages.has(i) ? "bg-orange-500 text-white" : "bg-black/50 text-transparent border border-white/50"
-                    }`}>
-                    <Check className="w-4 h-4" />
-                  </div>
-
-                  <div className="absolute bottom-2 left-0 right-0 text-center text-xs font-bold px-2 py-1 bg-black/60 text-white backdrop-blur-sm mx-2 rounded">
-                    {lang === 'es' ? 'Página' : lang === 'ru' ? 'Стр.' : 'Page'} {i + 1}
-                  </div>
+                <div key={i} onClick={() => togglePage(i)} className={`relative cursor-pointer rounded-lg md:rounded-xl border-2 transition-all overflow-hidden aspect-[1/1.4] group ${selectedPages.has(i) ? "border-orange-500 shadow-lg" : "border-(--border) hover:border-gray-400 shadow-sm"}`}>
+                  <div className="absolute inset-0 flex items-center justify-center bg-(--bg2) text-(--textMuted) font-bold text-3xl md:text-4xl select-none opacity-10">{i + 1}</div>
+                  {previews[i] && <img src={previews[i]} alt={`Page ${i + 1}`} className="absolute inset-0 w-full h-full object-contain bg-white shadow-inner" />}
+                  <div className={`absolute inset-0 transition-colors ${selectedPages.has(i) ? "bg-orange-500/10" : "bg-transparent group-hover:bg-black/5"}`} />
+                  <div className={`absolute top-2 right-2 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center transition-all shadow-sm ${selectedPages.has(i) ? "bg-orange-500 text-white scale-110" : "bg-black/30 text-transparent border border-white/30"}`}><Check className="w-3 h-3 md:w-4 md:h-4" /></div>
+                  <div className="absolute bottom-2 left-0 right-0 text-center text-[9px] font-bold px-2 py-1 bg-black/70 text-white backdrop-blur-sm mx-2 rounded-md tracking-tight">Page {i + 1}</div>
                 </div>
               ))}
             </div>
 
-            {/* Action */}
             <div className="flex justify-end">
-              <button
-                onClick={extractPages}
-                disabled={isProcessing || selectedPages.size === 0}
-                className="w-full md:w-auto px-8 py-4 rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-black shadow-lg shadow-orange-900/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isProcessing ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    {t.splitExtracting}
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-5 h-5" />
-                    {t.splitExtract} {selectedPages.size > 0 ? `(${selectedPages.size})` : ""}
-                  </>
-                )}
+              <button onClick={extractPages} disabled={isProcessing || selectedPages.size === 0} className="w-full md:w-auto px-8 py-3 rounded-xl md:rounded-2xl bg-orange-600 hover:bg-orange-500 text-white font-bold shadow-lg shadow-orange-900/10 transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed text-sm">
+                {isProcessing ? <><Loader2 className="w-4 h-4 md:w-5 md:h-5 animate-spin" /> Exporting...</> : <><Download className="w-4 h-4 md:w-5 md:h-5" /> Split & Download {selectedPages.size > 0 ? `(${selectedPages.size})` : ""}</>}
               </button>
             </div>
-
           </div>
         )}
       </div>
+      <UniqueSEOContent />
     </div>
   );
 };
 
-interface SplitPdfProps {
-  routeKey?: string;
-}
+interface SplitPdfProps { routeKey?: string; }
 
 const SplitPdf: React.FC<SplitPdfProps> = ({ routeKey = "/split-pdf" }) => {
-  const isRu = routeKey.startsWith("/ru");
-  const isEs = routeKey.startsWith("/es");
-
-  const heading = isRu ? (
-    <>Разделить <span className="text-orange-400">PDF</span> и извлечь страницы мгновенно</>
-  ) : isEs ? (
-    <>Dividir documentos <span className="text-orange-400">PDF</span> y extraer páginas al instante</>
-  ) : (
-    <>Split <span className="text-orange-400">PDF</span> Documents & Extract Pages Instantly</>
-  );
-
-  const tagline = isRu
-    ? "100% приватность • Без загрузки • Безопасно для документов"
-    : isEs
-      ? "100% Privado • Sin subidas • Seguro para trámites oficiales"
-      : "100% Private • No Upload Required • Safe for Government Forms";
-
   return (
     <ToolErrorBoundary toolName="Split PDF">
       <ToolLandingPage
         routeKey={routeKey}
-        heading={heading}
-        tagline={tagline}
+        heading={<span className="text-(--textHeading) font-bold">Split <span className="text-orange-500">PDF</span> Documents Instantly</span>}
+        tagline="How to split a PDF into separate files easily on Mac, Windows, and Linux."
       >
         <SplitPdfContent />
-
-        {/* ✅ INTERNAL LINK TO SPANISH (SEO STRATEGY) */}
-        {!isRu && !isEs && (
-          <div className="mt-12 pt-8 border-t border-(--border) text-center">
-            <p className="text-(--text-muted) text-sm mb-3">Versión en Español:</p>
-            <a
-              href="/es/dividir-pdf-en-varias-partes-online"
-              className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold transition-colors group"
-            >
-              Dividir PDF en varias partes online
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-          </div>
-        )}
       </ToolLandingPage>
     </ToolErrorBoundary>
   );

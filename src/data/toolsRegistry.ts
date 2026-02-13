@@ -103,6 +103,21 @@ export const TOOLS_REGISTRY: Tool[] = [
     metaDescription: "Convert PDF pages to high-resolution JPG images online for free. Extract images or convert whole document to pictures securely in your browser.",
     isActive: true
   },
+
+  {
+    id: "compress-pdf-50kb",
+    title: "Compress PDF to 50KB",
+    slug: "/compress-pdf-to-50kb",
+    category: "Compress & Resize",
+    icon: Zap,
+    shortDescription: "Strictly resize PDF to 50kb, 40kb or 20kb for SSC, UPSC & Govt Exams.",
+    metaTitle: "Compress PDF to 50kb Online - Resize for SSC/UPSC Forms",
+    metaDescription: "Free tool to compress PDF to 50kb online. Perfect for resizing Scanned Signatures, Passport Photos, and Documents for SSC, UPSC, and IBPS forms.",
+    isActive: true
+  },
+
+
+
   {
     id: "jpg-to-pdf",
     title: "JPG to PDF",

@@ -214,6 +214,18 @@ Object.entries(ES_METADATA).forEach(([route, data]) => {
   };
 });
 
+// 5. Programmatic SEO Pages
+PAGES_SEO["/compress-pdf-to-50kb"] = {
+  title: "Compress PDF to 50kb Online - Resize Signature for Exams",
+  description: "Free tool to compress PDF to 50kb online. Perfect for resizing Scanned Signatures, Passport Photos, and Documents for SSC, UPSC, and IBPS forms.",
+  canonical: `${SITE.baseUrl}/compress-pdf-to-50kb`,
+  jsonLd: {
+    name: "Compress PDF to 50KB",
+    url: `${SITE.baseUrl}/compress-pdf-to-50kb`,
+    description: "Free tool to compress PDF to 50kb online for SSC, UPSC and Govt exams.",
+  },
+};
+
 /**
  * Global safe fallback for page SEO.
  * Prevents "Cannot read properties of undefined" crashes.

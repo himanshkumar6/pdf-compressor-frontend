@@ -140,24 +140,6 @@ Our  PDF Metadata Remover  cleans your file to protect your privacy. It removes 
   },
 
   "/pdf-to-jpg": {
-    intro: `Need to turn your PDF pages into high-quality JPG images? Whether you're uploading a certificate to a portal that doesn't accept PDFs, or you want to share a specific page on social media, our converter is the perfect solution.
-
-Unlike other online converters that compress your images until they're unreadable, we give you full control over the quality. You can choose your desired DPI (Dots Per Inch) to ensure that even the smallest text remains crisp and clear.`,
-    content: `### High-Quality Conversion and Privacy
-Converting sensitive documents like resumes, ID cards, or certificates requires trust. Most 'free' converters upload your files to their servers and keep them for 24 hours. We don't. 
-
-Our **PDF to JPG** tool runs 100% in your browser. Your images are generated right inside your device's memory. This makes it:
-1. **Ultra-Fast**: No waiting for file uploads or processing queues.
-2. **Secure**: Your documents never touch our server, so there's no risk of a data breach.
-3. **Private**: Once you close your browser tab, the images are gone forever.
-
-### Why You Might Need This
-- **Government Portals**: Many sites in India (like for PAN card updates or specific state forms) specifically ask for JPG format instead of PDF.
-- **Social Sharing**: Share your certificates or report pages directly on WhatsApp, LinkedIn, or Instagram.
-- **Mobile Viewing**: JPGs are often easier to view and scroll through on mobile devices than multi-page PDFs.
-
-### How it Works
-We use a high-performance rendering engine that treats every PDF page as a high-resolution canvas. When you click 'Convert', the tool 'paints' the page into an image and package it for download. You can convert whole documents or pick specific pages. `,
     steps: [
       {
         title: "Upload Your PDF",
@@ -197,9 +179,6 @@ We use a high-performance rendering engine that treats every PDF page as a high-
   },
 
   "/merge-pdf": {
-    content: `Merge multiple PDF files into one single document instantly. This tool is perfect for Indian students and job seekers who need to combine their Xth, XIIth, and Graduation marksheets into a single file for SSC, UPSC, or private job applications.
-
-Humara Merge PDF tool purely browser-based hai. Iska matlab aapke sensitive certificates kabhi hamare server par upload nahi hote. Sab kuch aapke computer ya mobile par process hota, making it 100% safe and secure for official documents.`,
     steps: [
       {
         title: "Add Files",
@@ -235,11 +214,6 @@ Humara Merge PDF tool purely browser-based hai. Iska matlab aapke sensitive cert
   },
 
   "/split-pdf": {
-    content: `Struggling with a giant PDF that needs to be broken down? Whether you have a 50-page report or a scanned batch of marksheets, our  Split PDF  tool helps you separate files without the complexity of heavy software. It runs 100% in your browser, meaning your sensitive documents never leave your device.
-
- Why we built this for Indian Portals:  Whether it’s the back of your passbook for an  EPFO  claim or a single degree certificate from a semester-wise PDF, we know the struggle. This tool is designed to help you extract exactly what you need for  SSC, UPSC, NSDL, and NTA  portals.
-
- 100% Local Browser Processing:  Most online splitters send your bank statements to a remote server. We don't. Our tool uses  WebAssembly  to run the splitting logic inside your browser's memory. Your files are never uploaded, never saved, and never seen by us.`,
     steps: [
       { title: "Select PDF", desc: "Drop your file into the tool above." },
       {
@@ -291,7 +265,10 @@ Humara Merge PDF tool purely browser-based hai. Iska matlab aapke sensitive cert
     ],
     steps: [
       { title: "Select PDF", desc: "Open the file you want to modify." },
-      { title: "Edit", desc: "Use the text tool to add content or fill forms." },
+      {
+        title: "Edit",
+        desc: "Use the text tool to add content or fill forms.",
+      },
       { title: "Save", desc: "Download the updated PDF instantly." },
     ],
     faqs: [

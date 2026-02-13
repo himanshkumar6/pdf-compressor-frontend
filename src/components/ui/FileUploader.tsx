@@ -90,11 +90,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       className={`
         relative group cursor-pointer
         border-2 border-dashed rounded-2xl p-10
-        transition-all duration-300 ease-in-out
+        transition-all duration-300 ease-in-out h-96
         flex flex-col items-center justify-center text-center
         ${isDragOver
-          ? "border-cyan-500 bg-cyan-50/50 dark:bg-cyan-900/20 scale-[1.02]"
-          : "border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-cyan-400 dark:hover:border-cyan-500 hover:bg-white dark:hover:bg-slate-800"
+          ? "border-cyan-500 bg-cyan-50/50 dark:bg-cyan-900/20 scale-[1.02] "
+          : "border-slate-300 dark:border-slate-700  dark:bg-slate-900/20 hover:border-cyan-400 dark:hover:border-cyan-500  dark:hover:bg-transparent"
         }
         ${className}
       `}
@@ -110,7 +110,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
       {/* Icon Circle */}
       <div className={`
         mb-6 p-4 rounded-full transition-colors duration-300
-        ${isDragOver ? "bg-cyan-100 text-cyan-600" : "bg-white dark:bg-slate-700 text-cyan-500 shadow-md group-hover:scale-110 group-hover:text-cyan-600"}
+        ${isDragOver ? "bg-cyan-100 text-cyan-600" : "bg-white dark:bg-slate-100 text-cyan-500 shadow-md group-hover:scale-110 group-hover:text-cyan-600"}
       `}>
         <Upload className="w-10 h-10" />
       </div>
