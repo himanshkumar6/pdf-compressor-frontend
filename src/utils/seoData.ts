@@ -54,27 +54,24 @@ export const NOT_FOUND_SEO: PageSEO = {
 /* ✅ Old FAQ export used in FAQ component */
 export const FAQ_DATA: FAQItem[] = [
   {
-    question: "How can I compress a PDF to 200KB without losing quality?",
-    answer:
-      "Our tool uses browser-based optimization to reduce PDF size while maintaining readability and clarity.",
+    question: "How do I ensure my PDF is exactly under 200KB?",
+    answer: "Our tool allows you to target specific size limits. It uses advanced compression to get your file as close to the limit as possible while ensuring it stays below it for successful portal uploads.",
   },
   {
-    question: "Is it safe to compress my PDFs here?",
-    answer:
-      "Yes. Your files are processed locally in your browser and never uploaded to any server.",
+    question: "Will the text in my PDF remain readable after compression?",
+    answer: "Yes. Our optimization engine focuses on reducing image size and stripping unnecessary metadata while preserving text clarity, ensuring your document passes official review.",
   },
   {
-    question: "What if my PDF is still larger than 200KB?",
-    answer:
-      "Some PDFs contain high-resolution images. We apply maximum safe compression while keeping it readable.",
+    question: "Is it safe to compress sensitive documents (Aadhaar, Passport) here?",
+    answer: "Absolutely. Processing happens entirely in your browser. Your sensitive documents never touch our servers, providing 100% privacy and security for your official IDs.",
   },
   {
-    question: "Is it free to compress PDF?",
-    answer: "Yes, this tool is free to use.",
+    question: "Why does my government portal still say 'File Too Large'?",
+    answer: "Some portals have very strict limits. If 200KB is still too large, try our 100KB or 50KB tools. Also, ensure you are not uploading a password-protected PDF.",
   },
   {
-    question: "Can I compress PDF on mobile?",
-    answer: "Yes, it works on Android and iPhone browsers.",
+    question: "Can I use this PDF compressor on my mobile phone?",
+    answer: "Yes, our tool is fully responsive and works perfectly on Android and iPhone browsers, making it easy to resize documents on the go for quick uploads.",
   },
 ];
 
@@ -259,10 +256,18 @@ export const getPageSeo = (path: string): PageSEO => {
   return PAGES_SEO["/"] || DEFAULT_SEO;
 };
 
+export const buildOrganizationJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CompressPDFto200KB.online",
+  url: SITE.baseUrl,
+  logo: `${SITE.baseUrl}/logo.png`,
+});
+
 export const buildWebAppJsonLd = (page: PageSEO) => ({
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: page.jsonLd?.name ?? "Compress PDF Tool",
+  name: page.jsonLd?.name ?? "Compress PDF to 200KB Online",
   url: page.jsonLd?.url ?? SITE.baseUrl,
   description: page.jsonLd?.description ?? page.description,
   applicationCategory: "UtilitiesApplication",

@@ -2691,6 +2691,152 @@ How to Compress PDF Without Losing Quality
 
 `),
   },
+
+  {
+    slug: "nsp-bank-passbook-pdf-200kb-guide",
+    title:
+      "NSP Bank Passbook PDF 200KB: How to Reduce File Size Without Rejection",
+    date: "2026-02-16",
+    author: "Himanshu Kumar",
+
+    metaTitle: "NSP Bank Passbook PDF 200KB – Fix File Too Large Error Easily",
+    metaDescription:
+      "Learn how to reduce NSP bank passbook PDF to 200KB safely without affecting clarity. Step-by-step guide to avoid file size rejection on scholarship portals.",
+
+    coverImage: "/blog/nsp-bank-passbook-200kb.png",
+    excerpt:
+      "NSP scholarship portal often requires bank passbook PDF under 200KB. This guide explains how to reduce size safely without losing readability.",
+
+    primaryKeyword: "nsp bank passbook pdf 200kb",
+    secondaryKeywords: [
+      "nsp passbook file too large",
+      "reduce bank passbook pdf size",
+      "nsp scholarship document size limit",
+      "bank passbook 200kb for nsp",
+      "how to compress passbook pdf for nsp",
+    ],
+
+    contentHtml: optimizeContentHtml(`
+
+<h1>NSP Bank Passbook PDF 200KB: How to Reduce File Size Without Rejection</h1>
+
+<p>When applying for scholarships through the National Scholarship Portal (NSP), students are mandatorily required to upload a scanned copy of their bank passbook in PDF format. A significant hurdle faced during this submission is the dreaded <strong>"File Too Large"</strong> error.</p>
+
+<p>The NSP portal enforces a strict file size limit, typically requiring the bank passbook PDF to be under <strong>200KB</strong>. If your file exceeds this limit—even by a few kilobytes—the automated system will reject the upload immediately.</p>
+
+<h2>Why Does NSP Enforce a 200KB Limit?</h2>
+
+<p>Government scholarship portals handle millions of student applications simultaneously. To ensure the system remains stable and storage is utilized efficiently, strict size caps are necessary.</p>
+
+<p>Keeping documents under 200KB ensures:</p>
+
+<ul>
+<li><strong>Faster Uploads:</strong> Especially helpful for students in areas with slow internet connectivity.</li>
+<li><strong>Reduced Server Load:</strong> Preventsportal crashes during peak application windows.</li>
+<li><strong>Efficient Verification:</strong> Smaller, standardized files are easier for officials to review quickly.</li>
+</ul>
+
+<h2>Why is My Bank Passbook PDF Over 200KB?</h2>
+
+<p>Before fixing the issue, it helps to know what caused it. Common reasons include:</p>
+
+<h3>1. High-Resolution Scanning</h3>
+<p>Scanning documents at 300 DPI or 600 DPI creates high-quality images, but results in unnecessarily large PDF files suitable for printing, not web uploading.</p>
+
+<h3>2. Scanning in Color</h3>
+<p>Color scans contain much more data than grayscale or black-and-white scans, significantly increasing file size.</p>
+
+<h3>3. Unnecessary Pages Included</h3>
+<p>Uploading a PDF that includes blank pages, terms and conditions, or transaction history pages increases the size without adding value.</p>
+
+<h3>4. Mobile Camera Photos</h3>
+<p>Taking a high-resolution photo with a phone and converting it directly to PDF often results in files exceeding 2MB, far above the 200KB limit.</p>
+
+<h2>How to Reduce Bank Passbook PDF to 200KB Safely</h2>
+
+<p>Follow these steps to ensure your file meets the size requirement while remaining legible for verification.</p>
+
+<h3>Step 1: Use Optimal Scan Settings</h3>
+<p>If you are rescanning the document, configure your scanner software with these settings beforehand:</p>
+<ul>
+<li><strong>Resolution:</strong> Set to 150 DPI or max 200 DPI.</li>
+<li><strong>Color Mode:</strong> Use "Grayscale" (preferred) or "Black & White". Avoid Color.</li>
+<li><strong>Crop Tightly:</strong> Crop the scan area to include only the passbook page, removing excess white space of the scanner bed.</li>
+</ul>
+
+<h3>Step 2: Include Only the Front Page</h3>
+<p>The NSP verification team only needs the page containing vital details: <strong>Account Number, IFSC Code, Bank Name, and Branch Name</strong>. Do not scan unrelated pages.</p>
+
+<h3>Step 3: Apply Controlled Compression</h3>
+<p>If you already have a scanned PDF that is too large, you need to compress it. Avoid aggressive compressors that make text unreadable. Instead, use a specialized tool to <a href="/compress-pdf-to-200kb">Compress PDF to 200KB</a>, which optimizes the file size specifically for this target while maintaining document clarity.</p>
+
+<h3>Step 4: Crucial Step — Verify Readability</h3>
+<p>Before uploading, open your compressed PDF and zoom in to 100%. You must ensure that:</p>
+
+<ul>
+<li>The Account Number and IFSC code are sharp and clearly distinct.</li>
+<li>The Account Holder's Name matches the scholarship application exactly.</li>
+<li>There is no significant blur or pixelation on banking details.</li>
+</ul>
+
+<h2>Summary: Ideal Settings for NSP Uploads</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="width:100%; border-collapse:collapse; text-align:left;">
+<thead>
+<tr style="background-color:#f2f2f2;">
+<th>Parameter</th>
+<th>Recommended Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File Format</td>
+<td>PDF (.pdf) only</td>
+</tr>
+<tr>
+<td>Target Size</td>
+<td>Strictly below 200KB</td>
+</tr>
+<tr>
+<td>Scan Resolution</td>
+<td>150 DPI – 200 DPI</td>
+</tr>
+<tr>
+<td>Color Mode</td>
+<td>Grayscale</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Common Mistakes That Lead to Rejection</h2>
+
+<h3>Renaming File Extensions</h3>
+<p>Never simply rename a <code>.jpg</code> file to <code>.pdf</code>. The portal will reject it as an invalid format. You must use a proper converter tool.</p>
+
+<h3>Over-Compression (Blurry Files)</h3>
+<p>Using extreme compression settings can shrink a file to 50KB but make the account number unreadable. An unreadable document will be rejected during manual verification later.</p>
+
+<h3>Password Protection</h3>
+<p>Ensure your PDF is not password-protected. The verification officers cannot open locked files.</p>
+
+<h2>Final Checklist Before Upload</h2>
+
+<ul>
+<li>✔ Is the file size below 200KB? (e.g., 180KB is ideal)</li>
+<li>✔ Is it in .pdf format?</li>
+<li>✔ Are Account Number and IFSC clearly legible?</li>
+<li>✔ Have extra blank pages been removed?</li>
+<li>✔ Is the filename simple? (e.g., <code>nsp_passbook.pdf</code>)</li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>Meeting the NSP bank passbook PDF 200KB limit is a technical requirement that is easily managed with the right approach. By using appropriate scan settings or applying balanced compression tools, you can ensure your application is accepted by the system and moves smoothly to the verification stage.</p>
+
+<p><strong>Disclaimer:</strong> This guide is for informational assistance. Always verify the latest guidelines on the official National Scholarship Portal before submission.</p>
+
+`),
+  },
 ];
 
 /**

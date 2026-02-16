@@ -2,9 +2,15 @@ import React, { Suspense, lazy } from "react";
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import FAQ from "../components/FAQ";
-import { PAGES_SEO } from "../utils/seoData";
 import { Shield, FastForward, UserCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  PAGES_SEO,
+  FAQ_DATA,
+  buildOrganizationJsonLd,
+  buildWebAppJsonLd,
+  buildFAQJsonLd,
+} from "../utils/seoData";
 
 // 🔥 Lazy load heavy component
 const ToolSection = lazy(() => import("../components/ToolSection"));
@@ -16,28 +22,9 @@ const Home: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "WebSite",
-        name: "CompressPDFto200KB.online",
-        url: canonical,
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${canonical}?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
-      },
-      {
-        "@type": "Organization",
-        name: "CompressPDFto200KB.online",
-        url: canonical,
-        logo: `${canonical}logo.png`,
-      },
-      {
-        "@type": "WebPage",
-        name: "Compress PDF Online Free",
-        url: canonical,
-        description: seo.description,
-      },
+      buildOrganizationJsonLd(),
+      buildWebAppJsonLd(seo),
+      buildFAQJsonLd(FAQ_DATA),
     ],
   };
 
@@ -94,20 +81,20 @@ const Home: React.FC = () => {
                   <span className="text-cyan-300">200KB</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">
-                  Best for government forms & portal upload limits
+                  Perfect for official forms & strict portal size limits
                 </p>
               </Link>
 
               <Link
-                to="/remove-metadata-from-pdf"
+                to="/compress-pdf-to-100kb"
                 className="premium-card rounded-3xl p-5"
               >
                 <p className="text-white font-black text-lg">
-                  Remove{" "}
-                  <span className="text-cyan-300">Metadata</span> from PDF
+                  Compress PDF to{" "}
+                  <span className="text-cyan-300">100KB</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">
-                  Clean author, timestamps, creator & hidden properties
+                  Optimized for signature & photo upload requirements
                 </p>
               </Link>
             </div>
@@ -119,11 +106,12 @@ const Home: React.FC = () => {
           <div className="section-divider" />
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
-              Why I built CompressPDF?
+              Why I built this tool?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              After experiencing repeated upload size issues on application portals,
-              I decided to build a tool specifically optimized for strict size limits.
+              After repeatedly hitting 'File Too Large' errors on application portals,
+              I realized that general compressors were either too blurry or too slow.
+              I built this to provide a fast, secure, and precise way to meet strict size limits.
             </p>
           </div>
 

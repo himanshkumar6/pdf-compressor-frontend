@@ -69,19 +69,20 @@ const Hero: React.FC = () => {
               200KB
             </span>
           </span>
+          {" "}(Exact Size)
         </h1>
 
         {/* ✅ Subheadline */}
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
-          Perfect for{" "}
-          <span className="text-white font-semibold">government forms</span>,{" "}
-          <span className="text-white font-semibold">job portals</span> and official uploads.
+          The simplest way to reduce PDF size for{" "}
+          <span className="text-white font-semibold">official uploads</span> and{" "}
+          <span className="text-white font-semibold">job portals</span>.
           <br />
           <span className="text-cyan-300 font-bold">
-            Upload → Compress → Download
+            Private & Secure:
           </span>{" "}
           <span className="text-gray-400">
-            in seconds. Files are processed securely and not stored.
+            Files are processed locally in your browser and never touch our servers.
           </span>
         </p>
 

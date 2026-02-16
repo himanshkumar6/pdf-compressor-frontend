@@ -21,8 +21,8 @@ export const SEO_METADATA = {
   // STRATEGY: Homepage ko "Hub" bana diya.
   // Keywords: "All-in-One", "Secure", "No Upload".
   "/": {
-    title: "Free PDF Tools: Compress, Merge & Convert (100% Secure)",
-    description: "The safest online PDF tools. Compress PDF size, merge files, or convert to JPG locally in your browser. No file uploads, no signup needed.",
+    title: "Free PDF Tools Online — 100% Secure & Simple (No Upload)",
+    description: "Access the safest online PDF tool suite to compress, merge, and edit files locally in your browser. No file uploads, no signup, and total privacy for your documents.",
     h1: "Secure & Free Online PDF Tools"
   },
 
@@ -90,9 +90,9 @@ export const SEO_METADATA = {
   // 2. Description now targets "100KB" too (based on your GSC data).
   // 3. H1 includes "Free" to reduce bounce rate.
   "/compress-pdf-to-200kb": {
-    title: "Compress PDF to 200KB (Exact Size) – Free for SSC/UPSC",
-    description: "Reduce PDF size to under 200KB, 100KB, or 50KB instantly. The best free PDF compressor for SSC, IBPS & Govt portals without losing quality.",
-    h1: "Compress PDF to Under 200KB for Free"
+    title: "Compress PDF to 200KB (Exact Size) — Free Online Tool",
+    description: "Need to compress PDF to 200KB for government or job forms? Reduce file size instantly without losing quality. 100% free, secure, and no signup required. Try it now!",
+    h1: "Compress PDF to Exactly 200KB"
   },
 
   // Target: Users who want "Clear" images, not blurry ones.
