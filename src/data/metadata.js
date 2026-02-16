@@ -17,94 +17,127 @@ export const SITE_CONFIG = {
 
 export const SEO_METADATA = {
   // --- MAIN PAGES ---
+
+  // STRATEGY: Homepage ko "Hub" bana diya.
+  // Keywords: "All-in-One", "Secure", "No Upload".
   "/": {
-    title: "Compress PDF to 200KB Online - Free & Secure PDF Reduction",
-    description: "Compress PDF to 200KB online for free. Safely reduce PDF size for SSC, UPSC, IBPS, and government portal uploads. 100% private browser-based processing.",
-    h1: "Compress PDF to 200KB Online"
-  },
-  "/about": {
-    title: "About CompressPDF – Our Mission & Browser-Side Technology",
-    description: "Learn more about CompressPDFto200KB.online — a free PDF compression website built to help users reduce PDF file size for uploads and government portals.",
-    h1: "About CompressPDF"
-  },
-  "/tools": {
-    title: "All PDF Tools: Compress to 200KB, Merge, Split & Edit Free",
-    description: "All PDF tools in one place: compress PDF to 200KB, merge, split, and edit PDFs. Free, private, browser-based.",
-    h1: "All PDF Tools"
-  },
-  "/blog": {
-    title: "PDF Guides & Tutorials: Fix Upload Errors for Govt Portals",
-    description: "Read guides on compressing PDFs for government portals, SSC forms, UPSC documents, passport uploads, scholarships and more.",
-    h1: "PDF Guides & Tutorials"
-  },
-  "/contact": {
-    title: "Contact Support - Get Help with PDF Compression & Tools",
-    description: "Get in touch with CompressPDFto200KB.online for feedback, support, or suggestions related to PDF compression tools and upload fixes.",
-    h1: "Contact Support"
-  },
-  "/sitemap": {
-    title: "Site Map: Browse all PDF Tools and Government Form Guides",
-    description: "HTML sitemap of CompressPDFto200KB.online. Find all PDF tools and blog posts in one place.",
-    h1: "Site Map"
-  },
-  "/privacy-policy": {
-    title: "Privacy Policy - CompressPDFto200KB.online",
-    description: "Read how CompressPDFto200KB.online protects your privacy. Your PDF files are processed in your browser and never uploaded to our servers.",
-    h1: "Privacy Policy"
-  },
-  "/terms-conditions": {
-    title: "Terms & Conditions - CompressPDFto200KB.online",
-    description: "Terms and conditions for using CompressPDFto200KB.online PDF tools and guides.",
-    h1: "Terms & Conditions"
-  },
-  "/disclaimer": {
-    title: "Disclaimer - CompressPDFto200KB.online",
-    description: "Disclaimer for CompressPDFto200KB.online. We provide tools and guides for PDF compression and portal upload help.",
-    h1: "Disclaimer"
-  },
-  "/cookies-policy": {
-    title: "Cookie Policy - CompressPDFto200KB.online",
-    description: "CompressPDFto200KB.online cookie policy. We currently do not use any cookies or tracking pixels.",
-    h1: "Cookie Policy"
+    title: "Free PDF Tools: Compress, Merge & Convert (100% Secure)",
+    description: "The safest online PDF tools. Compress PDF size, merge files, or convert to JPG locally in your browser. No file uploads, no signup needed.",
+    h1: "Secure & Free Online PDF Tools"
   },
 
-  // --- CONSOLIDATED TOOL ROUTES ---
+  "/about": {
+    title: "About Us – Why We Are Safe & Private",
+    description: "Unlike other tools, we use serverless technology. Learn how we compress PDFs directly on your device without ever seeing your files.",
+    h1: "Privacy-First PDF Technology"
+  },
+
+  "/tools": {
+    title: "PDF Tool Suite: All Converters & Editors (Free)",
+    description: "Browse our complete list of tools: PDF Compressor (200KB/100KB), JPG Converter, Merger, and Splitter. Optimized for government form uploads.",
+    h1: "All Free PDF Utilities"
+  },
+
+  // STRATEGY: Blog ko "Problem Solver" banaya.
+  // Target: "Error Fixing" traffic.
+  "/blog": {
+    title: "Fix PDF Upload Errors: Guides for SSC, UPSC & Govt Jobs",
+    description: "Solved: 'File Too Large' and 'Invalid Format' errors. Step-by-step tutorials to resize PDFs and signatures for SSC CGL, UPSC, and IBPS portals.",
+    h1: "PDF Upload Troubleshooting & Guides"
+  },
+
+  "/contact": {
+    title: "Help & Support – Fix PDF Compression Issues",
+    description: "Struggling to resize your PDF? Contact our support team for help with government form uploads and compression settings.",
+    h1: "Get Help with Your PDF"
+  },
+
+  "/sitemap": {
+    title: "Sitemap – Browse All PDF Tools",
+    description: "Full directory of our PDF compression tools, converters, and upload guides for easy navigation.",
+    h1: "HTML Sitemap"
+  },
+
+  "/privacy-policy": {
+    title: "Privacy Policy – 100% Client-Side Processing",
+    description: "We guarantee your privacy. Read how our browser-based engine ensures your sensitive documents never touch a server.",
+    h1: "Data Privacy & Security Policy"
+  },
+
+  "/terms-conditions": {
+    title: "Terms of Use – Tool Limitations & Usage",
+    description: "Guidelines for using our free PDF manipulation services for personal and official purposes.",
+    h1: "Terms & Conditions"
+  },
+
+  "/disclaimer": {
+    title: "Disclaimer – Not Affiliated with Govt",
+    description: "We provide tools to assist with uploads but are not affiliated with SSC, UPSC, or any government body. Use responsibly.",
+    h1: "Official Disclaimer"
+  },
+
+  "/cookies-policy": {
+    title: "Cookie Policy – Minimal & Non-Intrusive",
+    description: "Transparency on how we use local storage to enhance your tool experience without tracking your personal data.",
+    h1: "Cookie & Storage Policy"
+  },
+
+  // --- CONSOLIDATED TOOL ROUTES (High Impact Optimizations) ---
+
+  // *** THE MONEY PAGE (Critical Updates) ***
+  // Changes:
+  // 1. Added "(Exact)" to Title -> Implies precision.
+  // 2. Description now targets "100KB" too (based on your GSC data).
+  // 3. H1 includes "Free" to reduce bounce rate.
   "/compress-pdf-to-200kb": {
-    title: "Compress PDF to 200KB Online (Free & Without Losing Quality)",
-    description: "Reduce PDF size under 200KB for SSC, UPSC, and IBPS online forms. Securely compress your PDF in-browser without uploading to any server. Free & fast.",
-    h1: "Compress PDF to 200KB"
+    title: "Compress PDF to 200KB (Exact Size) – Free for SSC/UPSC",
+    description: "Reduce PDF size to under 200KB, 100KB, or 50KB instantly. The best free PDF compressor for SSC, IBPS & Govt portals without losing quality.",
+    h1: "Compress PDF to Under 200KB for Free"
   },
+
+  // Target: Users who want "Clear" images, not blurry ones.
   "/pdf-to-jpg": {
-    title: "Convert PDF to JPG Online - High Quality & Secure (Free)",
-    description: "Convert PDF to JPG online for free. Extract sharp images from PDF pages for government forms and social media. 100% private, browser-based processing.",
-    h1: "Convert PDF to JPG Online"
+    title: "PDF to JPG: Convert to High-Quality Images (Free)",
+    description: "Convert PDF pages to HD JPG images. Perfect for extracting slides, notes, or documents. 100% private & fast browser conversion.",
+    h1: "Convert PDF to High-Quality JPG"
   },
+
+  // Target: "Phone Scans" crowd.
   "/jpg-to-pdf": {
-    title: "JPG to PDF Converter - Convert Images to PDF Online (Free)",
-    description: "Convert JPG to PDF online for free. Merge multiple images into one PDF document securely in your browser. No signup required. Fast & Private.",
-    h1: "JPG to PDF Converter"
+    title: "JPG to PDF: Turn Images into PDF (No Watermark)",
+    description: "Make a PDF from photos instantly. Combine multiple JPG screenshots or phone scans into a single document for easy sharing.",
+    h1: "Free JPG to PDF Converter"
   },
+
+  // Target: Students merging ID + Marksheet.
   "/merge-pdf": {
-    title: "Merge PDF Online - Combine Multiple PDFs for Free",
-    description: "Merge multiple PDF files into one document instantly. Perfect for combining marksheets and certificates for government portals. Safe and 100% free.",
-    h1: "Merge PDF Online"
+    title: "Merge PDF: Combine Admit Cards & Docs (Free)",
+    description: "Join multiple PDF files into one. ideal for combining application forms, ID proofs, and marksheets for single-file uploads.",
+    h1: "Merge & Combine PDF Files"
   },
+
+  // Target: "Extracting" specific pages.
   "/split-pdf": {
-    title: "Split PDF Online - Extract Pages & Separate PDF Files (Free & Private)",
-    description: "Easily split PDF files into multiple documents or extract specific pages online. 100% private, browser-based, and free. No upload needed for Acrobat-style splitting.",
-    h1: "Split PDF Online"
+    title: "Split PDF: Extract Pages & Remove Unwanted Ones",
+    description: "Separate specific pages from a large PDF. Upload, select the pages you need, and save them as a new file instantly.",
+    h1: "Split PDF & Extract Pages"
   },
+
+  // Target: "Filling Forms".
   "/edit-pdf": {
-    title: "Edit PDF Online – Add Text, Modify PDF Free (Secure)",
-    description: "Edit PDF online for free. Add text, modify documents, and update PDFs securely in your browser. No signup required. Fast & private.",
-    h1: "Edit PDF Online"
+    title: "Edit PDF Online: Type Text, Sign & Fill Forms",
+    description: "Need to fill an application form? Add text, signatures, and checkmarks to your PDF directly in your browser. No software needed.",
+    h1: "Free Online PDF Editor & Form Filler"
   },
+
+  // Target: "Cleaning" for privacy.
   "/remove-metadata-from-pdf": {
-    title: "Remove Metadata from PDF Online (Free, Secure & Private)",
-    description: "Clear author, keywords, and hidden data from your PDF/Resume online. Best for job applications and privacy. 100% private browser processing.",
-    h1: "Remove Metadata from PDF"
+    title: "Clean PDF: Remove Hidden Properties & Author Name",
+    description: "Scrub hidden metadata, author names, and software history from your PDF files to ensure total privacy before sharing.",
+    h1: "Remove PDF Metadata & Hidden Data"
   }
 };
+
 
 export const RU_METADATA = {};
 export const ES_METADATA = {};
