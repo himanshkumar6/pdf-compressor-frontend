@@ -10,7 +10,7 @@ const DIST_DIR = path.resolve("dist");
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
 
 // ✅ Blog posts with slug + date
-import { BLOG_POSTS } from "../src/data/blogSlugs.js";
+import { BLOG_POSTS } from "../src/utils/blogPosts.ts";
 
 /* ----------------------------- */
 /* Canonical URL Builder */
