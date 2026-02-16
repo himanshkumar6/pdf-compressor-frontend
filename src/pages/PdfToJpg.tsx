@@ -89,7 +89,7 @@ const PdfToJpgContent: React.FC = () => {
   const [quality] = useState<Quality>("medium");
   const [dpi] = useState<number>(150);
   const [progress, setProgress] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [, setCurrentPage] = useState<number>(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const reset = () => {
@@ -116,6 +116,7 @@ const PdfToJpgContent: React.FC = () => {
     setProgress(0);
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const pdfjsLib = await safeLoadLibrary<any>(() => import("pdfjs-dist"), "pdfjs-dist");
       const worker = await safeLoadLibrary<{ default: string }>(() => import("pdfjs-dist/build/pdf.worker?url"), "pdf-worker");
       pdfjsLib.GlobalWorkerOptions.workerSrc = worker.default;
@@ -176,9 +177,9 @@ const PdfToJpgContent: React.FC = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
-      <div className="relative bg-white dark:bg-transparent border border-(--border) rounded-2xl md:rounded-[2.5rem] p-6 md:p-12 shadow-theme theme-transition overflow-hidden bg-transparent">
+      <div className="relative bg-white dark:bg-transparent border border-(--border) rounded-2xl md:rounded-[2.5rem] p-6 md:p-12 shadow-theme theme-transition overflow-hidden">
         {!file ? (
-          <div onClick={() => fileInputRef.current?.click()} className="py-12 md:py-16 border-2 border-dashed border-(--border) rounded-xl md:rounded-[2rem] bg-gray-100 dark:bg-gray-900 cursor-pointer hover:border-purple-500/50 hover:bg-purple-500/5 transition-all text-center group">
+          <div onClick={() => fileInputRef.current?.click()} className="py-12 md:py-16 border-2 border-dashed border-(--border) rounded-xl md:rounded-4xl bg-gray-100 dark:bg-gray-100 cursor-pointer hover:border-purple-500/50 hover:bg-purple-500/5 transition-all text-center group">
             <Upload className="w-12 h-12 md:w-16 md:h-16 text-purple-500 mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white px-6">Select PDF Document</h3>
             <p className="text-gray-500 text-xs mt-2">No uploads • 100% Client-Side Processing</p>
@@ -190,7 +191,7 @@ const PdfToJpgContent: React.FC = () => {
               <div className="flex items-center gap-3 md:gap-4 text-left min-w-0">
                 <FileText className="w-8 h-8 md:w-10 md:h-10 text-purple-500 shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-gray-900 dark:text-white font-bold truncate max-w-[140px] md:max-w-xs">{file.name}</p>
+                  <p className="text-gray-900 dark:text-white font-bold truncate max-w-35 md:max-w-xs">{file.name}</p>
                   <p className="text-gray-500 text-[10px] md:text-xs">{(file.size / 1024).toFixed(1)} KB</p>
                 </div>
               </div>
@@ -207,7 +208,7 @@ const PdfToJpgContent: React.FC = () => {
               <div className="py-10 md:py-12 text-center space-y-6 md:space-y-8">
                 <Loader2 className="w-12 h-12 md:w-16 md:h-16 text-purple-500 animate-spin mx-auto" />
                 <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Rendering Pages... {progress}%</h3>
-                <div className="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden max-w-[240px] md:max-w-sm mx-auto shadow-inner"><div className="h-full bg-purple-500 transition-all duration-300" style={{ width: `${progress}%` }} /></div>
+                <div className="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden max-w-60 md:max-w-sm mx-auto shadow-inner"><div className="h-full bg-purple-500 transition-all duration-300" style={{ width: `${progress}%` }} /></div>
               </div>
             )}
 
@@ -217,7 +218,7 @@ const PdfToJpgContent: React.FC = () => {
                   <div className="flex items-center gap-3"><CheckCircle className="text-green-500 w-5 h-5" /> <span className="font-bold text-sm md:text-base text-gray-900 dark:text-white tracking-tight">{pages.length} Pages Extracted</span></div>
                   <button onClick={downloadAll} className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-green-600 hover:bg-green-500 text-white rounded-xl md:rounded-2xl font-bold shadow-lg shadow-green-500/10 transition-all flex items-center justify-center gap-2 md:gap-3"><Download className="w-4 h-4 md:w-5 md:h-5" /> Download All (ZIP)</button>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 max-h-[400px] md:max-h-[500px] overflow-y-auto p-3 md:p-4 bg-gray-50 dark:bg-gray-900/40 rounded-2xl md:rounded-3xl border border-(--border) custom-scrollbar">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4 max-h-100 md:max-h-125 overflow-y-auto p-3 md:p-4 bg-gray-50 dark:bg-gray-900/40 rounded-2xl md:rounded-3xl border border-(--border) custom-scrollbar">
                   {pages.map((img, i) => (
                     <div key={i} className="group relative rounded-xl md:rounded-2xl overflow-hidden border border-(--border) shadow-sm hover:shadow-md transition-all">
                       <img src={img} className="w-full h-auto object-cover" alt={`page-${i + 1}`} loading="lazy" />
