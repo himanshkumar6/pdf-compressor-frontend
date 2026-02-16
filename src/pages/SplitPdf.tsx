@@ -84,7 +84,11 @@ const UniqueSEOContent = () => (
             a: "Absolutely. Our mobile-optimized engine allows you to <strong>split pdf file into multiple files</strong> directly from your iPhone or Android gallery."
           }
         ].map((faq, i) => (
-          <div key={i} className="p-6 md:p-8 bg-white dark:bg-gray-900/40 rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition group">
+          <div
+            key={i}
+            className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition group"
+          >
+
             <h4 className="font-bold text-(--textHeading) mb-2 md:mb-3 flex items-start gap-3 md:gap-4 text-base md:text-xl group-hover:text-orange-500 transition-colors">
               <span className="text-orange-500 font-bold shrink-0">Q.</span> {faq.q}
             </h4>
@@ -204,7 +208,7 @@ const SplitPdfContent: React.FC = () => {
     <div className="w-full">
       <div className="max-w-4xl mx-auto bg-(--card) border border-(--border) rounded-3xl shadow-theme-sm overflow-hidden min-h-100 theme-transition">
         {!file ? (
-          <div className="p-8 md:p-20 text-center flex flex-col items-center justify-center h-full min-h-100 border-2 border-dashed border-(--border) hover:border-orange-500/50 hover:bg-orange-500/5 transition-all text-center cursor-pointer relative group bg-(--bg2) rounded-3xl">
+          <div className="p-8 md:p-20 text-center flex flex-col items-center justify-center h-full min-h-100 border-2 border-dashed border-(--border) hover:border-orange-500/50 hover:bg-orange-500/5 transition-all cursor-pointer relative group bg-(--bg2) rounded-3xl">
             <input type="file" accept="application/pdf" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
             <div className="mx-auto w-16 h-16 md:w-20 md:h-20 bg-orange-100 dark:bg-orange-500/10 rounded-2xl md:rounded-full flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform shadow-sm border border-orange-200 dark:border-orange-500/20">
               <Upload className="w-8 h-8 md:w-10 md:h-10 text-orange-500" />
