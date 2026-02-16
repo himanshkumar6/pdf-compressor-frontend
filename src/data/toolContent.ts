@@ -333,4 +333,71 @@ Our  PDF Metadata Remover  cleans your file to protect your privacy. It removes 
       },
     ],
   },
+  "/compress-pdf-to-100kb": {
+    intro: `Many state scholarship portals and education boards require documents under 100KB for upload. If your marksheet, caste certificate, income certificate, or college admission document exceeds this limit, the upload fails with a "File Size Exceeded" error.
+
+This tool helps you reduce PDF size to 100KB while keeping text readable and clear. It is especially useful for state-level government portals and scholarship applications where the 100KB limit is common.`,
+
+    features: [
+      {
+        title: "Targeted 100KB Optimization",
+        desc: "Precisely reduce your PDF size close to 100KB without unnecessary quality loss.",
+      },
+      {
+        title: "100% Browser-Based",
+        desc: "Your file stays on your device. No server upload, no storage, no privacy risk.",
+      },
+      {
+        title: "Balanced Compression",
+        desc: "Maintains readable DPI for certificates and scanned documents.",
+      },
+    ],
+
+    useCases: [
+      "State scholarship portals",
+      "College admission uploads",
+      "Marksheets and education certificates",
+      "State-level government forms",
+    ],
+
+    trustBlock: {
+      title: "Your Documents Stay Private",
+      desc: "Unlike many online tools, this compressor works entirely inside your browser. Your personal documents, IDs, and certificates never leave your device.",
+    },
+
+    steps: [
+      { title: "Upload PDF", desc: "Select your PDF file from your device." },
+      {
+        title: "Choose 100KB Target",
+        desc: "Set the compression target to 100KB.",
+      },
+      {
+        title: "Download Optimized File",
+        desc: "Get your compressed PDF instantly.",
+      },
+    ],
+
+    faqs: [
+      {
+        q: "Will quality reduce when compressing to 100KB?",
+        a: "Minor compression may occur, but text and essential details remain readable.",
+      },
+      {
+        q: "Is this tool safe for government documents?",
+        a: "Yes. Files are processed locally in your browser and are not uploaded to any server.",
+      },
+      {
+        q: "Can I compress scanned certificates?",
+        a: "Yes, scanned certificates and marksheets can be resized to 100KB.",
+      },
+      {
+        q: "Why do portals require 100KB?",
+        a: "Many state portals limit file size to reduce server storage and speed up processing.",
+      },
+      {
+        q: "Is registration required?",
+        a: "No. The tool is completely free and does not require signup.",
+      },
+    ],
+  },
 };

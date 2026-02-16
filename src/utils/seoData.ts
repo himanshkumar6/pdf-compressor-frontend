@@ -23,7 +23,6 @@ import {
   SEO_METADATA,
   RU_METADATA,
   BLOG_METADATA,
-  ES_METADATA,
 } from "../data/metadata.js";
 
 export const SITE = {
@@ -156,6 +155,7 @@ export const PAGES_SEO: Record<string, PageSEO> = {};
 
 // 1. Map Main & Tool Routes
 Object.entries(SEO_METADATA).forEach(([route, data]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const meta = data as any;
   PAGES_SEO[route] = {
     title: meta.title,
@@ -171,6 +171,7 @@ Object.entries(SEO_METADATA).forEach(([route, data]) => {
 
 // 2. Map Russian Routes
 Object.entries(RU_METADATA).forEach(([route, data]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const meta = data as any;
   PAGES_SEO[route] = {
     title: meta.title,
@@ -186,6 +187,7 @@ Object.entries(RU_METADATA).forEach(([route, data]) => {
 
 // 3. Map Blog Routes
 Object.entries(BLOG_METADATA).forEach(([slug, data]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const meta = data as any;
   const route = `/blog/${slug}`;
   PAGES_SEO[route] = {
@@ -201,7 +203,8 @@ Object.entries(BLOG_METADATA).forEach(([slug, data]) => {
 });
 
 // 4. Map Spanish Routes
-Object.entries(ES_METADATA).forEach(([route, data]) => {
+Object.entries(SEO_METADATA).forEach(([route, data]) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const meta = data as any;
   PAGES_SEO[route] = {
     ...meta,
@@ -217,12 +220,26 @@ Object.entries(ES_METADATA).forEach(([route, data]) => {
 // 5. Programmatic SEO Pages
 PAGES_SEO["/compress-pdf-to-50kb"] = {
   title: "Compress PDF to 50kb Online - Resize Signature for Exams",
-  description: "Free tool to compress PDF to 50kb online. Perfect for resizing Scanned Signatures, Passport Photos, and Documents for SSC, UPSC, and IBPS forms.",
+  description:
+    "Free tool to compress PDF to 50kb online. Perfect for resizing Scanned Signatures, Passport Photos, and Documents for SSC, UPSC, and IBPS forms.",
   canonical: `${SITE.baseUrl}/compress-pdf-to-50kb`,
   jsonLd: {
     name: "Compress PDF to 50KB",
     url: `${SITE.baseUrl}/compress-pdf-to-50kb`,
-    description: "Free tool to compress PDF to 50kb online for SSC, UPSC and Govt exams.",
+    description:
+      "Free tool to compress PDF to 50kb online for SSC, UPSC and Govt exams.",
+  },
+};
+PAGES_SEO["/compress-pdf-to-100kb"] = {
+  title: "Compress PDF to 100KB Online Free (No Quality Loss) – Instant Tool",
+  description:
+    "Need to compress PDF to 100KB for government or job forms? Reduce file size instantly without losing quality. 100% free, secure, and no signup required.",
+  canonical: `${SITE.baseUrl}/compress-pdf-to-100kb`,
+  jsonLd: {
+    name: "Compress PDF to 100KB Online Free",
+    url: `${SITE.baseUrl}/compress-pdf-to-100kb`,
+    description:
+      "Instantly compress PDF to 100KB for job applications, SSC, UPSC and official forms. Free, fast and secure.",
   },
 };
 

@@ -38,26 +38,6 @@ const About: React.FC = () => {
         </p>
       </div>
 
-      {/* Related Educational Project */}
-      <div className="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 mb-12 text-sm leading-relaxed">
-        <p className="mb-3">
-          In addition to document utilities, I also work on an independent educational project focused on
-          logic, reasoning, and cognitive self-assessment.
-        </p>
-        <p className="mb-4">
-          That project is designed purely for learning and exploration, following the same principles of
-          privacy, transparency, and user-first design.
-        </p>
-        <a
-          href="https://iqcheckerxyz.compresspdfto200kb.online"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
-        >
-          Visit the cognitive assessment project
-        </a>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Technical Authority */}
         <div>

@@ -35,6 +35,7 @@ const NotFound: React.FC = () => {
         description={content.description}
         canonical={NOT_FOUND_SEO.canonical}
         lang={isRu ? "ru" : "en"}
+        noindex={true}
       />
       <div className="animate-float">
         <Ghost className="w-24 h-24 text-cyan-400 mb-8 mx-auto" />

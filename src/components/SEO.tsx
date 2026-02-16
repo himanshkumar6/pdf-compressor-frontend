@@ -20,6 +20,8 @@ export interface SEOProps {
   lang?: string;
   /** Alternate language links for hreflang */
   alternateLinks?: Array<{ href: string; lang: string }>;
+  /** Prevent indexing (for 404s/private pages) */
+  noindex?: boolean;
 }
 
 function setMetaByName(name: string, content: string) {
@@ -30,6 +32,11 @@ function setMetaByName(name: string, content: string) {
     document.head.appendChild(tag);
   }
   tag.setAttribute("content", content);
+}
+
+function removeMetaByName(name: string) {
+  const tag = document.querySelector(`meta[name="${name}"]`);
+  if (tag) tag.remove();
 }
 
 function setMetaByProperty(property: string, content: string) {
@@ -88,7 +95,7 @@ function setHreflangLinks(links: Array<{ href: string; lang: string }>) {
   }
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang, alternateLinks }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang, alternateLinks, noindex }) => {
   useEffect(() => {
     const metaTitle = title || DEFAULT_SEO.title;
     const metaDescription = description || DEFAULT_SEO.description;
@@ -100,6 +107,13 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang, 
 
     // ✅ title
     document.title = metaTitle;
+
+    // ✅ noindex
+    if (noindex) {
+      setMetaByName("robots", "noindex, nofollow");
+    } else {
+      removeMetaByName("robots");
+    }
 
     // ✅ meta description
     setMetaByName("description", metaDescription);
@@ -126,7 +140,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, lang, 
     if (alternateLinks) {
       setHreflangLinks(alternateLinks);
     }
-  }, [title, description, canonical, schema, lang, alternateLinks]);
+  }, [title, description, canonical, schema, lang, alternateLinks, noindex]);
 
   return null;
 };

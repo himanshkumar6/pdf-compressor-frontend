@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import ThemeMenuDropdown from "./ThemeMenuDropdown";
 import { getLanguage, NAV_LABELS, ROUTE_MAP, CRUD_LABELS, getLocalizedRouteGuard } from "../utils/localization";
+import { prefetch } from "../utils/prefetch";
+import * as Loaders from "../App";
 
 export default function Navbar() {
   const [openMobile, setOpenMobile] = useState(false);
@@ -20,12 +22,16 @@ export default function Navbar() {
   const ctaLabel = CRUD_LABELS[lang].cta;
 
   const navItems = [
-    { key: "home", label: labels.home, path: routes.home },
-    { key: "tools", label: labels.tools, path: routes.tools },
-    { key: "blog", label: labels.blog, path: routes.blog },
-    { key: "about", label: labels.about, path: routes.about },
-    { key: "contact", label: labels.contact, path: routes.contact },
+    { key: "home", label: labels.home, path: routes.home, loader: Loaders.HomeLoader },
+    { key: "tools", label: labels.tools, path: routes.tools, loader: Loaders.ToolsLoader },
+    { key: "blog", label: labels.blog, path: routes.blog, loader: Loaders.BlogLoader },
+    { key: "about", label: labels.about, path: routes.about, loader: Loaders.AboutLoader },
+    { key: "contact", label: labels.contact, path: routes.contact, loader: Loaders.ContactLoader },
   ];
+
+  const handlePrefetch = (loader?: () => Promise<any>) => {
+    if (loader) prefetch(loader);
+  };
 
   useEffect(() => {
     setOpenMobile(false);
@@ -62,6 +68,7 @@ export default function Navbar() {
                 <Link
                   key={p.path}
                   to={getLocalizedRouteGuard(p.path, lang)}
+                  onMouseEnter={() => handlePrefetch(p.loader)}
                   className={`relative px-3 py-2 rounded-lg transition-colors
                 ${isActive
                       ? "text-cyan-400"
@@ -125,6 +132,7 @@ export default function Navbar() {
               <Link
                 key={item.key}
                 to={getLocalizedRouteGuard(item.path, lang)}
+                onMouseEnter={() => handlePrefetch(item.loader)}
                 className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors
               ${active
                     ? "bg-cyan-500/10 text-cyan-400"
@@ -141,6 +149,7 @@ export default function Navbar() {
           {/* Mobile CTA */}
           <Link
             to={getLocalizedRouteGuard(ctaLink, lang)}
+            onMouseEnter={() => handlePrefetch(Loaders.CompressPdfTo200kbLoader)}
             className="btnPrimary block text-center px-4 py-3 rounded-xl shadow-sm"
           >
             {ctaLabel}

@@ -10,15 +10,16 @@
       "destination": "/",
       "permanent": true
     },
-{
-  "source" : "/ru",
-  "destination" : "/",
-  "permanent" : true
-}, {
-  "source": "/es",
-  "destination" : "/",
-  "permanent" : true
-},
+    {
+      "source": "/ru",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/es",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/(.*)",
       "has": [
@@ -30,13 +31,11 @@
       "destination": "https://compresspdfto200kb.online/$1",
       "permanent": true
     },
-
     {
       "source": "/compress-pdf",
       "destination": "/compress-pdf-to-200kb",
       "permanent": true
     },
-
     {
       "source": "/compress-pdf-to-50kb",
       "destination": "/compress-pdf-to-200kb",
@@ -62,13 +61,11 @@
       "destination": "/compress-pdf-to-200kb",
       "permanent": true
     },
-
     {
       "source": "/reduce-pdf-size-to-500kb",
       "destination": "/compress-pdf-to-200kb",
       "permanent": true
     },
-
     {
       "source": "/resize-pdf-200kb",
       "destination": "/compress-pdf-to-200kb",
@@ -84,7 +81,6 @@
       "destination": "/compress-pdf-to-200kb",
       "permanent": true
     },
-
     {
       "source": "/scanned-pdf-compressor",
       "destination": "/compress-pdf-to-200kb",
@@ -95,7 +91,6 @@
       "destination": "/compress-pdf-to-200kb",
       "permanent": true
     },
-
     {
       "source": "/merge-pdf-mac",
       "destination": "/merge-pdf",
@@ -111,7 +106,6 @@
       "destination": "/merge-pdf",
       "permanent": true
     },
-
     {
       "source": "/split-pdf-mac",
       "destination": "/split-pdf",
@@ -138,10 +132,15 @@
       "permanent": true
     }
   ],
-
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/:path*",
+      "source": "/(sitemap.xml|robots.txt|google.*\\.html)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
