@@ -6,11 +6,11 @@ import path from "path";
 const BASE_URL = "https://compresspdfto200kb.online";
 const DIST_DIR = path.resolve("dist");
 
-// ✅ Import canonical routes
+// ✅ Canonical routes
 import { ALL_ROUTES as CANONICAL_PATHS } from "../src/data/routes.js";
 
-// ✅ Import dynamic blog slugs
-import { BLOG_SLUGS } from "../src/data/blogSlugs.js";
+// ✅ Blog posts with slug + date
+import { BLOG_POSTS } from "../src/data/blogSlugs.js";
 
 /* ----------------------------- */
 /* Canonical URL Builder */
@@ -24,42 +24,24 @@ function toCanonicalUrl(routePath) {
 /* ----------------------------- */
 /* XML Generator */
 /* ----------------------------- */
-function generateXml(paths, today) {
-  const urls = paths.map((p) => {
-    const loc = toCanonicalUrl(p);
-
-    const isHome = p === "/";
-    const isBlogIndex = p.endsWith("/blog");
-    const isBlogPost = p.includes("/blog/") && !isBlogIndex;
-    const isTool = !isHome && !isBlogIndex && !isBlogPost;
-
-    let changefreq = "monthly";
-    let priority = "0.6";
-
-    if (isHome) {
-      changefreq = "weekly";
-      priority = "1.0";
-    } else if (isTool) {
-      changefreq = "weekly";
-      priority = "0.8";
-    } else if (isBlogIndex) {
-      changefreq = "weekly";
-      priority = "0.7";
-    } else if (isBlogPost) {
-      changefreq = "yearly";
-      priority = "0.5";
-    }
+function generateXml(pages) {
+  const urls = pages.map((page) => {
+    const loc = toCanonicalUrl(page.path);
 
     return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <lastmod>${page.lastmod}</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
   </url>`;
   });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+  http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 ${urls.join("\n")}
 </urlset>`;
 }
@@ -70,29 +52,76 @@ ${urls.join("\n")}
 function run() {
   const today = new Date().toISOString().slice(0, 10);
 
-  console.log("📌 Blog slugs loaded:", BLOG_SLUGS.length);
+  console.log("📌 Blog posts loaded:", BLOG_POSTS.length);
 
-  // ✅ Dynamic Blog Paths
-  const blogPaths = BLOG_SLUGS.map((slug) => `/blog/${slug}`);
+  // 🏠 Static Pages + Tools
+  const staticPages = CANONICAL_PATHS.map((route) => {
+    let changefreq = "monthly";
+    let priority = "0.6";
 
-  // ✅ Merge + remove duplicates
-  const ALL_PATHS = [...new Set([...CANONICAL_PATHS, ...blogPaths])];
+    if (route === "/") {
+      changefreq = "weekly";
+      priority = "1.0";
+    }
+    else if (route === "/compress-pdf-to-200kb") {
+      changefreq = "weekly";
+      priority = "0.9"; // 🔥 money page boost
+    }
+    else if (route.includes("pdf")) {
+      changefreq = "weekly";
+      priority = "0.8";
+    }
+    else if (route === "/blog") {
+      changefreq = "weekly";
+      priority = "0.7";
+    }
+    else if (
+      route.includes("privacy") ||
+      route.includes("terms") ||
+      route.includes("disclaimer") ||
+      route.includes("cookies")
+    ) {
+      changefreq = "yearly";
+      priority = "0.3";
+    }
 
-  // ✅ Filtering empty or invalid paths (just in case)
-  const finalPaths = ALL_PATHS.filter(p => p && p !== "");
+    return {
+      path: route,
+      lastmod: today,
+      changefreq,
+      priority
+    };
+  });
 
-  // ✅ Generate XML
-  const sitemapXml = generateXml(finalPaths, today);
+  // 📝 Blog Posts with real dates
+  const blogPages = BLOG_POSTS.map((post) => ({
+    path: `/blog/${post.slug}`,
+    lastmod: post.date, // ✅ real publish date
+    changefreq: "monthly",
+    priority: "0.6"
+  }));
+
+  // 🔥 Merge + remove duplicates
+  const allPagesMap = new Map();
+
+  [...staticPages, ...blogPages].forEach((page) => {
+    if (!allPagesMap.has(page.path)) {
+      allPagesMap.set(page.path, page);
+    }
+  });
+
+  const finalPages = Array.from(allPagesMap.values());
+
+  const sitemapXml = generateXml(finalPages);
 
   if (!fs.existsSync(DIST_DIR)) {
     fs.mkdirSync(DIST_DIR, { recursive: true });
   }
 
-  // Write single sitemap.xml
   fs.writeFileSync(path.join(DIST_DIR, "sitemap.xml"), sitemapXml);
 
   console.log("✅ Sitemap Generated Successfully");
-  console.log("Total URLs:", finalPaths.length);
+  console.log("Total URLs:", finalPages.length);
 }
 
 run();
