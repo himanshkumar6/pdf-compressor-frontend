@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { fileURLToPath } from "url";
-import { render } from "../dist/server/entry-server.js";
+import { render } from "../src/entry-server";
 
 export default async function handler(req, res) {
   try {
@@ -13,13 +11,14 @@ export default async function handler(req, res) {
       "utf-8",
     );
 
-    const appHtml = render(url);
+    const appHtml = await render(url);
 
     const html = template.replace("<!--ssr-outlet-->", appHtml);
 
-    res.status(200).setHeader("Content-Type", "text/html");
-    res.end(html);
+    res.setHeader("Content-Type", "text/html");
+    res.status(200).end(html);
   } catch (err) {
+    console.error(err);
     res.status(500).end("SSR Error");
   }
 }
