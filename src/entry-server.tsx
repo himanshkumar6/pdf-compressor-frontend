@@ -1,8 +1,8 @@
 import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
-import App from "./App.tsx";
-import { ThemeProvider } from "./context/ThemeProvider.tsx";
-import ScrollToTop from "./components/ScrollToTop.tsx";
+import App from "./App";
+import { ThemeProvider } from "./context/ThemeProvider";
+import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
 
 /**
