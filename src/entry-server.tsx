@@ -1,8 +1,8 @@
 import { renderToPipeableStream } from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
-import App from "./App";
-import { ThemeProvider } from "./context/ThemeProvider";
-import ScrollToTop from "./components/ScrollToTop";
+import { StaticRouter } from "react-router-dom/server.js";
+import App from "./App.js";
+import { ThemeProvider } from "./context/ThemeProvider.js";
+import ScrollToTop from "./components/ScrollToTop.js";
 import { Toaster } from "react-hot-toast";
 
 /**
@@ -10,7 +10,6 @@ import { Toaster } from "react-hot-toast";
  * @param {string} url
  * @param {import('react-dom/server').RenderToPipeableStreamOptions} options
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function render(url: string, options: any) {
   return renderToPipeableStream(
     <ThemeProvider>

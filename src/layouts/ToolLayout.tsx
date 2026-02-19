@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import ToolHeader from "../components/ui/ToolHeader";
+import ToolHeader from "../components/ui/ToolHeader.js";
 
 const ToolLayout: React.FC = () => {
   return (

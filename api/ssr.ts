@@ -1,17 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { Writable } from "stream";
-import { render } from "../src/entry-server.tsx";
-
-// Helper to determine if we are in a deployment environment
-const isProd = process.env.NODE_ENV === "production";
+import { render } from "../src/entry-server.js";
 
 export default async function handler(req: any, res: any) {
   try {
     const url = req.url || "/";
 
-    // 1. Read the production template
-    // Vercel deployment structure: dist/index.html
+    // 1. Read the production template (Vercel deployment: dist/index.html)
     const templatePath = path.resolve(process.cwd(), "dist/index.html");
     if (!fs.existsSync(templatePath)) {
        throw new Error(`Template not found at ${templatePath}. Ensure 'vite build' has run.`);
@@ -49,8 +45,10 @@ export default async function handler(req: any, res: any) {
       },
       onShellError(err: any) {
         console.error("Vercel SSR Shell Error:", err);
-        res.statusCode = 500;
-        res.send("<!doctype html><h1>Internal Server Error</h1>");
+        if (!res.headersSent) {
+          res.statusCode = 500;
+          res.send("<!doctype html><h1>Internal Server Error</h1>");
+        }
       },
       onError(err: any) {
         didError = true;

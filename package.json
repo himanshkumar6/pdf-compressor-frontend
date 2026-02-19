@@ -7,9 +7,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "dev": "node server.js",
-   "build": "vite build && vite build --ssr src/entry-server.tsx"
-
-
+  "build": "vite build && vite build --ssr src/entry-server.tsx"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

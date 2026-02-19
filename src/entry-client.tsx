@@ -1,9 +1,9 @@
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App.tsx';
-import { ThemeProvider } from './context/ThemeProvider.tsx';
-import ScrollToTop from './components/ScrollToTop.tsx';
+import App from './App.js';
+import { ThemeProvider } from './context/ThemeProvider.js';
+import ScrollToTop from './components/ScrollToTop.js';
 import { Toaster } from 'react-hot-toast';
 
 import './index.css';
