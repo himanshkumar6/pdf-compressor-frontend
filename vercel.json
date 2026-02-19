@@ -1,7 +1,4 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-
   "redirects": [
     {
       "source": "/ru/(.*)",
@@ -12,38 +9,9 @@
       "source": "/es/(.*)",
       "destination": "/",
       "permanent": true
-    },
-    {
-      "source": "/ru",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/es",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.compresspdfto200kb.online"
-        }
-      ],
-      "destination": "https://compresspdfto200kb.online/$1",
-      "permanent": true
     }
   ],
-
   "rewrites": [
-    {
-      "source": "/(sitemap.xml|robots.txt|google.*\\.html)",
-      "destination": "/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

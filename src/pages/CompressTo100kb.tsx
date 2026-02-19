@@ -1,4 +1,4 @@
-import ToolLandingPage from "../components/ToolLandingPage.js";
+import ToolLandingPage from "../components/ToolLandingPage";
 
 export default function CompressTo100kb() {
   return (

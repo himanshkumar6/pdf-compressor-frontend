@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar.js";
-import Footer from "../components/Footer.js";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MainLayout: React.FC = () => {
   return (

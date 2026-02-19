@@ -6,14 +6,13 @@
   "scripts": {
     "lint": "eslint .",
     "preview": "vite preview",
-    "dev": "node server.js",
-  "build": "vite build && vite build --ssr src/entry-server.tsx"
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@hello-pangea/dnd": "^18.0.1",
     "@tailwindcss/vite": "^4.1.18",
-    "express": "^5.2.1",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.31.1",
     "jszip": "^3.10.1",
@@ -25,8 +24,7 @@
     "react-dropzone": "^15.0.0",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^6.30.3",
-    "tailwindcss": "^4.1.18",
-    "vite-ssg": "^28.3.0"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
