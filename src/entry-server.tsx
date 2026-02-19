@@ -1,17 +1,18 @@
+import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
-import App from "./App";
-import { ThemeProvider } from "./context/ThemeProvider";
-import ScrollToTop from "./components/ScrollToTop";
+import App from "./App.tsx";
+import { ThemeProvider } from "./context/ThemeProvider.tsx";
+import ScrollToTop from "./components/ScrollToTop.tsx";
 import { Toaster } from "react-hot-toast";
-import { renderToString } from "react-dom/server";
 
 /**
+ * Modern React 18 Streaming SSR Entry
  * @param {string} url
  * @param {import('react-dom/server').RenderToPipeableStreamOptions} options
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function render(url: string, options: any) {
-  return renderToString(
+  return renderToPipeableStream(
     <ThemeProvider>
       <StaticRouter location={url}>
         <ScrollToTop />
