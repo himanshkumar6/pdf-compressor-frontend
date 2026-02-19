@@ -4,20 +4,4 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          pdfjs: ["pdfjs-dist"],
-          pdflib: ["pdf-lib"],
-          jszip: ["jszip"],
-        },
-      },
-    },
-  },
-
-  ssr: {
-    noExternal: true,
-  },
 });

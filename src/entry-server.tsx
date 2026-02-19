@@ -1,9 +1,9 @@
-import { renderToPipeableStream } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import App from "./App";
 import { ThemeProvider } from "./context/ThemeProvider";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import { renderToString } from "react-dom/server";
 
 /**
  * @param {string} url
@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function render(url: string, options: any) {
-  return renderToPipeableStream(
+  return renderToString(
     <ThemeProvider>
       <StaticRouter location={url}>
         <ScrollToTop />

@@ -132,6 +132,8 @@
       "permanent": true
     }
   ],
+
+  
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
@@ -144,4 +146,12 @@
       "destination": "/index.html"
     }, { "source": "/(.*)", "destination": "/" }
   ]
+,
+
+ "routes": [
+    { "src": "/api/ssr", "dest": "/api/ssr.ts" },
+    { "src": "/(.*)", "dest": "/api/ssr.ts" }
+  ]
+
+
 }
