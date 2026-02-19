@@ -1,4 +1,7 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
+
   "redirects": [
     {
       "source": "/ru/(.*)",
@@ -30,112 +33,9 @@
       ],
       "destination": "https://compresspdfto200kb.online/$1",
       "permanent": true
-    },
-    {
-      "source": "/compress-pdf",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/compress-pdf-to-50kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/compress-pdf-to-100kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/compress-pdf-to-150kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/compress-pdf-to-500kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/compress-pdf-to-1mb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/reduce-pdf-size-to-500kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/resize-pdf-200kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/resize-pdf-kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/resize-pdf-mb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/scanned-pdf-compressor",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/scanned-pdf-to-200kb",
-      "destination": "/compress-pdf-to-200kb",
-      "permanent": true
-    },
-    {
-      "source": "/merge-pdf-mac",
-      "destination": "/merge-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/merge-pdf-windows",
-      "destination": "/merge-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/merge-pdf-linux",
-      "destination": "/merge-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/split-pdf-mac",
-      "destination": "/split-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/split-pdf-windows",
-      "destination": "/split-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/split-pdf-adobe",
-      "destination": "/split-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/split-pdf-by-pages",
-      "destination": "/split-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/split-pdf-online",
-      "destination": "/split-pdf",
-      "permanent": true
     }
   ],
 
-  
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/(sitemap.xml|robots.txt|google.*\\.html)",
@@ -144,14 +44,6 @@
     {
       "source": "/(.*)",
       "destination": "/index.html"
-    }, { "source": "/(.*)", "destination": "/" }
+    }
   ]
-,
-
- "routes": [
-    { "src": "/api/ssr", "dest": "/api/ssr.ts" },
-    { "src": "/(.*)", "dest": "/api/ssr.ts" }
-  ]
-
-
 }
