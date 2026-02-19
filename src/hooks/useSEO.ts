@@ -8,6 +8,7 @@ type SEOInput = {
 };
 
 function setMeta(name: string, content: string) {
+  if (typeof document === "undefined") return;
   let tag = document.querySelector(
     `meta[name="${name}"]`,
   ) as HTMLMetaElement | null;
@@ -20,7 +21,7 @@ function setMeta(name: string, content: string) {
 }
 
 function setCanonical(url?: string) {
-  if (!url) return;
+  if (typeof document === "undefined" || !url) return;
   let link = document.querySelector(
     'link[rel="canonical"]',
   ) as HTMLLinkElement | null;

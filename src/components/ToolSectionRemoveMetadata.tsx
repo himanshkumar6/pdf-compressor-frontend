@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { PDFDocument } from "pdf-lib";
 import {
   Upload,
   FileText,
@@ -103,6 +102,9 @@ const ToolSectionRemoveMetadata: React.FC = () => {
     setError(null);
 
     try {
+      if (typeof window === "undefined") throw new Error("DOM unavailable");
+      const { PDFDocument } = await import("pdf-lib");
+
       setAfterMeta(null);
 
       const bytes = await file.arrayBuffer();

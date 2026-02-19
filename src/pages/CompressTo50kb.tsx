@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import * as pdfjsLib from "pdfjs-dist";
-import { PDFDocument, PDFName } from "pdf-lib";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Upload, Zap, FileText, Download,
@@ -10,10 +8,20 @@ import {
 import ToolLandingPage from "../components/ToolLandingPage";
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker?url";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-if (typeof window !== "undefined" && !(pdfjsLib as any).GlobalWorkerOptions.workerSrc) {
+// ✅ PDF.js initialization is now inside a guarded function
+async function initPdfLibs() {
+  if (typeof window === "undefined") return null;
+  const [pdfjsLib, pdflib] = await Promise.all([
+    import("pdfjs-dist"),
+    import("pdf-lib")
+  ]);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+  if (!(pdfjsLib as any).GlobalWorkerOptions.workerSrc) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+  }
+  return { pdfjsLib, ...pdflib };
 }
 
 const UniqueSEOContent = () => (
@@ -99,6 +107,10 @@ const LocalCompressionTool = () => {
     setProgress(0);
 
     try {
+      const libs = await initPdfLibs();
+      if (!libs) throw new Error("PDF libraries are unavailable on the server.");
+      const { pdfjsLib, PDFDocument, PDFName } = libs;
+
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       const numPages = pdf.numPages;
@@ -118,6 +130,7 @@ const LocalCompressionTool = () => {
         for (let i = 1; i <= numPages; i++) {
           const page = await pdf.getPage(i);
           const viewport = page.getViewport({ scale: currentScale });
+          if (typeof document === "undefined") throw new Error("DOM is unavailable.");
           const canvas = document.createElement("canvas");
           const ctx = canvas.getContext("2d");
           if (!ctx) throw new Error("Canvas failure");

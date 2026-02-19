@@ -15,8 +15,6 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
-import { PDFDocument } from "pdf-lib";
-
 const API_URL =
   "https://pdf-compressor-api-production-61aa.up.railway.app/compress";
 
@@ -27,6 +25,9 @@ const MB_SIZE_OPTIONS: TargetSizeOption[] = [
 ];
 
 const inflatePdf = async (file: File, targetBytes: number): Promise<Blob> => {
+  if (typeof window === "undefined") throw new Error("DOM unavailable");
+  const { PDFDocument } = await import("pdf-lib");
+
   const arrayBuffer = await file.arrayBuffer();
   const pdfDoc = await PDFDocument.load(arrayBuffer);
   const pdfBytes = await pdfDoc.save();

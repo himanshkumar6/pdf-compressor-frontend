@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
+
 
 import ParticlesBG from "./components/ParticlesBG";
 import NavigationPageLoader from "./components/NavigationPageLoader";
@@ -141,7 +142,9 @@ const App: React.FC = () => {
       </div>
 
       {/* ✅ Toast */}
-      <ToastContainer position="top-center" autoClose={2500} />
+      <Toaster position="top-center" toastOptions={{
+        duration: 2500,
+      }} />
     </div>
   );
 };

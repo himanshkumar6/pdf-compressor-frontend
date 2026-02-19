@@ -1,20 +1,20 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import * as pdfjsLib from "pdfjs-dist";
+import type * as PdfjsNamespace from "pdfjs-dist";
 import type { DetectedTextItem } from "../types";
 
 interface UsePdfPageProps {
-  pdfDocument: pdfjsLib.PDFDocumentProxy | null;
+  pdfDocument: PdfjsNamespace.PDFDocumentProxy | null;
   pageNumber: number; // 1-based
   scale: number;
 }
 
 export const usePdfPage = ({ pdfDocument, pageNumber, scale }: UsePdfPageProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [viewport, setViewport] = useState<pdfjsLib.PageViewport | null>(null);
+  const [viewport, setViewport] = useState<PdfjsNamespace.PageViewport | null>(null);
   const [textItems, setTextItems] = useState<DetectedTextItem[]>([]);
   const [isRendering, setIsRendering] = useState(false);
   
-  const renderTaskRef = useRef<pdfjsLib.RenderTask | null>(null);
+  const renderTaskRef = useRef<PdfjsNamespace.RenderTask | null>(null);
 
   const renderPage = useCallback(async () => {
     if (!pdfDocument || !canvasRef.current || pageNumber <= 0) return;

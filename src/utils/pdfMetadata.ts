@@ -1,8 +1,16 @@
-import * as pdfjsLib from "pdfjs-dist";
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker?url";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+// ✅ PDF.js initialization is now inside the async function to prevent SSR crashes.
+async function initPdfJs() {
+  if (typeof window === "undefined") return null;
+  const pdfjsLib = await import("pdfjs-dist");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (!(pdfjsLib as any).GlobalWorkerOptions.workerSrc) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+  }
+  return pdfjsLib;
+}
 
 export type PdfMetadata = {
   title?: string;
@@ -53,6 +61,11 @@ function extractXmpXmlFromBytes(bytes: Uint8Array): string | null {
 }
 
 export async function extractPdfMetadata(file: File): Promise<PdfMetadata> {
+  const pdfjsLib = await initPdfJs();
+  if (!pdfjsLib) {
+    throw new Error("PDF.js cannot be initialized on the server.");
+  }
+
   const arrayBuffer = await file.arrayBuffer();
   const bytes = new Uint8Array(arrayBuffer);
 
@@ -66,7 +79,7 @@ export async function extractPdfMetadata(file: File): Promise<PdfMetadata> {
 
   // ✅ metadata
   const meta = await pdf.getMetadata();
-  const info = meta?.info || {};
+  const info = (meta?.info || {}) as any;
 
   // ✅ cleanup cache (VERY IMPORTANT)
   await pdf.destroy();

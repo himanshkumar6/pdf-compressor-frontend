@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { PDFDocument } from "pdf-lib";
 import { saveAs } from "file-saver";
 import { FileText, Shield, Trash2, Download, Info } from "lucide-react";
 
@@ -22,6 +21,8 @@ function formatBytes(bytes: number) {
 }
 
 async function extractMetadata(fileBytes: ArrayBuffer): Promise<MetaInfo> {
+  if (typeof window === "undefined") throw new Error("DOM unavailable");
+  const { PDFDocument } = await import("pdf-lib");
   const pdfDoc = await PDFDocument.load(fileBytes, { ignoreEncryption: true });
 
   const title = pdfDoc.getTitle();
@@ -101,6 +102,9 @@ export default function RemoveMetadataTool() {
     setIsLoading(true);
 
     try {
+      if (typeof window === "undefined") throw new Error("DOM unavailable");
+      const { PDFDocument } = await import("pdf-lib");
+
       setStatus("Loading PDF…");
       const bytes = await file.arrayBuffer();
       const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });

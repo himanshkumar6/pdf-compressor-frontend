@@ -4,12 +4,6 @@ import type { ResolvedTheme, ThemeContextValue, ThemeMode } from "./themeTypes";
 
 const STORAGE_KEY = "theme-mode";
 
-function getSystemTheme(): ResolvedTheme {
-  if (typeof window === "undefined") return "dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
 
 function getStoredMode(): ThemeMode {
   if (typeof window === "undefined") return "system";
@@ -38,26 +32,26 @@ function safeSetStorage(mode: ThemeMode) {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setModeState] = useState<ThemeMode>(() => getStoredMode());
-  const [systemTheme, setSystemTheme] = useState<ResolvedTheme>(() => getSystemTheme());
+  // ✅ SSR-Safe: Initialize with stable defaults to avoid hydration mismatch.
+  // We defer localStorage/matchMedia reads to useEffect.
+  const [mode, setModeState] = useState<ThemeMode>("system");
+  const [systemTheme, setSystemTheme] = useState<ResolvedTheme>("dark");
 
   const resolvedTheme: ResolvedTheme = useMemo(() => {
     return mode === "system" ? systemTheme : mode;
   }, [mode, systemTheme]);
 
-  // Keep system preference in sync (even if user isn't currently in system mode)
+  // Initial client-side read
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Sync mode from storage
+    const stored = getStoredMode();
+    setModeState(stored);
+
+    // Sync system theme
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = () => {
-      setSystemTheme(mediaQuery.matches ? "dark" : "light");
-    };
-
-    handleChange();
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    setSystemTheme(mediaQuery.matches ? "dark" : "light");
   }, []);
 
   // Apply resolved theme to the DOM

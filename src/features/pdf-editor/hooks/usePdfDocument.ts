@@ -1,22 +1,29 @@
 import { useState, useRef, useCallback } from "react";
-import * as pdfjsLib from "pdfjs-dist";
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker?url";
 import { toast } from "react-hot-toast";
 
-// Initialize worker once
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+// Lazy-loaded type
+import type * as PdfjsNamespace from "pdfjs-dist";
 
 export const usePdfDocument = () => {
-  const [pdfDocument, setPdfDocument] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+  const [pdfDocument, setPdfDocument] = useState<PdfjsNamespace.PDFDocumentProxy | null>(null);
   const [numPages, setNumPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const fileRef = useRef<File | null>(null);
 
   const loadPdf = useCallback(async (file: File) => {
+    if (typeof window === "undefined") return false;
+    
     setIsLoading(true);
     fileRef.current = file;
     
     try {
+      // ✅ SSR-Safe: Dynamically import and initialize PDF.js
+      const pdfjsLib = await import("pdfjs-dist");
+      if (!(pdfjsLib as any).GlobalWorkerOptions.workerSrc) {
+        (pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
+      }
+
       const buffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({
         data: buffer,
