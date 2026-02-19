@@ -7,7 +7,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build && node scripts/generateSitemap.js && node scripts/generateStaticPages.js"
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
