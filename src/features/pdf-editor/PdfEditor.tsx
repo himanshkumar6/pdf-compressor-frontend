@@ -304,7 +304,7 @@ const PdfEditor: React.FC<PdfEditorProps> = ({ labels = DEFAULT_LABELS }) => {
         p-2 md:p-6
         overflow-auto
         flex justify-center
-        min-h-[400px] md:min-h-[550px] lg:min-h-[650px]
+        min-h-100 md:min-h-137.5 lg:min-h-162.5
         theme-transition
       "
       >

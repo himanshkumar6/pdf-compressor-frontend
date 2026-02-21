@@ -16,7 +16,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 const API_URL =
-  "https://pdf-compressor-api-production-61aa.up.railway.app/compress";
+  "https://api-pdf-compressor.onrender.com/compress";
 
 const MB_SIZE_OPTIONS: TargetSizeOption[] = [
   { v: 1024, l: "1MB" },
@@ -36,6 +36,7 @@ const inflatePdf = async (file: File, targetBytes: number): Promise<Blob> => {
   const paddingNeeded = targetBytes - currentBytes;
 
   if (paddingNeeded <= 0) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new Blob([pdfBytes as any], { type: "application/pdf" });
   }
 
@@ -45,6 +46,7 @@ const inflatePdf = async (file: File, targetBytes: number): Promise<Blob> => {
     paddedBytes[currentBytes + i] = 0x20; // Padding with spaces
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new Blob([paddedBytes as any], { type: "application/pdf" });
 };
 
@@ -230,7 +232,7 @@ const ResizePdfMbTool: React.FC = () => {
               <div className="flex items-center">
                 <FileText className="w-6 h-6 text-cyan-400 mr-4" />
                 <div>
-                  <p className="text-white font-bold text-sm truncate max-w-[200px]">{file.name}</p>
+                  <p className="text-white font-bold text-sm truncate max-w-50">{file.name}</p>
                   <p className="text-xs text-gray-500">{formatSize(file.size)}</p>
                 </div>
               </div>
