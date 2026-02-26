@@ -14,7 +14,8 @@ export type ToolCategory =
   | "Compress & Resize"
   | "Convert"
   | "PDF Editing Tools"
-  | "Security & Utility";
+  | "Security & Utility"
+  | "Image Tools";
 
 export interface Tool {
   id: string;
@@ -77,6 +78,15 @@ export const TOOL_CATEGORIES_INFO = [
       name: "Безопасность и утилиты",
       description:
         "Приватные инструменты для метаданных и безопасности документов.",
+    },
+  },
+  {
+    name: "Image Tools" as ToolCategory,
+    description: "Enhance, upscale, and edit your images seamlessly.",
+    icon: ImageIcon,
+    ru: {
+      name: "Инструменты для изображений",
+      description: "Улучшайте, масштабируйте и редактируйте изображения.",
     },
   },
 ];
@@ -201,4 +211,19 @@ export const TOOLS_REGISTRY: Tool[] = [
       "Compress PDF to 100KB online for free. Perfect for marksheets, scholarship forms, and government portals. Secure browser-based compression with no uploads.",
     isActive: true,
   },
+
+  // 🟢 IMAGE TOOLS
+  {
+    id: "image-upscaler",
+    title: "Image Upscaler",
+    slug: "/image-upscaler",
+    category: "Image Tools",
+    icon: Zap, // using Zap as it was already imported, or ImageIcon which is also imported. Prompt said "use lucide-react icon". Using Zap for "AI/Upscale" feel.
+    shortDescription: "Upscale images to higher resolution directly in browser",
+    metaTitle: "Image Upscaler Online | High Resolution Images Free",
+    metaDescription:
+      "Upscale images to higher resolution securely and privately in your browser without uploading files.",
+    isActive: true,
+    isNew: true,
+  }
 ];

@@ -240,6 +240,18 @@ PAGES_SEO["/compress-pdf-to-100kb"] = {
   },
 };
 
+PAGES_SEO["/image-upscaler"] = {
+  title: "Image Upscaler Online | AI Upgrade Image Resolution Free",
+  description:
+    "Upscale images to higher resolution directly in your browser. Improve photo quality securely with our fast and free AI-like image upscaler.",
+  canonical: `${SITE.baseUrl}/image-upscaler`,
+  jsonLd: {
+    name: "Image Upscaler Online",
+    url: `${SITE.baseUrl}/image-upscaler`,
+    description: "Free private tool to upscale images into higher resolution.",
+  },
+};
+
 /**
  * Global safe fallback for page SEO.
  * Prevents "Cannot read properties of undefined" crashes.

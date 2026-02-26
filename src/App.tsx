@@ -49,6 +49,7 @@ export const EditPdfLoader = () => import("./pages/EditPdf");
 export const RemoveMetadataFromPdfLoader = () => import("./pages/RemoveMetadataFromPdf");
 export const JpgToPdfLoader = () => import("./pages/JpgToPdf");
 export const CompressTo50kbLoader = () => import("./pages/CompressTo50kb");
+export const ImageUpscalerLoader = () => import("./pages/ImageUpscaler");
 
 const CompressPdfTo200kb = lazy(CompressPdfTo200kbLoader);
 const PdfToJpg = lazy(PdfToJpgLoader);
@@ -58,6 +59,7 @@ const EditPdf = lazy(EditPdfLoader);
 const RemoveMetadataFromPdf = lazy(RemoveMetadataFromPdfLoader);
 const JpgToPdf = lazy(JpgToPdfLoader);
 const CompressTo50kb = lazy(CompressTo50kbLoader);
+const ImageUpscaler = lazy(ImageUpscalerLoader);
 
 // ✅ Loading Fallback
 const PageFallback = () => (
@@ -136,6 +138,7 @@ const App: React.FC = () => {
               <Route path="/merge-pdf" element={<MergePdf />} />
               <Route path="/split-pdf" element={<SplitPdf />} />
               <Route path="/edit-pdf" element={<EditPdf />} />
+              <Route path="/image-upscaler" element={<ImageUpscaler />} />
             </Route>
           </Routes>
         </Suspense>
