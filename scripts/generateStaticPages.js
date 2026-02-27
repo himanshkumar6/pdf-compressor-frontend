@@ -209,6 +209,28 @@ ${selfLink}
 ${alternateLinks}
 ${xDefault}
 
+<!-- Theme Pre-Init Script (Prevents FOUC) -->
+<script>
+  (function () {
+    try {
+      var STORAGE_KEY = "theme-mode";
+      var root = document.documentElement;
+      root.classList.add("theme-preload");
+      var stored = localStorage.getItem(STORAGE_KEY);
+      var mode = stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var resolved = mode === "system" ? (prefersDark ? "dark" : "light") : mode;
+      root.classList.remove("light", "dark");
+      root.classList.add(resolved);
+      root.style.colorScheme = resolved;
+      root.dataset.themeMode = mode;
+      window.setTimeout(function () {
+        root.classList.remove("theme-preload");
+      }, 0);
+    } catch (e) {}
+  })();
+</script>
+
 <!-- ✅ Verification -->
 <meta name="yandex-verification" content="${YANDEX_VERIFICATION}" />
 <meta name="google-site-verification" content="${SITE_CONFIG.googleVerification}" />
@@ -233,7 +255,7 @@ ${buildGoogleTag()}
 
 <div id="root">
   <!-- ✅ PRE-RENDERED SEO CONTENT (Hydrated by React) -->
-  <div class="pre-rendered-seo" style="padding: 20px; max-width: 800px; margin: 0 auto; color: #333;">
+  <div class="pre-rendered-seo" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;">
     ${buildSeoContentHtml(route, meta)}
     ${buildCrawlableLinksHtml()}
   </div>
