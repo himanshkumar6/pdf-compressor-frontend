@@ -109,6 +109,13 @@ export const SEO_METADATA = {
     h1: "Free JPG to PDF Converter"
   },
 
+  // Target: "Extract Text/Format".
+  "/pdf-to-docx": {
+    title: "PDF to DOCX: Convert PDF to Word Online (Free)",
+    description: "Convert your PDF files to editable DOCX documents instantly. No sign-up required, fast and high-quality browser conversion.",
+    h1: "Free PDF to DOCX Converter"
+  },
+
   // Target: Students merging ID + Marksheet.
   "/merge-pdf": {
     title: "Merge PDF: Combine Admit Cards & Docs (Free)",

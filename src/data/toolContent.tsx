@@ -444,6 +444,56 @@ export const TOOL_CONTENT: Record<string, ToolContentItem> = {
     ],
   },
 
+  "/pdf-to-docx": {
+    intro: (
+      <div className="space-y-4">
+        <p>
+          Need to edit a PDF document but don't have the original file? Our <strong>Free PDF to DOCX Converter</strong> easily transforms your read-only PDF into an editable Microsoft Word document.
+        </p>
+        <p>
+          We use advanced document reconstruction technology to preserve your tables, fonts, formatting, and layouts exactly as they appear in the original file, saving you hours of retyping.
+        </p>
+      </div>
+    ),
+    features: [
+      {
+        title: "Retain Original Formatting",
+        desc: "Automatically preserves the layout, tables, fonts, and images of your original document.",
+      },
+      {
+        title: "Fast Cloud Conversion",
+        desc: "Utilizes a powerful cloud API to quickly convert even complex PDFs into DOCX format.",
+      },
+      {
+        title: "Secure Processing",
+        desc: "Your files are securely transmitted for conversion and deleted automatically immediately after download.",
+      },
+    ],
+    steps: [
+      { title: "Select PDF", desc: "Upload the PDF document you want to convert to Word format." },
+      { title: "Process", desc: "Our engine will carefully reconstruct the layout into a DOCX file." },
+      { title: "Download", desc: "Instantly download your fully editable Word document." },
+    ],
+    faqs: [
+      {
+        q: "Will the DOCX file look like my original PDF?",
+        a: "Yes! While no conversion is 100% perfect, our tool uses advanced algorithms to maintain paragraph formatting, tables, and images as closely as possible to the original.",
+      },
+      {
+        q: "Can I edit the text after conversion?",
+        a: "Absolutely. The resulting DOCX file is fully editable in Microsoft Word, Google Docs, or LibreOffice.",
+      },
+      {
+        q: "Are my documents kept secure?",
+        a: "Your files are uploaded securely over HTTPS solely for the conversion process and are not retained or shared on our servers.",
+      },
+      {
+        q: "How long does the conversion take?",
+        a: "Most text-based PDFs convert in seconds. Larger files with many images or pages may take a few moments longer.",
+      },
+    ],
+  },
+
   "/compress-pdf-to-100kb": {
     intro: (
       <div className="space-y-4">

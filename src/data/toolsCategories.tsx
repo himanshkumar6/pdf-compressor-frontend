@@ -75,13 +75,13 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
     description: "Transform PDFs to images, Word docs, and more.",
     icon: FileType,
     tools: [
-      // Phase 2 Placeholders (Hidden or Disabled if needed, but requested to show structure)
-      // For Phase 1, we will only show what we have or mark as "Coming Soon" if allowed.
-      // User said "Build ONLY tools that have clear intent".
-      // I will put placeholders but maybe filter them out in UI if they don't exist yet, 
-      // OR mostly likely the user wants the structure ready.
-      // Since I can't link to non-existent routes, I will keep this list empty-ish or use existing tools if any match.
-      // Currently we have NO convert tools. 
+      {
+        path: "/pdf-to-docx",
+        label: "PDF to DOCX",
+        desc: "Convert PDFs to editable Word documents.",
+        icon: FileType,
+        isNew: true,
+      },
     ]
   },
   {

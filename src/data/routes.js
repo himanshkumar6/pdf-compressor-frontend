@@ -30,6 +30,7 @@ export const TOOL_ROUTES = [
   "/split-pdf",
   "/edit-pdf",
   "/remove-metadata-from-pdf",
+  "/pdf-to-docx",
 ];
 
 // ✅ Blog Routes (Handled dynamically in sitemap script usually, or kept empty if not needed here)

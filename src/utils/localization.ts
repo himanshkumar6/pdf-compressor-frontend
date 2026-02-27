@@ -127,6 +127,7 @@ export const PAGE_TITLES = {
     "/merge-pdf": "Merge PDF",
     "/split-pdf": "Split PDF",
     "/edit-pdf": "Edit PDF",
+    "/pdf-to-docx": "PDF to DOCX",
     "/flipkart-label-cropper": "Flipkart Label Cropper",
     "/meesho-label-cropper": "Meesho Label Cropper",
   },

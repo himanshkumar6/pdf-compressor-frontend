@@ -147,6 +147,20 @@ export const TOOLS_REGISTRY: Tool[] = [
     isActive: true,
   },
 
+  {
+    id: "pdf-to-docx",
+    title: "PDF to DOCX",
+    slug: "/pdf-to-docx",
+    category: "Convert",
+    icon: FileType,
+    shortDescription: "Convert PDF documents into editable Word format.",
+    metaTitle: "PDF to DOCX Converter Online | High Quality & Free",
+    metaDescription:
+      "Convert PDF to DOCX format online. Easily edit your PDF files by turning them into formatted Microsoft Word documents instantly.",
+    isActive: true,
+    isNew: true,
+  },
+
   // 🟢 PDF EDITING TOOLS
   {
     id: "edit-pdf",
