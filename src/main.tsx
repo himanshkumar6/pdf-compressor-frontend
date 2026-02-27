@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./context/ThemeProvider";
 import "./index.css"
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next"
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Root element not found");
@@ -42,6 +43,7 @@ ReactDOM.createRoot(rootElement).render(
             },
           }}
         />
+        <Analytics />
         <App />
       </BrowserRouter>
     </ThemeProvider>

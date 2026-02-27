@@ -34,6 +34,7 @@ const TermsConditions = lazy(TermsConditionsLoader);
 const Disclaimer = lazy(DisclaimerLoader);
 const CookiesPolicy = lazy(CookiesPolicyLoader);
 const Sitemap = lazy(SitemapLoader);
+
 const Tools = lazy(ToolsLoader);
 const NotFound = lazy(NotFoundLoader);
 
@@ -100,7 +101,7 @@ const App: React.FC = () => {
 
       {/* ✅ Background */}
       <ParticlesBG />
-
+      
       {/* ✅ Focal Layer */}
       <div className="relative z-10 flex min-h-screen flex-col">
         <Suspense fallback={<PageFallback />}>
