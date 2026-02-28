@@ -74,7 +74,7 @@ const Blog: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6 py-16">
+    <div className="max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6 py-12 md:py-16">
       {/* ✅ SEO */}
       <SEO
         title={seo.title}
@@ -93,7 +93,7 @@ const Blog: React.FC = () => {
 
       {/* Header */}
       <div className="text-center mb-10 md:mb-14">
-        <h1 className="text-3xl md:text-5xl font-bold text-white">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3">
           Blogs <span className="text-cyan-400">Section</span>
         </h1>
         <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
@@ -120,7 +120,7 @@ const Blog: React.FC = () => {
             </Link>
 
             {/* Body */}
-            <div className="p-6">
+            <div className="p-4 sm:p-5 md:p-6 flex flex-col h-[calc(100%-12rem)]">
               <p className="text-xs text-gray-500 mb-2">{post.date}</p>
 
               <h2 className="text-lg font-bold text-white mb-3 leading-snug">
@@ -137,14 +137,16 @@ const Blog: React.FC = () => {
               </p>
 
               {/* ✅ Premium CTA button */}
-              <Link
-                to={`/blog/${post.slug}`}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl 
-                bg-white/5 border border-white/10 text-cyan-200 font-black text-sm
-                hover:bg-white/10 hover:border-cyan-500/30 transition"
-              >
-                Read Article <span className="text-cyan-300">→</span>
-              </Link>
+              <div className="mt-auto pt-4">
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="inline-flex justify-center items-center gap-2 px-4 py-2 sm:px-5 rounded-2xl 
+                  bg-white/5 border border-white/10 text-cyan-200 font-black text-sm
+                  hover:bg-white/10 hover:border-cyan-500/30 transition min-h-[48px] w-full sm:w-auto"
+                >
+                  Read Article <span className="text-cyan-300">→</span>
+                </Link>
+              </div>
             </div>
           </article>
         ))}

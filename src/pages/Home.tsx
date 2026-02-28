@@ -20,7 +20,7 @@ const FAQ = lazy(() => import("../components/FAQ")); // Fixed: FAQ is now proper
 const Home: React.FC = () => {
   const seo = PAGES_SEO["/"];
   const canonical = seo.canonical;
-  
+
   // Fetch the latest 3 posts for the homepage
   const latestPosts = getLatestBlogPosts(3);
 
@@ -65,24 +65,24 @@ const Home: React.FC = () => {
         </section>
 
         {/* 🌟 NEW: 3-Step Guide (Improves Text-to-HTML ratio for AdSense) */}
-        <section className="mb-14 max-w-4xl mx-auto premium-card rounded-[2.5rem] p-6 md:p-10 text-center">
-          <h2 className="text-2xl md:text-3xl font-black text-white mb-8">
+        <section className="mb-14 max-w-4xl mx-auto premium-card rounded-[2.5rem] p-4 sm:p-6 md:p-10 lg:p-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-8">
             How to Compress Your PDF in 3 Simple Steps
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-400">
             <div>
               <span className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 font-bold mx-auto mb-4 text-lg">1</span>
-              <strong className="text-white block mb-2 text-lg">Upload</strong> 
+              <strong className="text-white block mb-2 text-lg">Upload</strong>
               Select your document securely from your device. No server uploads.
             </div>
             <div>
               <span className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 font-bold mx-auto mb-4 text-lg">2</span>
-              <strong className="text-white block mb-2 text-lg">Process</strong> 
+              <strong className="text-white block mb-2 text-lg">Process</strong>
               Our local WebAssembly engine optimizes the file size instantly.
             </div>
             <div>
               <span className="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/10 text-cyan-400 font-bold mx-auto mb-4 text-lg">3</span>
-              <strong className="text-white block mb-2 text-lg">Download</strong> 
+              <strong className="text-white block mb-2 text-lg">Download</strong>
               Get your crystal-clear, portal-ready document in seconds.
             </div>
           </div>
@@ -90,8 +90,8 @@ const Home: React.FC = () => {
 
         {/* 🌟 EXPANDED: Internal Links Card (Boosts SEO for all tools) */}
         <section className="max-w-5xl mx-auto mb-14">
-          <div className="premium-card rounded-[2.5rem] p-6 md:p-10">
-            <h2 className="text-white text-2xl md:text-3xl font-black">
+          <div className="premium-card rounded-[2.5rem] p-4 sm:p-6 md:p-10 lg:p-12">
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
               Explore Our Free PDF Tools
             </h2>
             <p className="text-gray-400 mt-3">
@@ -100,42 +100,42 @@ const Home: React.FC = () => {
             </p>
 
             <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Link to="/compress-pdf-to-200kb" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/compress-pdf-to-200kb" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   Compress to <span className="text-cyan-300">200KB</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">Perfect for SSC, UPSC & official forms.</p>
               </Link>
 
-              <Link to="/compress-pdf-to-100kb" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/compress-pdf-to-100kb" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   Compress to <span className="text-cyan-300">100KB</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">Optimized for NTA, NEET & signature uploads.</p>
               </Link>
 
-              <Link to="/jpg-to-pdf" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/jpg-to-pdf" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   JPG to <span className="text-cyan-300">PDF</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">Convert scanned photos into proper PDFs.</p>
               </Link>
 
-              <Link to="/merge-pdf" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/merge-pdf" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   Merge <span className="text-cyan-300">PDF</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">Combine multiple certificates into one file.</p>
               </Link>
 
-              <Link to="/remove-metadata-from-pdf" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/remove-metadata-from-pdf" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   Remove <span className="text-cyan-300">Metadata</span>
                 </p>
                 <p className="text-gray-500 text-sm mt-1">Clean hidden tracking data before uploading.</p>
               </Link>
 
-              <Link to="/split-pdf" className="premium-card rounded-3xl p-5 border border-transparent hover:border-cyan-500/30 transition-all">
+              <Link to="/split-pdf" className="premium-card rounded-3xl p-4 md:p-5 border border-transparent hover:border-cyan-500/30 transition-all min-h-[48px] min-w-[48px]">
                 <p className="text-white font-black text-lg">
                   Split <span className="text-cyan-300">PDF</span>
                 </p>
@@ -149,7 +149,7 @@ const Home: React.FC = () => {
         <section id="how-it-works" className="pt-10 pb-18">
           <div className="section-divider" />
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-5">
               Why I built this tool?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
             ].map((item, i) => (
               <div
                 key={i}
-                className="text-center p-6 md:p-8 premium-card rounded-3xl"
+                className="text-center p-4 sm:p-6 md:p-8 premium-card rounded-3xl"
               >
                 <div className="inline-flex p-4 bg-cyan-500/10 rounded-2xl mb-6">
                   {item.icon}
@@ -199,7 +199,7 @@ const Home: React.FC = () => {
         <section className="pt-10 pb-10">
           <div className="section-divider" />
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-4">
               Latest Upload Guides & Tips
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
@@ -209,10 +209,10 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
-              <Link 
-                key={post.slug} 
-                to={`/blog/${post.slug}`} 
-                className="premium-card p-6 rounded-[2rem] border border-transparent hover:border-cyan-500/30 transition-all flex flex-col h-full"
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="premium-card p-4 sm:p-6 rounded-[2rem] border border-transparent hover:border-cyan-500/30 transition-all flex flex-col h-full min-h-[48px]"
               >
                 <h3 className="text-white font-bold text-xl mb-3 leading-snug">
                   {post.title}
@@ -226,11 +226,11 @@ const Home: React.FC = () => {
               </Link>
             ))}
           </div>
-          
+
           <div className="text-center mt-8">
-             <Link to="/blog" className="text-gray-400 hover:text-white underline underline-offset-4 transition-colors">
-               View all articles
-             </Link>
+            <Link to="/blog" className="text-gray-400 hover:text-white underline underline-offset-4 transition-colors">
+              View all articles
+            </Link>
           </div>
         </section>
 

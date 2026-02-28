@@ -24,8 +24,8 @@ import {
 const UniqueSEOContent = () => (
   <div className="space-y-12 text-gray-700 dark:text-gray-300 mt-16 max-w-5xl mx-auto">
     {/* Hero Section Content */}
-    <section className="bg-(--card) p-8 md:p-12 rounded-(--surface-radius) border border-(--border) shadow-theme backdrop-blur-sm theme-transition relative overflow-hidden">
-      <h2 className="text-2xl md:text-4xl font-black text-(--textHeading) mb-6 leading-tight tracking-tight uppercase italic">
+    <section className="bg-(--card) p-5 sm:p-8 md:p-12 rounded-(--surface-radius) border border-(--border) shadow-theme backdrop-blur-sm theme-transition relative overflow-hidden">
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-(--textHeading) mb-4 md:mb-6 leading-tight tracking-tight uppercase italic px-2 sm:px-0">
         Professional <span className="text-blue-500">PDF Merger</span>: Combine
         Files Instantly
       </h2>
@@ -38,7 +38,7 @@ const UniqueSEOContent = () => (
         <strong>linux merge pdf</strong> solution, our browser-based engine
         handles everything locally with enterprise-grade security.
       </p>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 sm:gap-3 px-2 sm:px-0 mt-4 md:mt-0">
         {[
           "Secure SSL",
           "No File Limit",
@@ -47,7 +47,7 @@ const UniqueSEOContent = () => (
         ].map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-700 dark:text-blue-400 shadow-sm"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-blue-700 dark:text-blue-400 shadow-sm whitespace-nowrap"
           >
             {tag}
           </span>
@@ -79,10 +79,10 @@ const UniqueSEOContent = () => (
       ].map((item, i) => (
         <div
           key={i}
-          className="p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-2 transition-all duration-300"
+          className="p-5 sm:p-6 md:p-8 bg-(--card) rounded-[1.5rem] md:rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-2 transition-all duration-300"
         >
           <div
-            className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-6 shadow-inner`}
+            className={`w-12 h-12 md:w-14 md:h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-inner`}
           >
             <item.icon className="w-7 h-7" />
           </div>
@@ -124,22 +124,22 @@ const UniqueSEOContent = () => (
         ].map((faq, i) => (
           <div
             key={i}
-            className="p-8 
+            className="p-5 sm:p-6 md:p-8 
   bg-(--card) 
-  rounded-(--surface-radius) 
+  rounded-[1.5rem] md:rounded-(--surface-radius) 
   border border-(--border) 
   shadow-theme-sm 
   theme-transition 
   group"
           >
-            <h4 className="font-bold text-(--textHeading) mb-3 flex items-start gap-4 text-xl group-hover:text-blue-500 transition-colors italic">
+            <h4 className="font-bold text-(--textHeading) mb-3 flex items-start gap-3 sm:gap-4 text-base sm:text-lg md:text-xl group-hover:text-blue-500 transition-colors italic">
               <span className="text-blue-500 font-black shrink-0 uppercase">
                 Q.
               </span>{" "}
               {faq.q}
             </h4>
             <p
-              className="text-base text-(--textBody) leading-relaxed pl-9 border-l-4 border-blue-500/10"
+              className="text-sm sm:text-base text-(--textBody) leading-relaxed pl-7 sm:pl-9 border-l-4 border-blue-500/10"
               dangerouslySetInnerHTML={{ __html: faq.a }}
             />
           </div>
@@ -227,20 +227,20 @@ const MergePdfContent: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="max-w-2xl mx-auto px-4">
+      <div className="max-w-2xl mx-auto px-4 w-full">
         {/* Upload Area */}
         <div
           className="
         relative
         flex flex-col items-center justify-center text-center
-        min-h-55 md:min-h-65
-        p-6 md:p-8
+        min-h-[200px] md:min-h-[260px]
+        p-6 md:p-8 w-full
         border-2 border-dashed border-(--border)
         bg-(--card)
         hover:border-blue-500/40
         hover:bg-blue-500/5
         transition-all
-        rounded-2xl
+        rounded-2xl md:rounded-[2rem]
         cursor-pointer
         group
         theme-transition
@@ -355,21 +355,23 @@ const MergePdfContent: React.FC = () => {
           <button
             onClick={mergePdfs}
             disabled={isProcessing}
-            className="w-full py-6 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-lg shadow-xl shadow-blue-900/20 transition-all flex items-center justify-center gap-3 disabled:opacity-50 uppercase tracking-widest italic"
+            className="w-full py-4 sm:py-5 md:py-6 rounded-2xl md:rounded-[1.5rem] bg-blue-600 hover:bg-blue-500 text-white font-black text-base sm:text-lg min-h-[52px] shadow-xl shadow-blue-900/20 transition-all flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 uppercase tracking-widest italic"
           >
             {isProcessing ? (
               <>
-                <Loader2 className="w-6 h-6 animate-spin" /> Processing...
+                <Loader2 className="w-5 h-5 sm:w-6 sm:h-6 animate-spin" /> Processing...
               </>
             ) : (
               <>
-                <Download className="w-6 h-6" /> Merge & Download
+                <Download className="w-5 h-5 sm:w-6 sm:h-6" /> Merge & Download
               </>
             )}
           </button>
         )}
       </div>
-      <UniqueSEOContent />
+      <div className="w-full px-4 sm:px-6">
+        <UniqueSEOContent />
+      </div>
     </div>
   );
 };

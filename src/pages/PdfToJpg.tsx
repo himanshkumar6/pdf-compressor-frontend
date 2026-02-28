@@ -25,8 +25,8 @@ type Quality = "low" | "medium" | "high";
 const UniqueSEOContent = () => (
   <div className="space-y-12 text-gray-700 dark:text-gray-300 my-16">
     {/* Hero Section Content */}
-    <section className="bg-(--card) p-6 md:p-8 rounded-(--surface-radius) border border-(--border) shadow-theme-sm backdrop-blur-sm theme-transition">
-      <h2 className="text-xl md:text-3xl font-bold text-(--textHeading) mb-4 leading-tight">
+    <section className="bg-(--card) p-4 sm:p-6 md:p-8 rounded-(--surface-radius) border border-(--border) shadow-theme-sm backdrop-blur-sm theme-transition">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-(--textHeading) mb-3 md:mb-4 leading-tight">
         Professional <span className="text-purple-500 italic">PDF to JPG</span>{" "}
         Converter Online
       </h2>
@@ -39,7 +39,7 @@ const UniqueSEOContent = () => (
         <strong>client-side tool</strong>, meaning your sensitive PDFs never
         touch any server.
       </p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
         {[
           "UPSC Optimized",
           "High DPI",
@@ -48,7 +48,7 @@ const UniqueSEOContent = () => (
         ].map((tag) => (
           <span
             key={tag}
-            className="px-3 md:px-4 py-1.5 bg-purple-50 dark:bg-purple-500/10 border border-purple-100 dark:border-purple-500/20 rounded-full text-[9px] md:text-[10px] font-semibold tracking-wide text-purple-700 dark:text-purple-400 shadow-sm"
+            className="px-3 md:px-4 py-1.5 md:py-2 bg-purple-50 dark:bg-purple-500/10 border border-purple-100 dark:border-purple-500/20 rounded-full text-[9px] sm:text-[10px] font-semibold tracking-wide text-purple-700 dark:text-purple-400 shadow-sm whitespace-nowrap"
           >
             {tag}
           </span>
@@ -80,17 +80,17 @@ const UniqueSEOContent = () => (
       ].map((item, i) => (
         <div
           key={i}
-          className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-1 transition-transform duration-300"
+          className="p-5 sm:p-6 md:p-8 bg-(--card) rounded-[1.5rem] md:rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-1 transition-transform duration-300"
         >
           <div
-            className={`w-12 h-12 md:w-14 md:h-14 ${item.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6`}
+            className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 md:mb-6`}
           >
-            <item.icon className="w-6 h-6 md:w-7 md:h-7" />
+            <item.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
           </div>
-          <h3 className="font-bold text-(--textHeading) mb-2 md:mb-3 tracking-tight text-sm md:text-base">
+          <h3 className="font-bold text-(--textHeading) mb-2 md:mb-3 tracking-tight text-sm sm:text-base md:text-lg">
             {item.step}
           </h3>
-          <p className="text-sm text-(--textBody) leading-relaxed">
+          <p className="text-sm md:text-base text-(--textBody) leading-relaxed">
             {item.desc}
           </p>
         </div>
@@ -120,15 +120,15 @@ const UniqueSEOContent = () => (
         ].map((faq, i) => (
           <div
             key={i}
-            className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition"
+            className="p-4 sm:p-5 md:p-8 bg-(--card) rounded-[1.5rem] md:rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition"
           >
-            <h4 className="font-bold text-(--textHeading) mb-2 md:mb-3 flex items-start gap-3 md:gap-4 text-base md:text-lg">
+            <h4 className="font-bold text-(--textHeading) mb-2 md:mb-3 flex items-start gap-3 text-sm sm:text-base md:text-lg">
               <span className="text-purple-600 dark:text-purple-500 shrink-0">
                 Q.
               </span>{" "}
               {faq.q}
             </h4>
-            <p className="text-sm md:text-base text-(--textBody) leading-relaxed pl-6 md:pl-10 border-l-2 border-purple-500/20">
+            <p className="text-sm md:text-base text-(--textBody) leading-relaxed pl-7 sm:pl-8 md:pl-10 border-l-2 border-purple-500/20">
               {faq.a}
             </p>
           </div>
@@ -253,13 +253,13 @@ const PdfToJpgContent: React.FC = () => {
         {!file ? (
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="py-12 md:py-16 
+            className="py-12 md:py-16 px-4 md:px-8 
   border-2 border-dashed border-(--border) 
-  rounded-xl md:rounded-4xl 
+  rounded-[1.5rem] md:rounded-4xl 
   bg-(--card) 
   cursor-pointer 
   hover:border-purple-500/50 
-  hover:bg-purple-500/5 
+  hover:bg-purple-500/5 min-h-[200px] md:min-h-[260px] flex flex-col items-center justify-center
   transition-all text-center group"
           >
             <Upload className="w-12 h-12 md:w-16 md:h-16 text-purple-500 mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform" />
@@ -302,7 +302,7 @@ const PdfToJpgContent: React.FC = () => {
             {!pages.length && !isProcessing && (
               <button
                 onClick={convertPdfToImages}
-                className="w-full py-4 md:py-6 rounded-2xl md:rounded-3xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-base md:text-lg shadow-lg shadow-purple-500/20 transition-all flex items-center justify-center gap-3 tracking-tight"
+                className="w-full py-4 sm:py-5 md:py-6 rounded-2xl md:rounded-3xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-base md:text-lg min-h-[52px] shadow-lg shadow-purple-500/20 transition-all flex items-center justify-center gap-2 sm:gap-3 tracking-tight"
               >
                 <ImageIcon className="w-5 h-5 md:w-6 md:h-6" /> Convert PDF to
                 JPG

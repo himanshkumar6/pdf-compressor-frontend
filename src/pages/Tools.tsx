@@ -22,7 +22,7 @@ const Tools: React.FC = () => {
   }, []);
 
   return (
-    <div className="pt-32 pb-24 max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6">
+    <div className="pt-24 md:pt-32 pb-16 md:pb-24 max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6">
       <SEO
         title={seo.title}
         description={seo.description}
@@ -31,8 +31,8 @@ const Tools: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <div className="mb-16 animate-fade-in-up">
-        <h1 className="text-3xl sm:text-5xl font-bold text-[var(--text)] mb-6 flex items-center gap-3 tracking-tight">
+      <div className="mb-12 md:mb-16 animate-fade-in-up">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[var(--text)] mb-4 md:mb-6 flex items-center gap-3 tracking-tight">
           <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
             <Wrench className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-500" />
           </div>
@@ -72,9 +72,9 @@ const Tools: React.FC = () => {
                     <Link
                       key={tool.slug}
                       to={tool.slug}
-                      className="group relative flex flex-col p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] 
+                      className="group relative flex flex-col p-4 sm:p-5 md:p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] 
                                  hover:border-cyan-500/40 hover:bg-[var(--card-hover)] hover:shadow-lg hover:shadow-cyan-500/5
-                                 transition-all duration-300 touch-manipulation"
+                                 transition-all duration-300 touch-manipulation min-h-[48px] min-w-[48px]"
                     >
                       {/* Hover Glow */}
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/5 group-hover:to-transparent transition-all duration-500" />
@@ -117,11 +117,11 @@ const Tools: React.FC = () => {
 
       {/* 🌟 NEW: Content Section for AdSense (Text-Heavy) */}
       <section className="animate-fade-in-up" style={{ animationDelay: "450ms" }}>
-        <div className="premium-card rounded-3xl p-8 md:p-12">
-          <h2 className="text-2xl md:text-3xl font-black text-white mb-6">
+        <div className="premium-card rounded-3xl p-4 sm:p-6 md:p-10 lg:p-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white mb-6">
             Why Use Our Secure PDF Tools?
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             <div>
               <Shield className="w-8 h-8 text-cyan-400 mb-4" />
@@ -147,9 +147,9 @@ const Tools: React.FC = () => {
           </div>
 
           {/* Directory FAQ to boost search intent */}
-          <div className="bg-[var(--bg)] rounded-2xl p-6 md:p-8 border border-[var(--border)]">
-            <h3 className="text-xl font-bold text-white mb-6">Frequently Asked Questions</h3>
-            
+          <div className="bg-[var(--bg)] rounded-2xl p-4 sm:p-6 md:p-8 border border-[var(--border)]">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-6">Frequently Asked Questions</h3>
+
             <div className="space-y-6">
               <div>
                 <h4 className="text-cyan-400 font-semibold mb-1">Do I need to install any software?</h4>

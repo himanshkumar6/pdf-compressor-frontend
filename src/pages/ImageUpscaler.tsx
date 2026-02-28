@@ -12,17 +12,17 @@ import ToolLandingPage from "../components/ToolLandingPage";
  */
 const UniqueSEOContent = () => (
   <div className="space-y-8 md:space-y-12 text-gray-600 dark:text-gray-300">
-    <section className="bg-(--card) p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] border border-(--border) shadow-xl backdrop-blur-md relative overflow-hidden">
+    <section className="bg-(--card) p-4 sm:p-6 md:p-12 rounded-[1.5rem] md:rounded-[2rem] border border-(--border) shadow-xl backdrop-blur-md relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 md:w-80 md:h-80 bg-cyan-500/10 rounded-full blur-[80px] md:blur-[100px] -z-10" />
-      <h2 className="text-2xl md:text-4xl font-black text-(--textHeading) mb-4 md:mb-6 tracking-tighter">
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-(--textHeading) mb-3 md:mb-6 tracking-tighter">
         Professional <span className="text-cyan-500 italic">4K Reconstruction</span>
       </h2>
       <p className="leading-relaxed mb-6 md:mb-8 text-sm md:text-xl text-(--textBody) max-w-2xl font-medium opacity-80">
         Stop settling for pixelated artifacts. Our neural-engine upscaler reconstructs lost detail locally in your browser.
       </p>
-      <div className="flex flex-wrap gap-2 md:gap-3">
+      <div className="flex flex-wrap gap-2 md:gap-3 mt-4 md:mt-0">
         {["Private GPU Engine", "Zero Latency", "HD Upscaling", "Secure Canvas"].map((tag) => (
-          <span key={tag} className="px-3 py-1.5 md:px-5 md:py-2 bg-cyan-500/5 border border-cyan-500/20 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black tracking-widest text-cyan-600 dark:text-cyan-400 uppercase shadow-sm">
+          <span key={tag} className="px-3 py-1.5 md:px-5 md:py-2 bg-cyan-500/5 border border-cyan-500/20 rounded-xl md:rounded-2xl text-[9px] sm:text-[10px] md:text-xs font-black tracking-widest text-cyan-600 dark:text-cyan-400 uppercase shadow-sm whitespace-nowrap">
             {tag}
           </span>
         ))}
@@ -36,11 +36,11 @@ const UniqueSEOContent = () => (
         { title: "Client-Side Speed", desc: "No queues. No server wait times. 100% of the work is done by your hardware.", icon: Zap, color: "text-amber-500 bg-amber-500/10" },
         { title: "Privacy First", desc: "Your data stays on your machine. We never see or store your images.", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-500/10" },
       ].map((item, i) => (
-        <div key={i} className="p-6 md:p-8 bg-(--card) rounded-2xl md:rounded-[1.5rem] border border-(--border) hover:border-cyan-500/30 transition-all duration-500 group">
-          <div className={`w-12 h-12 md:w-14 md:h-14 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform`}>
-            <item.icon className="w-6 h-6 md:w-7 md:h-7" />
+        <div key={i} className="p-5 sm:p-6 md:p-8 bg-(--card) rounded-2xl md:rounded-[1.5rem] border border-(--border) hover:border-cyan-500/30 transition-all duration-500 group">
+          <div className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform`}>
+            <item.icon className="w-5 h-5 sm:w-6 h-6 md:w-7 md:h-7" />
           </div>
-          <h3 className="font-bold text-(--textHeading) mb-2 md:mb-3 text-base md:text-lg">{item.title}</h3>
+          <h3 className="font-bold text-(--textHeading) mb-2 md:mb-3 text-sm sm:text-base md:text-lg">{item.title}</h3>
           <p className="text-sm text-(--textBody) leading-relaxed opacity-70">{item.desc}</p>
         </div>
       ))}
@@ -396,7 +396,7 @@ const LocalImageUpscalerTool = () => {
                     whileTap={{ scale: 0.98 }}
                     onClick={processImage}
                     disabled={isProcessing}
-                    className="bg-cyan-500 text-black font-black rounded-2xl flex items-center justify-center gap-2 md:gap-3 transition-all relative overflow-hidden group h-14 md:h-[60px] disabled:opacity-50 disabled:cursor-not-allowed w-full px-2"
+                    className="bg-cyan-500 text-black font-black rounded-2xl flex items-center justify-center gap-2 md:gap-3 transition-all relative overflow-hidden group min-h-[52px] md:h-[60px] disabled:opacity-50 disabled:cursor-not-allowed w-full px-2"
                   >
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-[100%] transition-transform duration-1000" />
@@ -428,7 +428,7 @@ const LocalImageUpscalerTool = () => {
                   {/* Reset/Try Another Button */}
                   <button
                     onClick={handleReset}
-                    className="bg-white/5 border border-white/10 text-white font-black h-14 md:h-[60px] rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md w-full px-2"
+                    className="bg-white/5 border border-white/10 text-white font-black min-h-[52px] md:h-[60px] rounded-2xl flex items-center justify-center gap-2 md:gap-3 hover:bg-white/10 hover:border-white/30 transition-all backdrop-blur-md w-full px-2"
                   >
                     <RefreshCcw className="w-4 h-4 md:w-5 md:h-5 shrink-0" />
                     <span className="uppercase tracking-widest text-[11px] md:text-sm truncate">Try Another</span>

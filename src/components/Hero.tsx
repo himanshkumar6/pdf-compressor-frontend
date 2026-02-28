@@ -144,7 +144,7 @@ const Hero: React.FC = () => {
           ].map((item, i) => (
             <div
               key={i}
-              className="group premium-card rounded-3xl p-6"
+              className="group premium-card rounded-[2rem] p-4 sm:p-6 md:p-8 theme-transition"
             >
               <div className="inline-flex items-center gap-2 px-3 py-2 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 mb-4">
                 {item.icon}

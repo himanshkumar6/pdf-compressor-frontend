@@ -13,8 +13,8 @@ const UniqueSEOContent = () => (
   <div className="space-y-10 md:space-y-12 text-(--textBody)">
 
     {/* Hero */}
-    <section className="bg-(--card) p-6 md:p-8 rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition">
-      <h2 className="text-xl md:text-3xl font-bold text-(--textHeading) mb-4 leading-snug">
+    <section className="bg-(--card) p-4 sm:p-6 md:p-8 rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-(--textHeading) mb-3 md:mb-4 leading-snug">
         Free <span className="text-cyan-600 dark:text-cyan-400 italic">PDF Editor Online</span> - No Installation Required
       </h2>
 
@@ -22,7 +22,7 @@ const UniqueSEOContent = () => (
         Searching for a way to modify your documents without heavy software? Whether you need to <strong>edit PDF in Firefox</strong>, Chrome, or Safari, our tool provides a seamless experience. It's the perfect solution for users looking to <strong>edit PDF documents in Linux</strong> or Windows directly through their favorite web browser.
       </p>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
         {['Firefox', 'Chrome', 'Linux', 'macOS', 'Windows'].map((tag) => (
           <span
             key={tag}
@@ -58,10 +58,10 @@ const UniqueSEOContent = () => (
       ].map((item, i) => (
         <div
           key={i}
-          className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition"
+          className="p-4 sm:p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-1 transition-all"
         >
-          <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center mb-4`}>
-            <item.icon className="w-6 h-6" />
+          <div className={`w-10 h-10 sm:w-12 sm:h-12 ${item.color} rounded-xl flex items-center justify-center mb-3 sm:mb-4`}>
+            <item.icon className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
 
           <h3 className="font-semibold text-(--textHeading) mb-2 text-base md:text-lg leading-snug">
@@ -100,9 +100,9 @@ const UniqueSEOContent = () => (
         ].map((faq, i) => (
           <div
             key={i}
-            className="p-6 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition"
+            className="p-4 sm:p-5 md:p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition"
           >
-            <h4 className="font-semibold text-(--textHeading) mb-2 flex items-start gap-3 text-base md:text-lg">
+            <h4 className="font-semibold text-(--textHeading) mb-2 flex items-start gap-2 sm:gap-3 text-sm sm:text-base md:text-lg">
               <span className="text-cyan-600 dark:text-cyan-500 shrink-0">Q.</span>
               <span dangerouslySetInnerHTML={{ __html: faq.q }} />
             </h4>

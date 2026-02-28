@@ -49,7 +49,7 @@ const UniqueSEOContent = memo(() => (
         <strong>convert PDF documents to editable Microsoft Word files</strong>. We preserve your layout,
         fonts, and images so you can start editing immediately. Highly accurate, fast, and completely free.
       </p>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 sm:gap-3 px-2 sm:px-0">
         {[
           "100% Free",
           "High Accuracy",
@@ -58,7 +58,7 @@ const UniqueSEOContent = memo(() => (
         ].map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-full text-[10px] font-black uppercase tracking-widest text-blue-700 dark:text-blue-400 shadow-sm"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-blue-700 dark:text-blue-400 shadow-sm whitespace-nowrap"
           >
             {tag}
           </span>
@@ -89,10 +89,10 @@ const UniqueSEOContent = memo(() => (
       ].map((item, i) => (
         <div
           key={i}
-          className="p-8 bg-(--card) rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-2 transition-all duration-300"
+          className="p-5 sm:p-6 md:p-8 bg-(--card) rounded-[1.5rem] md:rounded-(--surface-radius) border border-(--border) shadow-theme-sm theme-transition hover:-translate-y-1 transition-all duration-300"
         >
           <div
-            className={`w-14 h-14 ${item.color} rounded-2xl flex items-center justify-center mb-6 shadow-inner`}
+            className={`w-12 h-12 md:w-14 md:h-14 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-inner`}
           >
             <item.icon className="w-7 h-7" />
           </div>
@@ -164,10 +164,10 @@ const MagneticUpload = memo(({
         onClick={onFileDrop}
         className={`
           flex flex-col items-center justify-center text-center
-          min-h-55 md:min-h-65 p-6 md:p-8
+          min-h-[200px] md:min-h-[260px] p-6 md:p-8 w-full
           border-2 border-dashed 
           ${isDraggingOver ? "border-blue-500 bg-blue-500/10" : "border-(--border) bg-(--card)"}
-          rounded-2xl cursor-pointer transition-all
+          rounded-2xl md:rounded-[2rem] cursor-pointer transition-all
         `}
       >
         {hiddenInput}
@@ -197,7 +197,7 @@ const MagneticUpload = memo(({
       whileTap={{ scale: 0.98 }}
       className={`
         relative flex flex-col items-center justify-center text-center
-        min-h-65 p-8 border-2 border-dashed rounded-2xl cursor-pointer
+        min-h-[200px] md:min-h-[260px] p-6 md:p-8 w-full border-2 border-dashed rounded-2xl md:rounded-[2rem] cursor-pointer
         overflow-hidden transition-colors duration-300
         ${isDraggingOver ? "border-blue-400" : "border-blue-500/30 hover:border-blue-500/60"}
       `}
@@ -501,7 +501,7 @@ const PdfToDocxContent: React.FC = () => {
                   onClick={convertPdf}
                   whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(37, 99, 235, 0.3)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden w-full py-6 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-lg shadow-xl shadow-blue-900/20 transition-all flex items-center justify-center gap-3 uppercase tracking-widest italic group"
+                  className="relative overflow-hidden w-full py-4 sm:py-5 md:py-6 rounded-2xl md:rounded-[1.5rem] bg-blue-600 hover:bg-blue-500 text-white font-black text-base sm:text-lg min-h-[52px] shadow-xl shadow-blue-900/20 transition-all flex items-center justify-center gap-2 sm:gap-3 uppercase tracking-widest italic group"
                 >
                   {/* Subtle Shimmer on Button */}
                   <motion.div

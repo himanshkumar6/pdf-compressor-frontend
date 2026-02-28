@@ -156,9 +156,9 @@ const BlogPost: React.FC = () => {
       <BreadcrumbSchema items={breadcrumbSchemaItems} />
 
       {/* ✅ HERO */}
-      <div className="max-w-6xl mx-auto px-4 pt-14 pb-10">
+      <div className="max-w-6xl mx-auto px-4 pt-10 md:pt-14 pb-8 md:pb-10">
         {/* ✅ Breadcrumb UI */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <Breadcrumbs />
         </div>
 
@@ -166,11 +166,11 @@ const BlogPost: React.FC = () => {
           ← Back to blogs
         </Link>
 
-        <h1 className="text-2xl md:text-6xl font-black text-white mt-8 leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white mt-6 md:mt-8 leading-tight">
           {post.title}
         </h1>
 
-        <div className="text-gray-500 mt-4 text-sm">
+        <div className="text-gray-500 mt-3 md:mt-4 text-sm">
           {post.date} • {post.author}
         </div>
 
@@ -196,7 +196,7 @@ const BlogPost: React.FC = () => {
           </div>
         </div>
 
-        <p className="text-gray-300 text-lg mt-8 leading-relaxed max-w-3xl">
+        <p className="text-gray-300 text-base sm:text-lg mt-6 md:mt-8 leading-relaxed max-w-3xl">
           {post.excerpt}
         </p>
       </div>
@@ -207,11 +207,11 @@ const BlogPost: React.FC = () => {
         <div>
           <article
             className="
-              prose prose-lg prose-invert max-w-none mt-10
+              prose prose-lg prose-invert max-w-none mt-8 md:mt-10
               prose-headings:text-white
-              prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:font-black prose-h2:mt-10 prose-h2:mb-4
-              prose-h3:text-xl md:prose-h3:text-2xl prose-h3:font-bold prose-h3:mt-8 prose-h3:mb-3
-              prose-p:text-gray-300 prose-p:leading-relaxed
+              prose-h2:text-xl sm:prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:font-black prose-h2:mt-8 md:prose-h2:mt-10 prose-h2:mb-4
+              prose-h3:text-lg sm:prose-h3:text-xl md:prose-h3:text-2xl prose-h3:font-bold prose-h3:mt-6 md:prose-h3:mt-8 prose-h3:mb-3
+              prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-base sm:prose-p:text-lg
               prose-strong:text-white
               prose-a:text-cyan-300 prose-a:font-bold hover:prose-a:text-cyan-200
               prose-ul:my-5 prose-ul:pl-6
@@ -229,8 +229,8 @@ const BlogPost: React.FC = () => {
           />
 
           {/* ✅ CTA */}
-          <div className="mt-14 p-8 rounded-3xl border border-gray-800 bg-gray-900/40">
-            <h2 className="text-white font-black text-2xl">
+          <div className="mt-10 md:mt-14 p-4 sm:p-6 md:p-8 rounded-[2rem] border border-gray-800 bg-gray-900/40 theme-transition">
+            <h2 className="text-white font-black text-xl sm:text-2xl">
               Compress PDF to 200KB Now
             </h2>
             <p className="text-gray-400 mt-2">
@@ -240,7 +240,7 @@ const BlogPost: React.FC = () => {
 
             <Link
               to="/compress-pdf-to-200kb"
-              className="btnPrimary inline-flex mt-6 px-6 py-3 rounded-2xl"
+              className="btnPrimary inline-flex mt-6 px-4 py-3 sm:px-6 md:py-4 rounded-2xl min-h-[48px] items-center justify-center w-full sm:w-auto"
             >
               Open PDF Compressor →
             </Link>

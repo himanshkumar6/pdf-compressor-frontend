@@ -134,16 +134,16 @@ const Footer: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-6 lg:mt-0 items-center">
               <a
                 href={getLocalizedRouteGuard(link200, lang)}
-                className="btnPrimary w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold"
+                className="btnPrimary w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold min-h-[48px] flex items-center justify-center"
               >
                 {t.btn200}
               </a>
               <a
                 href={getLocalizedRouteGuard(linkHome, lang)}
-                className="w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold border border-gray-800 text-white hover:border-cyan-500/50 hover:text-cyan-300 transition-colors"
+                className="w-full sm:w-auto text-center rounded-2xl px-5 py-3 text-sm font-semibold border border-gray-800 text-white hover:border-cyan-500/50 hover:text-cyan-300 transition-colors min-h-[48px] flex items-center justify-center"
               >
                 {t.btnHome}
               </a>
@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
             <p className="text-gray-500 text-sm leading-relaxed mt-4 max-w-md">
               {t.desc}
             </p>
-            
+
             {/* Direct Trust Signal for AdSense */}
             <a href="mailto:support@compresspdfto200kb.online" className="inline-block mt-3 text-sm text-cyan-500 hover:text-cyan-400 transition-colors">
               support@compresspdfto200kb.online
@@ -245,12 +245,12 @@ const Footer: React.FC = () => {
                 ))}
               </ul>
             </div>
-            
+
           </div>
         </div>
 
         {/* 🔻 Bottom bar */}
-        <div className="py-6 border-t border-gray-900 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+        <div className="py-6 border-t border-gray-900 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600 text-center md:text-left">
           <p>{t.bottom.rights}</p>
 
           <div className="flex items-center gap-2">

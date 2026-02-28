@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 sm:mb-6 tracking-tight"
         >
           Get in <span className="text-cyan-400">Touch</span>
         </motion.h1>
@@ -144,7 +144,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
         >
           Have questions about our PDF tools? Found a bug?
           <br className="hidden md:block" />
@@ -161,8 +161,8 @@ const Contact: React.FC = () => {
           className="space-y-6 lg:col-span-1"
         >
           {/* Card 1: Direct Support */}
-          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
-            <div className="flex flex-col gap-5">
+          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 md:p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
+            <div className="flex flex-col gap-4 sm:gap-5">
               <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-gray-700">
                 <Mail className="w-6 h-6 md:w-7 md:h-7 text-cyan-400" />
               </div>
@@ -183,7 +183,7 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Card 2: Location */}
-          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
+          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 md:p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
             <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-700">
               <MapPin className="w-6 h-6 md:w-7 md:h-7 text-cyan-400" />
             </div>
@@ -211,7 +211,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="lg:col-span-2"
         >
-          <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden">
+          <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-4 sm:p-6 md:p-10 lg:p-12 shadow-2xl relative overflow-hidden theme-transition">
             {/* Background Gradient Blob */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
@@ -338,7 +338,7 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
+                    className="w-full min-h-[48px] bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 

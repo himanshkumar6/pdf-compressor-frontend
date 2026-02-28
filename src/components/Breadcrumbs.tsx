@@ -72,8 +72,8 @@ export default function Breadcrumbs() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
-      <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-400 mb-5">
-        <Link to={ROUTE_MAP.en.home}>
+      <nav className="flex flex-wrap items-center gap-x-2 gap-y-2 text-xs sm:text-sm text-gray-400 mb-5">
+        <Link to={ROUTE_MAP.en.home} className="p-1 -ml-1 flex items-center justify-center">
           <Home className="w-4 h-4 text-gray-500 hover:text-cyan-400 transition-colors" />
         </Link>
 
@@ -81,16 +81,16 @@ export default function Breadcrumbs() {
           const last = idx === crumbs.length - 1;
           return (
             <React.Fragment key={idx}>
-              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <ChevronRight className="w-4 h-4 text-gray-600 shrink-0" />
               {!last && c.to ? (
                 <Link
                   to={c.to}
-                  className="hover:text-cyan-300 transition font-semibold"
+                  className="hover:text-cyan-300 transition font-semibold p-1 -ml-1 whitespace-nowrap"
                 >
                   {c.label}
                 </Link>
               ) : (
-                <span className="text-gray-300 font-bold">
+                <span className="text-gray-300 font-bold p-1 -ml-1 whitespace-nowrap">
                   {c.label}
                 </span>
               )}

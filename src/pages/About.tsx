@@ -16,17 +16,17 @@ const About: React.FC = () => {
       />
 
       {/* ✅ Updated H1 (Brand Authority Boost) */}
-      <h1 className="text-3xl md:text-5xl font-black text-white mb-12 text-center tracking-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-8 md:mb-12 text-center tracking-tight">
         About the Creator
       </h1>
 
       {/* Intro Block with Profile Image */}
-      <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-8 md:p-12 mb-10 shadow-xl shadow-cyan-900/10">
+      <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-4 sm:p-6 md:p-10 lg:p-12 mb-10 shadow-xl shadow-cyan-900/10 theme-transition">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start">
 
           {/* Profile Image Section */}
           <div className="shrink-0 flex flex-col items-center">
-            <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full p-1 bg-gradient-to-b from-cyan-500 to-gray-800">
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full p-1 bg-gradient-to-b from-cyan-500 to-gray-800">
               {/* Replace the src with your actual image path */}
               <img
                 src="/images/1000157585.png"
@@ -51,7 +51,7 @@ const About: React.FC = () => {
 
           {/* Intro Text */}
           <div className="leading-relaxed text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
               Hi, I’m Himanshu.
             </h2>
             <div className="flex items-center justify-center md:justify-start gap-1.5 text-cyan-400 text-sm font-medium mb-6">
@@ -76,8 +76,8 @@ const About: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Technical Authority */}
-        <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-8">
-          <h2 className="text-2xl font-bold text-white mb-6">Technical Expertise</h2>
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-4 sm:p-6 md:p-8 theme-transition">
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Technical Expertise</h2>
           <ul className="space-y-6">
             <li className="flex gap-4">
               <span className="w-2 h-2 rounded-full bg-cyan-400 mt-2 shrink-0 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
@@ -106,9 +106,9 @@ const About: React.FC = () => {
         </div>
 
         {/* Vision/Mission */}
-        <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-8 flex flex-col justify-between">
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-4 sm:p-6 md:p-8 flex flex-col justify-between theme-transition">
           <div>
-            <h2 className="text-2xl font-bold text-white mb-6">Why This Tool?</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-6">Why This Tool?</h2>
             <div className="space-y-4 text-sm">
               <p>
                 During my own application processes, I noticed that most free online tools add watermarks,

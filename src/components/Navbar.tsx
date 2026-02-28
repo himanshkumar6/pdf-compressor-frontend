@@ -66,11 +66,10 @@ export default function Navbar() {
                 to={getLocalizedRouteGuard(p.path, lang)}
                 onMouseEnter={() => handlePrefetch(p.loader)}
                 title={p.title}
-                className={`relative px-3 py-2 rounded-lg transition-colors ${
-                  isActive
+                className={`relative px-3 py-2 rounded-lg transition-colors ${isActive
                     ? "text-cyan-400"
                     : "text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--color-bg-hover)]"
-                }`}
+                  }`}
               >
                 {p.label}
                 {isActive && (
@@ -97,27 +96,27 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2.5 rounded-xl border border-[var(--border)] bg-[var(--card)] hover:bg-[var(--color-bg-hover)] transition-colors"
+            className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--card)] hover:bg-[var(--color-bg-hover)] transition-colors overflow-hidden"
             onClick={() => setOpenMobile((s) => !s)}
             aria-label={openMobile ? "Close menu" : "Open menu"}
             aria-expanded={openMobile}
           >
-            {openMobile ? (
-              <X className="w-5 h-5 text-[var(--text)]" />
-            ) : (
+            <div className={`absolute transition-all duration-300 ${openMobile ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"}`}>
               <Menu className="w-5 h-5 text-[var(--text)]" />
-            )}
+            </div>
+            <div className={`absolute transition-all duration-300 ${openMobile ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"}`}>
+              <X className="w-5 h-5 text-[var(--text)]" />
+            </div>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu (Fixed Tailwind max-h bug) */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-out border-t border-[var(--navbar-border)] bg-[var(--card)]/95 backdrop-blur-xl ${
-          openMobile
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-out border-t border-[var(--navbar-border)] bg-[var(--card)]/95 backdrop-blur-xl ${openMobile
             ? "max-h-[500px] opacity-100 translate-y-0"
             : "max-h-0 opacity-0 -translate-y-1"
-        }`}
+          }`}
       >
         <div className="px-4 sm:px-6 py-4 space-y-1">
           {navItems.map((item) => {
@@ -130,11 +129,10 @@ export default function Navbar() {
                 key={item.key}
                 to={getLocalizedRouteGuard(item.path, lang)}
                 title={item.title}
-                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
-                  active
+                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${active
                     ? "bg-cyan-500/10 text-cyan-400"
                     : "text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--color-bg-hover)]"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
