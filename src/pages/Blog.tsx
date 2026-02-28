@@ -94,7 +94,7 @@ const Blog: React.FC = () => {
       {/* Header */}
       <div className="text-center mb-10 md:mb-14">
         <h1 className="text-3xl md:text-5xl font-bold text-white">
-          CompressPDF <span className="text-cyan-400">Blog</span>
+          Blogs <span className="text-cyan-400">Section</span>
         </h1>
         <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
           Practical guides to reduce PDF size, fix portal upload errors, and save

@@ -63,46 +63,32 @@ const Contact: React.FC = () => {
     // Validate Environment Variables
     if (!serviceId || !templateId || !publicKey) {
       console.error("CRITICAL: EmailJS Configuration Missing. Check Vercel Environment Variables.");
-      console.table({
-        VITE_EMAILJS_SERVICE_ID: serviceId ? "OK" : "MISSING",
-        VITE_EMAILJS_TEMPLATE_ID: templateId ? "OK" : "MISSING",
-        VITE_EMAILJS_PUBLIC_KEY: publicKey ? "OK" : "MISSING"
-      });
-
-      setError("System configuration error: Email service not connected. Please contact support directly.");
+      setError("System configuration error: Email service not connected. Please contact support directly via email.");
       toast.error("Configuration error. Email failed.");
       setIsSubmitting(false);
       return;
     }
 
     try {
-      // Explicitly construct template parameters to avoid "recipient address empty" error
-      // We pass multiple variations of email variables to ensure one of them matches the EmailJS template
+      // Explicitly construct template parameters
       const templateParams = {
-        // Form specific data
         user_name: formData.get("user_name"),
         user_email: formData.get("user_email"),
         subject: formData.get("subject"),
         message: formData.get("message"),
 
-        // Common variations for "To Email" or "Reply To" fields in templates
-        email: formData.get("user_email"),      // Common default
-        from_email: formData.get("user_email"), // Common default
+        email: formData.get("user_email"),
+        from_email: formData.get("user_email"),
         sender_email: formData.get("user_email"),
         to_email: formData.get("user_email"),
         reply_to: formData.get("user_email"),
 
-        // Name variations
         from_name: formData.get("user_name"),
         to_name: "Himanshu", // Admin name
 
-        // Meta info
         website_url: window.location.origin,
       };
 
-      console.log("Sending EmailJS params:", { ...templateParams, message: "..." }); // Debug log
-
-      // Verify recipient email is present
       if (!templateParams.user_email) {
         throw new Error("User email is missing from form data");
       }
@@ -119,7 +105,7 @@ const Contact: React.FC = () => {
 
       let errorMessage = "Failed to send message. Please try again.";
       if (err instanceof Error && err.message) {
-        errorMessage += ` (${err.message})`; // Add specific error message if available
+        errorMessage += ` (${err.message})`;
       }
 
       setError(errorMessage);
@@ -150,7 +136,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold text-white mb-6"
+          className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight"
         >
           Get in <span className="text-cyan-400">Touch</span>
         </motion.h1>
@@ -158,7 +144,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-xl text-gray-400 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
         >
           Have questions about our PDF tools? Found a bug?
           <br className="hidden md:block" />
@@ -175,107 +161,44 @@ const Contact: React.FC = () => {
           className="space-y-6 lg:col-span-1"
         >
           {/* Card 1: Direct Support */}
-          <div
-            className="
-    w-full
-    max-w-md
-    lg:max-w-none
-    mx-auto lg:mx-0
-
-   sm:p-6 md:p-8
-  md:rounded-3xl
-    dark:bg-gray-900/60
-     dark:border-gray-800
-
-    group
-
-    lg:hover:-translate-y-1
-    lg:hover:shadow-xl
-    lg:hover:shadow-cyan-500/10
-    lg:hover:border-cyan-400/40
-    p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group
-  "
-          >
+          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
             <div className="flex flex-col gap-5">
-
-              {/* Icon */}
-              <div
-                className="
-        md:w-14 md:h-14
-         dark:bg-gray-800
-        lg:group-hover:scale-110
-        w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300
-      "
-              >
-                <Mail className="w-6 h-6 md:w-7 md:h-7 text-cyan-500 dark:text-cyan-400" />
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-gray-700">
+                <Mail className="w-6 h-6 md:w-7 md:h-7 text-cyan-400" />
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold text-white">
                 Direct Support
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base max-w-sm">
+              </h2>
+              <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                 Hi, I'm Himanshu. I personally read and reply to all emails regarding this tool.
                 If you face any upload issue, feel free to reach out directly.
               </p>
-
-              {/* Email */}
               <a
                 href="mailto:support@compresspdfto200kb.online"
-                className="
-        text-cyan-600 dark:text-cyan-400
-        hover:text-cyan-500
-        font-semibold
-        text-sm md:text-base
-        wrap-break-word
-        transition-all duration-300
-        lg:group-hover:translate-x-1
-      "
+                className="text-cyan-400 hover:text-cyan-300 font-semibold text-sm md:text-base transition-all duration-300 lg:group-hover:translate-x-1 inline-flex items-center break-all"
               >
                 support@compresspdfto200kb.online
               </a>
-
             </div>
           </div>
 
-
-
-
           {/* Card 2: Location */}
-          <div className="    w-full
-    max-w-md
-    lg:max-w-none
-    mx-auto lg:mx-0
-
-   sm:p-6 md:p-8
-  md:rounded-3xl
-    dark:bg-gray-900/60
-     dark:border-gray-800
-
-    group
-
-    lg:hover:-translate-y-1
-    lg:hover:shadow-xl
-    lg:hover:shadow-cyan-500/10
-    lg:hover:border-cyan-400/40
-    p-8 bg-gray-900/50 border border-gray-800 rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group">
-            <div className="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-              <MapPin className="w-6 h-6 text-cyan-400" />
+          <div className="w-full max-w-md lg:max-w-none mx-auto lg:mx-0 p-8 bg-[var(--card)] border border-[var(--border)] rounded-3xl hover:border-cyan-500/30 transition-all duration-300 group shadow-lg shadow-cyan-900/5 hover:-translate-y-1">
+            <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-700">
+              <MapPin className="w-6 h-6 md:w-7 md:h-7 text-cyan-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">Location</h3>
+            <h2 className="text-xl font-bold text-white mb-2">Location</h2>
             <p className="text-gray-400 mb-1">New Delhi, India</p>
-            <div className="flex items-center text-sm text-gray-500 mt-4 bg-gray-800/50 p-3 rounded-lg border border-gray-700/50">
-              <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></div>
-              Operational Hours: 10 AM - 8 PM IST
+            <div className="flex items-center text-sm text-gray-400 mt-4 bg-gray-800/50 p-3 rounded-xl border border-gray-700/50">
+              <div className="w-2 h-2 rounded-full bg-green-500 mr-3 animate-pulse"></div>
+              Operational: 10 AM - 8 PM IST
             </div>
           </div>
 
           {/* Trust Signal */}
-          <div className="flex items-start p-4 border border-cyan-900/30 bg-cyan-950/10 rounded-2xl">
-            <ShieldCheck className="w-5 h-5 text-cyan-400 mt-0.5 mr-3 shrink-0" />
-            <p className="text-sm text-cyan-200/80 leading-relaxed">
+          <div className="flex items-start p-5 border border-cyan-900/40 bg-cyan-950/20 rounded-2xl shadow-inner">
+            <ShieldCheck className="w-6 h-6 text-cyan-400 mt-0.5 mr-3 shrink-0" />
+            <p className="text-sm text-cyan-100/90 leading-relaxed">
               <strong>Privacy Assurance:</strong> This form connects directly to my inbox. No data is stored on our servers. 100% Secure.
             </p>
           </div>
@@ -288,7 +211,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="lg:col-span-2"
         >
-          <div className=" border border-gray-800 rounded-4xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-sm">
+          <div className="bg-[var(--card)] border border-[var(--border)] rounded-[2rem] p-8 md:p-10 shadow-2xl relative overflow-hidden">
             {/* Background Gradient Blob */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
@@ -305,7 +228,7 @@ const Contact: React.FC = () => {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
-                    className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mb-6"
+                    className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mb-6 border border-green-500/20"
                   >
                     <CheckCircle className="w-12 h-12 text-green-500" />
                   </motion.div>
@@ -315,7 +238,7 @@ const Contact: React.FC = () => {
                   </p>
                   <button
                     onClick={resetForm}
-                    className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-xl transition-all font-medium border border-gray-700 flex items-center gap-2 mx-auto"
+                    className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-xl transition-all font-medium border border-gray-700 flex items-center gap-2 mx-auto shadow-md hover:shadow-cyan-900/20"
                   >
                     <RefreshCw className="w-4 h-4" /> Send Another Message
                   </button>
@@ -330,36 +253,36 @@ const Contact: React.FC = () => {
                   exit={{ opacity: 0 }}
                   className="space-y-6 relative z-10"
                 >
-                  {/* Honeypot Field (Hidden) */}
-                  <div className="hidden" aria-hidden="true">
+                  {/* Honeypot Field (Hidden properly for screen readers) */}
+                  <div className="absolute w-0 h-0 overflow-hidden opacity-0" aria-hidden="true" tabIndex={-1}>
                     <label htmlFor="website_url">Website URL</label>
-                    <input type="text" name="website_url" tabIndex={-1} autoComplete="off" />
+                    <input type="text" name="website_url" id="website_url" tabIndex={-1} autoComplete="off" />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="group">
-                      <label htmlFor="user_name" className="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-cyan-400 transition-colors">
+                      <label htmlFor="user_name" className="block text-sm font-semibold text-gray-300 mb-2 group-focus-within:text-cyan-400 transition-colors">
                         Your Name
                       </label>
                       <input
                         type="text"
                         name="user_name"
                         id="user_name"
-                        className="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-4 py-4 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-600"
-                        placeholder="John Doe"
+                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-500 shadow-inner"
+                        placeholder="e.g. John Doe"
                         required
                         disabled={isSubmitting}
                       />
                     </div>
                     <div className="group">
-                      <label htmlFor="user_email" className="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-cyan-400 transition-colors">
+                      <label htmlFor="user_email" className="block text-sm font-semibold text-gray-300 mb-2 group-focus-within:text-cyan-400 transition-colors">
                         Email Address
                       </label>
                       <input
                         type="email"
                         name="user_email"
                         id="user_email"
-                        className="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-4 py-4 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-600"
+                        className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-500 shadow-inner"
                         placeholder="john@example.com"
                         required
                         disabled={isSubmitting}
@@ -368,13 +291,13 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="group">
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-cyan-400 transition-colors">
+                    <label htmlFor="subject" className="block text-sm font-semibold text-gray-300 mb-2 group-focus-within:text-cyan-400 transition-colors">
                       Subject
                     </label>
                     <select
                       name="subject"
                       id="subject"
-                      className="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-4 py-4 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all appearance-none cursor-pointer"
+                      className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all appearance-none cursor-pointer shadow-inner"
                       required
                       disabled={isSubmitting}
                     >
@@ -387,14 +310,14 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="group">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2 group-focus-within:text-cyan-400 transition-colors">
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-2 group-focus-within:text-cyan-400 transition-colors">
                       Message
                     </label>
                     <textarea
                       name="message"
                       id="message"
                       rows={5}
-                      className="w-full bg-gray-800/50 border border-gray-700 rounded-xl px-4 py-4 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-600 resize-none"
+                      className="w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-4 py-3.5 text-white focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all placeholder:text-gray-500 resize-none shadow-inner"
                       placeholder="How can we help you today?"
                       required
                       disabled={isSubmitting}
@@ -405,9 +328,9 @@ const Contact: React.FC = () => {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start text-red-200 text-sm"
+                      className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-start text-red-300 text-sm font-medium"
                     >
-                      <AlertCircle className="w-5 h-5 mr-2 shrink-0 mt-0.5" />
+                      <AlertCircle className="w-5 h-5 mr-3 shrink-0 mt-0.5 text-red-400" />
                       {error}
                     </motion.div>
                   )}
@@ -415,9 +338,9 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-linear-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
+                    className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-4 rounded-xl flex items-center justify-center transition-all shadow-lg shadow-cyan-900/20 disabled:opacity-70 disabled:cursor-not-allowed group relative overflow-hidden"
                   >
-                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 
                     {isSubmitting ? (
                       <>
@@ -432,7 +355,7 @@ const Contact: React.FC = () => {
                     )}
                   </button>
 
-                  <p className="text-center text-xs text-gray-600 mt-4">
+                  <p className="text-center text-xs text-gray-500 font-medium mt-4">
                     Protected by spam filters. No CAPTCHA required.
                   </p>
                 </motion.form>

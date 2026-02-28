@@ -25,6 +25,7 @@ const Footer: React.FC = () => {
     desc: "Безопасное и приватное сжатие PDF. Ваши файлы обрабатываются локально в браузере — никогда не загружаются на наши серверы.",
     headers: {
       tools: "Инструменты",
+      topTools: "Популярные",
       support: "Поддержка",
       legal: "Юридическая информация"
     },
@@ -43,6 +44,7 @@ const Footer: React.FC = () => {
     desc: "Compresión de PDF segura y privada. Tus archivos se procesan localmente en tu navegador — nunca se suben a nuestros servidores.",
     headers: {
       tools: "Herramientas",
+      topTools: "Más Usados",
       support: "Soporte",
       legal: "Legal"
     },
@@ -61,6 +63,7 @@ const Footer: React.FC = () => {
     desc: "Secure and private PDF compression. Your files are processed locally in your browser — never uploaded to our servers.",
     headers: {
       tools: "Tools",
+      topTools: "Top Tools",
       support: "Support",
       legal: "Legal"
     },
@@ -73,6 +76,13 @@ const Footer: React.FC = () => {
   };
 
   // Build Footer Links dynamically
+  const topToolsLinks = [
+    { label: "Compress PDF to 200KB", path: "/compress-pdf-to-200kb" },
+    { label: "Compress PDF to 100KB", path: "/compress-pdf-to-100kb" },
+    { label: "Merge PDF", path: "/merge-pdf" },
+    { label: "JPG to PDF", path: "/jpg-to-pdf" },
+  ];
+
   const supportLinks = [
     { label: labels.tools, path: routes.tools }, // "All Tools"
     { label: labels.blog, path: routes.blog },
@@ -94,8 +104,8 @@ const Footer: React.FC = () => {
   const linkHome = routes.home;
 
   return (
-    <footer className="bg-(--bg) border-t border-(--border) theme-transition">
-      <div className="max-w-(--page-max-width) mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[var(--bg)] border-t border-[var(--border)] theme-transition">
+      <div className="max-w-[var(--page-max-width)] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* 🔝 Top strip */}
         <div className="py-6 sm:py-12 border-b border-gray-900">
@@ -151,28 +161,33 @@ const Footer: React.FC = () => {
               <FileText className="w-6 h-6 text-cyan-400" />
               <span className="text-xl font-extrabold tracking-tight">
                 <span className="text-white">Compress</span>
-                <span className="brand-logo__pdf">PDF</span>
+                <span className="text-cyan-400">PDF</span>
               </span>
             </a>
 
             <p className="text-gray-500 text-sm leading-relaxed mt-4 max-w-md">
               {t.desc}
             </p>
+            
+            {/* Direct Trust Signal for AdSense */}
+            <a href="mailto:support@compresspdfto200kb.online" className="inline-block mt-3 text-sm text-cyan-500 hover:text-cyan-400 transition-colors">
+              support@compresspdfto200kb.online
+            </a>
 
             {/* Social */}
             <div className="mt-6 flex gap-4">
-              {[Twitter, Github, Mail].map((Icon, i) => (
+              {[
+                { Icon: Twitter, url: "https://x.com/himanshu_react", label: "Twitter" },
+                { Icon: Github, url: "https://github.com/himanshkumar6", label: "GitHub" },
+                { Icon: Mail, url: "mailto:support@compresspdfto200kb.online", label: "Email Support" }
+              ].map(({ Icon, url, label }, i) => (
                 <a
                   key={i}
-                  href={
-                    i === 0
-                      ? "https://x.com/himanshu_react"
-                      : i === 1
-                        ? "https://github.com/himanshkumar6"
-                        : "mailto:himanshucareer01@gmail.com"
-                  }
+                  href={url}
                   className="w-11 h-11 flex items-center justify-center rounded-full border border-gray-800 text-gray-400 hover:text-cyan-400 hover:border-cyan-500/40 transition"
-                  aria-label="social"
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -180,8 +195,24 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Links - Now using a 3-column grid on larger screens */}
           <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+
+            {/* Top Tools (NEW - SEO BOOST) */}
+            <div>
+              <h4 className="text-white font-semibold mb-4">
+                {t.headers.topTools}
+              </h4>
+              <ul className="space-y-3 text-sm">
+                {topToolsLinks.map((p) => (
+                  <li key={p.path}>
+                    <a href={p.path} className="text-gray-500 hover:text-cyan-400 transition-colors">
+                      {p.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* Support */}
             <div>
@@ -191,7 +222,7 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 {supportLinks.map((p) => (
                   <li key={p.path}>
-                    <a href={getLocalizedRouteGuard(p.path, lang)} className="footer-link">
+                    <a href={getLocalizedRouteGuard(p.path, lang)} className="text-gray-500 hover:text-cyan-400 transition-colors">
                       {p.label}
                     </a>
                   </li>
@@ -207,13 +238,14 @@ const Footer: React.FC = () => {
               <ul className="space-y-3 text-sm">
                 {legalLinks.map((p) => (
                   <li key={p.path}>
-                    <a href={getLocalizedRouteGuard(p.path, lang)} className="footer-link">
+                    <a href={getLocalizedRouteGuard(p.path, lang)} className="text-gray-500 hover:text-cyan-400 transition-colors">
                       {p.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
+            
           </div>
         </div>
 
@@ -234,7 +266,6 @@ const Footer: React.FC = () => {
 
       </div>
     </footer>
-
   );
 };
 

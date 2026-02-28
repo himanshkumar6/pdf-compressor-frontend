@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import { PAGES_SEO, buildWebAppJsonLd } from "../utils/seoData";
 import { TOOLS_REGISTRY, TOOL_CATEGORIES_INFO } from "../data/toolsRegistry";
-import { ArrowRight, Wrench } from "lucide-react";
+import { ArrowRight, Wrench, Shield, Zap, FileText } from "lucide-react";
 
 /**
- * 🛠️ Premium Tools Hub - Data Driven
+ * 🛠️ Premium Tools Hub - AdSense & SEO Optimized
  */
 const Tools: React.FC = () => {
   const seo = PAGES_SEO["/tools"];
@@ -36,16 +36,16 @@ const Tools: React.FC = () => {
           <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
             <Wrench className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-500" />
           </div>
-          PDF Tools
+          All PDF Tools
         </h1>
         <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
-          A complete suite of privacy-first PDF tools. Compress, convert, and organize documents
-          <span className="text-cyan-500 font-medium"> directly in your browser.</span> No uploads, no waiting.
+          A complete suite of privacy-first PDF tools. Compress, convert, edit, and organize documents
+          <span className="text-cyan-500 font-medium"> directly in your browser.</span> 100% free, no uploads, and zero quality loss.
         </p>
       </div>
 
       {/* Tool Categories */}
-      <div className="space-y-20">
+      <div className="space-y-20 mb-20">
         {categorizedTools.map((category, catIndex) => {
           const CatIcon = category.icon;
 
@@ -112,6 +112,61 @@ const Tools: React.FC = () => {
           );
         })}
       </div>
+
+      <div className="section-divider my-16 border-t border-[var(--border)]" />
+
+      {/* 🌟 NEW: Content Section for AdSense (Text-Heavy) */}
+      <section className="animate-fade-in-up" style={{ animationDelay: "450ms" }}>
+        <div className="premium-card rounded-3xl p-8 md:p-12">
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-6">
+            Why Use Our Secure PDF Tools?
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            <div>
+              <Shield className="w-8 h-8 text-cyan-400 mb-4" />
+              <h3 className="text-white font-bold text-lg mb-2">Zero-Knowledge Architecture</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                We never upload your files to any external server. All processing (compression, merging, converting) happens locally inside your own web browser. Your sensitive IDs and certificates remain 100% private.
+              </p>
+            </div>
+            <div>
+              <Zap className="w-8 h-8 text-cyan-400 mb-4" />
+              <h3 className="text-white font-bold text-lg mb-2">Student & Portal Focused</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Our algorithms are specifically tuned to meet the strict 100KB and 200KB file size limits required by NTA, UPSC, SSC, and other government application portals without making the text blurry.
+              </p>
+            </div>
+            <div>
+              <FileText className="w-8 h-8 text-cyan-400 mb-4" />
+              <h3 className="text-white font-bold text-lg mb-2">No Watermarks, No Limits</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Unlike corporate tools that force you to buy premium subscriptions to remove ugly watermarks or limit you to 2 tasks a day, our entire suite is completely free for unlimited daily use.
+              </p>
+            </div>
+          </div>
+
+          {/* Directory FAQ to boost search intent */}
+          <div className="bg-[var(--bg)] rounded-2xl p-6 md:p-8 border border-[var(--border)]">
+            <h3 className="text-xl font-bold text-white mb-6">Frequently Asked Questions</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-cyan-400 font-semibold mb-1">Do I need to install any software?</h4>
+                <p className="text-gray-400 text-sm">No. All our tools run instantly in your web browser. Whether you are using Chrome on a MacBook or Safari on an iPhone, the tools work flawlessly without requiring any app installations.</p>
+              </div>
+              <div>
+                <h4 className="text-cyan-400 font-semibold mb-1">Which tool should I use for government forms?</h4>
+                <p className="text-gray-400 text-sm">If your portal asks for a file under 200KB (like UPSC or SSC), use our "Compress to 200KB" tool. If you need to combine your Aadhar front and back, use the "Merge PDF" tool first, then compress it.</p>
+              </div>
+              <div>
+                <h4 className="text-cyan-400 font-semibold mb-1">Where can I learn more about fixing upload errors?</h4>
+                <p className="text-gray-400 text-sm">Check out our <Link to="/blog" className="text-cyan-400 hover:underline">Upload Guides & Blog</Link> where we write detailed tutorials on how to scan documents properly and bypass common "File Too Large" portal errors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Global CSS for Animations */}
       <style>{`

@@ -1,59 +1,126 @@
 import React from "react";
 import SEO from "../components/SEO";
 import { PAGES_SEO, buildWebAppJsonLd } from "../utils/seoData";
+import { Scale, FileText, ShieldAlert, Gavel, Copyright } from "lucide-react";
 
 const TermsConditions: React.FC = () => {
   const seo = PAGES_SEO["/terms-conditions"];
+  
   return (
-    <div className="pt-32 pb-20 max-w-4xl mx-auto px-4 prose prose-invert">
+    <div className="pt-24 md:pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 text-gray-400">
       <SEO
         title={seo.title}
         description={seo.description}
         canonical={seo.canonical}
         schema={buildWebAppJsonLd(seo)}
       />
-      <h1 className="text-5xl font-bold text-white mb-8">TERMS & CONDITIONS</h1>
+      
+      <div className="mb-10 text-center md:text-left">
+        <h1 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          Terms & Conditions
+        </h1>
+        <p className="text-sm text-gray-500 font-medium">
+          Last updated: February 28, 2026
+        </p>
+      </div>
 
-      <p className="text-gray-300 leading-relaxed">
-        Welcome to CompressPDF (https://compresspdfto200kb.online). By using this site, you're agreeing to these simple rules.
-      </p>
+      <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 md:p-10 shadow-lg space-y-8">
+        
+        {/* Intro */}
+        <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+          Welcome to <strong className="text-white">compresspdfto200kb.online</strong> (hereinafter referred to as "CompressPDF", "we", "us", or "our"). By accessing or using our website and tools, you agree to be bound by these Terms & Conditions. If you disagree with any part of these terms, please do not use our website.
+        </p>
 
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">HOW TO USE THE SITE</h2>
-      <p className="text-gray-300 leading-relaxed">
-        You can use my tools for free as much as you want. I built these specifically to help with things like SSC, UPSC, and other job or government portal uploads. Just don't use the site for anything illegal or to try and break the website.
-      </p>
+        {/* Section 1: Use of Service */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-cyan-500" />
+            1. Use of the Service
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base mb-3">
+            CompressPDF provides free, browser-based utility tools to compress, merge, and edit PDF files. You are permitted to use these tools for personal, academic, and professional purposes (such as preparing documents for SSC, UPSC, NTA, or other portals).
+          </p>
+          <p className="leading-relaxed text-sm md:text-base">
+            You agree NOT to:
+          </p>
+          <ul className="list-disc list-inside mt-2 space-y-2 text-sm md:text-base ml-2">
+            <li>Use the site in any way that causes, or may cause, damage to the website or impairment of its availability.</li>
+            <li>Use the site for any unlawful, illegal, fraudulent, or harmful purpose.</li>
+            <li>Attempt to reverse-engineer, copy, or distribute the underlying code or algorithms of our tools.</li>
+          </ul>
+        </section>
 
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">NO GUARANTEES</h2>
-      <p className="text-gray-300 leading-relaxed">
-        I try my best to make sure the tools work perfectly, but I'm just one person. The service is provided "as-is." I can't promise that the website will always be up or that the compressed files will always be accepted by every single portal out there (though they usually are!).
-      </p>
+        {/* Section 2: Intellectual Property */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <Copyright className="w-5 h-5 text-cyan-500" />
+            2. Intellectual Property Rights
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base">
+            Unless otherwise stated, CompressPDF and/or its creator own the intellectual property rights for all material, design, UI elements, and original text on this website. All intellectual property rights are reserved. You may access this for your own personal use subjected to restrictions set in these terms and conditions.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">LIABILITY</h2>
-      <p className="text-gray-300 leading-relaxed">
-        Since all the processing happens on your own computer and I never even see your files, I'm not responsible for any issues that happen after you download your file. Please check your documents after processing to make sure they look right.
-      </p>
+        {/* Section 3: No Guarantees & Warranties */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <ShieldAlert className="w-5 h-5 text-cyan-500" />
+            3. Disclaimer of Warranties
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base">
+            This website is provided "as is," with all faults, and CompressPDF expresses no representations or warranties, of any kind related to this website or the materials contained on this website. While we strive for perfection, we do not guarantee that our tools will flawlessly compress every file to the exact target size or that the output will be accepted by third-party government or corporate portals.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">JURISDICTION</h2>
-      <p className="text-gray-300 leading-relaxed">
-        Any legal talk or issues will be handled under the laws of India.
-      </p>
+        {/* Section 4: Limitation of Liability */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <Scale className="w-5 h-5 text-cyan-500" />
+            4. Limitation of Liability
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base">
+            Because our tools process files locally on your device (Client-Side Processing), we do not have access to your data. Consequently, in no event shall CompressPDF, nor its creator, be held liable for any data loss, document corruption, missed application deadlines, or rejected submissions arising out of or in any way connected with your use of this website.
+          </p>
+        </section>
 
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4">GAPS AND CHANGES</h2>
-      <p className="text-gray-300 leading-relaxed">
-        I might update these rules from time to time as the site grows. I'll post the date of the last update at the bottom.
-      </p>
+        {/* Section 5: Governing Law */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center gap-2">
+            <Gavel className="w-5 h-5 text-cyan-500" />
+            5. Governing Law & Jurisdiction
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base">
+            These Terms will be governed by and interpreted in accordance with the laws of India. Any disputes relating to these terms and conditions will be subject to the exclusive jurisdiction of the courts of New Delhi, India.
+          </p>
+        </section>
 
-      <p className="mt-12 text-gray-300 font-medium">
-        Thanks for using my tool!
-      </p>
+        {/* Section 6: Modifications */}
+        <section>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+            6. Changes to These Terms
+          </h2>
+          <p className="leading-relaxed text-sm md:text-base">
+            We reserve the right to revise these Terms at any time as we see fit. By using this website, you are expected to review these Terms on a regular basis to ensure you understand all terms and conditions governing the use of this website.
+          </p>
+        </section>
 
-      <p className="mt-4 text-gray-400">
-        Email: support@compresspdfto200kb.online
-      </p>
+        {/* Contact info */}
+        <div className="pt-6 border-t border-[var(--border)] mt-8">
+          <p className="text-gray-400 text-sm md:text-base font-medium mb-2">
+            Thanks for using our tools!
+          </p>
+          <p className="text-gray-400 text-sm md:text-base">
+            If you have any questions about these Terms, please contact us at:{" "}
+            <a 
+              href="mailto:support@compresspdfto200kb.online" 
+              className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            >
+              support@compresspdfto200kb.online
+            </a>
+          </p>
+        </div>
 
-      <p className="mt-2 text-gray-500 text-sm">
-        Last updated: February 7, 2026
-      </p>
+      </div>
     </div>
   );
 };
