@@ -3,6 +3,7 @@ import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import { Shield, FastForward, UserCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import AdBanner from "../components/AdBanner";
 import {
   PAGES_SEO,
   FAQ_DATA,
@@ -63,6 +64,11 @@ const Home: React.FC = () => {
             <ToolSection />
           </Suspense>
         </section>
+
+        {/* ✅ Native Banner Below Tool on Home */}
+        <div className="mb-14">
+          <AdBanner type="native" />
+        </div>
 
         {/* 🌟 NEW: 3-Step Guide (Improves Text-to-HTML ratio for AdSense) */}
         <section className="mb-14 max-w-4xl mx-auto premium-card rounded-[2.5rem] p-4 sm:p-6 md:p-10 lg:p-12 text-center">

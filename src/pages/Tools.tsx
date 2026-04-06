@@ -4,6 +4,7 @@ import SEO from "../components/SEO";
 import { PAGES_SEO, buildWebAppJsonLd } from "../utils/seoData";
 import { TOOLS_REGISTRY, TOOL_CATEGORIES_INFO } from "../data/toolsRegistry";
 import { ArrowRight, Wrench, Shield, Zap, FileText } from "lucide-react";
+import AdBanner from "../components/AdBanner";
 
 /**
  * 🛠️ Premium Tools Hub - AdSense & SEO Optimized
@@ -111,6 +112,10 @@ const Tools: React.FC = () => {
             </section>
           );
         })}
+      </div>
+
+      <div className="mb-14">
+        <AdBanner type="native" />
       </div>
 
       <div className="section-divider my-16 border-t border-[var(--border)]" />
