@@ -133,6 +133,7 @@ ${buildGoogleTag()}
 
 <meta name="yandex-verification" content="${YANDEX_VERIFICATION}" />
 <meta name="monetag" content="3798dfe449603c15046be047a0f2c034" />
+<script src="https://quge5.com/88/tag.min.js" data-zone="226926" async data-cfasync="false"></script>
 
 </head>
 
