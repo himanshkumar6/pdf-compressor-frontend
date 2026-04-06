@@ -76,35 +76,32 @@
   <!-- <script type="module" src="/src/main.tsx"></script> -->
 
   <!-- ✅ Lazy Load Ad Scripts (Performance) -->
-  <script>
-    window.addEventListener("load", function () {
-      // Use requestIdleCallback if available, otherwise setTimeout
-      var deferAds = window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); };
+<script>
+  window.addEventListener("load", function () {
+    var deferAds = window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); };
 
-      deferAds(function () {
-        // 1. AdCash
-        var ac = document.createElement("script");
-        ac.id = "aclib";
-        ac.type = "text/javascript";
-        ac.src = "//acscdn.com/script/aclib.js";
-        ac.async = true;
-        document.head.appendChild(ac);
+    deferAds(function () {
 
-        // 2. Monetag (if needed in future, currently commented)
-        // var mt = document.createElement("script"); ...
-        // 2. Google Analytics (gtag)
-        var ga = document.createElement("script");
-        ga.async = true;
-        ga.src = "https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V";
-        document.head.appendChild(ga);
+      // ✅ 1. Monetag MultiTag Script
+      var mt = document.createElement("script");
+      mt.async = true;
+      mt.setAttribute("data-cfasync", "false");
+      mt.src = "//thubanoa.com/1?z=YOUR_ZONE_ID_HERE";
+      document.head.appendChild(mt);
 
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-FCZXPJB41V', { send_page_view: false });
-      });
+      // ✅ 2. Google Analytics
+      var ga = document.createElement("script");
+      ga.async = true;
+      ga.src = "https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V";
+      document.head.appendChild(ga);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-FCZXPJB41V', { send_page_view: false });
     });
-  </script>
+  });
+</script>
 </body>
 
 </html>
