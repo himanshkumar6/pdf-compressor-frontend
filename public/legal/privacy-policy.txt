@@ -1,0 +1,19 @@
+PRIVACY POLICY
+
+Hey there, I'm the owner of CompressPDF. I've built this tool to make your life easier when dealing with large PDF files, especially for government forms. Because I value your privacy as much as my own, here is exactly how I handle your data.
+
+NO FILE UPLOADS
+The most important thing to know is that your PDFs never leave your computer. When you "upload" a file here, it stays in your browser. My website uses local processing technology. This means your private documents, photos, or ID proofs are never sent to my server or stored anywhere online by me.
+
+PERSONAL DATA
+I don't ask for your name, phone number, or email address to use the tools. There are no user accounts here. If you use the contact form, I'll see your email just so I can reply to you, but that's it.
+
+SERVER LOGS
+Like any other website on the internet, my server automatically picks up some basic info like your IP address, what browser you are using, and the time you visited. This is just standard stuff for security and to see how many people are using the site.
+
+THIRD PARTIES
+Since I don't collect your files or personal info, I have nothing to sell to anyone. If I ever add ads or analytics in the future to help pay for the server costs, those services might have their own way of looking at anonymous data, but your PDFs will always remain private and local.
+
+If you have questions, just email me at himanshucareer01@gmail.com.
+
+Last updated: February 7, 2026

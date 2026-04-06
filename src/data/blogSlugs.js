@@ -1,0 +1,16 @@
+// export const BLOG_SLUGS = [
+//   "file-too-large-error-government-forms",
+//   "nta-pdf-upload-error-fix",
+//   "why-government-portals-reject-documents",
+//   "how-to-compress-pdf-without-losing-quality",
+//   "pdf-compression-vs-image-resizing-difference",
+//   "how-to-reduce-pdf-size-for-email-attachments",
+//   "how-to-convert-jpg-to-pdf-properly",
+//   "when-to-use-merge-pdf-tool",
+//   "how-to-remove-metadata-from-pdf",
+//   "how-to-split-large-pdfs-before-uploading",
+//   "what-is-a-pdf-file",
+//   "how-to-edit-pdf-on-mac-free",
+//   "how-to-scan-documents-to-pdf",
+//   "how-to-save-pdf-as-jpg",
+// ];

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Theme Pre-Init Script (Prevents FOUC) -->
+  <script>
+    (function () {
+      try {
+        var STORAGE_KEY = "theme-mode";
+        var root = document.documentElement;
+
+        // prevent initial transition flash
+        root.classList.add("theme-preload");
+
+        var stored = localStorage.getItem(STORAGE_KEY);
+        var mode = stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+
+        var prefersDark =
+          window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var resolved = mode === "system" ? (prefersDark ? "dark" : "light") : mode;
+
+        root.classList.remove("light", "dark");
+        root.classList.add(resolved);
+        root.style.colorScheme = resolved;
+        root.dataset.themeMode = mode;
+
+        window.setTimeout(function () {
+          root.classList.remove("theme-preload");
+        }, 0);
+      } catch (e) {
+        // ignore (private mode / blocked storage)
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="./public/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon.svg">
+  <meta name="monetag" content="3798dfe449603c15046be047a0f2c034" />
+
+  <meta name="yandex-verification" content="45b0752a7d05cc01" />
+  <meta name="google-adsense-account" content="ca-pub-5317177621820727">
+
+  <!-- Google Analytics Defer Strategy: Moved to Body Injection -->
+  <meta name="google-site-verification" content="fF6tWHVuhi42MfkcTCr7zcahCCawwtG94qAniZrUSmk" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compress PDF to 200KB Online | Free PDF Compressor Tool</title>
+  <link rel="canonical" href="https://compresspdfto200kb.online/" />
+
+  <meta name="description"
+    content="Compress PDF files to 200KB online using a free PDF compressor tool. Upload or drag and drop your PDF, reduce file size without quality loss, and download compressed files instantly. Ideal for job applications and government form uploads." />
+
+  <link rel="alternate" type="text/plain" href="/llms.txt">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Compress PDF to 200KB Online | Free PDF Compressor Tool" />
+  <meta property="og:description"
+    content="Compress PDF files to 200KB online using a free PDF compressor tool. Upload or drag and drop your PDF, reduce file size without quality loss, and download instantly." />
+  <meta property="og:url" content="https://compresspdfto200kb.online/" />
+
+  <meta property="og:image" content="https://compresspdfto200kb.online/og-image.png" />
+</head>
+
+<body>
+  <noscript>
+    <h1>Compress PDF to 200KB Online</h1>
+    <p>
+      Compress PDF files to 200KB online for free using a simple PDF compressor tool.
+      Upload or drag and drop your PDF, reduce file size without losing quality,
+      and download compressed files instantly.
+    </p>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+
+  <!-- <script type="module" src="/src/main.tsx"></script> -->
+
+  <!-- ✅ Lazy Load Ad Scripts (Performance) -->
+<script>
+  window.addEventListener("load", function () {
+    var deferAds = window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); };
+
+    deferAds(function () {
+
+      // ✅ 1. Monetag MultiTag Script
+      var mt = document.createElement("script");
+      mt.async = true;
+      mt.setAttribute("data-cfasync", "false");
+      mt.src = "//thubanoa.com/1?z=YOUR_ZONE_ID_HERE";
+      document.head.appendChild(mt);
+
+      // ✅ 2. Google Analytics
+      var ga = document.createElement("script");
+      ga.async = true;
+      ga.src = "https://www.googletagmanager.com/gtag/js?id=G-FCZXPJB41V";
+      document.head.appendChild(ga);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-FCZXPJB41V', { send_page_view: false });
+    });
+  });
+</script>
+</body>
+
+</html>
