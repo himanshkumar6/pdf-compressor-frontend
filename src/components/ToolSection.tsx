@@ -60,6 +60,15 @@ const ToolSection: React.FC<ToolSectionProps> = ({
     return `${kb}KB`;
   };
 
+  // ✅ Dispatch global processing state for AdBanner
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("pdf-processing-state", {
+        detail: { isProcessing },
+      })
+    );
+  }, [isProcessing]);
+
   const isLargeFile = useMemo(
     () => (file ? file.size > 5 * 1024 * 1024 : false),
     [file]

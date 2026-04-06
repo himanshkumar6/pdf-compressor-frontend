@@ -10,6 +10,7 @@ import NavigationPageLoader from "./components/NavigationPageLoader";
 import MainLayout from "./layouts/MainLayout";
 import ToolLayout from "./layouts/ToolLayout";
 import CompressTo100kb from "./pages/CompressTo100kb";
+import AdBanner from "./components/AdBanner";
 
 // ✅ Main Pages (Lazy)
 export const HomeLoader = () => import("./pages/Home");
@@ -147,6 +148,9 @@ const App: React.FC = () => {
           </Routes>
         </Suspense>
       </div>
+
+      {/* ✅ Global Popunder Ad */}
+      <AdBanner type="popunder" className="hidden border-none m-0 p-0 !min-h-0" />
 
       {/* ✅ Toast */}
       <Toaster position="top-center" toastOptions={{

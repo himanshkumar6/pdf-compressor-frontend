@@ -5,6 +5,7 @@ import SEO from "./SEO";
 import ToolSection from "./ToolSection";
 import ToolSectionRemoveMetadata from "./ToolSectionRemoveMetadata";
 import BreadcrumbSchema from "./BreadcrumbSchema";
+import AdBanner from "./AdBanner";
 
 import {
   PAGES_SEO,
@@ -151,6 +152,9 @@ export default function ToolLandingPage({
       <section className="w-full max-w-4xl mx-auto">
         {renderTool()}
       </section>
+
+      {/* ✅ Native Banner Below Tool */}
+      <AdBanner type="native" />
 
       {/* SEO CONTENT */}
       <section className="w-full max-w-4xl mx-auto mt-10 space-y-10">

@@ -48,6 +48,15 @@ const ToolSectionRemoveMetadata: React.FC = () => {
     };
   }, [cleanBlobUrl]);
 
+  // ✅ Dispatch global processing state for AdBanner
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("pdf-processing-state", {
+        detail: { isProcessing },
+      })
+    );
+  }, [isProcessing]);
+
   const resetAll = () => {
     if (cleanBlobUrl) URL.revokeObjectURL(cleanBlobUrl);
 
